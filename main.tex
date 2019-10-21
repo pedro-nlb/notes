@@ -1,0 +1,44 @@
+\documentclass[11pt,A4]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\usepackage{mathrsfs}
+\usepackage[mathscr]{euscript}
+\usepackage{enumitem}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\usepackage[noabbrev]{cleveref}
+\usepackage{todonotes}
+
+% Plain theorems
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lm}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+% Definition theorems
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exa}[thm]{Example}
+
+% Remark theorems
+\newtheorem{rem}[thm]{Remark}
+
+\title{Title}
+\author{Pedro Núñez}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{First section}
+
+\bibliographystyle{alpha}
+\bibliography{refs}
+
+\end{document}
