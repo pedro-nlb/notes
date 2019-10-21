@@ -40,9 +40,13 @@
 \newcommand{\C}{\mathscr{C}}
 \newcommand{\Top}{\mathscr{T}op}
 \newcommand{\CHaus}{\mathscr{CH}aus}
+\newcommand{\CG}{\mathscr{CG}}
 \newcommand{\Ab}{\mathscr{A}b}
 \newcommand{\Set}{\mathscr{S}et}
 \newcommand{\D}{\mathscr{D}}
+\newcommand{\Db}{\mathscr{D}^{\mathrm{b}}}
+\newcommand{\QCoh}{\mathscr{QC}oh}
+\newcommand{\Coh}{\mathscr{C}oh}
 
 % Math operators
 \DeclareMathOperator{\Hom}{Hom}
@@ -72,9 +76,144 @@
 
 \tableofcontents
 
-\section{Seminar on Condensed Mathematics - 21.10.19}
+\section{Seminar on Condensed Mathematics - Talk 1: Condensed Sets - 21.10.19}
 
-Blabla
+Motivation: topological abelian groups do not form an abelian category.
+
+\begin{exa}
+    $\mathbb{R}_{disc}\to \mathbb{R}$ is epi and mono, but not iso.
+\end{exa}
+
+Another motivation is coherent duality:
+
+\begin{thm}
+    Let $f\colon X\to Y$ be a proper or quasi-projective morphism of Noetherian schemes of finite Krull dimension. Then there exists a right adjoint $f^{!}$ to the derived direct image functor $f_{!}=Rf_{*}\colon \Db(\QCoh(X))\to \Db(\QCoh(Y))$.
+\end{thm}
+
+At some point analytic rings will come up.
+We will then look at the category of solid modules, in which the 6-functor formalism works nicer than in the classical setting (e.g. when $f_{!}$ is not defined in the classical setting, $f_{!}$ takes non-discrete values in the condensed settings, which are "not there" in the classical setting).
+
+\begin{defn}
+    Pro\'{e}tale site of a point, denoted $\pe$, is the category of profinite sets with finite jointly surjective families of continuous maps as covers.
+    A \textit{condensed set} (resp. group, ring, ...) is a sheaf of sets (resp. groups, rings, ...) on $\pe$.
+    We denote by $\Cond(\C)$ the category of condensed objects of a category $\C$.
+\end{defn}
+
+\begin{defn}
+    A \textit{condensed set} (resp. group, ring, ...) is a contravariant functor $X$ from $\pe$ to the category of sets (resp. groups, rings, ...) such that 
+    \begin{enumerate}[label=\roman*)]
+	\item $X(\varnothing)=*$.
+	\item For all profinite sets $S_{1}$ and $S_{2}$ the natural map
+	    \[ X(S_{1}\sqcup S_{2})\to X(S_{1})\times X(S_{2}) \]
+	    is an isomorphism.
+	\item For any surjection of profinite sets $f\colon S'\twoheadrightarrow S$ we get an induced\footnote{Since the pullback diagram is commutative, the image of $X(f)$ is indeed induces a morphism as claimed.} isomorphism
+	    \[ X(S)\to \{ x\in X(S')\mid \pi_{1}^{*}(x)=\pi_{2}^{*}(x)\in X(S'\fp{S}S')\} \]
+    \end{enumerate}
+\end{defn}
+
+We will call $X(*)$ the \textit{underlying object} in $\C$ of a condensed object.
+
+\begin{rem}
+    We will use $T$ for topological spaces vs. $X,Y$ for condensed sets, as opposed to Scholze's mixing of those notations.
+\end{rem}
+
+\subsection{Recollections on sheaves on sites}
+
+Let $F$ be a presheaf on a site, which is just a contravariant functor to whatever category in which our sheaves are gonna take values.
+If $U=\cup_{i}U_{i}$ is an open cover, the topological sheaf axiom could be phrased as: $F(U)$ is an equalizer of the diagram
+\[ \prod_{i}F(u_{i})\rightrightarrows \prod_{i,j}F(U_{i}\cap U_{j}). \]
+Note that $U_{i}\cap U_{j}$ is just the fiber product of the two inclusions.
+
+\begin{defn}[Coverage]
+    See definition 2.1 in \href{https://ncatlab.org/nlab/show/coverage}{nCat}.
+\end{defn}
+
+\begin{defn}
+    $F$ a presheaf on $\C$.
+    A collection $(s_{i})\in \prod_{i}F(U_{i})$ for $\{f_{i}\colon U_{i}\to U\}$ a covering is called a \textit{matching family} if for all $h\colon V\to U$ we have $g^{*}(s_{i})=h^{*}(s_{j})$ for $g$ and $h$ in the diagram
+    \begin{center}
+	\begin{tikzcd}
+	    V\arrow{r}{h}\arrow{d}{g} & U_{j}\arrow{d}{f_{j}} \\
+	    U_{i}\arrow{r}{f_{i}} & U
+	\end{tikzcd}
+    \end{center}
+\end{defn}
+
+\begin{defn}
+    $F$ is a sheaf with respect to $\{U_{i}\to U\}$ if for all matching families $(s_{i})$ there exists a unique $s\in F(U)$ such that $f_{i}^{*}(s)=s_{i}$.
+    We say that $F$ is a \textit{sheaf} if it is a sheaf for all covering families.
+\end{defn}
+
+\begin{rem}
+    A sheaf of abelian groups is just a commutative group object in the category of sheaves of sets.
+\end{rem}
+
+\begin{thm}
+    If $\C$ is a site, then $\Ab(\C)$ is an abelian category.
+\end{thm}
+
+\begin{defn}
+    An additive category is a category in which the hom-sets are endowed with an abelian group structure in a way that makes composition bilinear and such that finite biproducts exist.
+\end{defn}
+
+Recall Grothendieck's axioms:
+AB1) Every morphism has a kernel and a cokernel.
+AB2) For every $f\colon A\to B$, the natural map $\operatorname{coim}(f)\to \im{f}$ is an iso.
+AB3) All colimit exist.
+AB4) AB3) + arbitrary direct sums are exact.
+AB5) AB3) + arbitrary filtered colimits are exact.
+AB6) AB3) + $J$ an index set, $\forall j\in J$ a filtered category (think of directed set) $I_{j}$, functors $M\colon I_{j}\to \C$, then
+\[\varinjlim_{(i_{j}\in I_{j})_{j}}\prod_{j} M_{i_{j}}\to \prod_{j\in J}\varinjlim_{i_{j}\in I_{j}} M_{i_{j}} \]
+
+\begin{thm}
+    $\C$ a site. Then $\Ab(\C)$ satisfies AB3), AB4), AB5) and AB6).
+\end{thm}
+
+In fact, our case is even nicer:
+
+\begin{thm}
+    $\Cond(\Ab)$ in addition satisfies AB6) and AB4*).
+\end{thm}
+
+\subsection{Compactly generated topological spaces}
+
+\begin{defn}
+    A topological space $T$ is called \textit{compactly generated} if any function $f\colon T\to T'$ is continuous as soon as the composite $S\to T\to T'$ is continuous for all maps $S\to T$ where $S$ is compact and Hausdorff.
+    See also \href{https://ncatlab.org/nlab/show/compactly+generated+topological+space}{nCat}.
+\end{defn}
+
+The inclusion functor $\CG \hookrightarrow \Top$ has a right adjoint $(-)^{cg}$.
+If $T$ is any topological space, then the topology on $T^{cg}$ is the finest topology on $T$ such that $\sqcup_{S\to T}S\to T$ is continuous, where $S$ ranges over all compact Hausdorff spaces.
+
+Let $T$ be a topological space.
+We view $T$ as a presheaf on $\pe$ by setting $T(S)=\Hom_{\Top}(S,T)$ for all profinite sets $S$.
+We denote this by $\u{T}$.
+Claim: $\u{T}$ is a sheaf.
+\begin{enumerate}[label=\roman*)]
+    \item The first condition $\u{T}(\varnothing)=*$ is true, because there is exactly one morphism from the empty set to any topological space.
+    \item $\u{T}(S_{1}\sqcup S_{2})=\u{T}(S_{1})\times \u{T}(S_{2})$ by universal property of disjoint union.
+    \item For any surjection $S'\twoheadrightarrow S$ we get an isomorphism
+	\[ \u{T}(S)\to \{ x\in \u{T}(S')\mid \pi_{1}^{*}(x)=\pi_{2}^{*}(x)\in \u{T}(S'\fp{S}S')\}\]
+\end{enumerate}
+
+Since $\Top\to \Cond(\Set)$ preserves products, group objects are preserved, so it maps topological groups to condensed groups etc.
+
+\begin{prop}
+    \begin{enumerate}[label=\roman*)]
+	\item This functor is faithful and fully faithful when restricted to the full subcategory of compactly generated spaces.
+	\item It admits a left adjoint $X\mapsto X(*)_{top}$ where $X(*)_{top}$ gets the quotient topology of $\sqcup_{S\to X}S\to X(*)$ as above.
+	    The counit $I(*)_{top}\to T$ agrees with $T^{cg}\to T$.
+    \end{enumerate}
+\end{prop}
+
+Coming back to our original example:
+
+\begin{exa}
+    $\mathbb{R}_{disc}\to \mathbb{R}$ can be seen in the condensed world as $\u{\mathbb{R}_{disc}}\to \u{\mathbb{R}}$, i.e. from locally constant functions to continuous functions.
+    This is still a mono, but now it is not an epi.
+    The cokernel $Q$ can be described as $Q(S)=\{ S\to \mathbb{R}\text{ continuous }\}/\{ S\to \mathbb{R}\text{ locally constant }\}$.
+    Note in particular that the underlying set of $Q$ is just $*$, reflecting the fact that the cokernel was trivial in the classical setting.
+\end{exa}
 
 \bibliographystyle{alpha}
 \bibliography{refs}

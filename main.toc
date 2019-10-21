@@ -1,0 +1,4 @@
+\babel@toc {UKenglish}{}
+\contentsline {section}{\numberline {1}Seminar on Condensed Mathematics - Talk 1: Condensed Sets - 21.10.19}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Recollections on sheaves on sites}{2}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Compactly generated topological spaces}{3}{subsection.1.2}% 
