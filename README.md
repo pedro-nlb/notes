@@ -2,6 +2,12 @@
 
 ## Some abbreviations (for commits/index)
 
-[CM] for the seminar on Condensed Mathematics (Freiburg, winter term 19/20)
+[WS] for the Wednesday Seminar
 
-[LT] for the lecture on Lefschetz Theorems (Freiburg, winter term 19/20)
+[FS] for the Friday Seminar
+
+[BN] for the Basic Notions
+
+[CM] for Johan's seminar on Condensed Mathematics
+
+[LT] for Brad's lecture on Lefschetz Theorems
