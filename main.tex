@@ -12,21 +12,57 @@
 \usepackage{hyperref}
 \usepackage[noabbrev]{cleveref}
 \usepackage{todonotes}
+\usepackage{bbm}
 
 % Plain theorems
+\theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
 
 % Definition theorems
+\theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{exa}[thm]{Example}
 
 % Remark theorems
+\theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
+\newtheorem{q}[thm]{Question}
 
-\title{Title}
+% Mathbb
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\1}{\mathbbm{1}}
+
+% Mathscr for categories
+\newcommand{\C}{\mathscr{C}}
+\newcommand{\Top}{\mathscr{T}op}
+\newcommand{\CHaus}{\mathscr{CH}aus}
+\newcommand{\Ab}{\mathscr{A}b}
+\newcommand{\Set}{\mathscr{S}et}
+\newcommand{\D}{\mathscr{D}}
+
+% Math operators
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Cond}{Cond}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\PSh}{PSh}
+\DeclareMathOperator{\Sh}{Sh}
+
+% New commands
+\newcommand{\pe}{*_{pro\acute et}}
+\renewcommand{\u}[1]{\underline{#1}}
+\newcommand{\ot}{\otimes}
+\newcommand{\op}{\oplus}
+\newcommand{\fp}[1]{\times_{#1}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\ev}{\mathrm{ev}}
+
+
+\title{Various lecture notes}
 \author{Pedro Núñez}
 \date{\today}
 
@@ -36,7 +72,9 @@
 
 \tableofcontents
 
-\section{First section}
+\section{Seminar on Condensed Mathematics - 21.10.19}
+
+Blabla
 
 \bibliographystyle{alpha}
 \bibliography{refs}
