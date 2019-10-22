@@ -215,6 +215,69 @@ Coming back to our original example:
     Note in particular that the underlying set of $Q$ is just $*$, reflecting the fact that the cokernel was trivial in the classical setting.
 \end{exa}
 
+\section{[LT] Lecture 1 - 22.10.19}
+
+Today: big picture.
+
+An \textit{algebraic variety} is the solution set of a family of polynomial equations in $\mathbb{C}^{n}$.
+For example, if $f(x,y,z,t)=xy-tz$, then
+\[ \mathbb{V}(f)=\{(x,y,z,t)\in \mathbb{C}^{4}\mid xy-tz=0\} \]
+is an algebraic variety in $\mathbb{C}^{4}$.
+Another example would be the parabola $\{ y-x^{2}=0\}\subseteq \mathbb{C}^{2}$.
+
+We can think of $\mathbb{V}(f)$ as a family of varieties parametrized by the variable $t$.
+For $t=1$ we get the equation $xy-z=0$ in $\mathbb{C}^{3}$.
+We can perform a change of coordinates $(x,y)\mapsto (x+iy,x-iy)$ to turn our equation into $x^{2}+y^{2}=z$.
+For $z=0$, the variety $X_{0}=\{x^{2}+y^{2}=0\}$ has an \textit{ordinary double point} at the origin [picture: cone] (a.k.a. node if we think of $X_{0}$ as a curve\footnote{These are $1$-dimensional complex varieties, so topologically they are surfaces.}.
+These are a particularly nice kind of singularities\footnote{Singularities will appear naturally while studying the topology of algebraic varieties.}.
+For $z\neq 0$ we get the equation $xy-1=0$.
+This is a ruled surface $X_{z}$ [picture: chimeny of nuclear plant with a loop $\gamma$ at its base].
+As $z\mapsto 0$, the central loop $\gamma$ contract to the ordinary double point.
+We have a projection $\pi\colon \mathbb{V}(f)\to \mathbb{C}$, and Ehresmann's lemma tells us that for all disk $D\subseteq \mathbb{C}$ not containing $0$ we have $\pi^{-1}(D)\cong D\times X_{z_{0}}$ for any $z_{0}\in D$.
+
+Global picture: given an arbitrary nonsingular alg. variety $X\subseteq \mathbb{C}^{n}$, can we find a map $\pi\colon X\to \mathbb{C}$ such that the fibres $X_{t}$ are nonsingular for all but finitely many $t\in \mathbb{C}$ and such that the singular fibres have at worst ODP singularities?
+
+Problem: we are missing information "at infinity", e.g. $y=x^{2}$ versus $xy=1$.
+The solution is to replace $\mathbb{C}^{n}$ by $\mathbb{C}\mathbb{P}^{n}$.
+
+Let $X\subseteq\mathbb{P}^{n}$ be a nonsingular projective variety.
+
+\begin{thm}
+    There exists a family $(H_{t})_{t\in \mathbb{C}\mathbb{P}^{1}}$ of hyperplanes in $\mathbb{C}\mathbb{P}^{n}$ such that
+    \begin{enumerate}
+	\item $X\subseteq \cup_{t}H_{t}$.
+	\item $X_{t}=X\cap H_{t}$ is nonsingular except for finitely many "critical values" of $t$.
+	\item $X_{t}$ has ODP singularities for each critical value $t$.
+    \end{enumerate}
+\end{thm}
+
+We call $(X_{t})_{t}$ a \textit{Lefschetz pencil}.
+We get a rational map $X\mapsto \mathbb{C}\mathbb{P}^{1}$ sending $x\mapsto t$ whenever $x\in X_{t}$.
+This is not well-defined at $x\in \cap_{t}X_{t}$, but we can arrange for $(X_{t})_{t}$ so that $\cap_{t}X_{t}=X_{0}\cap X_{\infty}$.
+Blowing-up a suitable subvariety of $X$ we get maps $\tilde{X}\xrightarrow{\pi} \mathbb{C}\mathbb{P}^{1}$ and $\tilde{X}\to X$ as we wanted.
+[picture A]
+
+Some applications:
+
+\begin{thm}[Lefschetz Hyperplane theorem]
+    $X\subseteq Y\subseteq \mathbb{C}\mathbb{P}^{N}$ nonsingular varieties with $X$ a hypersurface in the $n$-dimensional variety $Y$, then
+    \[ H_{*}(X)\to H_{*}(Y) \]
+    is an isomorphism for $*<n-1$ and a surjection for $*=n-1$.
+\end{thm}
+
+In particular, if $Y=\mathbb{C}\mathbb{P}^{n}$, we have
+\[ H_{*}(\mathbb{C}\mathbb{P}^{n})=\Z \text{ if $*$ is even or } 0 \text{ otherwise}.\]
+If $X\subseteq \mathbb{C}\mathbb{P}^{n}$ is a nonsingular hypersurface, then its homology will be that of projective sapce on all digrees other than $n-1$.
+Its $n-1$ homology will depend on the variety, e.g. the ODP (trivial $1$-homology) vs the ruled surface (with $\gamma$ non trivial on $1$-homology) of before.
+
+\begin{exa}[Lefschetz pencil]
+    $X$ elliptic curve in $\mathbb{C}\mathbb{P}^{2}$ given by $y^{2}=x(x-1)(x-\lambda)$ for $\lambda\neq 0$.
+    $L=\mathbb{C}\mathbb{P}^{1}\subseteq \mathbb{C}\mathbb{P}^{2}$.
+    $P\in \mathbb{C}\mathbb{P}^{1}\setminus (X\cup L)$.
+    We get $X\xrightarrow{\pi}\mathbb{C}\mathbb{P}^{1}$ once we choose a square root of $x(x-1)(x-\lambda)$.
+    [Picture B]
+\end{exa}
+
 \bibliographystyle{alpha}
 \bibliography{refs}
 

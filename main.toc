@@ -2,3 +2,4 @@
 \contentsline {section}{\numberline {1}[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}{1}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Recollections on sheaves on sites}{2}{subsection.1.1}% 
 \contentsline {subsection}{\numberline {1.2}Compactly generated topological spaces}{3}{subsection.1.2}% 
+\contentsline {section}{\numberline {2}[LT] Lecture 1 - 22.10.19}{4}{section.2}% 
