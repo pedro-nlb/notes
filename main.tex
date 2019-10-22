@@ -13,6 +13,8 @@
 \usepackage[noabbrev]{cleveref}
 \usepackage{todonotes}
 \usepackage{bbm}
+\usepackage{caption}
+\usepackage{subcaption}
 
 % Plain theorems
 \theoremstyle{plain}
@@ -25,19 +27,24 @@
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \newtheorem{exa}[thm]{Example}
+\newtheorem{pbl}[thm]{Problem}
+\newtheorem{q}[thm]{Question}
 
 % Remark theorems
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
-\newtheorem{q}[thm]{Question}
 
 % Mathbb
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\CP}{\mathbb{CP}}
 
 % Mathscr for categories
-\newcommand{\C}{\mathscr{C}}
+\newcommand{\scrC}{\mathscr{C}}
 \newcommand{\Top}{\mathscr{T}op}
 \newcommand{\CHaus}{\mathscr{CH}aus}
 \newcommand{\CG}{\mathscr{CG}}
@@ -53,6 +60,7 @@
 \DeclareMathOperator{\Cond}{Cond}
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\PSh}{PSh}
 \DeclareMathOperator{\Sh}{Sh}
 
@@ -64,6 +72,7 @@
 \newcommand{\fp}[1]{\times_{#1}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\ev}{\mathrm{ev}}
+\newcommand{\grd}{^{\bullet}}
 
 
 \title{Various lecture notes}
@@ -78,10 +87,13 @@
 
 \section{[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}
 
-Motivation: topological abelian groups do not form an abelian category.
+\subsection{Introduction}
+
+One of the main motivations for condensed mathematics is that topological algebraic objects have usually poor categorical and functorial properties.
+For instance, topological abelian groups do not form an abelian category:
 
 \begin{exa}
-    $\mathbb{R}_{disc}\to \mathbb{R}$ is epi and mono, but not iso.
+    $\R_{disc}\to \R$ is epi and mono, but not iso.
 \end{exa}
 
 Another motivation is coherent duality:
@@ -96,7 +108,7 @@ We will then look at the category of solid modules, in which the 6-functor forma
 \begin{defn}
     Pro\'{e}tale site of a point, denoted $\pe$, is the category of profinite sets with finite jointly surjective families of continuous maps as covers.
     A \textit{condensed set} (resp. group, ring, ...) is a sheaf of sets (resp. groups, rings, ...) on $\pe$.
-    We denote by $\Cond(\C)$ the category of condensed objects of a category $\C$.
+    We denote by $\Cond(\scrC)$ the category of condensed objects of a category $\scrC$.
 \end{defn}
 
 \begin{defn}
@@ -111,7 +123,7 @@ We will then look at the category of solid modules, in which the 6-functor forma
     \end{enumerate}
 \end{defn}
 
-We will call $X(*)$ the \textit{underlying object} in $\C$ of a condensed object.
+We will call $X(*)$ the \textit{underlying object} in $\scrC$ of a condensed object.
 
 \begin{rem}
     We will use $T$ for topological spaces vs. $X,Y$ for condensed sets, as opposed to Scholze's mixing of those notations.
@@ -129,7 +141,7 @@ Note that $U_{i}\cap U_{j}$ is just the fiber product of the two inclusions.
 \end{defn}
 
 \begin{defn}
-    $F$ a presheaf on $\C$.
+    $F$ a presheaf on $\scrC$.
     A collection $(s_{i})\in \prod_{i}F(U_{i})$ for $\{f_{i}\colon U_{i}\to U\}$ a covering is called a \textit{matching family} if for all $h\colon V\to U$ we have $g^{*}(s_{i})=h^{*}(s_{j})$ for $g$ and $h$ in the diagram
     \begin{center}
 	\begin{tikzcd}
@@ -149,7 +161,7 @@ Note that $U_{i}\cap U_{j}$ is just the fiber product of the two inclusions.
 \end{rem}
 
 \begin{thm}
-    If $\C$ is a site, then $\Ab(\C)$ is an abelian category.
+    If $\scrC$ is a site, then $\Ab(\scrC)$ is an abelian category.
 \end{thm}
 
 \begin{defn}
@@ -162,11 +174,11 @@ AB2) For every $f\colon A\to B$, the natural map $\operatorname{coim}(f)\to \im{
 AB3) All colimit exist.
 AB4) AB3) + arbitrary direct sums are exact.
 AB5) AB3) + arbitrary filtered colimits are exact.
-AB6) AB3) + $J$ an index set, $\forall j\in J$ a filtered category (think of directed set) $I_{j}$, functors $M\colon I_{j}\to \C$, then
+AB6) AB3) + $J$ an index set, $\forall j\in J$ a filtered category (think of directed set) $I_{j}$, functors $M\colon I_{j}\to \scrC$, then
 \[\varinjlim_{(i_{j}\in I_{j})_{j}}\prod_{j} M_{i_{j}}\to \prod_{j\in J}\varinjlim_{i_{j}\in I_{j}} M_{i_{j}} \]
 
 \begin{thm}
-    $\C$ a site. Then $\Ab(\C)$ satisfies AB3), AB4), AB5) and AB6).
+    $\scrC$ a site. Then $\Ab(\scrC)$ satisfies AB3), AB4), AB5) and AB6).
 \end{thm}
 
 In fact, our case is even nicer:
@@ -217,65 +229,83 @@ Coming back to our original example:
 
 \section{[LT] Lecture 1 - 22.10.19}
 
-Today: big picture.
+\subsection{Introduction and overview of the course}
 
-An \textit{algebraic variety} is the solution set of a family of polynomial equations in $\mathbb{C}^{n}$.
+An \textit{algebraic variety} is the solution set of a family of polynomial equations in $\C^{n}$.
 For example, if $f(x,y,z,t)=xy-tz$, then
-\[ \mathbb{V}(f)=\{(x,y,z,t)\in \mathbb{C}^{4}\mid xy-tz=0\} \]
-is an algebraic variety in $\mathbb{C}^{4}$.
-Another example would be the parabola $\{ y-x^{2}=0\}\subseteq \mathbb{C}^{2}$.
+\[ V(f)=\{(x,y,z,t)\in \C^{4}\mid xy-tz=0\} \]
+is an algebraic variety in $\C^{4}$.
+Another example would be the parabola $\{ y-x^{2}=0\}\subseteq \C^{2}$.
 
-We can think of $\mathbb{V}(f)$ as a family of varieties parametrized by the variable $t$.
-For $t=1$ we get the equation $xy-z=0$ in $\mathbb{C}^{3}$.
-We can perform a change of coordinates $(x,y)\mapsto (x+iy,x-iy)$ to turn our equation into $x^{2}+y^{2}=z$.
-For $z=0$, the variety $X_{0}=\{x^{2}+y^{2}=0\}$ has an \textit{ordinary double point} at the origin [picture: cone] (a.k.a. node if we think of $X_{0}$ as a curve\footnote{These are $1$-dimensional complex varieties, so topologically they are surfaces.}.
-These are a particularly nice kind of singularities\footnote{Singularities will appear naturally while studying the topology of algebraic varieties.}.
-For $z\neq 0$ we get the equation $xy-1=0$.
-This is a ruled surface $X_{z}$ [picture: chimeny of nuclear plant with a loop $\gamma$ at its base].
-As $z\mapsto 0$, the central loop $\gamma$ contract to the ordinary double point.
-We have a projection $\pi\colon \mathbb{V}(f)\to \mathbb{C}$, and Ehresmann's lemma tells us that for all disk $D\subseteq \mathbb{C}$ not containing $0$ we have $\pi^{-1}(D)\cong D\times X_{z_{0}}$ for any $z_{0}\in D$.
+Let us focus on $V(f)$ and set $t=1$.
+Then $X=V(f)\cap \{ t=1 \}=\{(x,y,z)\in \C^{3}\mid xy=z\}$ can be seen as a family of complex curves parametrized by the variable $z$.
+For $z=0$, the complex curve $X_{0}$ has an \textit{ordinary double point} at the origin:
 
-Global picture: given an arbitrary nonsingular alg. variety $X\subseteq \mathbb{C}^{n}$, can we find a map $\pi\colon X\to \mathbb{C}$ such that the fibres $X_{t}$ are nonsingular for all but finitely many $t\in \mathbb{C}$ and such that the singular fibres have at worst ODP singularities?
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=.5]{odpfiber}
+    \caption{Topological picture of our ODP.}
+    \label{fig:odpfibre}
+\end{figure}
 
-Problem: we are missing information "at infinity", e.g. $y=x^{2}$ versus $xy=1$.
-The solution is to replace $\mathbb{C}^{n}$ by $\mathbb{C}\mathbb{P}^{n}$.
+Singularities arise naturally while studying the topology of algebraic varieties, and ODP's are a particularly nice kind of singularities.
 
-Let $X\subseteq\mathbb{P}^{n}$ be a nonsingular projective variety.
+For $z\neq 0$ we get an equation which looks like $xy=1$.
+In this case we have the following picture:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=.8]{smoothfiber}
+    \caption{Topological picture of $X_{z}$.}
+    \label{fig:smoothfibre}
+\end{figure}
+
+As $z\to 0$, the central loop $\gamma$ contracts to the ordinary double point.
+Note in particular that $X_{0}$ has trivial fundamental group (hence trivial $1$-homology), whereas $X_{z}$ does not.
+
+We have a projection $\pi\colon X\to \C$, and Ehresmann's lemma tells us that for all disks $D\subseteq \C$ not containing $0$ we have $\pi^{-1}(D)\cong D\times X_{z_{0}}$ for any $z_{0}\in D$.
+
+\begin{q}
+    Given an arbitrary nonsingular algebraic variety $X\subseteq \C^{n}$, can we find a map $\pi\colon X\to \C$ such that the fibers $X_{t}$ are nonsingular for all but finitely many $t\in \C$ and such that the singular fibres have at worst ODP singularities?
+\end{q}
+
+Notice how we are missing information at infinity, e.g. $y=x^{2}$ versus $xy=1$.
+The solution is to this is to replace $\C^{n}$ by $\CP^{n}$.
+
+So let $X\subseteq\mathbb{P}^{n}$ be a nonsingular projective variety.
+Then we have:
 
 \begin{thm}
-    There exists a family $(H_{t})_{t\in \mathbb{C}\mathbb{P}^{1}}$ of hyperplanes in $\mathbb{C}\mathbb{P}^{n}$ such that
+    There exists a family $(H_{t})_{t\in \CP^{1}}$ of hyperplanes in $\CP^{n}$ with $H_{[a,b]}=aH_{0}+bH_{\infty}$ such that
     \begin{enumerate}
-	\item $X\subseteq \cup_{t}H_{t}$.
-	\item $X_{t}=X\cap H_{t}$ is nonsingular except for finitely many "critical values" of $t$.
+	\item $X\subseteq \bigcup_{t\in \CP^{1}}H_{t}$.
+	\item $X_{t}=X\cap H_{t}$ is nonsingular except for finitely many critical values of $t$.
 	\item $X_{t}$ has ODP singularities for each critical value $t$.
     \end{enumerate}
 \end{thm}
 
-We call $(X_{t})_{t}$ a \textit{Lefschetz pencil}.
-We get a rational map $X\mapsto \mathbb{C}\mathbb{P}^{1}$ sending $x\mapsto t$ whenever $x\in X_{t}$.
-This is not well-defined at $x\in \cap_{t}X_{t}$, but we can arrange for $(X_{t})_{t}$ so that $\cap_{t}X_{t}=X_{0}\cap X_{\infty}$.
-Blowing-up a suitable subvariety of $X$ we get maps $\tilde{X}\xrightarrow{\pi} \mathbb{C}\mathbb{P}^{1}$ and $\tilde{X}\to X$ as we wanted.
-[picture A]
+We call $(X_{t})_{t\in \CP^{1}}$ a \textit{Lefschetz pencil}.
+We get a rational map $X\dashrightarrow \CP^{1}$ sending $x\mapsto t$ whenever $x\in X_{t}$.
+If $x\in X_{t}\cap X_{t'}$ for $t\neq t'$, then $x\in H_{0}\cap H_{\infty}$, so this rational map is not well-defined along $X\cap H_{0}\cap H_{\infty}$.
+Blowing-up this subvariety of $X$ we resolve the indeterminacy of the rational map and get a morphism $\tilde{X}\xrightarrow{\pi} \CP^{1}$ as we wanted.
 
-Some applications:
+As an application we obtain:
 
 \begin{thm}[Lefschetz Hyperplane theorem]
-    $X\subseteq Y\subseteq \mathbb{C}\mathbb{P}^{N}$ nonsingular varieties with $X$ a hypersurface in the $n$-dimensional variety $Y$, then
+    $X\subseteq Y\subseteq \CP^{N}$ nonsingular varieties with $X$ a hypersurface in the $n$-dimensional variety $Y$, then
     \[ H_{*}(X)\to H_{*}(Y) \]
     is an isomorphism for $*<n-1$ and a surjection for $*=n-1$.
 \end{thm}
 
-In particular, if $Y=\mathbb{C}\mathbb{P}^{n}$, we have
-\[ H_{*}(\mathbb{C}\mathbb{P}^{n})=\Z \text{ if $*$ is even or } 0 \text{ otherwise}.\]
-If $X\subseteq \mathbb{C}\mathbb{P}^{n}$ is a nonsingular hypersurface, then its homology will be that of projective sapce on all digrees other than $n-1$.
-Its $n-1$ homology will depend on the variety, e.g. the ODP (trivial $1$-homology) vs the ruled surface (with $\gamma$ non trivial on $1$-homology) of before.
+In particular, if $Y=\CP^{n}$, we have
+\[ H_{*}(\CP^{n})=\begin{cases} \Z & \text{if } $*$ \text{ is even,} \\ 0 & \text{ otherwise.} \end{cases}\]
+If $X\subseteq \CP^{n}$ is a nonsingular hypersurface, then its homology will be that of projective sapce on all degrees other than $n-1$.
+Its $n-1$ homology will depend on the variety, e.g. the ODP (trivial $1$-homology) vs the ruled surface (with $\gamma$ non trivial on $1$-homology) from before.
 
-\begin{exa}[Lefschetz pencil]
-    $X$ elliptic curve in $\mathbb{C}\mathbb{P}^{2}$ given by $y^{2}=x(x-1)(x-\lambda)$ for $\lambda\neq 0$.
-    $L=\mathbb{C}\mathbb{P}^{1}\subseteq \mathbb{C}\mathbb{P}^{2}$.
-    $P\in \mathbb{C}\mathbb{P}^{1}\setminus (X\cup L)$.
-    We get $X\xrightarrow{\pi}\mathbb{C}\mathbb{P}^{1}$ once we choose a square root of $x(x-1)(x-\lambda)$.
-    [Picture B]
+\begin{exa}
+    $X$ elliptic curve in $\CP^{2}$ given by $y^{2}=x(x-1)(x-\lambda)$ for $\lambda\neq 0$.
+    Let $L=\CP^{1}\subseteq \CP^{2}$ and $P\in \CP^{1}\setminus (X\cup L)$.
+    We get $X\xrightarrow{\pi}\CP^{1}$ by projecting from $P$ to $L$.
 \end{exa}
 
 \bibliographystyle{alpha}

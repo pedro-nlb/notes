@@ -1,5 +1,7 @@
 \babel@toc {UKenglish}{}
 \contentsline {section}{\numberline {1}[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}{1}{section.1}% 
-\contentsline {subsection}{\numberline {1.1}Recollections on sheaves on sites}{2}{subsection.1.1}% 
-\contentsline {subsection}{\numberline {1.2}Compactly generated topological spaces}{3}{subsection.1.2}% 
-\contentsline {section}{\numberline {2}[LT] Lecture 1 - 22.10.19}{4}{section.2}% 
+\contentsline {subsection}{\numberline {1.1}Introduction}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Recollections on sheaves on sites}{2}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}Compactly generated topological spaces}{4}{subsection.1.3}% 
+\contentsline {section}{\numberline {2}[LT] Lecture 1 - 22.10.19}{5}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Introduction and overview of the course}{5}{subsection.2.1}% 
