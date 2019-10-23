@@ -8,6 +8,6 @@
 
 [BN] for the Basic Notions
 
-[CM] for Johan's seminar on Condensed Mathematics
+[CM] for the seminar on Condensed Mathematics
 
-[LT] for Brad's lecture on Lefschetz Theorems
+[LT] for the lecture on Lefschetz Theorems
