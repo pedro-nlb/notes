@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1571834588 "main.aux" "main.bbl" "main" 1571834874
+["bibtex main"] 1571840387 "main.aux" "main.bbl" "main" 1571841835
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/bibtex/bst/base/alpha.bst" 1557257379 23907 a5f93555796fb564b924339521f10a7c ""
-  "main.aux" 1571834873 2475 8c9fde9967cefa79fd483063ab1525a8 "pdflatex"
-  "refs.bib" 1571010993 27115 cd78e04fd6dcf450ea19cd2acd0c595a ""
+  "main.aux" 1571841833 2794 89fe5bfa28724f764e98d783dd0e1948 "pdflatex"
+  "refs.bib" 1571840271 29701 026568c08de44b7854b8b9b7518da8b4 ""
   (generated)
   "main.blg"
   "main.bbl"
-["pdflatex"] 1571834868 "main.tex" "main.pdf" "main" 1571834874
+["pdflatex"] 1571841828 "main.tex" "main.pdf" "main" 1571841835
   "/data/data/com.termux/files/home/.texlive2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1564343610 4268531 b5d4bb9c14c5a8f071533323e9479f54 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1557257439 2971 def0b6c1f0b107b3b936def894055589 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1557257438 3332 103109f5612ad95229751940c61aada0 ""
@@ -209,16 +209,16 @@
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1557257383 55589 34128738f682d033422ca125f82e5d62 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1557257381 4962 9c1069474ff71dbc47d5006555e352d3 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1568656530 35565 56a74cb29e7ed645af2e51c75d4446a9 ""
-  "main.aux" 1571834873 2475 8c9fde9967cefa79fd483063ab1525a8 "pdflatex"
-  "main.bbl" 1571834588 49 0eba253fc001332e731e8aba3f23127b "bibtex main"
-  "main.out" 1571834873 601 0f518847401f4771a2be327c2a772492 "pdflatex"
-  "main.tex" 1571834867 17240 ffef32fcbb6ec54a841ea8627a8ffcd1 ""
-  "main.toc" 1571834873 778 525f7b1565d3caa29b25aa3fbd036210 "pdflatex"
+  "main.aux" 1571841833 2794 89fe5bfa28724f764e98d783dd0e1948 "pdflatex"
+  "main.bbl" 1571840387 485 d21bc865554462c4d537fa6ee215d768 "bibtex main"
+  "main.out" 1571841833 728 3e2fcdfc8d499d90191ef3fc20e896e7 "pdflatex"
+  "main.tex" 1571841827 19130 2db7907fa11cd9eb143a164a2207f0aa ""
+  "main.toc" 1571841833 940 8921b2fafbc076d9e652f60b7dbacc41 "pdflatex"
   "odpfiber.png" 1571831772 203058 e0fac26f25bb69388afa8c89bc1c1ca6 ""
   "smoothfiber.png" 1571831772 195161 24ca0b6e92ff499f07fb58f8f346002f ""
   (generated)
   "main.log"
-  "main.aux"
   "main.toc"
-  "main.pdf"
   "main.out"
+  "main.aux"
+  "main.pdf"

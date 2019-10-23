@@ -7,3 +7,5 @@
 \contentsline {subsection}{\numberline {2.1}Introduction and overview of the course}{5}{subsection.2.1}% 
 \contentsline {section}{\numberline {3}[WS] Kodaria 1 (Jin) - 23.10.19}{7}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Chow's theorem}{7}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Sheaves}{8}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}A bit of Hodge theory}{9}{subsection.3.3}% 
