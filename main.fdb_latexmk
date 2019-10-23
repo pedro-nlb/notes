@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1571844087 "main.aux" "main.bbl" "main" 1571844088
+["bibtex main"] 1571845048 "main.aux" "main.bbl" "main" 1571845049
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/alpha.bst" 1480098433 23907 a5f93555796fb564b924339521f10a7c ""
-  "main.aux" 1571844088 2909 3999fa826294fead4302c0f8a8db7e7b ""
+  "main.aux" 1571845049 2912 9a6b0ac775bcc086c6eacc7c9ac18eae ""
   "refs.bib" 0 -1 0 ""
   (generated)
-  "main.bbl"
   "main.blg"
-["pdflatex"] 1571844087 "main.tex" "main.pdf" "main" 1571844088
+  "main.bbl"
+["pdflatex"] 1571845048 "main.tex" "main.pdf" "main" 1571845049
   "/etc/texmf/web2c/texmf.cnf" 1567423373 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/pedro/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1095.600pk" 1569223484 28952 bae6363876bde347b4275e82aa883b60 ""
   "/home/pedro/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1571401599 31928 d830ebe8212d86e53704336717c634f1 ""
@@ -210,16 +210,16 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1551493644 34566 ab5be96bde1a5acfd4f881dbe566b5fb ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1567423795 2948181 845e3844416a72b2958b3c37a5c4593a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1567510044 1974844 1f956701ff938d42ce4c6ecbf065cde3 ""
-  "main.aux" 1571844088 2909 3999fa826294fead4302c0f8a8db7e7b ""
+  "main.aux" 1571845049 2912 9a6b0ac775bcc086c6eacc7c9ac18eae ""
   "main.bbl" 1571842368 485 d21bc865554462c4d537fa6ee215d768 "bibtex main"
-  "main.out" 1571844088 781 daaa865b90377a45c63f7eda09d17d4a ""
-  "main.tex" 1571844084 19655 305e5b2047e1061f3118931fa9cf5530 ""
-  "main.toc" 1571844088 1015 7a6e14ac9dabf3148eb868234dcd495c ""
+  "main.out" 1571845049 784 9702c908aa26a8e7c0dffd95896e3b26 ""
+  "main.tex" 1571845046 19658 aa1c5227183e17183c593221f9659530 ""
+  "main.toc" 1571845049 1018 68896f6b43cf4c0cbcf6e7d9d66c8c32 ""
   "odpfiber.png" 1571744397 203058 e0fac26f25bb69388afa8c89bc1c1ca6 ""
   "smoothfiber.png" 1571744502 195161 24ca0b6e92ff499f07fb58f8f346002f ""
   (generated)
-  "main.log"
   "main.toc"
   "main.pdf"
   "main.out"
+  "main.log"
   "main.aux"

@@ -6,7 +6,7 @@
 \contentsline {subsection}{\numberline {2.3}Compactly generated topological spaces}{4}{subsection.2.3}% 
 \contentsline {section}{\numberline {3}[LT] Lecture 1 - 22.10.19}{5}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Introduction and overview of the course}{5}{subsection.3.1}% 
-\contentsline {section}{\numberline {4}[WS] Kodaria 1 (Jin) - 23.10.19}{7}{section.4}% 
+\contentsline {section}{\numberline {4}[WS] Kodaria 1 (Jin Li) - 23.10.19}{7}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Chow's theorem}{7}{subsection.4.1}% 
 \contentsline {subsection}{\numberline {4.2}Sheaves}{9}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}A bit of Hodge theory}{10}{subsection.4.3}% 

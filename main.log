@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.3)  23 OCT 2019 17:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.3)  23 OCT 2019 17:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -824,7 +824,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 433.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 433.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 433.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DAAA865B90377A45C63F7EDA09D17D4A;781.
+(rerunfilecheck)             Checksum: 9702C908AA26A8E7C0DFFD95896E3B26;784.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 433.
  ) 
 Here is how much of TeX's memory you used:
@@ -860,7 +860,7 @@ y8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pf
 b>
-Output written on main.pdf (10 pages, 478909 bytes).
+Output written on main.pdf (10 pages, 478931 bytes).
 PDF statistics:
  630 PDF objects out of 1000 (max. 8388607)
  256 compressed objects within 3 object streams
