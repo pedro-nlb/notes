@@ -308,6 +308,73 @@ Its $n-1$ homology will depend on the variety, e.g. the ODP (trivial $1$-homolog
     We get $X\xrightarrow{\pi}\CP^{1}$ by projecting from $P$ to $L$.
 \end{exa}
 
+\section{[WS] Kodaria 1 (Jin) - 23.10.19}
+
+\subsection{Chow's theorem}
+
+Let $G_{i}=G_{i}(z_{1},\ldots,z_{n})$ be homogeneous polynomials of degree $d_{i}$ for $i\in \{1,\ldots,k\}$.
+Let $V=V(G_{1},\ldots,G_{k})=\{w\in \C^{n+1}\setminus \{0 \}\mid G_{i}(w)=0 \text{ for all }i\in \{1,\ldots,k\}\}\subseteq \CP^{n}$.
+Assume $(\frac{\partial G_{i}}{\partial z_{j}}(w))$ is surjective at any $w\in V$.
+\[ \sum_{j=0}^{n}z_{j}\frac{\partial G_{i}}{\partial z_{j}}=d_{i}G(z_{0},\ldots,z_{n}), \]
+if $\tilde{w}=(\tilde{z}_{0},\ldots,\tilde{z}_{n})\in V$.
+\[ \sum_{j=0}^{n}\tilde{z}_{j}\frac{\partial G_{i}}{\partial z_{j}}|_{\tilde{w}}=0\]
+$V\cap U_{i}$ for any $i\in \{0,\ldots,n\}$, $U_{i}=\{[z_{0}:\ldots:z_{n}]\in \CP^{n}\mid z_{i}\neq 0\}$.
+
+For $i=0$, consider the chart $(U_{0},\phi_{0})$ with $\phi_{0}\colon U_{0}\to \C^{n}$ given by $[z_{0},\ldots,z_{n}]\mapsto (\frac{z_{1}}{z_{0}},\ldots,\frac{z_{n}}{z_{0}})$.
+The inverse has a lift given by $\tilde{\psi}\colon \C^{n}\to \C^{n+1}\setminus \{0\}$ given by $(w_{1},\ldots,w_{n})\mapsto (1,w_{1},\ldots,w_{n})$.
+\begin{center}
+    \begin{tikzcd}
+	\C^{n}\arrow{d}{\tilde{\psi}}\arrow{dr}{G\circ \tilde{\psi_{0}}} & \\
+	\CP^{n}\arrow{r}{G} & \C^{k}
+    \end{tikzcd}
+\end{center}
+$V\cap U_{0}=G^{-1}(\{0\})$.
+
+$G\circ \tilde{\psi_{0}}\colon (w_{1},\ldots,w_{n})\mapsto (G_{1}(1,w_{1},\ldots,w_{n}),\ldots,G_{k}(1,w_{1},\ldots,w_{n}))$.
+\[ \frac{\partial (G_{i}\circ \tilde{\psi_{0}})}{\partial w_{j}} = \frac{\partial G_{i}}{\partial z_{l}}\frac{\partial(\tilde{\psi_{0}})^{l}}{\partial w_{j}}|_{(\tilde{w_{1}},\ldots,\tilde{w_{n}})} \]
+Call the LHS $A_{1}$.
+\begin{equation}
+    \frac{\partial G_{i}}{\partial z_{l}}|_{\tilde{w}=(1,\tilde{w}_{1},\ldots,\tilde{w}_{n})}\begin{pmatrix} 1 \\ \tilde{w}_{1} \\ \vdots \\ \tilde{w}_{n} \end{pmatrix} = 0
+\end{equation}
+Note also that
+\[\frac{\partial (\tilde{\psi_{0}})^{l}}{\partial w_{j}}=\begin{pmatrix} 0 & \ldots & 0 \\ 1 & \ldots & 0\\ \vdots & & \vdots \\ 0 & \ldots & 1 \end{pmatrix}.\]
+
+Now
+\[(\frac{\partial G_{i}}{\partial z_{l}})=(a_{il})=\begin{pmatrix} a_{10} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{k0} & \ldots & a_{kn}\end{pmatrix}\]
+\[A_{1}=\begin{pmatrix} a_{11} & \ldots & a_{1n} \\ \vdots & & \vdots \\ a_{k1} & \ldots & a_{kn} \end{pmatrix}\]
+Since $A$ is surjective and 
+\[A\begin{pmatrix} 1 \\ \tilde{w}_{1} \\ \vdots \\ \tilde{w}_{n}\end{pmatrix}=0,\]
+hence $A_{1}$ is surjective.
+
+\begin{thm}[Chow]
+    Every analytic closed subvariety $V\subseteq \CP^{n}$ is the zero locus of finite number of homogeneous polynomials.
+\end{thm}
+
+For this we will use as a black box:
+
+\begin{lm}[Remmert-Stein]
+    $U\subseteq \C^{n}$ domain, $S$ an analytic subvariety of $U$ of $\dim=m$, $W$ an analytic subvariety of $U\setminus S$ such that $\dim_{p}W>m$ for all regular points $p\in W$.
+    Then $\bar{W}$ is analytic.
+\end{lm}
+
+Now we can prove Chow's theorem.
+Suppose $\pi\colon \C^{n+1}\setminus \{ 0\}\to \CP^{n}$ has rank $n$ everywhere.
+Then $\pi^{-1}(V)$ has dimension at least $1$ everywhere in $\C^{n+1}\setminus \{0 \}$ ($\pi^{-1}(V)$ is a cone missing the origin, so its closure is $\pi^{-1}(V)\cup \{0\}$).
+$S=\{0\}$, $W=\pi^{-1}(V)$. 
+Then $V'=\bar{W}=\pi^{-1}(V)\cup \{0\}$ is an analytic variety of $\C^{n+1}$.
+Consider $V'$ near $0$.
+$V'_{0}=U_{\varepsilon}(0)\cap V'$.
+$V'_{0}=V(g_{1},\ldots,g_{k})$ with $g_{i}$ holomorphic on $U_{\varepsilon }(0)$.
+Expand $g_{i}$ into a homogeneous polynomial $g_{i}=\sum_{n=1}^{\infty} g_{i,n}$.
+Then $g_{i}(tz)=\sum_{n=1}^{\infty}\frac{g_{i,n}(z)t^{n}}{1}$ for all $x\in \C^{n+1}$ and all $t\in \C$.
+If $z\in V'$, then $tz\in V'$ for all $t$.
+So $g_{i}(tz)\equiv 0$ implies $g_{i,n}(z)=0$ for all $i,n$.
+So $V_{0}'=V(\{g_{i,n}\})$.
+By Noetherianity, finitely many $g_{i,n}$ suffice.
+$V_{0}=V(g^{(1)},\ldots, g^{(m)})$.
+Hence $V=V(\{ g^{(1)},\ldots, g^{(m)}\})$ in $\CP^{n}$, and this finishes the proof.
+
+
 \bibliographystyle{alpha}
 \bibliography{refs}
 
