@@ -5,6 +5,9 @@
 \usepackage{mathtools}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{manfnt}
+\usepackage{marginnote}
+\usepackage[dvipsnames]{xcolor}
 %\usepackage{mathrsfs}
 \usepackage[mathscr]{euscript}
 \usepackage{enumitem}
@@ -15,7 +18,6 @@
 \usepackage{bbm}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{xcolor}
 
 % Plain theorems
 \theoremstyle{plain}
@@ -27,6 +29,7 @@
 % Definition theorems
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
+\newtheorem{nota}[thm]{Notation}
 \newtheorem{exa}[thm]{Example}
 \newtheorem{pbl}[thm]{Problem}
 \newtheorem{q}[thm]{Question}
@@ -34,6 +37,7 @@
 % Remark theorems
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
+\newtheorem{exe}[thm]{Exercise}
 
 % Mathbb
 \newcommand{\N}{\mathbb{N}}
@@ -44,6 +48,9 @@
 \newcommand{\C}{\mathbb{C}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\CP}{\mathbb{CP}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\cbbD}{\bar{\mathbb{D}}}
 
 % Mathscr for categories
 \newcommand{\scrC}{\mathscr{C}}
@@ -84,6 +91,7 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\grd}{^{\bullet}}
+\newcommand{\db}{\marginnote{\dbend}}
 
 
 \title{Various lecture notes}
@@ -101,6 +109,9 @@
 The purpose of these notes is to keep the material seen in lectures a bit organized and easily accesible from one single place, but they don't intend to be complete and they will surely be full of typos and mistakes\footnote{If you find any, please let me know! You can do this from GitHub or write me an email directly at pedro.nunez[at]math.uni-freiburg.de.}.
 
 If interesting questions occur during the lectures they will be reflected here in \textcolor{blue}{blue color}.
+If I want to add anything which was not said in the lecture, I will use \textcolor{ForestGreen}{green color} instead.
+
+Warnings will be marked with a \href{https://en.wikipedia.org/wiki/Bourbaki_dangerous_bend_symbol}{dangerous bend} symbol on the margin \db.
 
 \section{[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}
 
@@ -426,6 +437,149 @@ Long exact sequence in \v{C}ech cohomology induced by a short exact sequence of 
 
 Decomposition of the tangent space at a point of a complex manifold, its tensor algebras, $\partial $ and $\bar{\partial }$ operators, Dolbeault cohomology groups, harmonic and Hodge decomposition..
 See \cite{gh78} or \cite{voi07}.
+
+\section{[LT] Lecture 2 - 24.10.19}
+
+\begin{rem}
+    Exercise sessions will be Thursday from 13h to 15h on SR318 (Starting next week).
+\end{rem}
+
+As pointed out last week, we want to look at polynomials and their solutions sets.
+But polynomials are a bit too rigid.
+Instead, we look at polynomials as truncated power series, or more generally as \textit{analytic functions}, which are functions which locally can be represented as power series.
+We will see that these are the same as holomorphic functions.
+In particular, every holomorphic function is $C^{\infty}$.
+\begin{multline*}
+    \text{polynomials} \Rightarrow \text{convergent power series} \Rightarrow \text{analytic} \Leftrightarrow \\
+    \Leftrightarrow \text{holomorphic} \Rightarrow C^{\infty}\Rightarrow \text{continuous} \Rightarrow \text{abominations}
+\end{multline*}
+
+If we were analysts we would start at the bottom and then try to swim up.
+Instead we will start from the top and float downstream.
+
+\begin{nota}
+    $\bbE=\R$ or $\C$.
+    $z=(z_{1},\ldots,z_{n})\in \bbE^{n}$, $r\in \R_{\geqslant 0}$.
+    Recall
+    \[ |z|=\sqrt{2}{z_{1}\bar{z_{1}}+\cdots + z_{n}\bar{z_{n}}}, \]
+    \[ \bbD(z,r)=\{w\in \bbE^{n}\mid |z-w|<r\}, \text{ and} \]
+    \[ \cbbD(z,r)=\{ w\in \bbE^{n}\mid |z-w|\leqslant r\} \]
+    called oepn and closed disks respectively.
+    We call $\cbbD(z_{1},r_{1})\times \cdots \times \cbbD(z_{n},r_{n})$ an \textit{open polydisk}.
+\end{nota}
+
+\subsection{Formal power series}
+
+\begin{defn}
+    Let $a=(a_{1},\ldots,a_{n})\in \C^{n}$.
+    A \textit{formal power series} centered at $a$ is an expression of the form
+    \[ f(z)=f(z_{1},\ldots,z_{n})=\sum_{(r_{1},\ldots, r_{n})\in \Z^{n}_{\geqslant 0}}c_{r_{1}\cdots r_{n}}(z_{1}-a_{1})^{r_{1}}\cdots (z_{n}-a_{n})^{r_{n}} \]
+    with $c_{r_{1},\ldots,r_{n}}\in \C$.
+\end{defn}
+
+\begin{rem}
+    We will restrict our attention to absolutely convergent series, so we do not need to order the indices in the sum to discuss convergence.
+\end{rem}
+
+\begin{defn}
+    The series above \textit{converges (uniformly) absolutely} on $X\subseteq \C^{n}$ if for all $z\in X$ the series of real numbers
+    \[\sum_{(r_{1},\ldots,r_{n})} |c_{r_{1},\ldots,r_{n}}(z_{1}-a_{1})^{r_{1}}\cdots (z_{n}-a_{n})^{r_{n}}| \]
+    converges (uniformly).
+\end{defn}
+
+Recall that $\sum_{n}c_{n}z^{n}$ converges absolutely on $\bbD(0,R)$ where $R=\frac{1}{\operatorname{limsup}_{n\to\infty}{|c_{n}|^{\frac{1}{n}}}}$.
+It converges uniformly absolutely on each compact $K\subseteq \bbD(0,R)$.
+
+\begin{exa}[Geometric series]
+    The geometric series with ration $z=(z_{1},\ldots,z_{n})\in \C^{n}$ is defined as $\sum_{r_{1},\ldots,r_{n}}z_{1}^{r_{1}}\cdots z_{n}^{r_{n}}$.
+    It converges (uniformly) absolutely on (compact subsets of) $\bbD(0,1)^{n}$ with sum equal
+    \[ \prod_{k=1}^{n}\sum_{r_{k\geqslant 0}}z_{k}^{r_{k}}=\frac{1}{(1-z_{1})\cdots (1-z_{n})} \]
+\end{exa}
+
+\begin{lm}[Abel]
+    Consider the series above, $w\in \C^{n}$ and $M\in \R_{>0}$.
+    If $|c_{r}(w-a)^{r}|=|c_{r_{1},\ldots,r_{n}}(w_{1}-a_{1})^{r_{1}}\cdots (w_{n}-a_{n})^{r_{n}}<M$ for each $r\in \Z^{n}_{\geqslant 0}$, then $f(z)$ converges uniformly absolutely on each compact $K\subseteq D=\bbD(a_{1},\rho_{1})\times \bbD(a_{n},\rho_{n})$, where $\rho_{i}:=|w_{i}-a_{i}|$.
+    \begin{proof}
+	WLOG $\rho_{k}>0$ for all $k\in \{1,\ldots,n\}$ (otherwise we'd have $D=\varnothing$).
+	Let $K\subseteq D$.
+	Then let $\delta_{k}:=\max_{z\in K}\frac{|z_{k}-a_{k}|}{\rho_{k}}<1 $.
+	Then for all $z\in K$ and for all $r\in \Z^{n}_{\geqslant 0}$ we have
+	\[ |c_{r}(z-a)^{r}|\leqslant |c_{r}\rho^{r}|\leqslant M\delta^{r}.\]
+	Since all $\delta_{k}<1$, by the previous example $\sum_{r}M\delta^{r}$ converges uniform absolutely on $K$.
+    \end{proof}
+\end{lm}
+
+\begin{defn}
+    Uniform absolute convergence on compacts is also called \textit{compact convergence}.
+\end{defn}
+
+\subsection{Analytic functions}
+
+\begin{defn}
+    Let $U\subseteq \C^{n}$ open.
+    \begin{enumerate}[label=\roman*)]
+	\item $f\colon U\to \C$ is \textit{analytic} at $a\in U$ if there exists an open neighbourhood $a\in V\subseteq U$ and $c_{r}$ such that $f(z)=\sum_{r}c_{r}(z-a)^{r}$ converges compactly on $V$.
+	\item $f\colon U\to \C$ is \textit{analytic} on $U$ if it is analytic at each point of $U$.
+	\item $f\colon U\to \C^{n}$ is \textit{analytic} on $U$ if each component $f_{k}$ is for all $k\in \{1,\ldots, n\}$.
+    \end{enumerate}
+\end{defn}
+
+\begin{exe}
+    Analytic at $a$ implies continuous at $a$.
+\end{exe}
+
+\begin{exe}
+    If $f,g$ are analytic, then so are $f+g$, $f-g$ and $g\circ f$ where defined.
+\end{exe}
+
+\begin{exe}
+    Let $U\subseteq C^{n}$ be an open subset, let $z\in U$ and $w\in \C^{n}$.
+    Let $V=\{c\in \C\mid z+cw\in U\}\subseteq \C^{n}$.
+    \begin{enumerate}[label=\roman*)]
+	\item $V$ is open and $0\in V$.
+	\item For all $f\colon U\to \C$ analytic we have that $g(t)=f(z+tw)$ is analytic on $V$.
+    \end{enumerate}
+\end{exe}
+
+\begin{thm}[Identity theorem]
+    If $\varnothing \neq V\subseteq U\subseteq \C^{n}$ are open with $U$ connected and $f\colon U\to \C$ is analytic with $f|_{V}=0$, then $f=0$.
+    \begin{proof}
+	If $f(z)\neq 0$ for some $z\in U$, then by continuity of $f$ we would have that $f$ is nowhere zero on some open nbhd of $z$.
+	Let $Z=\{w\in U\mid f \text{ vanishes in an open nbhd of }w\}$.
+	Then $Z$ is closed in $U$ by what we just said.
+	Also, $V\subseteq Z$ as $V$ is open.
+	Let $w\in Z$ and choose a polydisk $w\in D=\bbD(w_{1},r_{1})\times \cdots \times \bbD(w_{n},r_{n})\subseteq U$.
+	If we show that $D\subseteq Z$, then every point of $Z$ is in its interior and $Z$ is therefore open.
+	
+	So let $z\in D$ with $z\neq w$.
+	Consider now $W=\{c\in \C\mid w+c(z-w)in \U\}\subseteq \C$, which is open by the previous exercise\footnote{This step allows us to reduce our problem in several complex variables to a problem on a single complex variable.}, and $g\colon t\mapsto f(w+t(z-w))$ is analytic on $W$.
+	The identity theorem for single-variable analytic functions implies that $g=0$ in a nbhd of $w$.
+	Since $D$ is convex, $[0,1]\subseteq W$.
+	By the identity theorem in one variable, $g=0$ on an open nbhd of $[0,1]$.
+	Hence $g(1)=f(z)=0$, so $f$ vanishes on $D$ and $D\subseteq Z$.
+    \end{proof}
+\end{thm}
+
+\subsection{Topology}
+
+Definition of topological space and examples (cofinite topology, Zariski topology).
+Continuous maps, homeomorphisms (isomorphism in the category of topological spaces).
+Example: graph of $f\colon X\to Y$ defined as $\Gamma_{f}=X\fp{X}Y$ maps homeomorphically onto $X$ via the first projection.
+Subspace topology.
+
+Connectedness, example: unit interval.
+Continuous image of connected is connected.
+
+Hausdorffness, example: euclidean topology on $\R^{n}$.
+Non-example: real line with two origins.
+
+\begin{rem}
+    \color{ForestGreen}
+    \db These two examples show that Hausdorffness is not a local property, because the real line with two origins is locally the same as $\R$.
+\end{rem}
+
+Equivalently, $X$ is Hd if and only if $\Delta\subseteq X\times X$ is closed.
+Hausdorffness is hereditary.
 
 \bibliographystyle{alpha}
 \bibliography{refs}
