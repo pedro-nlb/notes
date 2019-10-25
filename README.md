@@ -6,8 +6,6 @@
 
 [FS] for the Friday Seminar
 
-[BN] for the Basic Notions
-
 [CM] for the seminar on Condensed Mathematics
 
 [LT] for the lecture on Lefschetz Theorems
