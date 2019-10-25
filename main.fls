@@ -309,6 +309,8 @@ INPUT ./odpfiber.png
 INPUT smoothfiber.png
 INPUT ./smoothfiber.png
 INPUT ./smoothfiber.png
+INPUT /data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT main.bbl
 INPUT main.bbl
 INPUT main.aux

@@ -581,6 +581,131 @@ Non-example: real line with two origins.
 Equivalently, $X$ is Hd if and only if $\Delta\subseteq X\times X$ is closed.
 Hausdorffness is hereditary.
 
+\section{[FS] Matthias Paulsen - The construction problem for Hodge numbers - 25.10.19}
+
+In characteristic $0$ this is j.w. with Stefan Schreieder.
+In positive characteristic this is j.w. with v. Dobbeen de Bruyn.
+
+\subsection{Overview over complex numbers}
+
+$X$ smooth projective variety.
+Then we have Hodge theory, which allows us to decompose
+\[ H^{k}(X,\C)=\bigoplus_{p+q=k}H^{p,q}(X), \]
+where $H^{p,q}(X)\cong H^{q}(X,\Omega^{p})$.
+The \textit{Hodge numbers} are $h^{p,q}(X)=\dim_{\C}H^{p,q}(X)$.
+We usually arrange the Hodge numbers in the \textit{Hodge diamond}
+\begin{center}
+    \begin{tikzcd}
+	& & & h^{n,n} & & & \\
+	& & h^{n,n-1} & & h^{n-1,n} & & \\
+	& & & \cdots & & & \\
+	h^{n,0} & & & & & & h^{0,n} \\
+	& & & \cdots & & & \\
+	& & h^{1,0} & & h^{0,1} & & \\
+	& & & h^{0,0} & & &
+    \end{tikzcd}
+\end{center}
+
+\begin{exa}
+    Let $X\subseteq \P^{4}$ be a hypersurface of degree $4$.
+    Then its Hodge diamond is
+    \begin{center}
+	\begin{tikzcd}
+	    & & & 1 & & & \\
+	    & & 0 & & 0 & & \\
+	    & 0 & & 1 & & 0 & \\
+	    5 & & 30 & & 30 & & 5 \\
+	    & 0 & & 1 & & 0 & \\
+	    & & 0 & & 0 & & \\
+	    & & & 1 & & & \\
+	\end{tikzcd}
+    \end{center}
+\end{exa}
+
+We know:
+\begin{enumerate}[label=\roman*)]
+    \item $h^{p,q}=h^{q,p}$.
+    \item $h^{0,0}=1$.
+    \item $h^{p,q}\geqslant h^{p-1,q-1}$ if $p+q \leqslant n$.
+\end{enumerate}
+
+\begin{q}
+    Given $(h^{p,q})_{p,q}$ such that $i)$, $ii)$ and $iii)$ hold.
+    Does there exist $X$ with $h^{p,q}(X)=h^{p,q}$ for all $p,q$?
+\end{q}
+
+\begin{itemize}
+    \item [1989] Partial results in dimensions $2$ and $3$.
+    \item [2013] Kotschick and Schreieder determined the Hodge ring of Kaehler manifolds and showed that there are no linear relations besides of the previous three.
+    \item [2015] Schreieder.
+	\subitem In any dimension $n$, a given row $k<n$ can be always achieved, except if $k=2p$, in which case we need $h^{p,p}\geqslant O(p)$.
+	\subitem If we ignore the middle row, the outer Hodge numbers and the middle column, then everything else can be arbitraty.
+	\subitem Negative results: the previous question has negative answer, e.g. in dimension three, if we assume that $h^{1,1}=1=$ and $h^{0,2}\geqslant 1$, then $h^{3,0}<12^{6}h^{2,1}$.
+\end{itemize}
+
+\begin{q}[Kollar]
+    Are there any polynomial relations between the Hodge numbers, besides the ones induced by the symmetries above?
+\end{q}
+
+\begin{q}
+    Besides the "unexpected" inequalities, are there also number theoretic restrictions?
+\end{q}
+
+\begin{itemize}
+    \item [2019] Schreider and P.: modulo any integer $m\geqslant 1$, any Hodge diamond $(h^{p,q})_{p,q}$ satisfying the symmetries\footnote{Note that condition $iii)$ vanishes.} above is realizable by a smooth projective variety $X$, i.e. such that
+	\[ h^{p,q}(X)\equiv h^{p,q} (\text{mod } m). \]
+\end{itemize}
+
+\begin{cor}
+    There are no polynomial relations and there are no "number theoretic" restrictions.
+\end{cor}
+
+The proof can be devided into two parts corresponding to the outer Hodge numbers and the remaining ones.
+The outer Hodge numbers are birational invariants.
+The first part is to produce a variety which has the right outer Hodge numbers.
+And then all the inner ones can be obtain by repeated blow-ups.
+    
+\subsection{Constructions}
+
+We will have $3$ building blocks:
+\begin{itemize}
+    \item Products (and then use Kuenneth's formula).
+    \item Hypersurfaces to reduce the dimension again (apply Lefschetz hyperplane theorem, picture [A]).
+    \item Blow-ups of subvarieties (see picture [B]).
+\end{itemize}
+
+We start then with a curve, in which the problem is completely solvable:
+\begin{center}
+    \begin{tikzcd}
+	& 1 & \\
+	g & & g\\
+	& 1 &
+    \end{tikzcd}
+\end{center}
+
+Starting from this we can build up our Hodge diamonds modulo $m$.
+[\textit{Some sketch of proof here is omitted, see future paper I guess.}]
+
+\subsection{Positive characteristic}
+
+We don't have complex conjugation, but we still have Serre duality imposing its 180 degrees rotation on the Hodge diamonds.
+Is this the only restriction?
+
+\begin{exa}[Serre]
+    Construction of a surface with Hodge diamond
+    \begin{center}
+	\begin{tikzcd}
+	    & & 1 & & \\
+	    & 0 & & 1 & \\
+	    ? & & ? & & ? \\
+	    & 0 & & 1 & \\
+	    & & 1 & & \\
+	\end{tikzcd}
+    \end{center}
+\end{exa}
+
+It seems that Matthias is up to something cool using this example!
+
 \bibliographystyle{alpha}
 \bibliography{refs}
 
