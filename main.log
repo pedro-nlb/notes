@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Termux) (preloaded format=pdflatex 2019.7.28)  25 OCT 2019 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Termux) (preloaded format=pdflatex 2019.7.28)  27 OCT 2019 18:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -827,20 +827,20 @@ LaTeX Warning: Unused global option(s):
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 101.
-LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
+LaTeX Font Info:    ... okay on input line 105.
 
 (/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/context/base/mkii
 /supp-pdf.mkii
@@ -878,7 +878,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 )) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring OFF on input line 101.
+Package hyperref Info: Link coloring OFF on input line 105.
 
 (/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/hyperref/na
 meref.sty
@@ -890,61 +890,57 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count152
 )
-LaTeX Info: Redefining \ref on input line 101.
-LaTeX Info: Redefining \pageref on input line 101.
-LaTeX Info: Redefining \nameref on input line 101.
+LaTeX Info: Redefining \ref on input line 105.
+LaTeX Info: Redefining \pageref on input line 105.
+LaTeX Info: Redefining \nameref on input line 105.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 104.
+LaTeX Font Info:    Try loading font information for U+msa on input line 108.
 
 (/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/amsfonts/um
 sa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 104.
+LaTeX Font Info:    Try loading font information for U+msb on input line 108.
 
 (/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/amsfonts/um
 sb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./main.toc)
+) (./main.toc [1
+
+{/data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/map/pdftex/updm
+ap/pdftex.map}])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [1
-
-{/data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/map/pdftex/updm
-ap/pdftex.map}]
 Package marginnote Info: Margin note 2.1 is on absolute page 2 on input line 11
-4.
-Package marginnote Info: right page because not two side mode on input line 114
+8.
+Package marginnote Info: right page because not two side mode on input line 118
 .
-Package marginnote Info: xpos seems to be 483.2439pt on input line 114.
-LaTeX Font Info:    Try loading font information for U+eus on input line 130.
+Package marginnote Info: xpos seems to be 483.2439pt on input line 118.
+LaTeX Font Info:    Try loading font information for U+eus on input line 134.
 
 (/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ue
 us.fd
 File: ueus.fd 2013/01/14 v3.01 Euler Script
-) [2] [3] [4]
-<odpfiber.png, id=194, 110.23221pt x 143.72185pt>
+) [2] [3] [4] [5]
+<odpfiber.png, id=236, 110.23221pt x 143.72185pt>
 File: odpfiber.png Graphic file (type png)
 <use odpfiber.png>
-Package pdftex.def Info: odpfiber.png  used on input line 274.
+Package pdftex.def Info: odpfiber.png  used on input line 278.
 (pdftex.def)             Requested size: 55.11597pt x 71.86075pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<smoothfiber.png, id=196, 60.15164pt x 81.65953pt>
+<smoothfiber.png, id=238, 60.15164pt x 81.65953pt>
 File: smoothfiber.png Graphic file (type png)
 <use smoothfiber.png>
-Package pdftex.def Info: smoothfiber.png  used on input line 286.
+Package pdftex.def Info: smoothfiber.png  used on input line 290.
 (pdftex.def)             Requested size: 48.12135pt x 65.3277pt.
-[5] [6 <./odpfiber.png> <./smoothfiber.png>] [7] [8] [9] [10]
-Overfull \hbox (29.22092pt too wide) in paragraph at lines 490--492
+ [6 <./odpfiber.png> <./smoothfiber.png>] [7] [8]
+[9] [10]
+Overfull \hbox (29.22092pt too wide) in paragraph at lines 494--496
 []\T1/cmr/m/n/10.95 Recall that $[][] \OML/cmm/m/it/10.95 c[]z[]$ \T1/cmr/m/n/1
 0.95 con-verges ab-so-lutely on $\U/msb/m/n/10.95 D\OT1/cmr/m/n/10.95 (0\OML/cm
 m/m/it/10.95 ; R\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 where $\OML/cmm/m/it/10
@@ -953,12 +949,12 @@ m/m/it/10.95 ; R\OT1/cmr/m/n/10.95 )$ \T1/cmr/m/n/10.95 where $\OML/cmm/m/it/10
 
 [11] [12]
 Package marginnote Info: Margin note 13.1 is on absolute page 13 on input line 
-578.
-Package marginnote Info: right page because not two side mode on input line 578
+582.
+Package marginnote Info: right page because not two side mode on input line 582
 .
-Package marginnote Info: xpos seems to be 196.90215pt on input line 578.
-
-Overfull \hbox (13.66809pt too wide) in paragraph at lines 593--597
+Package marginnote Info: xpos seems to be 196.90215pt on input line 582.
+ [13]
+Overfull \hbox (13.66809pt too wide) in paragraph at lines 597--601
 \T1/cmr/m/n/10.95 where $\OML/cmm/m/it/10.95 H[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/
 it/10.95 X\OT1/cmr/m/n/10.95 ) [] \OML/cmm/m/it/10.95 H[]\OT1/cmr/m/n/10.95 (\O
 ML/cmm/m/it/10.95 X; \OT1/cmr/m/n/10.95 
@@ -968,8 +964,8 @@ m/n/10.95 ) = [][] \OML/cmm/m/it/10.95 H[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.
 95 X\OT1/cmr/m/n/10.95 )$\T1/cmr/m/n/10.95 .
  []
 
-[13] [14] [15]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 672.
+[14] [15]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 676.
 
 
 (/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/base/omscmr
@@ -977,22 +973,30 @@ LaTeX Font Info:    Try loading font information for OMS+cmr on input line 672.
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 672.
- [16] (./main.bbl) [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 712.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 712.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 676.
+ [16] [17]
+Overfull \hbox (17.70514pt too wide) in paragraph at lines 768--769
+[]\T1/cmr/bx/n/10.95 Proposition 7.7. []$\U/eus/m/n/10.95 A$ \T1/cmr/m/it/10.95
+ is sym-met-ric mon-oidal and the func-tor $\U/msb/m/n/10.95 Z\OT1/cmr/m/n/10.9
+5 [\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 ] [] []  [](\U/eus/m/n/10.95 S\OML
+/cmm/m/it/10.95 et\OT1/cmr/m/n/10.95 ) \OMS/cmsy/m/n/10.95 !
+ []
+
+[18] (./main.bbl) [19]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 800.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 800.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 712.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 712.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 800.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 800.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C4D8310DE54A5242C5521A0A0C5D3CBE;1368.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 712.
+(rerunfilecheck)             Checksum: E66F16105B2B4E7A177D9C3440BDAC0F;1891.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 800.
  ) 
 Here is how much of TeX's memory you used:
- 22866 strings out of 492623
- 452854 string characters out of 6119190
- 515553 words of memory out of 5000000
- 26251 multiletter control sequences out of 15000+600000
+ 22894 strings out of 492623
+ 453126 string characters out of 6119190
+ 516589 words of memory out of 5000000
+ 26260 multiletter control sequences out of 15000+600000
  21661 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,14n,92p,469b,1076s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1032,10 +1036,10 @@ es/usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></data
 /data/com.termux/files/usr/share/texlive/texmf-dist/fonts/type1/public/cm-super
 /sfrm1728.pfb></data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/t
 ype1/public/cm-super/sfti1095.pfb>
-Output written on main.pdf (17 pages, 636755 bytes).
+Output written on main.pdf (19 pages, 649455 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 358 compressed objects within 4 object streams
- 112 named destinations out of 1000 (max. 500000)
- 271 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 484 PDF objects out of 1000 (max. 8388607)
+ 411 compressed objects within 5 object streams
+ 131 named destinations out of 1000 (max. 500000)
+ 319 words of extra memory for PDF output out of 10000 (max. 10000000)
 
