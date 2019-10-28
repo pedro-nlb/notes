@@ -62,6 +62,7 @@
 \newcommand{\Ab}{\mathscr{A}b}
 \newcommand{\Set}{\mathscr{S}et}
 \newcommand{\D}{\mathscr{D}}
+\newcommand{\K}{\mathscr{K}}
 \newcommand{\Db}{\mathscr{D}^{\mathrm{b}}}
 \newcommand{\QCoh}{\mathscr{QC}oh}
 \newcommand{\Coh}{\mathscr{C}oh}
@@ -78,6 +79,7 @@
 
 % Math operators
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Fun}{Fun}
 \DeclareMathOperator{\Cond}{Cond}
 \DeclareMathOperator{\Ob}{Ob}
@@ -778,18 +780,30 @@ Briefly outline monoidal categories.
 
 \subsection{Derived category}
 
-\begin{lm}
-    Let $F\colon \A\to \scrC$ be an exact functor which commutes with colimits (resp. colimits) indexed over $\N$.
-    Then we can define $LF$ (resp. $RF$) in the whole derived category $\D(\A)$.
-\end{lm}
+Brief description.
 
+\begin{rem}
+    Triangulated structure and the problem it carries.
+\end{rem}
+
+Basic derived functors
+\[ RF\colon \D^{+}(\A)=\K^{+}(\mathcal{I})\to \D(\mathscr{B}). \]
+
+\begin{exa}
+    $\Hom(-,\F)$ and $\Hom\grd(-,\F\grd)$.
+\end{exa}
+
+Extension to the whole $\D$ using Spaltenstein's resolutions.
+Formula
+\[ \Hom_{\D}(\F\grd,\G\grd[i])=\Ext^{i}(\F\grd,\G\grd).\]
 Closed symmetric monoidal structure.
-Example: $\Z[\X]\ot^{L}(-)=\Z[\X]\ot(-)$ is just degree-wise tensor product, because this functor is already exact so it need not be derived.
 
-Triangulated structure and the problems it carries.
+\begin{exa}
+    $\Z[\X]\ot^{L}(-)=\Z[\X]\ot(-)$ is just degree-wise tensor product, because this functor is already exact so it need not be derived.
+\end{exa}
 
 \begin{prop}
-Compact generation.
+    Compact generation.
 \end{prop}
 
 Mention Brown representability.
