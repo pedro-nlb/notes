@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.3)  28 OCT 2019 11:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.9.3)  28 OCT 2019 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -912,7 +912,7 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/hoekwater/manfnt-font/manfnt.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (19 pages, 544958 bytes).
+Output written on main.pdf (19 pages, 544960 bytes).
 PDF statistics:
  864 PDF objects out of 1000 (max. 8388607)
  423 compressed objects within 5 object streams
