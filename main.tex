@@ -87,6 +87,10 @@
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\PSh}{PSh}
 \DeclareMathOperator{\Sh}{Sh}
+\let\Re\relax
+\DeclareMathOperator{\Re}{Re}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
 
 % New commands
 \newcommand{\pe}{*_{pro\acute et}}
@@ -807,6 +811,167 @@ Closed symmetric monoidal structure.
 \end{prop}
 
 Mention Brown representability.
+
+\section{[LT] Lecture 3 - 29.10.19}
+
+\textbf{Goals for today:}
+\begin{itemize}
+    \item \textbf{Prop:} $f$ analytic $\Rightarrow f$ complex differentiable (holomorphic).
+    \item \textbf{Cor:} $f$ analytic $\Rightarrow f\in \calC^{\infty}$.
+    \item Implicit and inverse function theorems for analytic functions.
+\end{itemize}
+
+\subsection{Complex differentiable functions}
+
+Recall: $U\subseteq \R^{n}$ open, $f\colon U\to \R^{m}$ is \textit{differentiable} at $a\in U$ if $\exists \R$-linear map $df_{a}\colon \R^{n}\to \R^{m}$ such that
+\[ \lim_{h\to 0}\frac{f(a+h)-f(a)-df_{a}(h)}{|h|}=0.\]
+With respect to the standard bases, $df_{a}$ is given by the \textit{Jacobian} matrix $J_{f}(a)=(\frac{\partial f_{i}}{\partial f_{j}})_{i,j}$.
+
+We say that $f\colon U\to \R^{m}$ is $\calC^{\infty}$ or \textit{smooth} if all partial derivatives exist (to all orders) and are continuous.
+
+Recall also that $f\in \calC^{1}$ implies $f$ differentiable.
+
+\begin{defn}
+    $X\subseteq \R^{n}$ not necessarily open, $f\colon X\to \R^{m}$ is \textit{differentiable} or $\calC^{\infty}$ if for all $x\in X$ we can find an open nbhd $x\in U\subseteq \R^{n}$ and a differentiable or $\calC^{\infty}$ function $F\colon U\to \R^{m}$ such that $F|_{X\cap U}=f|_{X\cap U}$.
+\end{defn}
+
+\begin{defn}
+    Let $U\subseteq \C^{n}$ open.
+    We say that $f\colon U\to \C$ is \textit{complex differentiable} at $a\in U$ if it is continous and
+    \begin{enumerate}[label=\roman*)]
+	\item if $n=1$, then the limit $f'(a):=\lim_{z\to a}\frac{f(z)-f(a)}{z-a}$ exists.
+	\item if $n>1$, then for all $1\leqslant k\leqslant n$ and for all $z_{1},\ldots,\hat{z_{k}},\ldots,z_{n}$ the function
+	    \[ f_{k}(z):=f(z_{1},\ldots,z_{k-1},z,z_{k+1},\ldots,z_{n})\]
+	    is complex differentiable as in $1)$.
+    \end{enumerate}
+\end{defn}
+
+\begin{exa}
+    $\Re,\Im\colon \C\to \R$ are $\calC^{\infty}$, not complex differentiable.
+\end{exa}
+
+If $f$ is complex differentiable, then $\frac{\partial f}{\partial x_{i}},\frac{\partial f}{\partial y_{i}}$ exist and are continuous, i.e. $f\in \calC^{1}$.
+
+\begin{prop}
+    Let $U\subseteq \C^{n}$ open and $f\colon U\to \C$ is analytic.
+    Then $f$ is complex differentiable and $f'$ is analytic.
+    \begin{proof}
+	$f(z_{1},\ldots,z_{n})=\sum_{r}c_{r}(z-a)^{r}$ locally near $a\in U$.
+	Continuity is OK, we need to show that
+	\[ \sum c_{r}(\zeta_{1}-a_{1})^{r_{1}}\cdots (\zeta_{n-1}-a_{n-1})^{r_{n-1}}(z_{n}-a_{n})^{r_{n}}\]
+	is complex differentiable for all $(\zeta_{1},\ldots,\zeta_{n})$ with respect to $z_{n}$.
+	This is a power series in a single variable, hence complex differentiable.
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    $f$ analytic implies $f$ smooth.
+    \begin{proof}
+	$f$ analytic implies $f'$ analytic, hence $f''$ analytic, and so on.
+    \end{proof}
+\end{cor}
+
+\subsection{Implicit function theorem}
+
+\begin{nota}
+    We denote by $\C[[z_{1},\ldots,z_{n}]]$ the ring of formal power series in $z_{1},\ldots,z_{n}$ centered at $0$ (with Cauchy product as multiplication) and by $\C\{z_{1},\ldots,z_{n}\}$ the subring of all power series convergent in a nbd of $0$.
+\end{nota}
+
+\begin{lm}\footnote{Typical proof with power series: do the naive thing inducting on the degree and the number of variables.}
+    Let $f(z_{0},\ldots,z_{n})=\sum_{r} c_{r}z^{r}$ with $c_{0,\ldots, 0}\neq 0$.
+    Then $\exists !g\in \C[[z_{1},\ldots,z_{n}]]$ such that $fg=1$.
+    \begin{proof}
+	WLOG $c_{0,\ldots, 0}=1$.
+	Let $z=(z_{1},\ldots,z_{n-1})$ and $w=z_{n}$.
+	Let $f=\sum_{k}a_{k}(z)w^{k}$ with $a_{k}(z)\in \C[[z]]$.
+	Let $g=\sum_{k} b_{k}(z)w^{k}$ with $b_{k}(z)\in \C[[z]]$.
+	Then $fg=\sum_{l=0}^{\infty}(\sum_{k=0}^{l}a_{k}b_{l-k})w^{l}$.
+	Call $\delta_{0,l}=\sum_{k=0}^{l}a_{k}b_{l-k}$.
+	$l=0$ implies $1=a_{0}b_{0}$, hence $b_{0}=a_{0}^{-1}$.
+	For $l>0$ we get $0=\sum_{k=0}^{l}a_{k}b_{l-k}a_{k}b_{l-k}$, hence
+	\[b_{l}=-a_{0}^{-1}\sum_{k=1}^{l}a_{k}b_{l-k}.\]
+    \end{proof}
+\end{lm}
+
+\begin{thm}[Formal implicit function theorem]\footnote{Near $0$ we have $f(z,w)=0$ iff $0=u(z,w)f(z,w)$ iff $0=w-r(z)$, i.e. the vanishing locus of $f$ is the graph of $r$ near $0$, hence this is indeed an implicit function theorem.}
+    If $f\in \C[[z,w]]$, $f(0)=0$ and $\frac{\partial f}{\partial w}\neq 0$, then $\exists ! u\in \C[[z,w]]$ and $\exists ! r\in \C[[z]]$ such that $uf=w-r$ and $u(0)\neq 0$.
+    \begin{proof}
+	\begin{enumerate}[label=\arabic*)]
+	    \item Consider the $\C$-linear maps
+		\begin{align*}
+		    R\colon \C[[z,w]] & \to \C[[z]] \\
+		    p=\sum_{r}c_{r}(z)w^{r} & \mapsto c_{0}(z)
+		\end{align*}
+		\begin{align*}
+		    H\colon \C[[z,w]] &\to \C[[z,w]] \\
+		    p=\sum_{r}c_{r}w^{r} & \mapsto \frac{p-R(p)}{w}=\sum_{r>0}c_{r}w^{r-1}
+		\end{align*}
+	    \item $\forall p$ we have $p=wH(p)+R(p)$.
+	    \item $H(f)$ is a unit by the previous lemma and $\frac{\partial f}{\partial w}\neq 0$.
+	    \item Suffices to find $u$ s.t.
+		\[ 0=H(w-uf)=H(w)-H(uf)\]
+		\[ 0=1-H(uf) \quad (*) \]
+		Indeed, $(*)$ and $2)$ imply that $R(w-uf)=w-uf$, hence $r:=w-uf\in \C[[z]]$ ($w=uf+(w-uf)=uf+r$).
+	    \item \begin{multline*}
+		    uf\overset{2)}{=} u(wH(f)+R(f))\\
+		    =uwH(f)+uR(f)\\
+		    (*)\Leftrightarrow 0=1-H(uf)\\
+		    0=1-H(uwH(f)+uR(f)) \\
+		    0=1-(\frac{uwH(f)-R(uwH(f))}{w})-H(uR(f)) \\
+		    (**) 0=1-uH(f)-H(uR(f))
+	    \end{multline*}
+	\item $H(f)$ unit $\Rightarrow $ suffices to find $v=uH(f)$.
+	    $\mu:=-R(f)H(f)^{-1}$ s.t. $u=vH(f)^{-1}$ satisfies $(**)$.
+	\item \begin{multline*}
+		(**)\Leftrightarrow 0=1-v+H(\frac{-uR(f)}{H(f)}H(f)) \\
+		(***) 0=1-v+H(\mu v)
+	    \end{multline*}
+	\item $M\colon \C[[z,w]]\to \C[[z,w]]$ defined as $p\mapsto H(\mu p)$.
+	    Note: if $z^{k}$ divides $p$, then $z^{k+1}$ divides $M(p)$.
+	\item \begin{multline*}
+		0=1-v+M(v) \\
+		(***') v=1+M(v)
+	    \end{multline*}
+		$\C$-linearity of $M$ implies that $v=1+M(v)=1+M(1+M(v))$.
+		Hence for all $k\geqslant 0$ we have
+		\[ v=1+M(1)+\cdots +M^{k}(1)+M^{k}(v). \]
+	\item $z^{k}$ divides $M^{k}(1)$, $z^{k+1}$ divides $M^{k+1}(v)$.
+	    Hence $\sum_{k}M^{k}(1)$ is convergent as a formal power series.
+	\item If $v$ satisfying $(***')$, then $v=\sum_{k}M^{k}(1)$.
+	    Hence $v$ is unique and thus so are $u, r$.
+	\item $v=\sum_{k}M^{k}(1)$ satisfies $(***')$.
+	    $v=1+M(1)+\cdots +M^{k}(1)+W_{k}$, hence $z^{k+!}$ divides $W_{k}$ by $10)$.
+		$v-1-M(v)=1+M(1)+\cdots +M^{k}(1)+W_{k}-1-M(1)-\cdots -M^{k}(1)-M^{k+1}(1)-M(W_{k})$, hence for all $k$ we have that $z^{k+1}$ divides $v-1-M(v)$.
+		Therefore $v-1-M(v)=0$.
+	\end{enumerate}
+    \end{proof}
+\end{thm}
+
+\begin{thm}[Convergent implicit function theorem]
+    With notation as above, if $f\in \C\{z,w\}$, then $u\in \C\{z,w\}$ and $r\in \C\{z\}$.
+    \begin{proof}
+	See Samuel-Zariski.
+    \end{proof}
+\end{thm}
+
+\begin{exe}
+    Formulate and deduce the analytic inverse and implicit function theorem.
+\end{exe}
+
+\subsection{More basic topology}
+
+Product spaces: definition and universal property.
+Example: $\R^{n}\cong \R\times \R^{n-1}$ with the usual topology.
+Non example: $\C^{n+m}\not\cong \C^{n}\times \C^{m}$ with the Zariski topology.
+
+Quotient spaces: definition and universal property.
+Examples: $S^{1}=[0,1]/1\sim =\R/\Z$ and $\mathbb{T}^{2}$ gluing the boundary of the square $[0,1]^{2}$ appropriately.
+
+Quasi-compactness: definition.
+Non-example: $\R$.
+Example: $[a,b]\subseteq \R$.
+In $\R^{n}$ quasi-compact iff closed bounded.
+More facts: union of qc is qc, continuous image of qc is qc, closed subset of qc is qc.
 
 \bibliographystyle{alpha}
 \bibliography{refs}

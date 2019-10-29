@@ -24,3 +24,7 @@
 \contentsline {subsection}{\numberline {7.3}Abelianity and compact-projective generation}{18}{subsection.7.3}% 
 \contentsline {subsection}{\numberline {7.4}Closed symmetric monoidal structure}{18}{subsection.7.4}% 
 \contentsline {subsection}{\numberline {7.5}Derived category}{18}{subsection.7.5}% 
+\contentsline {section}{\numberline {8}[LT] Lecture 3 - 29.10.19}{19}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Complex differentiable functions}{19}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Implicit function theorem}{20}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {8.3}More basic topology}{23}{subsection.8.3}% 
