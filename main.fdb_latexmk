@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1572338008 "main.aux" "main.bbl" "main" 1572338840
+["bibtex main"] 1572446811 "main.aux" "main.bbl" "main" 1572446917
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/bibtex/bst/base/alpha.bst" 1557257379 23907 a5f93555796fb564b924339521f10a7c ""
-  "main.aux" 1572338838 5462 cc179e81e019842ae178805a137c485b "pdflatex"
+  "main.aux" 1572446915 6422 ded65293a942f41f317c99009cb60aa2 "pdflatex"
   "refs.bib" 1571840271 29701 026568c08de44b7854b8b9b7518da8b4 ""
   (generated)
-  "main.bbl"
   "main.blg"
-["pdflatex"] 1572338832 "main.tex" "main.pdf" "main" 1572338840
+  "main.bbl"
+["pdflatex"] 1572446909 "main.tex" "main.pdf" "main" 1572446917
   "/data/data/com.termux/files/home/.texlive2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1564343610 4268531 b5d4bb9c14c5a8f071533323e9479f54 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1557257439 2971 def0b6c1f0b107b3b936def894055589 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1557257438 3332 103109f5612ad95229751940c61aada0 ""
@@ -217,16 +217,16 @@
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty" 1557257383 55589 34128738f682d033422ca125f82e5d62 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1557257381 4962 9c1069474ff71dbc47d5006555e352d3 ""
   "/data/data/com.termux/files/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1568656530 35565 56a74cb29e7ed645af2e51c75d4446a9 ""
-  "main.aux" 1572338838 5462 cc179e81e019842ae178805a137c485b "pdflatex"
-  "main.bbl" 1572338008 485 d21bc865554462c4d537fa6ee215d768 "bibtex main"
-  "main.out" 1572338838 2178 f6ffdd58caea36b9a9b8e18fffa82927 "pdflatex"
-  "main.tex" 1572338831 41826 3f8e253c82b9fb0ad6c2ad6bde42d456 ""
-  "main.toc" 1572338838 2762 a44ba4be5d8e4121bbf3620d19ebfbdf "pdflatex"
+  "main.aux" 1572446915 6422 ded65293a942f41f317c99009cb60aa2 "pdflatex"
+  "main.bbl" 1572446811 485 d21bc865554462c4d537fa6ee215d768 "bibtex main"
+  "main.out" 1572446915 2729 ba0c02165927310bb81e5eaed2f96de4 "pdflatex"
+  "main.tex" 1572446908 47822 5ecd1044735dfcb8f93672164cce4d63 ""
+  "main.toc" 1572446915 3442 ce32e2c79f255633c99794521b6184e6 "pdflatex"
   "odpfiber.png" 1571831772 203058 e0fac26f25bb69388afa8c89bc1c1ca6 ""
   "smoothfiber.png" 1571831772 195161 24ca0b6e92ff499f07fb58f8f346002f ""
   (generated)
-  "main.log"
-  "main.out"
-  "main.toc"
   "main.aux"
   "main.pdf"
+  "main.out"
+  "main.toc"
+  "main.log"

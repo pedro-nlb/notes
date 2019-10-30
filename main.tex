@@ -973,6 +973,154 @@ Example: $[a,b]\subseteq \R$.
 In $\R^{n}$ quasi-compact iff closed bounded.
 More facts: union of qc is qc, continuous image of qc is qc, closed subset of qc is qc.
 
+\section{[WS] Kodaira 2 (Vera) - Introduction to Hodge Manifolds - 30.10.19}
+
+Outline for today:
+\begin{enumerate}[label=\arabic*)]
+    \item Recollections.
+    \item Hodge Manifolds.
+    \item Outlook: Kodaira's Embedding Theorem.
+\end{enumerate}
+
+\subsection{Recollections}
+
+\subsubsection{Cohomology Theories}
+
+1. Recall the \textit{Dolbeault-Cohomology} defined as
+\[ H^{p,q}(X):=\frac{\ker(\bar{\partial}\colon \A^{p,q}(X)\to \A^{p,q+1}(X))}{\im(\bar{\partial}\colon \A^{p,q-1}(X)\to \A^{p,q}(X))}.\]
+
+2. Recall the \textit{de Rham cohomology} defined as
+\[ H_{dR}^{k}(X,\C)=\frac{\ker(d\colon \A_{\C}^{k}(X)\to \A_{\C}^{k+1}(X))}{\im(d\colon \A_{\C}^{k-1}(X)\to \A_{\C}^{k}(X))}, \]
+where $\A_{\C}^{k}=\Gamma(X,\Lambda^{k}TX^{*}\ot \C)$.
+
+\begin{thm}
+    On a compact Kaehler manifold $(X,I,<\cdot,\cdot>)$ we have
+    \[ H_{dR}^{k}(X,\C)\cong \bigoplus_{p+q=k}H^{p,q}(X).\]
+\end{thm}
+
+On the other hand, we have
+
+\begin{thm}[de Rham Theorem]
+    \[ H_{dR}^{k}(X,\C)\cong H^{k}(X,\C).\]
+\end{thm}
+
+3. Integral cohomology.
+
+\begin{defn}
+    Let $X$ be a compact complex manifold.
+    A closed differential form $\varphi$ on $X$ is called \textit{integral} if its cohomology class $[\varphi]\in H^{k}_{dR}(X,\C)$ is in the image of the mapping
+    \[ H^{k}(X,\Z)\to H^{k}(X,\C)\cong H_{dR}^{k}(X,\C). \]
+\end{defn}
+
+Today we will be interested in integral $(1,1)$-classes, i.e.
+\begin{center}
+    \begin{tikzcd}
+	& H^{2}(X,\Z)\arrow[swap]{dl}{j_{*}}\arrow{d} \\
+	H^{1,1}(X)\subseteq H_{dR}^{2}(X,\C)\arrow{r}{\cong} & H^{2}(X,\C)
+    \end{tikzcd}
+\end{center}
+We denote $\tilde{H}_{dR}^{2}(X,\Z):= j_{*}H^{2}(X,\Z)$.
+
+\subsubsection{Holomorphic line bundles and first Chern class}
+
+Recall the exponential sequence
+\[ 0\to \Z\to \O\xrightarrow{\exp}\O^{\times}\to 0\]
+of sheaves.
+Last week we have seen that this sequence is exact and thus it induces a long exact sequence of cohomology groups
+\[ \cdots \to \check{H}^{1}(X,\O^{\times})\xrightarrow{\delta} \check{H}^{2}(X,\Z)\to \cdots \]
+
+\textbf{Fact 1:} $\check{H}^{1}(X,\O^{\times})$ classifies holomorphic line bundles up to holomorphic isomorphism.
+
+\textbf{Fact 2:} In the sequence above, $\delta$ is ``almost'' $c_{1}$.
+\begin{center}
+    \begin{tikzcd}
+	H^{1}(X,\O^{\times})\arrow{r}{\delta}\arrow{dr}{c_{1}} & H^{2}(X,\Z)\arrow{d} \\
+	& H_{dR}^{2}(X,\R)
+    \end{tikzcd}
+\end{center}
+i.e. holomorphic line bundles have ``integral Chern classes''.
+
+\begin{rem}
+    Indeed, the Lefschetz $(1,1)$-theorem states that on compact Kaehler manifolds $X$ we have
+    \[ c_{1}(H^{1}(X,\O^{\times}))=\tilde{H}^{2}(X,\Z)\cap H^{1,1}(X). \]
+\end{rem}
+
+In the proof of the previous commutative diagram, an explicit formula for the $(1,1)$-form representing $c_{1}(E,h)$, namely
+\[ \frac{1}{2\pi i}\partial \bar{\partial} \log(h_{\alpha}),\]
+where $h_{\alpha}$ is the metric on $U_{\alpha}$.
+
+\subsubsection{Kaehler manifolds}
+
+\begin{defn}
+    Given a complex manifold $(M,I,g)$ where the complex structure $I$ is compatible with the metric $g$, we associate a $(1,1)$-form
+    \[ w(\cdot,\cdot)=g(I\cdot,\cdot) \]
+    called the \textit{Kaehler form}.
+
+    We say that $M$ is Kaehler, if it admits some metric such that the associated Kaehler form is closed ($dw=0$).
+
+    In that case, $w\in \A^{1,1}(M)$ defines a cohomology class $[w]\in H^{1,1}(M)$, called the \textit{Kaehler class}.
+\end{defn}
+
+\begin{exa}[The Fubini-Study metric on $\CP^{n}$]
+    In homogeneous coordinates, the corresponding Kaehler form is given as
+    \[ w_{a}=i\partial \bar{\partial}\log(|\zeta_{a}|^{2}+1) \]
+    on $U_{a}=\{(z^{0}:\ldots:z^{n})\mid z^{a}\neq 0\}$.
+    The map $\zeta_{a}\colon U_{a}\to \C^{n}$ sends $(z^{0}:\ldots:z^{n})\mapsto (\frac{z^{0}}{z^{a}},\ldots,\hat{1},\ldots,\frac{z^{n}}{z^{a}})$.
+\end{exa}
+
+From this we can also deduce the same for any projective complex manifold using the following:
+
+\begin{lm}
+    Let $(X,I,g)$ be a Kaehler manifold with Kaehler form $w$ and let $M$ be a complex submanifold.
+    Then $g$ induces a Kaehler manifold on $M$, thus $M$ is a Kaehler manifold.
+\end{lm}
+
+\subsection{Hodge Manifolds}
+
+\begin{defn}
+    Let $(X,h)$ be a Kaehler manifold with Kaehler metric $h$ and let $w$ be the associated Kaehler form.
+    If $w$ is integral, it is called a \textit{Hodge form} on $X$ and $h$ is called a \textit{Hodge metric}.
+    A Kaehler manifold is called \textit{Hodge manifold} if it admits a Hodge metric.
+\end{defn}
+
+\begin{exa}[Complex projective space]
+    Let $\CP^{n}$ be endowed with the Fubini-Study metric $g_{FS}$ and the associated Kaehler form $w_{FS}$.
+    Then $w_{FS}$ is a Hodge form.
+    Indeed, let $E\to \CP^{n}$ be the tautological line bundle.
+    By Fact 2, $c_{1}(E)\in \tilde{H}^{2}(X,\Z)$.
+    And we have
+    \[ \left[\frac{1}{2\pi} w_{FS}\right] =-c_{1}(E).\]
+    Thus $\CP^{n}$ is a Hodge manifold.
+\end{exa}
+
+\begin{exa}[Projective complex manifolds]
+    Let $X$ be a projective complex manifold, i.e. $X\subseteq \CP^{n}$ as closed complex submanifold.
+    The restriction of the Hodge form on $\CP^{n}$ is a Hodge form on $X$.
+\end{exa}
+
+\textbf{Fundamental fact:} all projective complex manifolds are Hodge.
+
+\begin{exa}[Compact connected Riemann surfaces]
+    Let $X$ be a compact connected Riemann surface.
+    The claim is that $X$ is a Hodge manifold.
+    We have $H^{2}(X,\C)\cong H_{0}(X,\C)\cong \C$.
+    Moreover, $H^{2}(X,\C)\cong H^{1,1}(\C)$.
+    Let $\tilde{w}$ be the Kaehler form associated to some metric on $X$.
+    Then $[\tilde{w}]\in H^{1,1}(\C)$ generates $H_{dR}^{2}(X,\C)$.
+    Let $c:=\int_{X}\tilde{w}$.
+    Then $w:=\frac{1}{c}\tilde{w}$ is an integral positive form on $X$ of type $(1,1)$.
+\end{exa}
+
+\subsection{Outlook}
+
+We will soon prove the converse of our fundamental fact, namely:
+
+\begin{thm}[Kodaira's Embedding]
+    Every Hodge manifold admits a closed immersion into $\CP^{n}$ for $n$ sufficiently large.
+\end{thm}
+
+Combining this with Chow's theorem seen last time, we obtain as a corollary that Hodge manifolds are always algebraic.
+
 \bibliographystyle{alpha}
 \bibliography{refs}
 
