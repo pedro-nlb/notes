@@ -352,9 +352,10 @@ Its $n-1$ homology will depend on the variety, e.g. the ODP (trivial $1$-homolog
 
 Let $G_{i}=G_{i}(z_{1},\ldots,z_{n})$ be homogeneous polynomials of degree $d_{i}$ for $i\in \{1,\ldots,k\}$.
 Let $V=V(G_{1},\ldots,G_{k})=\{w\in \C^{n+1}\setminus \{0 \}\mid G_{i}(w)=0 \text{ for all }i\in \{1,\ldots,k\}\}\subseteq \CP^{n}$.
-Assume $(\frac{\partial G_{i}}{\partial z_{j}}(w))$ is surjective at any $w\in V$.
-\[ \sum_{j=0}^{n}z_{j}\frac{\partial G_{i}}{\partial z_{j}}=d_{i}G(z_{0},\ldots,z_{n}), \]
-if $\tilde{w}=(\tilde{z}_{0},\ldots,\tilde{z}_{n})\in V$.
+Assume $(\frac{\partial G_{i}}{\partial z_{j}}(w))_{i,j}$ is surjective at any $w\in V$.
+By Euler's theorem on homogeneous functions we have
+\[ \sum_{j=0}^{n}z_{j}\frac{\partial G_{i}}{\partial z_{j}}=d_{i}G_{i}(z_{0},\ldots,z_{n}). \]
+If $\tilde{w}=(\tilde{z}_{0},\ldots,\tilde{z}_{n})\in V$, then
 \[ \sum_{j=0}^{n}\tilde{z}_{j}\frac{\partial G_{i}}{\partial z_{j}}|_{\tilde{w}}=0\]
 $V\cap U_{i}$ for any $i\in \{0,\ldots,n\}$, $U_{i}=\{[z_{0}:\ldots:z_{n}]\in \CP^{n}\mid z_{i}\neq 0\}$.
 
@@ -391,26 +392,26 @@ hence $A_{1}$ is surjective.
 For this we will use as a black box:
 
 \begin{lm}[Remmert-Stein]
-    $U\subseteq \C^{n}$ domain, $S$ an analytic subvariety of $U$ of $\dim=m$, $W$ an analytic subvariety of $U\setminus S$ such that $\dim_{p}W>m$ for all regular points $p\in W$.
+    Let $U\subseteq \C^{n}$ be a domain, $S$ be an analytic subvariety of $U$ of dimension $m$, and $W$ be an analytic subvariety of $U\setminus S$ such that $\dim_{p}W>m$ for all regular points $p\in W$.
     Then $\bar{W}$ is analytic.
 \end{lm}
 
 Now we can prove Chow's theorem.
-Suppose $\pi\colon \C^{n+1}\setminus \{ 0\}\to \CP^{n}$ has rank $n$ everywhere.
-Then $\pi^{-1}(V)$ has dimension at least $1$ everywhere in $\C^{n+1}\setminus \{0 \}$ ($\pi^{-1}(V)$ is a cone missing the origin, so its closure is $\pi^{-1}(V)\cup \{0\}$).
-$S=\{0\}$, $W=\pi^{-1}(V)$. 
-Then $V'=\bar{W}=\pi^{-1}(V)\cup \{0\}$ is an analytic variety of $\C^{n+1}$.
-Consider $V'$ near $0$.
-$V'_{0}=U_{\varepsilon}(0)\cap V'$.
-$V'_{0}=V(g_{1},\ldots,g_{k})$ with $g_{i}$ holomorphic on $U_{\varepsilon }(0)$.
-Expand $g_{i}$ into a homogeneous polynomial $g_{i}=\sum_{n=1}^{\infty} g_{i,n}$.
+Let $\pi\colon \C^{n+1}\setminus \{ 0\}\to \CP^{n}$ be the projection.
+Then $\pi^{-1}(V)$ has dimension at least $1$ everywhere in $\C^{n+1}\setminus \{0 \}$.
+Moreover, $\pi^{-1}(V)$ is a cone missing the origin, so its closure is just $\pi^{-1}(V)\cup \{0\}$.
+Set $S=\{0\}$ and $W=\pi^{-1}(V)$. 
+Then $V'=\bar{W}=\pi^{-1}(V)\cup \{0\}$ is an analytic variety of $\C^{n+1}$ by the Remmert-Stein theorem.
+In particular, near $0$ we cam write
+\[ V'_{0}=U_{\varepsilon}(0)\cap V'=V(g_{1},\ldots,g_{k})\]
+with $g_{i}$ holomorphic on $U_{\varepsilon }(0)$.
+In particular each $g_{i}$ is analytic, so we may write it as $g_{i}=\sum_{n=1}^{\infty} g_{i,n}$ where each $g_{i,n}$ is a homogeneous polynomial.
 Then $g_{i}(tz)=\sum_{n=1}^{\infty}g_{i,n}(z)t^{n}$ for all $x\in \C^{n+1}$ and all $t\in \C$.
-If $z\in V'$, then $tz\in V'$ for all $t$.
-So $g_{i}(tz)\equiv 0$ implies $g_{i,n}(z)=0$ for all $i,n$.
-So $V_{0}'=V(\{g_{i,n}\})$.
-By Noetherianity, finitely many $g_{i,n}$ suffice.
-$V_{0}=V(g^{(1)},\ldots, g^{(m)})$.
-Hence $V=V(\{ g^{(1)},\ldots, g^{(m)}\})$ in $\CP^{n}$, and this finishes the proof.
+If $z\in V'$, then $tz\in V'$ for all $t$, because $V'$ is a cone.
+So $g_{i}(tz)\equiv 0$ implies $g_{i,n}(z)=0$ for all $i\in \{1,\ldots,k\}$ and all $n\in \N_{>0}$.
+Therefore $V_{0}'=V(\{g_{i,n}\})$.
+By Noetherianity, finitely many $g_{i,n}$ suffice, so we can write $V_{0}=V(g^{(1)},\ldots, g^{(m)})$ for some $g^{(i)}\in \{g_{i,n}\}$.
+Hence $V=V(g^{(1)},\ldots, g^{(m)})$ in $\CP^{n}$ and this finishes the proof.
 
 \subsection{Sheaves}
 
@@ -445,7 +446,7 @@ Long exact sequence in \v{C}ech cohomology induced by a short exact sequence of 
 
 \subsection{A bit of Hodge theory}
 
-Decomposition of the tangent space at a point of a complex manifold, its tensor algebras, $\partial $ and $\bar{\partial }$ operators, Dolbeault cohomology groups, harmonic and Hodge decomposition..
+Decomposition of the tangent space at a point of a complex manifold, its tensor algebras, $\partial $ and $\bar{\partial }$ operators, Dolbeault cohomology groups, harmonic and Hodge decomposition.
 See \cite{gh78} or \cite{voi07}.
 
 \section{[LT] Lecture 2 - 24.10.19}
