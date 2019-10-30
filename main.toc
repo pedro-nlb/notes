@@ -8,7 +8,7 @@
 \contentsline {subsection}{\numberline {3.1}Introduction and overview of the course}{6}{subsection.3.1}% 
 \contentsline {section}{\numberline {4}[WS] Kodaria 1 (Jin Li) - 23.10.19}{8}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Chow's theorem}{8}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Sheaves}{9}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.2}Sheaves}{10}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}A bit of Hodge theory}{10}{subsection.4.3}% 
 \contentsline {section}{\numberline {5}[LT] Lecture 2 - 24.10.19}{10}{section.5}% 
 \contentsline {subsection}{\numberline {5.1}Formal power series}{11}{subsection.5.1}% 
