@@ -1122,6 +1122,160 @@ We will soon prove the converse of our fundamental fact, namely:
 
 Combining this with Chow's theorem seen last time, we obtain as a corollary that Hodge manifolds are always algebraic.
 
+\section{[LT] Lecture 4 - 31.10.19}
+
+\subsection{Key theorems}
+
+\begin{thm}[Liouville]
+    $f\colon \C^{n}\to \C$ bounded.
+    Then $f$ constant.
+    \begin{proof}
+	Let $z,w\in \C^{n}$.
+	We claim that $f(z)=f(w)$.
+	Consider $h\colon c\mapsto z+c(w-z)$ from $\C\to \C^{n}$.
+	This is analytic.
+	Hence $g:=f\circ h$ is analytic.
+	$\im(g)\subseteq \im(f)$, so $g$ is also bounded.
+	By the $1$-dimensional Liouville theorem, $g$ is constant.
+	But then $f(z)=g(0)=g(1)=f(w)$.
+    \end{proof}
+\end{thm}
+
+\begin{thm}[Maximum modulus principle]
+    $U\subseteq \C^{n}$ open connected, $f\colon U\to \C$ analytic, $a\in U$.
+    If $|f(a)|\geqslant |f(z)|$ for each $z$ in an open nbd $a\in V\subseteq U$, then $f$ is constant on $U$.
+    \begin{proof}
+	Identity theorem implies that if $f$ is constant on $V$, then $f$ is constant on $U$.
+	So WLOG $V=D$ a polydisk centered at $a$.
+	Consider $z_{1}\mapsto f(z_{1},a_{2},\ldots,a_{n})$ from $D(a,r)$ to $\C$.
+	This is analytic and its modulus attains a maximum at $z_{1}=a_{1}$.
+	By the single variable maximum modulus principle, this map is constant on $D(a_{1},r_{1})$.
+	
+	Suppose $(z_{1},\ldots,z_{k})\mapsto f(z_{1},\ldots,z_{k},a_{k+1},\ldots,a_{n})$ is constant on $D(a_{1},r_{!})\times \cdots \times D(a_{k},r_{k})$ for some $1\leqslant k<n$.
+	Then $\forall (w_{1},\ldots, w_{k},z_{k+1},a_{k+2},\ldots,a_{n})$, $z_{k+1}\mapsto f(w_{1},\ldots,w_{k},z_{k+1},a_{k+2},\ldots,a_{n})$ is analytic, its modulus has a maximum at $z_{k+1}=a_{k+1}$.
+	This implies by the single variable case that it is constant.
+	By induction, we win.
+    \end{proof}
+\end{thm}
+
+\begin{thm}[Open mapping theorem]
+    $U\subseteq \C^{n}$ connected open, $f\colon U\to \C$ nonconstant, analytic.
+    If $V\subseteq U$ is open, then $f(V)\subseteq \C$ is open as well.
+    \begin{proof}
+	Let $z\in V$ and $w=f(z)$.
+	It suffices to construct an open nbd of $w$ contained in $f(V)$.
+	There exists an open polydisk $D$ centered at $z$ containedin $V$, and $V$ is a union of such polydisks.
+	Hence WLOG $V=D$.
+
+	$f$ nonconstant implies that $\exists z'\in D$ with $f(z)\neq f(z')$.
+	The set $W=\{c\in \C\mid z+c(z'-z)\in D\}\subseteq \C $ is open.
+	The composite $f\circ h\colon W\to \C$ is analytic and nonconstant.
+	By the single variable open mapping theorem, $f\circ h$ is open.
+	Hence $\im(f\circ h)\subseteq \C$ is open, and $\im(f\circ h)\subseteq f(V)$.
+    \end{proof}
+\end{thm}
+
+\subsection{Cauchy-Riemann equations}
+
+\begin{prop}
+    $U\subseteq \C^{n}$ open, $f\colon U\to \C$ complex differentiable.
+    If $f=u+iv$ with $u,v\colon U\to \R$ and we use coordinates $z_{k}=x_{k}+iy_{k}=\Re(z_{k})+i\Im(z_{k})$, then
+    \[ (CR_{k}) \quad \frac{\partial u}{\partial x_{k}}=\frac{\partial v}{\partial y_{k}} \text{ and } \frac{\partial u}{\partial y_{k}}=-\frac{\partial v}{\partial x_{k}} \]
+    \begin{proof}
+	Let $e_{k}:=(0,\ldots,0,1,0,\ldots,0)$ with $1$ on the $k^{\mathrm{th}}$ coordinate.
+	\begin{multline*}
+	    \frac{f(a+he_{k})-f(a)}{h}=\frac{(u(a+he_{k})+iv(a+he_{k}))-(u(a)+iv(a))}{h} \\
+	    \overset{(*)}{=} \frac{u(a+he_{k})-u(a)}{h} + i\frac{v(a+he_{k})-v(a)}{h} \\
+	    \overset{h_{\mathrm{real}}}{\Rightarrow } (*)\to \frac{\partial u}{\partial x_{k}}(a)+i\frac{\partial v}{\partial x_{k}}(a) (**) \\
+	    \overset{h_{\mathrm{imaginary}}}{\Rightarrow } (*)\to -i\frac{\partial u}{\partial y_{k}}(a)+\frac{\partial v}{\partial y_{k}}(a) (***)
+	\end{multline*}
+	$f$ complex differentiable implies $(**)=(***)$.
+	Now compare real and imaginary part and we are done.
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    $f\colon U\to \R$ complex differentiable imlpies $f$ constant.
+\end{cor}
+
+\begin{defn}
+    Let $f\colon U\to \C$ be a function.
+    Let
+    \[ \frac{\partial f}{\partial x_{k}}=\frac{\partial u}{\partial x_{k}} + i\frac{\partial v}{\partial x_{k}} \text{ and } \frac{\partial f}{\partial y_{k}}=\frac{\partial u}{\partial y_{k}}+i\frac{\partial v}{\partial y_{k}}. \]
+    Then we define the \textit{Wirtinger operators} as
+    \[ \frac{\partial f}{\partial z_{k}}:=\frac{1}{2}\left( \frac{\partial f}{\partial x_{k}}-i\frac{\partial f}{\partial y_{k}} \right) \text{ and } \frac{\partial f}{\partial \bar{z}_{k}}:=\frac{1}{2}\left( \frac{\partial f}{\partial x_{k}}+i\frac{\partial f}{\partial y_{k}}\right).\]
+\end{defn}
+
+\begin{prop}
+    For $U\colon \C^{n}$ open and $f\colon U\to \C$ with partial derivatives, the following are equivalent:
+    \begin{enumerate}[label=\arabic*)]
+	\item $f$ satisfies $(CR_{k})$ for each $k$.
+	\item $\frac{\partial f}{\partial x_{k}}=-i\frac{\partial f}{\partial y_{k}}$ for all $k$.
+	\item $\frac{\partial f}{\partial \bar{z}_{k}}=0$ for all $k$.
+	\item $\frac{\partial f}{\partial z_{k}}=\frac{\partial f}{\partial x_{k}}=\frac{\partial u}{\partial x_{k}}+i\frac{\partial v}{\partial x_{k}}=\frac{\partial f}{\partial (iy_{k})}$ for all $k$.
+	\item Via $\C^{2}\cong \R^{2n}$ sending $(z_{1},\ldots,z_{n})\mapsto (x_{1},y_{1},\ldots, x_{n},y_{n})$, for all $a\in U$, the Jacobian matrix  $J_{f}^{\R}(a)$ is composed of $2\times 2$ blocks of the form
+	    \[ \begin{pmatrix} \frac{\partial u}{\partial x_{k}} & -\frac{\partial v}{\partial x_{k}} \\ \frac{\partial v}{\partial x_{k}} & \frac{\partial u}{\partial x_{k}}
+	    \end{pmatrix}(a).\]
+	\item For all $a$, $J_{f}^{\R}(a)\colon \R^{2n}\to \R^{2n}$ is $\C$-linear.
+    \end{enumerate}
+    \begin{proof}
+	For equivalences between $1)$, $2)$, $3)$ and $4)$, expand and compare real and imaginary parts.
+	For $1)\Leftrightarrow 5)$ use the definition of the Jacobian matrix.
+	For $5)\Leftrightarrow 6)$ observe that $\C=\{a+ib\mid a,b\in \R\} \xrightarrow{\cong} \{ \begin{pmatrix} a & -b \\ b & a \end{pmatrix} \mid a,b\in \R\}$ is compactible with sums and product.
+    \end{proof}
+\end{prop}
+
+\begin{rem}
+    If $f$ is $\calC^{1}$ and satisfies any of these conditions, then $f$ is complex differentiable and
+    \[ \frac{\partial f}{\partial z_{k}}(a)=\lim_{h\to 0}\frac{f(a+he_{k})-f(a)}{h}.\]
+\end{rem}
+
+\begin{prop}
+    Let $U\colon \C^{n}$ open and $f\colon U\to \C^{n}$ complex differentiable.
+    Then for all $a\in U$
+    \[ 0\leqslant \left| \det(J_{f}^{\C}(a))\right|^{2}=\det(J_{f}^{\R}(a)),\]
+    where $J_{f}^{\C}(a)=\left(\frac{\partial f_{k}}{\partial z_{l}}\right)_{k,l}$.
+    In particular, $f$ preserves orientations.
+    \begin{proof}[Idea]
+	Rewrite $J_{f}^{\R}(a)$ in the basis $(z_{1},\ldots, z_{n},\bar{z}_{1},\ldots,\bar{z}_{n})$.
+	The resulting matrix is the matrix of derivatives of $(f_{1},\ldots,f_{n},\bar{f}_{1},\ldots,\bar{f}_{n})$ with respect to $(z_{1},\ldots,z_{n},\bar{z}_{1},\ldots,\bar{z}_{n})$.
+	Then
+	\[ J_{f}^{\R}(a)=\begin{pmatrix} J_{f}^{\C}(a) & 0 \\ 0 & \overline{J_{f}^{\C}(a)}\end{pmatrix}. \]
+    \end{proof}
+\end{prop}
+
+\subsection{Complex differentiable implies analytic}
+
+\begin{thm}[Cauchy integral formula]
+    $U\colon \C^{n}$ open, $f\colon U\to \C$ complex differentiable, $\bar{D}=\bar{D}_{1}\times \bar{D}_{n}$ closed polydisk in $U$, $z\in D$ (which is the interior of $\bar{D}$.
+    Then
+    \[f(z_{1},\ldots,z_{n})=\left(\frac{1}{2\pi i}\right)^{n}\int_{\partial D_{n}}\cdots \int_{\partial D_{1}}\frac{f(w_{1},\ldots,w_{n})}{(w_{1}-z_{1})\cdots (w_{n}-z_{n})}dw_{1}\cdots dw_{n}.\]
+    \begin{proof}
+	Use the single variable version, the fact that complex differentiable means copmlex differentiable separately in each variable and the induct on $n$.
+    \end{proof}
+\end{thm}
+
+\begin{cor}
+    If $f$ is complex differentiable, then $f$ is analytic.
+\end{cor}
+
+\begin{cor}
+    If $f$ is complex differentiable, then $f\in \calC^{\infty}$.
+    \begin{proof}
+	Mimic single variable proof.
+    \end{proof}
+\end{cor}
+
+\subsection{Topology: gluing constructions}
+
+Definition and construction of pushouts.
+
+\subsection{Complex projective space}
+
+Definition as a quotient.
+Compact and connected because it is the image of the sphere under the quotient map.
+Hausdorff for the exercise session.
+
 \bibliographystyle{alpha}
 \bibliography{refs}
 
