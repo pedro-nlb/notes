@@ -1276,6 +1276,127 @@ Definition as a quotient.
 Compact and connected because it is the image of the sphere under the quotient map.
 Hausdorff for the exercise session.
 
+\section{[CM] Talk 3 (Nicola) - Cohomology - 04.11.19}
+
+\subsection{Singular cohomology}
+
+Recollection of singular cohomology of a topological space $X$ with coefficients in some abelian group $A$, denoted $H^{p}_{sing}(X,A)$.
+
+\subsection{\v{C}ech cohomology}
+
+Recollection of \v{C}ech cohomology of a sheaf of abelian groups $\F$ on a topological space $X$, denoted $\check{H}^{p}(X,\F)$.
+The \v{C}ech complex associated to an open cover $\U$ will be denoted $C\grd(\U)$ or $C\grd(\U,\F)$ is we want to make explicit the sheaf $\F$.
+
+\subsection{Sheaf cohomology}
+
+Recollection of sheaf cohomology of a sheaf of abelian groups $\F$ on a topological space $X$, denoted $H^{p}_{Sh}(X,\F)$.
+
+\subsection{Comparison}
+
+Let $U\subseteq X$ be an open subset and $\U$ an open cover on $X$.
+We can restrict this open cover to an open cover $\U|_{U}$ of $U$.
+Then $C^{p}(\U)(U):=C^{p}(\U|_{U})$ defines a new sheaf of abelian groups on $X$.
+
+\textbf{Fact:} $0\to \F\to C^{0}(\U) \to C^{1}(\U)\to \cdots $ is a resolution of $\F$.
+Hence  we obtain a map $\varinjlim_{\U}H^{q}(\U,\F)\to H^{q}_{Sh}(X,\F)$.
+
+\textbf{Facts:}
+\begin{enumerate}[label=\arabic*)]
+    \item \v{C}ech cohomology and sheaf cohomology always agree on degrees zero and one.
+    \item $X$ locally contractible implies that singular cohomology with coefficients on $A$ agrees with sheaf cohomology of the constant sheaf $A$.
+    \item $X$ paracompact and Hausdorff implies that \v{C}ech cohomology and sheaf cohomology agree.
+\end{enumerate}
+
+\begin{rem}
+    Using hypercovers instead of \v{C}ech, this is always true (on any site with fibre products).
+    See \cite[\href{https://stacks.math.columbia.edu/tag/01H0}{Tag 01H0}]{sta19}.
+\end{rem}
+
+\begin{exa}
+    If $X$ is a CW complex, then all three cohomologies agree.
+\end{exa}
+
+\begin{exa}
+    If $X$ is profinite, then we have
+    \[ \check{H}^{i}(X,\Z)=H^{i}_{Sh}(X,\Z)=0=H^{i}_{sing}(X,\Z) \]
+    for all $i>0$, but $H^{0}_{Sh}(X,\Z)=C(X,\Z)\neq H^{0}_{sing}(X,\Z)=\Hom_{\Set}(X,\Z)$ unless $X$ is finite.
+\end{exa}
+
+\subsection{Hypercovers}
+
+Recollection of simplicial sets and simplicial objects on a category.
+Convention: we also consider the empty set (``$-1$-simplices'').
+
+\begin{defn}
+    A \textit{hypercover} of $X\in \Ob(\scrC)$ is a simplicial object in $\scrC$ such that $X_{-1}=X$ with some nice properties.
+\end{defn}
+
+\begin{defn}
+    $H_{cond}\grd(S,\F):=H\grd_{HC}(S_{cond},\F)=H\grd_{HC}(S_{cond},\F)=\varinjlim_{S_{\bullet}\to S}H\grd(S_{\bullet},\F)$ for $S\in \CHaus$ and $\F\in \Ab(S_{cond})$, where $S_{cond}$ denotes the proetale site of compact Hausdorff spaces over $S$.
+\end{defn}
+
+The RHS inside the direct limit is defined as follows.
+Start from $S_{\bullet}\to S$.
+Then get a diagram $\F\to \pi_{0,*}\pi_{0}^{-1}\F\rightrightarrows \cdots $.
+With the alternating sum of the face maps get $0\to \pi_{0,*}\pi_{0}^{-1}\F\to \cdots $.
+From this complex we take global sections and get a complex of groups.
+Then we take cohomology of this complex.
+Finally we take the direct limit over all simplicial resolutions.
+
+By \cite[Theorems 2.3, 3.10-11]{dyc76}, for all $S\in \CHaus$ there exists a hypercover $S_{\bullet}\to S$ by extremally disconnected $S_{n}$ which is natural in $S$ with proper surjective face maps such that for all $\F\in \Ab(S)$ we have
+\[ H\grd(S_{\bullet},\F)=H\grd_{cond}(S,\F) \]
+The reason is that $0\to \pi_{0,*}\pi_{0}^{-1}\F\to \pi_{1,*}\pi_{1}^{-1}\F\to \cdots $ is a soft resolution of $\F$.
+
+In particular, for $\F=\Z$, we have
+\[ \Gamma(S,\pi_{n,*}\pi_{n}^{-1}\Z)=\Gamma(S_{n},\Z). \]
+Hence we have
+\[ H_{cond}\grd(S,\Z)=H\grd(0\to \Gamma(S_{0},\Z)\to \cdots ).\]
+
+\begin{thm}
+    $H\grd_{cond}(S,\Z)=H\grd_{Sh}(S,\Z)$.
+    \begin{proof}
+	If $S$ is profinite, then we can write $S$ as an inverse limit $S=\varprojlim_{j} S_{j}$ of finite discrete spaces $S_{j}$.
+	Then
+	\[ H^{i}_{Sh}(S,\Z)=\begin{cases} 0 & \text{if } i>0 \\ C(S,\Z) & \text{if } i=0 \end{cases}. \]
+	    \marginnote{\dbend}$C(S,\Z)=\Gamma(S,\Z)= \varinjlim_{j}\Gamma(S_{j},\Z)=\overset{\text{by def } (?)}{=} H^{0}_{cond}(S,\Z)$.
+	
+	Now WTS $H_{cond}^{i}(S,\Z)=0$ for all $i>0$.
+	\marginnote{\dbend} Claim: it is sufficient to show that for all $S'\twoheadrightarrow S$ of profinite sets, then
+	\[ 0\to \Gamma(S,\Z)\to \Gamma(S',\Z)\to \Gamma(S'\fp{S}S')\to \cdots \]
+	is exact.
+
+	So let $S'\twoheadrightarrow S=\lim(S_{j}'\twoheadrightarrow S_{j})$ of finite sets.
+	This implies splitting, so $0\to \Gamma(S_{j},\Z)\to \Gamma(S'_{j},\Z)\to \cdots $ is split exact and $\varinjlim_{j}\Gamma=\Gamma \varprojlim_{j}$, so $\varinjlim_{j}(\cdots)$ is still split exact.
+	
+	For a general compact Hausdorff space use some compatibilities between derived functors.
+    \end{proof}
+\end{thm}
+
+\begin{thm}
+    $H^{i}_{cond}(S,\R)=\begin{cases} 0 & \text{if } i>0 \\ C(S,\R) & \text{if } i=0 \end{cases}$.
+	\begin{proof}
+	    I.e. want to show that $0\to C(S,\R)\to C(S_{0},\R)\to \cdots $ is exact.
+	    $C(S,\R)\overset{?}{=} C(S,\R)$.
+	    Moreover we will show that if $df=0$, then $f=dg$ with $g$ such that $||g||\leqslant (i+2+\varepsilon )||f||$.
+
+	    Let $S$ and an HC $S_{i}$ finite.
+	    Then HC splits: $\pi_{n}\colon S_{n}\to S$ and $\exists \psi_{n}\colon S\to S_{n}$ such that $\pi_{n}\circ \psi_{n}=\id_{S}$ and $\psi_{n}\circ \pi_{n}=r_{n}\colon S_{n}\to S_{n}$.
+
+	    Claim: $r_{\bullet}\overset{h}{\simeq} \id_{S_{\bullet}}$, i.e. there exists $h\colon \Delta^{1}\times S_{\bullet}\to S_{\bullet}$ with $h|_{\{0\}\times S_{\bullet}}=\id$ and $h|_{\{ 1\}\times S_{\bullet}}=r_{\bullet}$.
+	    See notes for an argument.
+
+	    Now we use the Dold-Kan correspondence: there is an equivalence between the category of simplicial abelian groups and the bounded below cochain complexes of abelian groups which preserves homotopy equivalence.
+	    We have $S\overset{h}{\simeq}S_{\bullet}$, so $0\to C(S,\R)\to C(S_{0},\R)\to \cdots$ is chain homotopy equivalent to $0\to C(S,\R)\to C(S,\R)\to \cdots$.
+	    Since one is exact, the other one is also exact.
+	    This proves the statement for finite spaces.
+
+	    For profinite sets we use limits.
+
+	    For the general case, assume $f\in C(S,\R)$, $f\neq 0$, $s\in S$.
+	    $f_{s}:=f|_{S_{i}\fp{S}\{s\}}\overset{!}{=}dg_{s}$ with $g_{s}\in C(S_{i-1}\fp{S}\{s\},\R)$.
+	\end{proof}
+\end{thm}
+
 \bibliographystyle{alpha}
 \bibliography{refs}
 

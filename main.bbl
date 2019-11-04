@@ -1,9 +1,14 @@
-\begin{thebibliography}{GH78}
+\begin{thebibliography}{{Sta}19}
 
 \bibitem[GH78]{gh78}
 P.~Griffiths and J.~Harris.
 \newblock {\em Principles of Algebraic Geometry}.
 \newblock John Wiley \& Sons, 1978.
+
+\bibitem[{Sta}19]{sta19}
+The {Stacks project authors}.
+\newblock The stacks project.
+\newblock \url{https://stacks.math.columbia.edu}, 2019.
 
 \bibitem[Voi07]{voi07}
 Claire Voisin.
