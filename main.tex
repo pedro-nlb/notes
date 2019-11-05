@@ -102,6 +102,10 @@
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\grd}{^{\bullet}}
 \newcommand{\db}{\marginnote{\dbend}}
+\newcommand{\tms}{\times}
+\newcommand{\sub}{\subseteq}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\mono}{\hookrightarrow}
 
 
 \title{Various lecture notes}
@@ -1396,6 +1400,141 @@ Hence we have
 	    $f_{s}:=f|_{S_{i}\fp{S}\{s\}}\overset{!}{=}dg_{s}$ with $g_{s}\in C(S_{i-1}\fp{S}\{s\},\R)$.
 	\end{proof}
 \end{thm}
+
+\section{[LT] Lecture 5 - 5.11.19}
+
+New chapter: Manifolds and vector bundles!
+
+\subsection{Manifolds}
+
+\begin{defn}
+    Manifold of dimension $n$: locally homeomorphic to $\R^{n}$, Hausdorff and second countable.
+\end{defn}
+
+\begin{exa}
+    $\R^{n}$.
+\end{exa}
+
+\begin{rem}
+    Voisin omits Hausdorffness and second countability, even though Hausdorffness is definitely needed.
+\end{rem}
+
+Our main objects of study are affine/projective varieties over $\C$.
+These satisfy the definition of manifold we have given.
+
+There is a more general notion of manifold with boundary, but we will not need it for the moment.
+
+\begin{defn}
+    Real $n$-dimensional chart $(U,\varphi)$ on a topological manifold $X$ [picture].
+
+    Complex $n$-dimensional chart $(U,\varphi)$ on a topological manifold $X$ (can only exist on even dimensional manifolds).
+\end{defn}
+
+\begin{exa}
+    $X\subseteq \R^{n}$ open implies that $(X,\id_{X})$ is a chart.
+\end{exa}
+
+\begin{exa}
+    $S^{1}$ with charts given by (the inverse of) the exponential.
+\end{exa}
+
+\begin{exa}
+    Real projective $n$-space (recall we defined it via the usual quotient map) with the usual charts $x_{i}\neq 0$.
+    \textcolor{ForestGreen}{Second contability follows from the projection being an open map.}\footnote{For instance, the identity on $\R$ from the euclidean topology to the cofinal topology is not open and its image is not second countable.}
+\end{exa}
+
+\begin{exe}
+    Let $H$ be a hyperplane on real $n$-projective space and let $U$ be its complement.
+    Find a chart from $U$ to $\R^{n}$.
+\end{exe}
+
+\begin{exa}
+    We consider the situation of the implicit function theorem (Forster, Analysis 2).
+    Let $U_{1}\subseteq \R^{n}$ open and $U_{2}\subseteq \R^{m}$ open.
+    Let
+    \begin{align*}
+	F\colon U_{1}\times U_{2} &\to \R^{m} \\
+	(x,y) &\mapsto F(x,y)
+    \end{align*}
+    be smooth.
+    Let $(a,b)\in U_{1}\times U_{2}$ be such that $F(a,b)=0$ and $\frac{\partial F}{\partial y}(a,b)$ is invertible.
+    Then there are open nhds $V_{1}\subseteq U_{1}$ of $a$ and $V_{2}\subseteq U_{2}$ of $b$ such that there is a smooth function $g\colon V_{1}\to V_{2}$ such that $F(x,g(x))=0$ for all $x\in V_{1}$.
+    Moreover, if $(x,y)\in V_{1}\times V_{2}$ such that $F(x,y)=0$, then $y=g(x)$.
+
+    Let $X=\{(x,y)\mid F(x,y)=0\} \subseteq U_{1}\times U_{2}$ and $U=X\cap (V_{1}\tms V_{2})$.
+    Let $\varphi \colon U\to V_{1}$ be the projection.
+    Then $(U,\varphi)$ is a chart.
+    The inverse is given by $x\mapsto (x,g(x))$.
+    E.g. $F(x,y)=x^{2}+y^{2}-1$...
+\end{exa}
+
+\begin{defn}
+    A \textit{smooth atlas} $(U_{i},\varphi_{i})_{i\in I}$ on $X$ is a family of real $n$-dimensional charts on $X$ satisfying the following condition:
+    \begin{enumerate}[label=\arabic*)]
+	\item $(U_{i})_{i\in I}$ is an open cover of $X$.
+	\item For every $i,j\in I$, the transition map
+	    \[\varphi_{ij}\colon \varphi_{j}(U_{i}\cap U_{j})\xrightarrow{\varphi_{j}^{-1}} U_{i}\cap U_{j}\xrightarrow{\varphi_{i}} \varphi_{i}(U_{i}\cap U_{j}) \]
+	    is smooth.
+    \end{enumerate}
+    Two smooth atlases $(U_{i},\varphi_{i})_{i\in I}$ and $(U_{i}',\varphi_{i}')_{i\in I'}$ are equivalent if their union is an atlas.
+
+    A \textit{smooth manifold} is a topological manifold together with an equivalence class of smooth atlases.
+\end{defn}
+
+\begin{defn}
+    A \textit{holomorphic atlas} is defined analogously using complex charts and holomorphic transition maps.
+    A \textit{complex manifold} is a topological manifold together with an equivalence class of holomorphic atlases.
+
+    A complex manifold of (complex) dimension $1$ is called a \textit{Riemann surface}.
+\end{defn}
+
+\begin{exa}
+    $U\sub \R^{n}$ open, the torus $\mathbb{T}^{n}=\R^{n}/\Z^{n}$, Moebius strip, Klein bottle, real projective space [pictures of the gluing].
+\end{exa}
+
+\begin{exa}
+    Compute the formula for the transition maps on real projective space.
+\end{exa}
+
+\begin{lm}
+    Let $U\sub \R^{N}$ be an open subset and $F\colon U\to \R^{m}$ smooth.
+    Let $X=\{ x\in \R^{N}\mid F(x)=0\}$.
+    Assume that the Jacobian $(\frac{\partial F_{i}}{\partial x_{j}})_{i,j}$ has maximal rank $m$ at all $x\in X$ (in particular, assume that $N\geqslant m$).
+    Then $X$ carries a canonical structure of smooth manifold.
+    \begin{proof}
+	Let $x\in X$.
+	After reordering of the coordinates of $\R^{n}$, we may choose a nbhd of $x$ of the form $U_{1}\tms U_{2}\sub \R^{N-m}\tms \R^{m}$ satisfying the assumption of the implicit function theorem.
+	This gives a chart near $x$.
+	The transition maps are smooth.
+    \end{proof}
+\end{lm}
+
+\begin{rem}
+    The same lemma works in the holomorphic setting.
+\end{rem}
+
+\begin{exa}
+    $X=\{(x,y)\in \C^{2}\mid y^{2}=x^{3}+x^{2} \}$.
+    We apply the lemma with $F(x,y)=y^{2}-x^{3}-x^{2}$, $N=2$ and $m=1$.
+    The Jacobian is $(-3x^{2}-2x,2y)$, which has rank $1$ at all points of $X$ except for $(0,0)$, which is called a \textit{singular point}.
+\end{exa}
+
+\begin{exa}
+    Every complex manifold of dimension $n$ also defines a smooth manifold of dimension $2n$ by identifying $\C^{n}\cong \R^{2n}$.
+\end{exa}
+
+\begin{defn}
+    Let $X,Y$ be smooth (resp. complex) manifolds.
+    Let $f\colon X\to Y$ be a continuous map.
+    We say that $f$ is \textit{smooth} (resp. \textit{holomorphic}) if for every $x\in X$ there exists a chart $(U,\varphi)$ with $x\in U$ and a chart $(V,\psi)$ with $f(x)=y\in V$ such that $f(U)\sub V$ and $\varphi(U)\xrightarrow{\varphi^{-1}}U\xrightarrow{f|_{U}} V\xrightarrow{\psi} \psi(V)$ is smooth (resp. holomorphic).
+\end{defn}
+
+\begin{exe}
+    $U\sub\C$ open, $f\colon U\to \C$ holomorphic viewed as a holomorphic map of complex manifolds.
+    $f$ non constant.
+    Let $z_{0}\in U$.
+    Show that there are charts $(U_{1},\varphi_{1})$ around $z_{0}$ with $\varphi_{1}(z_{0})=0$ and $(U_{2},\varphi_{2})$ around $f(z_{0})$ with $\varphi_{2}(f(z_{0}))=0$ such that $f(U_{1})\sub U_{2}$ and the induced map from $\varphi_{1}(U_{1})$ to $\varphi_{2}(U_{2})$ is given by $z\mapsto z^{d}$.
+\end{exe}
 
 \bibliographystyle{alpha}
 \bibliography{refs}

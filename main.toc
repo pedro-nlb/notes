@@ -1,5 +1,5 @@
 \babel@toc {UKenglish}{}
-\contentsline {section}{\numberline {1}About these notes}{2}{section.1}% 
+\contentsline {section}{\numberline {1}About these notes}{3}{section.1}% 
 \contentsline {section}{\numberline {2}[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}{3}{section.2}% 
 \contentsline {subsection}{\numberline {2.1}Introduction}{3}{subsection.2.1}% 
 \contentsline {subsection}{\numberline {2.2}Recollections on sheaves on sites}{4}{subsection.2.2}% 
@@ -47,3 +47,5 @@
 \contentsline {subsection}{\numberline {11.3}Sheaf cohomology}{32}{subsection.11.3}% 
 \contentsline {subsection}{\numberline {11.4}Comparison}{32}{subsection.11.4}% 
 \contentsline {subsection}{\numberline {11.5}Hypercovers}{32}{subsection.11.5}% 
+\contentsline {section}{\numberline {12}[LT] Lecture 5 - 5.11.19}{34}{section.12}% 
+\contentsline {subsection}{\numberline {12.1}Manifolds}{34}{subsection.12.1}% 
