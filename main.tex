@@ -76,6 +76,7 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\U}{\mathcal{U}}
 \newcommand{\X}{\mathcal{X}}
+\renewcommand{\H}{\mathcal{H}}
 
 % Math operators
 \DeclareMathOperator{\Hom}{Hom}
@@ -91,6 +92,7 @@
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\vol}{vol}
 
 % New commands
 \newcommand{\pe}{*_{pro\acute et}}
@@ -1535,6 +1537,171 @@ There is a more general notion of manifold with boundary, but we will not need i
     Let $z_{0}\in U$.
     Show that there are charts $(U_{1},\varphi_{1})$ around $z_{0}$ with $\varphi_{1}(z_{0})=0$ and $(U_{2},\varphi_{2})$ around $f(z_{0})$ with $\varphi_{2}(f(z_{0}))=0$ such that $f(U_{1})\sub U_{2}$ and the induced map from $\varphi_{1}(U_{1})$ to $\varphi_{2}(U_{2})$ is given by $z\mapsto z^{d}$.
 \end{exe}
+
+\section{[WS] Kodaira 3 (Leonardo) - Kodaira Vanishing Theorem - 6.11.19}
+
+Let $X$ be a compact complex manifold and $E$ a holomorphic vector bundle\footnote{Which we sometimes identify with its sheaf of smooth sections. If we want to consider holomorphic sections, then we will use the notation $\O(E)$.} on $X$.
+
+Let $\A^{p,q}(E)$ denote the sheaf of $E$-valued $(p,q)$-forms, i.e. $\A^{p,q}(E)=\A^{p,q}\ot E$.
+There is no analogue of $d$ on $\A^{p,q}$, but
+\[ \bar{\partial }\colon \A^{p,q}(E)\to \A^{p,q+1}(E) \]
+is well defined.
+Why?
+We can take a holomorphic frame $\{ e_{\alpha}\}$ for $E$, and if we are given $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$ with $\eta_{\alpha}\in \A^{p,q}$, then $\bar{\partial }\eta=\sum\bar{\partial}\eta_{\alpha}\ot e_{\alpha}$.
+\[ 0\to \Omega^{p}(E)\to \A^{p,0}(E)\xrightarrow{\bar{\partial}_{E}} \A^{p,1}(E)\xrightarrow{\bar{\partial}_{E}}\cdots \]
+where $\Omega^{p}(E)$ are the $p$-holomorphic forms on $E$.
+This way we obtain \textit{generalized Dolbeault cohomology}:
+\[ (H^{p,q}(X,E):=)H^{q}(X,\Omega^{p}\ot E):=\frac{\ker(\A^{p,q}(E)\xrightarrow{\bar{\partial}}\A^{p,q+1}(E))}{\im(\A^{p,q-1}(E)\to \A^{p,q}(E))} \]
+
+\subsection{Vector bundles and metrics}
+
+Recall that an \textit{Hermitian metric} of $X$ is
+\[ \sum_{i,j}h_{i,j}dz_{i}\ot d\bar{z}_{j},\]]
+where $\{z_{i}\}$ is a local holomorphic coordinate system and $h_{i,j}$ is a positive definite hermitian form.
+This induces a metric on every $\A^{p,q}(X)$ and a volume form
+\[ \vol=\sqrt{\det(h_{i,j})}dz_{1}\wedge d\bar{z}_{1}\wedge \cdots \]
+
+We define the \textit{Hodge $*$-operator} $\bar{*}\colon \A^{p,q}(X)\to \A^{n-p,n-q}(X)$ by
+\[ \alpha\wedge \bar{*}\beta = (\alpha,\beta)\vol \in \A^{n,n}(X).\]
+An \textit{Hermitian metric} $h_{E}$ on $E$ is a hermitian metric on every fiber $E_{x}$ of $E$ varying smoothly.
+Such an $h_{E}$ induces $E\xrightarrow{\sim} \bar{E}^{*}$ sending $\sigma \mapsto h_{E}(\sigma,-)$.
+Now we have the skew-linear map
+\begin{align*}
+    \bar{*}_{E}\colon \A^{p,q}(E) &\to \A^{n-p,n-q}(E^{*}) \\
+    \alpha \ot e &\mapsto \bar{*}(\alpha)\ot h_{E}(-,e)
+\end{align*}
+And the maps
+\begin{align*}
+    \Lambda \colon \A^{p,q}(E)\ot \A^{p',q'}(E^{*}) & \to \A^{p+p',q+q'}(X) \\
+    (\alpha \ot e)\ot (\beta \ot f) & \mapsto f(e)(\alpha\wedge \beta)
+\end{align*}
+
+Let $\{ e_{\alpha }\}$ be a unitary frame of $E$, i.e. $h_{E}(e_{\alpha},e_{\beta})=\delta_{\alpha\beta}$.\footnote{We can choose either a unitary frame or a holomorphic frame, but not both at the same time. Hence we work rather with smooth sections and consider such a unitary frame.}
+If we have $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$, then $\bar{*}_{E}(\eta)=\sum \bar{*}\eta_{\alpha}\ot e_{\alpha}^{*}$, where $\{ e_{\alpha}^{*}\}$ is the dual unitary frame on $E^{*}$.
+We have $\bar{*}_{E^{*}}\bar{*}_{E}=(-1)^{r(2n-r)}$ on $\A^{r}(E)$.
+
+$\bar{\partial }_{E}\colon \A^{p,q}(E)\to \A^{p,q+1}(E)$ yields $\bar{\partial }_{E}^{*}$ adjoint map, with description $\bar{\partial }_{E}^{*}=-\bar{*}_{E^{*}}\bar{\partial }_{E^{*}}\bar{*}_{E}$.
+
+We now consider the laplacian
+\[\Delta_{\bar{\partial}_{E}}=\bar{\partial}_{E}^{*}\bar{\partial}_{E} +\bar{\partial }_{E}\bar{\partial}_{E}^{*}\colon \A^{p,q}(E)\to \A^{p,q}(E)\]
+and denote $\H^{p,q}(E)=\{\sigma \in \A^{p,q}(E)\mid \Delta_{\bar{\partial }_{E}}(\sigma )=0\}$.
+
+\begin{thm}
+    $\H^{p,q}(E)\cong H^{p,q}(X,E)=H^{q}(X,\Omega^{p}\ot E)$.
+    
+    $\bar{*}_{E}\Delta_{\bar{\partial}_{E}}=\Delta_{\bar{\partial }_{E}}\bar{*}_{E} \Rightarrow \bar{*}_{E}\colon \H^{p,q}(E)\xrightarrow{\sim}\H^{n-p,n-q}(E^{*})$.
+    The first thing is isomorphic to $H^{q}(X,\Omega^{p}\ot E)$ and the second thing to $H^{n-q}(X,\Omega^{n-p}\ot E^{*})$, and this is known as \textit{Kodaira-Serre duality}.
+\end{thm}
+
+For $p=0$, $H^{q}(X,\O(E))\cong H^{n-q}(X,K_{X}\ot E^{*})$ where $K_{X}$ denotes the canonical bundle.
+
+\subsection{Connections}
+
+Need replacement for $d\colon \A^{r}(X)\to \A^{r+1}(X)$.
+
+\begin{defn}
+    Let $E\to X$ be a vector bundle.
+    A \textit{connection} is $\nabla \colon \A^{0}(E)\to \A^{1}(E)$ such that $\nabla(f\xi)=df\cdot \xi + f\nabla \xi$ for all $f\in \calC^{\infty}(X)$ and all $xi\in \A^{0}(E)$.
+\end{defn}
+
+$\A^{1}(E)=\A^{1,0}(E)\op \A^{0,1}(E)$.
+$\nabla =\nabla'+ \nabla''$.
+$\nabla'\colon \A^{0}(E)\to \A^{1,0}(E)$ and $\nabla''\colon \A^{0}(E)\to \A^{0,1}(E)$.
+
+\begin{defn}
+    We say that $\nabla $ is compatible with the complex structure if $\nabla''=\bar{\partial}_{E}$, or equivalently if $\nabla''\sigma=0$ for every holomorphic section $\sigma$.
+\end{defn}
+
+\begin{defn}
+    $\nabla$ is compatible with the metric on $E$ if for all $\xi,\eta\in \A^{0}(E)$ we have
+    \[ d\langle \xi ,\eta \rangle =\langle \nabla \xi ,\eta\rangle + \langle \xi,\nabla\eta \rangle.\]
+\end{defn}
+
+\begin{thm}
+    There exists a unique connection $\nabla$ on an holomorphic vector bundle $E$ with hermitian metric $h_{E}$ such that it is compatible with the complex stracture and with the metric.
+    It is called the \textit{Chern connection}.
+
+    We can extend $\nabla \colon \A^{r}(E)\to \A^{r+1}(E)$ by asking that
+    \[ \nabla(\eta\ot e)=d\eta \ot e+(-1)^{r}\eta \wedge \nabla(e) \]
+    for $\eta \in \A^{r}(X)$ and $e\in A^{0}(E)$.
+\end{thm}
+
+\begin{defn}
+    $\nabla^{2}\colon \A^{0}(E)\to \A^{2}(E)$ is called the \textit{curvature}.
+\end{defn}
+
+$\nabla^{2}$ is linear over $\calC^{\infty}(X)$.
+For all $f\in \calC^{\infty}$ and $\sigma \in \A^{0}(E)$ we have
+\[ \nabla^{2}(f\sigma)=\nabla(df\ot \sigma + f\nabla \sigma)=-df\wedge \nabla\sigma +df\wedge \nabla \sigma +f\nabla^{2}\sigma.\]
+
+Let $E$ a holomorphic line bundle over $X$ with a Hermitian metric $h_{E}$ and $\nabla$ the corresponding Chern connection.
+Let $\{\sigma \}$ be a holomorphic section.
+Then $\nabla^{2}\sigma=\Theta \wedge \sigma $, where $\Theta $ is a global $(1,1)$-form.
+
+Recall that $c_{1}(E)=[\frac{i}{2\pi}\Theta ]\in H^{1,1}(X)$, where
+\[ \Theta=\bar{\partial}\partial \log h_{E}(\sigma, \sigma) \]
+
+\begin{q}
+    Given a holomorphic line bundle, when can we choose metrics $h$ on $X$ (Kaehler), $h_{E}$ on $E$, such that $w=\frac{i}{2\pi}\Theta $, where $w$ a Kaehler form?
+\end{q}
+
+\begin{defn}
+    When this happens, we call the line bundle \textit{positive}.
+\end{defn}
+
+\begin{prop}
+    If $\exists$ metric $h_{E}$ on $E$ such that $w\in [\frac{1}{2\pi}\Theta ]$, then there exists a metric $h_{E}'$ such that $w=\frac{1}{2\pi}\Theta'$.
+\end{prop}
+
+\begin{exa}
+    Let $X=\P^{n}$ and consider a hyperplane line bundle $E(=\O(1))$ on $\P^{n}$.
+    Then $E$ is positive.
+    Indeed, $E^{*}$ is the tautological line bundle on $\P^{n}$.
+    Define $h_{E^{*}}$ by setting
+    \[ |(z_{0},\ldots,z_{n})|^{2}=\sum z_{i}\bar{z}_{i} \Rightarrow \Theta= [...]\]
+    So $E^{*}$ is negative and therefore $E$ is positive.
+\end{exa}
+
+\begin{thm}[Kodaira Vanishing]
+    Let $E>0$ (i.e. let $E$ be a positive line bundle).
+    Then $H^{q}(X,\Omega^{p}\ot E)=0$ for every $p+q>n$, which by Kodaira-Serre duality is equivalent to saying that for every $E<0$ we have $H^{q}(X,\Omega^{p}\ot E)=0$ for all $p+q<0$.
+    \begin{proof}
+	Let $L=w\wedge (-)\colon \A^{p,q}(E)\to \A^{p+1,q+1}(E)$ and consider its adjoint operator $L^{*}$.
+	In a unitary frame $\{e_{\alpha}\}$ of $E$, for $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$, then $L(\eta)=\sum w\wedge \eta_{\alpha}\ot e_{\alpha}$ and $L^{*}(\eta)=\sum L^{*}(\eta_{\alpha})\ot e_{\alpha}$, where $L^{*}$ adjoint on $\A^{p,q}(X)$.
+	So $[L,L^{*}]$ is multiplicative on $\A^{p,q}(E)$ by the scalar $(p+q-n)$.
+	[Recall: $[L^{*},\bar{\partial}]=-i\partial^{*}$ on $\A^{p,q}(X)$]
+	Here $[L^{*},\bar{\partial}]=-i(\nabla')^{*}$ on $\A^{p,q}(E)$.
+
+	To prove the Kodaira vanishing theorem we only need two inequalities which are called the \textit{Nakano inequalities}: for every harmonic form $\xi \in \H^{p,q}(E)$ we have
+	\begin{enumerate}[label=\arabic*)]
+	    \item $\frac{i}{2\pi} \langle \Theta \wedge L_{E}^{*}(\xi), \xi\rangle \leqslant 0$.
+	    \item $\frac{i}{2\pi} \langle L_{E}^{*}(\Theta \wedge \xi),\xi\rangle \geqslant 0$.
+	\end{enumerate}
+
+	Now if $E>0$, then from the difference $2)-1)$ we deduce
+	\[ \frac{i}{2\pi}\langle L_{E}^{*}(\Theta \wedge \xi -\Theta \wedge L_{E}^{*}\xi ,\xi\rangle \geqslant 0 .\]
+	Since $E$ is positive, we can choose a metric on $X$ such that $w=\frac{i}{2\pi}\Theta$.
+	Hence the previous expression becomes $\langle [L_{E}^{*},L_{E}](\xi),\xi\rangle \geqslant 0$.
+	By assumption $\xi\in \H^{p,q}(E)$, hence this expression is in turn equivalent to $-(p+q-n)\langle \xi ,\xi\rangle \geqslant 0 $.
+	So if $p+q>n$, then $\xi=0$, thus $H^{q}(X,\Omega^{p}\ot E)=\H^{p,q}(E)=0$.
+    \end{proof}
+\end{thm}
+
+Let us now prove the Nakano inequalities, which were used in the previous proof.
+$\Theta \wedge (-)=\nabla^{2}=\nabla^{1}\bar{\partial}_{E}+\bar{\partial}_{E}\nabla'$ ($\nabla=\nabla'+\bar{\partial}_{E}$).
+$\Delta_{\bar{\partial}_{E}}(\xi)=0 \Leftrightarrow \bar{\partial }_{E}(\xi)=\bar{\partial}_{E}^{*}(\xi)=0$.
+\begin{multline*}
+    i\langle (\nabla')^{*}\xi,(\nabla')^{*}\xi\rangle=-\langle [L_{E}^{*},\bar{\partial}_{E}]\xi,(\nabla')^{*}(\xi)\rangle = \langle \bar{\partial}_{E} L_{E}^{*}\xi,(\nabla'))^{*}\xi\rangle =\\
+    =\langle L_{E}^{*}(\xi),\bar{\partial}_{E}^{*}(\nabla')^{*}(\xi)=\langle L_{E}^{*}(\xi),[\bar{\partial}_{E}^{*}(\nabla')^{*}+(\nabla')^{*}\bar{\partial}_{E}^{*}](\xi)\rangle = \\
+    =\langle \Theta \wedge L_{E}^{*}(\xi),\xi\rangle 
+\end{multline*}
+This shows the first Nakano inequality.
+
+\begin{rem}
+    As a special case, if $E$ is a positive line bundle, then
+    \[H^{q}(X,K_{X}\ot E)=0\]
+    for all $q>0$.
+\end{rem}
 
 \bibliographystyle{alpha}
 \bibliography{refs}

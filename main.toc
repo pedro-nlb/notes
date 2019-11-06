@@ -6,15 +6,15 @@
 \contentsline {subsection}{\numberline {2.3}Compactly generated topological spaces}{5}{subsection.2.3}% 
 \contentsline {section}{\numberline {3}[LT] Lecture 1 - 22.10.19}{6}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Introduction and overview of the course}{6}{subsection.3.1}% 
-\contentsline {section}{\numberline {4}[WS] Kodaria 1 (Jin Li) - 23.10.19}{8}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Chow's theorem}{8}{subsection.4.1}% 
-\contentsline {subsection}{\numberline {4.2}Sheaves}{10}{subsection.4.2}% 
+\contentsline {section}{\numberline {4}[WS] Kodaria 1 (Jin Li) - 23.10.19}{9}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Chow's theorem}{9}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Sheaves}{11}{subsection.4.2}% 
 \contentsline {subsection}{\numberline {4.3}A bit of Hodge theory}{11}{subsection.4.3}% 
 \contentsline {section}{\numberline {5}[LT] Lecture 2 - 24.10.19}{11}{section.5}% 
 \contentsline {subsection}{\numberline {5.1}Formal power series}{12}{subsection.5.1}% 
 \contentsline {subsection}{\numberline {5.2}Analytic functions}{13}{subsection.5.2}% 
 \contentsline {subsection}{\numberline {5.3}Topology}{14}{subsection.5.3}% 
-\contentsline {section}{\numberline {6}[FS] Matthias Paulsen - The construction problem for Hodge numbers - 25.10.19}{14}{section.6}% 
+\contentsline {section}{\numberline {6}[FS] Matthias Paulsen - The construction problem for Hodge numbers - 25.10.19}{15}{section.6}% 
 \contentsline {subsection}{\numberline {6.1}Overview over complex numbers}{15}{subsection.6.1}% 
 \contentsline {subsection}{\numberline {6.2}Constructions}{17}{subsection.6.2}% 
 \contentsline {subsection}{\numberline {6.3}Positive characteristic}{18}{subsection.6.3}% 
@@ -49,3 +49,6 @@
 \contentsline {subsection}{\numberline {11.5}Hypercovers}{32}{subsection.11.5}% 
 \contentsline {section}{\numberline {12}[LT] Lecture 5 - 5.11.19}{34}{section.12}% 
 \contentsline {subsection}{\numberline {12.1}Manifolds}{34}{subsection.12.1}% 
+\contentsline {section}{\numberline {13}[WS] Kodaira 3 (Leonardo) - Kodaira Vanishing Theorem - 6.11.19}{37}{section.13}% 
+\contentsline {subsection}{\numberline {13.1}Vector bundles and metrics}{37}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {13.2}Connections}{39}{subsection.13.2}% 
