@@ -93,6 +93,7 @@
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Supp}{Supp}
 
 % New commands
 \newcommand{\pe}{*_{pro\acute et}}
@@ -1702,6 +1703,125 @@ This shows the first Nakano inequality.
     \[H^{q}(X,K_{X}\ot E)=0\]
     for all $q>0$.
 \end{rem}
+
+\section{[LT] Lecture 6 - 7.11.19}
+
+Why are we considering real manifolds at all?
+(We are interested in smooth projective varieties and complex manifolds are much nicer).
+It turns out that there are things we can do only with real manifolds.
+This is also where second countability will come into play.
+Consider:
+
+\begin{exa}
+    \[ f(x)=\begin{cases} e^{-\frac{1}{x}} &\text{if } x\geqslant 0 \\ 0 &\text{if } x\leqslant 0
+    \end{cases} \]
+\end{exa}
+Because of the identity principle, holomorphic functions are too rigid (zero on an open implies zero everywhere).
+On the other hand, smooth functions can wiggle around.
+This will be very useful for the following reason:
+
+\begin{thm}[Partition of Unity]
+    Let $X$ be a smooth manifold and $\{ U_{\alpha}\}_{\alpha\in I}$ an open cover.
+    There are smooth functions $f_{n}\colon X\to \R$ for $n\in \N$ with compact support taking values in $[0,1]$ such that
+    \begin{enumerate}[label=\roman*)]
+	\item for every $n\in \N$ there is some $\alpha\in I$ such that $\Supp(f_{n})\subseteq U_{\alpha}$,
+	\item for every $x\in X$ there are only finitely many $n\in \N$ such that $f_{n}(x)\neq 0$, and
+	\item $\sum_{n=1}^{\infty} f_{n}(x)=1$.
+    \end{enumerate}
+\end{thm}
+
+\begin{exa}
+    On $X=\R$, with $U=\R$, the single function $f_{1}=1$ does not work, because it does not have compact support.
+    Instead, choose smooth positive functions $g_{n}$ for $n\in \Z$ such that $g_{n}$ has constant value $1$ between $n$ and $n+1$ and constant value $0$ outside of the interval $[n-1,n+2]$.
+    [picture]
+    This way we get compact supports and local finiteness.
+    We can sum them up at each point to obtain a smooth function $\sum_{n\in \Z}g_{n}$.
+    We can divide each term of the sum by $g>0$ to obtain new smooth functions to obtain the desired result.
+\end{exa}
+
+\begin{rem}
+    We used second contability of $\R$ to divide it into countably many intervals.
+\end{rem}
+
+For a full proof of the previous result, see Warner Theorem 1.11.
+
+\begin{lm}[Warner, Lemma 1.9]
+    Let $X$ be a topological space which is locally compact, Hausdorff and second countable.
+    Then every open cover has a refinement which is countable, locally finite and consisting only of open sets with compact closure.
+    \begin{proof}
+	Let $\U=\{U_{\alpha}\}_{\alpha\in I}$ be a fixed open cover.
+	As $X$ is second countable, there is a sequence $(V_{i})_{i\in \N}$ of open sets such that every open set is a union of such $V_{i}$.
+	By local compactness and Hausdorffness we can further assume that all $\bar{V}_{i}$ are compact, because throwing away those which do not have compact closure still forms a basis.
+	For every $x\in X$ there is an index $i(x)\in \N$ such that $x\in V_{i(x)}$.
+	The family $\{V_{i(x)}\}_{x\in X}$ is a countable open cover of $X$ and all $\bar{V_{i}}$ are compact.
+	We construct a sequence $G_{1}\sub G_{2}\sub \cdots $ of open subsets with compact closure such that $\cup_{i=1}^{\infty}G_{i}=X$ and $\bar{G}_{i}\sub G_{i+1}$:
+	\[ G_{1}\sub \bar{G}_{1}\sub G_{2}\sub \bar{G}_{2}\sub \cdots \]
+	Put $G_{1}=V_{1}$.
+	Let $j_{2}$ be the smallest index bigger than $1$ such that $\bar{G}_{1}\sub \cup_{i=1}^{j_{2}}=:G_{2}$, which exists by compactness of $\bar{G}_{1}$.
+	Let $j_{3}$ be the smallest index bigger than $j_{2}$ such that... etc.
+	Then
+	\[ \cup_{i=1}^{\infty}G_{i}=\cup_{n=1}^{\infty}\cup_{j=1}^{j_{n}}V_{j}=\cup_{i=1}^{\infty}V_{i}=X.\]
+	The set $\bar{G}_{i}\setminus G_{i-1}$ is compact and contained in the open set $G_{i+1}\setminus \bar{G}_{i-2}$.
+	For each $i\geqslant 3$ choose a finite subcover of the open cover $\{U_{\alpha}\cap (G_{i+1}\setminus \bar{G}_{i-2})\}_{\alpha}$ of $\bar{G}_{i}\setminus G_{i-1}$.
+	Also choose a finite open subcover of $\{U_{\alpha} \cap G_{\xi}\}$ of $\bar{G}_{2}$.
+	This is finally the refinement we wanted.
+    \end{proof}
+\end{lm}
+
+Now we can give the idea of the proof of Thm 1.19.
+A partition of unity subordinated to a refinement of $\{U_{\alpha}\}$ is also a partition of unity subordinated to the original open cover.
+We replace our cover by the refinement in the lemma.
+Wlog the cover is countable, locally finite and $\bar{U}_{\alpha}$ is compact.
+This looks like the cover of $\R$ given in the previous exmaple, and then we find suitable smooth functions, etc.
+
+\subsection{Vector bundles}
+
+Our goal is to define the tangent bundle of a manifold.
+
+\begin{exa}
+    Let $X=S^{1}=\{(x,y)\in \R^{2}\mid x^{2}+y^{2}=1\}$.
+    The tangent line at $(x_{0},y_{0})\in S^{1}$ has the parametrization $t\mapsto (x_{0},y_{0})+t(y_{0},-x_{0})$.
+    The tangent space is given by
+    \[ T_{(x_{0},y_{0})}S^{1}=\{ t(y_{0},-x_{0})\mid t\in \R\}.\]
+    Together they form the tangent bundle $TS^{1}=\{(v,w)\in S^{1}\times \R^{2}\mid v\perp w\}$.
+    This comes with a projection $p\colon TS^{1}\to S^{1}$.
+    The fibre of $p$ in $TS^{1}$ has the structure of a vector space.
+\end{exa}
+
+\begin{defn}
+    Let $X$ be a topological space.
+    A \textit{real vector bundle} of rank $r$ over $X$ consists of a continuous map $\pi\colon V\to X$ together with the structure of a real vector space of dimension $r$ on each $V_{x}=\pi^{-1}(x)$ such that there exists an open cover $\{U_{i}\}$ of $X$ and local trivializations
+    \begin{center}
+	\begin{tikzcd}
+	    \pi^{-1}(U_{i})\arrow{dr}{\pi|_{\pi^{-1}(U_{i})}}\arrow{rr}{\sim} & & U_{i}\times \R^{r}\arrow{dl} \\
+	    & U_{i} & 
+	\end{tikzcd}
+    \end{center}
+    such that for every $x\in U_{i}$ the induced map $V_{x}\to \{x\}\times \R^{r}\to \R^{r}$ is an isomorphism of vector spaces.
+
+    Let $f\colon X\to Y$ be continuous and let $\pi\colon V\to X$ and $\xi\colon W\to Y$ two real vector bundles.
+    A morphism of vector bundles over $f$ is a continuous map $F\colon V\to W$ such that the following diagram commutes
+    \begin{center}
+	\begin{tikzcd}
+	    V\arrow{d}{\pi}\arrow{r}{F} & W\arrow{d}{\xi} \\
+	    X\arrow{r}{f} & Y
+	\end{tikzcd}
+    \end{center}
+    and such that the induced maps $V_{x}\to W_{f(x)}$ is $\R$-linear.
+    
+    If we replace $\R$ by $\C$ in this definition we get \textit{complex vector bundles}, and a vector bundle of rank $1$ is called a \textit{line bundle}.
+\end{defn}
+
+\begin{rem}
+    Every complex vector bundle defines a real vector bundle.
+\end{rem}
+
+\begin{exe}
+    Let $\pi\colon V\to X$ be a vector bundle of rank $r$.
+    Show that it is trivial if and only if it there are $r$ continuous section such that on each point their images form a basis of the fibre.
+\end{exe}
+
+
 
 \bibliographystyle{alpha}
 \bibliography{refs}
