@@ -25,6 +25,7 @@
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
 
 % Definition theorems
 \theoremstyle{definition}
@@ -51,6 +52,8 @@
 \newcommand{\bbE}{\mathbb{E}}
 \newcommand{\bbD}{\mathbb{D}}
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
+\newcommand{\Gm}{\mathbb{G}_{m}}
+\newcommand{\bbA}{\mathbb{A}}
 
 % Mathscr for categories
 \newcommand{\scrC}{\mathscr{C}}
@@ -1821,7 +1824,89 @@ Our goal is to define the tangent bundle of a manifold.
     Show that it is trivial if and only if it there are $r$ continuous section such that on each point their images form a basis of the fibre.
 \end{exe}
 
+\section{[FS] Harry Schmidt - Uniformizations of polynomial dynamical systems - 8.11.19}
 
+Let $K$ be a number field and $K_{v}$ a completion at a place $v\in M_{K}:=\{ \text{ places of }K\}$.
+We denote by $\bar{K}_{v}$ the algebraic closure of $K_{v}$.
+
+Let $f\in K[z]$ be a monic polynomial of degree $d\geqslant 2$.
+We define $f^{0,n}=f(f^{0,-1})$ and $f^{0,0}=z$.
+
+\begin{rem}
+    Let $f\colon \P^{1}\to \P^{1}$.
+    If $\mu\colon \P^{1}\to \P^{1}$ is a Moebius transformation, then $\mu\circ f\circ \mu^{-1}$ has the same dynamics as $f$.
+\end{rem}
+
+\begin{thm}[Botall, Jones, S.]
+    Let $\alpha\in K$.
+    Define
+    \[ \L_{\alpha}^{(n)}=\{ \beta\in \bar{K}\mid f^{0,n}(\beta)=f^{0,n}(\alpha)\}. \]
+    There exists $\beta\in \L_{\alpha}^{(n)}$ such that
+    \[ (*)\quad [K(\beta):K]\underset{f,\alpha,K}{>>}d^{n/5}\].
+\end{thm}
+
+\begin{exa}[P. Ingram]
+    $f=z^{d}$, $\L_{\alpha}^{(n)}=\alpha\mu_{d^{n}}$, where $\mu_{d^{n}}=\{ \xi \mid \xi^{d^{n}}=1\}$.
+    There exists $\Phi\in \frac{1}{z}+\cdots \in K[[\frac{1}{z}]]$ with the property $\Phi(f(z))=\Phi(z)^{d}$.
+\end{exa}
+
+\begin{thm}[Ingram, de Marco et al]
+    For each place $v\in M^{K}$ there exists $\delta_{v}\geqslant 1$ such that $\Phi$ converges on
+    \[ D_{\infty}^{\delta_{v}}=\{ z\in \bar{K}_{v}\mid |z|_{v}>\delta_{v}\},\]
+    and $\delta_{v}=1$ for almost all $v$.
+\end{thm}
+
+\textbf{Idea:} let $n$ be minimal such that $f^{0,n}(\alpha)=f^{0,n}(\beta)$.
+Then $\Phi(\beta)=\xi \Phi(\alpha)$ for a root of unity $\xi$ of order $N\geqslant 2^{n}$.
+If $v$ is a finite place, then $[K_{v}(\xi):K_{v}]\underset{K,\varepsilon} N^{1-\varepsilon}$.
+
+If $v$ is infinite, then we write $\xi=\exp(2\pi i\frac{m}{N})$ for $m\in \Z$ and $(m,N)=1$.
+Observe that $\beta=\Phi^{-1}(\exp(2\pi i\frac{m}{N})\Phi(\alpha))$.
+We study the function $g(\tau)=\Phi^{-1}(\exp(2\pi i\tau)\Phi(\psi))$, $\im(\tau)\geqslant 0$ and $g(\tau)$ is definable in $\R_{an,exp}$.
+
+\begin{thm}[Serre, Tate, Ihora '60]
+    Suppose $C\sub\Gm^{2}$ is an irreducible curve with generic point $(X_{e},Y_{e})$ and that
+    \[ |\calC\cap \mu_{\infty}^{2} |=\infty \Rightarrow \exists n,m\geqslant 0,,X_{e}^{n}Y_{e}^{n}=1.\]
+\end{thm}
+
+\begin{conj}
+    Suppose $\calC$ is an invertible curve in $\bbA^{2}$.
+    Then if $|\calC\cap (\L_{\alpha}^{\infty})^{2}|=\infty$, $\calC$ is a component of a curve defined by $f^{0,n}(X)-f^{0,n}(Y)=0$ or $\calC$ is of the form $\beta\times \bbA^{1}$, $\bbA^{1}\times \beta$ for $\beta\in\L_{\alpha}^{\infty}$.
+\end{conj}
+
+Here $\L_{\alpha}^{\infty}=\cup_{n\in\N}\L_{\alpha}^{(n)}$.
+
+\begin{rem}
+    If we had $(*)$ for all primitive solutions of $f^{0,n}(X)=f^{0,n}(\alpha)$, then we could use the Pola-Zimmer strategy.
+    We do have a Galois-bound if $|f^{0,n}(\alpha)|\to \infty$ for $v$ a finite place.
+    To apply the strategy we would also need $|f(\alpha)|_{v}\to \infty$ at infinite places.
+\end{rem}
+
+\begin{thm}
+    Suppose $|f^{0,n}(\alpha)|_{v}\to \infty$ at a finite place $v\in M_{K}$.
+    Then the conjecture is true.
+\end{thm}
+
+\textbf{Idea:} use the following elementary
+\begin{lm}
+    Let $(\xi_{1},\xi_{2})\in \Gm^{2}(\bar{\Q})$ be of order $N$.
+    There exists $\xi_{N}$ a primitive $N$-th root of $1$ and $\xi_{e},\xi_{e}'$ two $e$-th roots of $1$ such that
+    \[ (\xi_{1},\xi_{2})=(\xi_{e}\xi_{N}^{K_{1}},\xi_{e}'\xi_{N}^{K_{2}}), \]
+    where $e\cdot \max\{|K_{1}|,|K_{2}|\}\leqslant N^{3/4}$.
+    \begin{proof}
+	The idea is to apply the pigeon principle.
+	Let $P\in K[X,Y]$ be an irreducible polynomial such thath $P(\xi_{1},\xi_{2})=0$.
+	Then $Q(x)=P(\xi_{e}X^{K_{1}},\xi_{e}'X^{K_{2}})$ vanishes at $X=\xi_{N}$.
+	We have $Q(X)\in K[X,\frac{1}{X}]$ and $\deg{Q}\leqslant 2\deg{P}\frac{N^{3/4}}{e}$.
+	Assuming $Q\neq 0$, the number of zeroes of $Q$ is $<<$ than $\deg{P}N^{3/4}$.
+	But [...]
+    \end{proof}
+\end{lm}
+
+In our situation we consider
+\[ Q(x)=P(\Phi^{-1}(\xi_{e}X^{K_{1}}\Phi(\alpha)),\Phi^{-1}(\xi_{e}'X^{K_{2}}\Phi(\alpha))),\]
+which defines a $v$-adic analytic function.
+Then we can use some theory for $v$-adic functions.
 
 \bibliographystyle{alpha}
 \bibliography{refs}

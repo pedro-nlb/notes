@@ -54,3 +54,4 @@
 \contentsline {subsection}{\numberline {13.2}Connections}{39}{subsection.13.2}% 
 \contentsline {section}{\numberline {14}[LT] Lecture 6 - 7.11.19}{41}{section.14}% 
 \contentsline {subsection}{\numberline {14.1}Vector bundles}{42}{subsection.14.1}% 
+\contentsline {section}{\numberline {15}[FS] Harry Schmidt - Uniformizations of polynomial dynamical systems - 8.11.19}{44}{section.15}% 
