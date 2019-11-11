@@ -2,31 +2,31 @@
 \contentsline {section}{\numberline {1}About these notes}{3}{section.1}% 
 \contentsline {section}{\numberline {2}[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}{3}{section.2}% 
 \contentsline {subsection}{\numberline {2.1}Introduction}{3}{subsection.2.1}% 
-\contentsline {subsection}{\numberline {2.2}Recollections on sheaves on sites}{4}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.2}Recollections on sheaves on sites}{5}{subsection.2.2}% 
 \contentsline {subsection}{\numberline {2.3}Compactly generated topological spaces}{6}{subsection.2.3}% 
 \contentsline {section}{\numberline {3}[LT] Lecture 1 - 22.10.19}{7}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Introduction and overview of the course}{7}{subsection.3.1}% 
 \contentsline {section}{\numberline {4}[WS] Kodaria 1 (Jin Li) - 23.10.19}{9}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Chow's theorem}{9}{subsection.4.1}% 
 \contentsline {subsection}{\numberline {4.2}Sheaves}{11}{subsection.4.2}% 
-\contentsline {subsection}{\numberline {4.3}A bit of Hodge theory}{11}{subsection.4.3}% 
-\contentsline {section}{\numberline {5}[LT] Lecture 2 - 24.10.19}{11}{section.5}% 
+\contentsline {subsection}{\numberline {4.3}A bit of Hodge theory}{12}{subsection.4.3}% 
+\contentsline {section}{\numberline {5}[LT] Lecture 2 - 24.10.19}{12}{section.5}% 
 \contentsline {subsection}{\numberline {5.1}Formal power series}{12}{subsection.5.1}% 
 \contentsline {subsection}{\numberline {5.2}Analytic functions}{13}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}Topology}{14}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.3}Topology}{15}{subsection.5.3}% 
 \contentsline {section}{\numberline {6}[FS] Matthias Paulsen - The construction problem for Hodge numbers - 25.10.19}{15}{section.6}% 
 \contentsline {subsection}{\numberline {6.1}Overview over complex numbers}{15}{subsection.6.1}% 
-\contentsline {subsection}{\numberline {6.2}Constructions}{17}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.2}Constructions}{18}{subsection.6.2}% 
 \contentsline {subsection}{\numberline {6.3}Positive characteristic}{18}{subsection.6.3}% 
-\contentsline {section}{\numberline {7}[CM] Talk 2 (Pedro N\IeC {\'u}\IeC {\~n}ez) - Condensed Abelian Groups - 28.10.19}{18}{section.7}% 
-\contentsline {subsection}{\numberline {7.1}Recollections from the previous talk}{18}{subsection.7.1}% 
-\contentsline {subsection}{\numberline {7.2}A nicer description of our category}{18}{subsection.7.2}% 
+\contentsline {section}{\numberline {7}[CM] Talk 2 (Pedro N\IeC {\'u}\IeC {\~n}ez) - Condensed Abelian Groups - 28.10.19}{19}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}Recollections from the previous talk}{19}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {7.2}A nicer description of our category}{19}{subsection.7.2}% 
 \contentsline {subsection}{\numberline {7.3}Abelianity and compact-projective generation}{19}{subsection.7.3}% 
 \contentsline {subsection}{\numberline {7.4}Closed symmetric monoidal structure}{19}{subsection.7.4}% 
-\contentsline {subsection}{\numberline {7.5}Derived category}{19}{subsection.7.5}% 
+\contentsline {subsection}{\numberline {7.5}Derived category}{20}{subsection.7.5}% 
 \contentsline {section}{\numberline {8}[LT] Lecture 3 - 29.10.19}{20}{section.8}% 
-\contentsline {subsection}{\numberline {8.1}Complex differentiable functions}{20}{subsection.8.1}% 
-\contentsline {subsection}{\numberline {8.2}Implicit function theorem}{21}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {8.1}Complex differentiable functions}{21}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Implicit function theorem}{22}{subsection.8.2}% 
 \contentsline {subsection}{\numberline {8.3}More basic topology}{24}{subsection.8.3}% 
 \contentsline {section}{\numberline {9}[WS] Kodaira 2 (Vera) - Introduction to Hodge Manifolds - 30.10.19}{24}{section.9}% 
 \contentsline {subsection}{\numberline {9.1}Recollections}{25}{subsection.9.1}% 
@@ -55,3 +55,4 @@
 \contentsline {section}{\numberline {14}[LT] Lecture 6 - 7.11.19}{41}{section.14}% 
 \contentsline {subsection}{\numberline {14.1}Vector bundles}{42}{subsection.14.1}% 
 \contentsline {section}{\numberline {15}[FS] Harry Schmidt - Uniformizations of polynomial dynamical systems - 8.11.19}{44}{section.15}% 
+\contentsline {section}{\numberline {16}[CM] Talk 4 (Oliver Braunling) - Locally compact abelian groups - 11.11.19}{45}{section.16}% 

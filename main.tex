@@ -50,6 +50,7 @@
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\CP}{\mathbb{CP}}
 \newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbT}{\mathbb{T}}
 \newcommand{\bbD}{\mathbb{D}}
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
 \newcommand{\Gm}{\mathbb{G}_{m}}
@@ -97,6 +98,8 @@
 \DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\ihom}{\underline{Hom}}
+\DeclareMathOperator{\iext}{\underline{Ext}}
 
 % New commands
 \newcommand{\pe}{*_{pro\acute et}}
@@ -107,11 +110,13 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\grd}{^{\bullet}}
+\newcommand{\dual}{^{\vee}}
 \newcommand{\db}{\marginnote{\dbend}}
 \newcommand{\tms}{\times}
 \newcommand{\sub}{\subseteq}
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\mono}{\hookrightarrow}
+\newcommand{\LCA}{\mathrm{LCA}}
 
 
 \title{Various lecture notes}
@@ -1907,6 +1912,153 @@ In our situation we consider
 \[ Q(x)=P(\Phi^{-1}(\xi_{e}X^{K_{1}}\Phi(\alpha)),\Phi^{-1}(\xi_{e}'X^{K_{2}}\Phi(\alpha))),\]
 which defines a $v$-adic analytic function.
 Then we can use some theory for $v$-adic functions.
+
+\section{[CM] Talk 4 (Oliver Braunling) - Locally compact abelian groups - 11.11.19}
+
+Goal of this lecture: there is a ``classical'' approach to locally compact abelian groups giving an exact category called $\LCA$ and a bounded derived category $\Db(\LCA)$, and we will show that $\Db(\LCA)\mono \Db(\Cond(\Ab))$ is a fully faithful functor.
+
+\begin{defn}
+    A topological group is called \textit{locally compact} if it posseses a compact neighbourhood of the identity element.
+\end{defn}
+
+\begin{rem}
+    Compact in the previous definition is french compact, i.e. Hausdorff and quasi-compact.
+    In particular, locally compact abelian groups are Hausdorff.
+\end{rem}
+
+\begin{thm}[Theorem 4.1]
+    \begin{enumerate}[label=\roman*)]
+	\item Let $A$ be a locally compact abelian group.
+	    Then there is an integer $n$ and an iso $A\cong \R^{n}\tms A'$, where $A'$ admits a compact open subgroup.
+	    Hence we can write\footnote{During this talk, $\mono$ means injective and closed and $\epi$ means surjective and open.}
+	    \[ C\mono A'\epi A'/C \]
+	    with $C$ compact and $A'/C$ discrete.
+	\item Pontryagin duality induces an equivalence of categories
+	    \begin{align*}
+		\LCA^{op}&\xrightarrow{\sim} \LCA \\
+		A & \mapsto \Hom_{\Top\Ab}(A,\Pi)
+	    \end{align*}
+	    where the hom-space is considered with the compact open topology and $\bbT:=U(1)=\R/\Z$.
+	    We denote the hom-space above by $A\dual$.
+	\item Pontryagin duality exchanges compact and discrete groups.
+    \end{enumerate}
+\end{thm}
+
+\begin{rem}
+    \begin{enumerate}[label=\roman*)]
+	\item A product $\prod_{i\in I}\R$ is locally compact if and only if $|I|<\infty$.
+	\item Open implies clopen for topological groups.
+	\item $H\sub G$ open if and only if $G/H$ is discrete.
+    \end{enumerate}
+\end{rem}
+
+\begin{prop}[Proposition 4.2]
+    Let $A,B$ be Hausdorff topological abelian groups and $A,B$ compactly generated.
+    Then there is a natural isomorphism of condensed abelian groups
+    \[ \ihom(\u{A},\u{B})\xrightarrow{\sim} \u{\Hom_{\Top\Ab}(A,B)} \]
+    \begin{proof}
+	Recall that we have this functor $\u{(-)}\colon \Top\scrC\to \Cond(\scrC)$ sending $T\mapsto \u{T}$, where $\u{T}(S)=\Hom_{\Top}(S,T)$.
+	Recall Proposition 1.7. in the script: this functor is faithful, and restricted to the category of compactly generated Hausdorff objects it is also full.
+	Recall also that if $S$ is profinite and $M$ is a condensed abelian group, then
+	\[ M(S)=\Hom_{\Cond(\Ab)}(\Z[S],M). \]
+	Then
+	\[ \ihom(\u{A},\u{B})(S)=\Hom_{\Cond(\Ab)}(\Z[S],\ihom(\u{A},\u{B}))\overset{adj.}{\cong} \Hom_{\Cond(\Ab)}(\Z[S]\ot \u{A}, \u{B}) \]
+	and\marginnote{\dbend Check carefully what is meant by each hom-set.}
+	\[ \u{\Hom(A,B)}(S)=\Hom_{\Top}(S,\Hom_{\Top\Ab}(A,B))\overset{adj.}{\cong} \Hom_{\Top}(S\tms A,B)=\Hom_{\Cond(\Set)}(\u{S\tms A},B) \]
+    \end{proof}
+\end{prop}
+
+\begin{thm}[Theorem 4.3]
+    Suppose $A=\prod_{I}\bbT$ be a condensed abelian group, where $I$ is any index set.
+    \begin{enumerate}[label=\roman*)]
+	\item For any discrete abelian group $M$,
+	    \[ R\ihom(A,M)=\bigoplus_{I}M[-1]. \]
+	\item $R\ihom(A,\R)=0$.
+    \end{enumerate}
+\end{thm}
+
+First some preparation:
+
+\begin{thm}[Theorem 4.5, Eilenberg-MacLane, Breen, Deligne]
+    There is a functorial resolution of an abelian group $A$ of the form
+    \[ (*)\quad \cdots \to \op_{j=1}^{n_{i}}\Z[A^{r_{{i,j}}}]\to \cdots \Z[A^{3}]\op \Z[A^{2}]\to \Z[A^{2}]\to \Z[A]\to A\to \]
+    for finite $n_{i},r_{i,j}$.
+\end{thm}
+
+\begin{cor}[Corollary 4.8]
+    For condensed abelian groups $A,M$ and any extremally disconnected set $S$ there is a spectral sequence
+    \[ E_{1}^{i_{1},i_{2}}=\prod_{j=1}^{n_{i_{1}}}H^{i_{2}}_{Cond}(A^{r_{i_{1},i_{2}}}\tms S,M)\Rightarrow \iext^{i_{1}+i_{2}}(A,M)(S),\]
+    where $\iext^{i}(X,Y)=R\ihom(X,Y[i])$.
+    \begin{proof}
+	Recall $R\ihom(A,M)(S)=R\Hom(A\ot\Z[S],M)$, and for finite direct sumes we have $\Z[A^{i}]\ot \Z[S]\cong \Z[A^{i}\tms S]$.
+	We use the resolution of Theorem 4.5 and the previous iso to compute $R\Hom(A\ot \Z[S],M)$ as
+	\[ \cdots \to \bigoplus \Hom(\Z[A^{r_{i,j}}\tms S],M)\to \cdots, \]
+	then do this resolution for each term and apply some horse-shoe lemma on projective resolutions on the LHS of the previous homs to conclude with the spectral sequence of the double complex.
+    \end{proof}
+\end{cor}
+
+\begin{rem}
+    The previous corollary is functorial in $A$, $M$ and in $S$.
+\end{rem}
+
+Now we prove the theorem (Theorem 4.3).
+
+Proof of $i)$ first.
+If $I$ finite, we can assume that $I$ is a singleton.
+Let's just assume that $A=\bbT$.
+We need to compute $\R\Hom(\bbT,M)$..
+We have a triangle $\Z\to \R\to \bbT\xrightarrow{+1}$, which rotated yields a distinguished triangle
+\[ \R\to \bbT\to \Z[1]\xrightarrow{1}.\]
+So the claim is equivalent to the claim $\R\Hom(\R,M)=0$ for any discrete group $M$, because we have a distinguished triangle
+\[ \R\ihom(\Z[1],M)\to R\Hom(\bbT,M)\to R\Hom(\R,M) \xrightarrow{+1}\]
+It suffices to show that $0\to \R$ induces an iso after applying $R\Hom(-,M)$, for which in turn it is sufficient to know that the pullback $0\times \id \colon S\to \R^{r}\times S$ induces an iso in all cohomology groups
+\[ H^{i}(\R^{r}\times S,M))\to H^{i}(S,M). \]
+Now we use the result that $R\Gamma(\R^{r}\tms S,M)=\R\varprojlim_{r}R\Gamma([-n,n]^{r}\tms S,M)$, and since $[-n,n]\tms S$ is compact, by the last talk this is classical sheaf cohomology, where we can use homotopy invariance.
+Then use functoriality in the previous lemma to conclude.
+
+Proof of $ii)$ now.
+For this we need a lemma (Proposition 4.17): consider a functorial resolution $F(A)_{\bullet}$ of an abelian group such taht $F(A)_{i}\cong \op_{fin}\Z[A^{(fin)}]$.
+Then for any natural number $n\geqslant 1$, the map $(-\cdot n)\colon F(*)\to F(A)$ and the map $[n]\colon F(A)\to F(A)$ induced from multiplication on $A$ are homotopic by a functorial homotopy $h_{\bullet}\colon F(A)_{\bullet}\to F(A)_{\bullet +1}$.
+By theorem 3.3 from lat lecture, $R\Hom(A,\R)(S)$ can be computed by the complex
+\[ 0\to \op_{j=1}^{n_{0}}C(A^{r_{0,j}}\tms S,\R)\to \op_{j=1}^{n_{1}}C(A^{r_{1,j}}\tms S,\R)\to \cdots \]
+of Banach spaces (i.e. differentials are continuous etc).
+Assume $f\in \op_{j=1}^{n_{i}}C(A^{r_{i,j}}\tms S,\R)$ satisfies $df=0$.
+Then $2f=[2]^{*}(f)+d(h_{i-1}^{*}(f))$.
+Hence
+\[ f=\frac{1}{2}[2]^{*}(f)+d(\frac{1}{2}h_{i-1}^{*}(f)).\]
+Now we iterate this idea!
+After $n$ iterations we obtain
+\[ f=\frac{1}{2^{n}}[2^{n}]^{*}(f)+d(\frac{1}{2}h_{i-1}^{*}(f)+\frac{1}{4}h_{i-1}^{*}([2]^{*}(f))+\ldots ). \]
+Note that $[2^{n}]^{*}(f)$ stays bounded as $n\to \infty$.
+
+\begin{cor}
+    $R\ihom(\R,\R)=\R$ using again the triangle $\Z\mono\R\epi\bbT$.
+\end{cor}
+
+Recall the goal theorem: $\Db(\LCA)\mono \Db(\Cond(\Ab))$ is fully faithful.
+$\LCA$ is a quasi-abelian category.
+There are two approaches to define its bounded derived category.
+One of them by J.P. Schneider using these quasi-abelian categories.
+Another one was by Hoffmann-Spitzweck, which is using exact categories of Quillen.
+They showed that these are a replacement for quasi-abelian category.
+We may not have kernels and cokernels, so we cannot talk about cohomology objects!
+How do we define the derived category?
+Here are the steps:
+
+\begin{enumerate}
+    \item Define the category of complexes.
+    \item Go to the homotopy category.
+    \item Define the derived category as the Verdier quotient of the homotopy category by acyclic complexes, where a complex is called acyclic if each differential factors as $d\colon C^{n}\epi Z^{n+1}A\mono A^{n+1}$ and $Z^{n}A\mono A^{n}\epi Z^{n+1}A$.
+\end{enumerate}
+
+Now the proof idea goes as follows.
+We first set up a functor from $\Db(\LCA)$ to $\Db(\Cond(\Ab))$ (this we skip).
+For the full faithfulness statement we need to show that $\R\Hom_{\Db(\LCA)}(A,B)\to \R\Hom_{\Db(\Cond(\Ab))}(\psi A,\psi B)$ is an isomorphism of abelian groups.
+We can reduce to the case of $A,B\in \LCA$.
+By the structure theorem for $\LCA$ groups, any $\LCA$ group has the shape $\R\tms A'$ with $C\mono A'\epi D$ with $C$ compact and $D$ discrete.
+$D$ is a $\Z$-module, hence has a projective resolution $\op \Z\to \op \Z\epi D$.
+Again arguing with triangles we reduce to direct sums of $\Z$, then reduce to $\Z$.
+For the compact use triangles with tori.
 
 \bibliographystyle{alpha}
 \bibliography{refs}
