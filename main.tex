@@ -100,6 +100,7 @@
 \DeclareMathOperator{\Supp}{Supp}
 \DeclareMathOperator{\ihom}{\underline{Hom}}
 \DeclareMathOperator{\iext}{\underline{Ext}}
+\DeclareMathOperator{\GL}{GL}
 
 % New commands
 \newcommand{\pe}{*_{pro\acute et}}
@@ -2059,6 +2060,123 @@ By the structure theorem for $\LCA$ groups, any $\LCA$ group has the shape $\R\t
 $D$ is a $\Z$-module, hence has a projective resolution $\op \Z\to \op \Z\epi D$.
 Again arguing with triangles we reduce to direct sums of $\Z$, then reduce to $\Z$.
 For the compact use triangles with tori.
+
+\section{[LT] Lecture 7 - 12.11.19}
+
+$\pi\colon V\to X$ smooth vector bundle.
+The data of the transition maps is then equivalent to the data of a smooth map $U_{i}\cap U_{j}\xrightarrow{\varphi_{i,j}}\GL_{r}(\R)$.
+However, not every such map will do, because transition maps have a certain compatibility on triple intersections.
+More precisely, they satisfy the \textit{cocycle condition}
+\[ \varphi_{jk}\circ \varphi_{ij}=\varphi_{ik} \]
+over $U_{i}\cap U_{j}\cap U_{k}$.
+
+\begin{exe}
+    The cocycle condition implies that $\varphi_{ii}=\id$.
+\end{exe}
+
+\begin{prop}
+    Let $X$ be a topological space.
+    Let $\U=\{U_{i}\}_{i\in I}$ be an open cover and consider continuous maps $U_{i}\cap U_{j}\to \GL_{r}(\R)$ such that the cocycle conditions is satisfied.
+    Then there is a real vector bundle $\pi\colon V\to X$ of rank $r$ with transition functions $\tau_{ij}\colon U_{i}\cap U_{j}\tms \R^{r}\to U_{i}\times U_{j}\tms \R^{r}$ given by $(x,v)\mapsto (x,\varphi_{ij}(x)(v))$ together with local trivializations on $\U$.
+    Moreover, this data is unique up to unique isomorphism.
+    \begin{proof}
+	We glue $V_{i}=U_{i}\times \R^{r}$ along the open subsets $U_{i}\cap U_{j}\tms \R^{r}\sub V_{i}$ along $\tau_{ij}$.
+	This is well-defined because of the cocycle condition.
+	We get a topological space $V$.
+	By construction there is a continuous map $\pi\colon V\to X$.
+	The fibre above $x$ is $\{x\}\tms \R^{r}$.
+	This defines a vector space structure.
+	We get local trivializations on $\pi^{-1}(U_{i})\cong V_{i}\xrightarrow{\sim}U_{i}\tms \R^{r}$.
+    \end{proof}
+\end{prop}
+
+\begin{exa}
+    $X=S^{1}\sub \R^{2}$.
+    Cover the circle by $U_{i}=\{(x,y)\in \R^{2}\mid x\neq (-1)^{i}1\}$ for $i\in \{1,2\}$.
+    The trivial bundle $S^{1}\tms \R$ has the transition map $U_{1}\cap U_{2}\to \GL_{1}(\R)=\R^{\tms}$ given by $p\mapsto 1$ for all $p\in S^{1}$.
+    The Moebius bundle on the other hand has the transition map
+    \[ p\mapsto \begin{cases} 1 &\text{ if } y>0, \\ -1 &\text{ if } y<0.\end{cases} \]
+\end{exa}
+
+\begin{lm}
+    Let $X$ be a topological space and $\pi\colon V\to X$ a vector bundle of rank $r$.
+    Then there is a canonical bundle $\xi \colon V^{*}\to X$, called the \textit{dual bundle} of $V$, such that $\xi^{-1}(x)=V_{x}^{*}=\Hom_{\R}(V_{x},\R)$.
+    \begin{proof}
+	We will specify the gluing data.
+	We use local trivializations on the cover $U_{i}$ of $X$ and transition maps $\varphi_{ij}\colon U_{i}\cap U_{j}\to \GL_{r}(\R)$ for $V$.
+	Put $\psi_{ij}=(\varphi_{ij}^{-1})^{tr}$, where the inverse and the transpose are taken pointwise on $X$.
+    \end{proof}
+\end{lm}
+
+\begin{exe}
+    Weite out all the details.
+\end{exe}
+
+The same method works for other constructions, e.g. $\op$, $\ot$, exterior powers...
+
+\begin{defn}
+    \begin{enumerate}[label=\roman*)]
+	\item Let $X$ be a smooth manifold.
+	    A smooth real or complex vector bundle is a smooth map $\pi\colon V\to X$ of smooth manifolds together with the structure of real or complex topological vector bundle such that the trivializations are smooth.
+	\item Let $X$ be a complex manifold.
+	    A holomorphic vector bundle is a holomorphic map of complex manifolds $\pi \colon V\to X$ together with the structure of a complex vector bundle such that the trivializations are holomorphic.
+    \end{enumerate}
+\end{defn}
+
+\subsection{Tangent bundles}
+
+Let $X$ be a smooth manifold of dimension $n$ and $x\in X$.
+We want to define the tangent space of $X$ in $x$.
+Tangent vectors are ``directions''.
+
+\begin{exa}
+    If $X\sub \R^{n}$ is open, then the tangent space at each point is $\R^{n}$.
+    Every $v\in \R^{n}\setminus \{ 0\}$ defines a straight line $t\mapsto x+tv$ through $x$.
+    If $(U,\varphi)$ is a chart around $x$, we could use preimages of straight lines.
+    But the result depends on the chart.
+\end{exa}
+
+\begin{defn}
+    Let $X$ be a smooth manifold and $x\in X$.
+    A \textit{smooth path} through $x$ is a smooth map $\gamma\colon (-\varepsilon ,\varepsilon )\to X$ for some $\varepsilon >0$ such that $\gamma(0)=x$.
+    We say that two paths (through $x$) are equivalent if they have the same tangent vector in $\R^{n}$ for some chart.
+    A \textit{tangent vector} in $X$ at $x$ is an equivalence class of paths through $x$.
+    Let $T_{x}X$ denote the set of tangent vectors.
+\end{defn}
+
+\begin{rem}
+    By the chain rule, the previous equivalence relation is chart independent.
+\end{rem}
+
+There is a more elegant approach.
+Recall that a path defines a directional derivative:
+
+\begin{defn}
+    Let $X$ be a smooth manifold and $x\in X$.
+    Let $\gamma $ be a smooth path through $x$.
+    Let $f\colon U\to \R$ be a smooth function on an open nbhd $U$ of $x$.
+    We put
+    \[ \partial_{\gamma}f=\lim_{h\to 0}\frac{f(\gamma(h))-f(x)}{h}=(f\circ \gamma)'(0),\]
+    and call it the \textit{derivative of $f$ in the direction of $\gamma$}.
+\end{defn}
+
+\begin{lm}
+    Two paths define the same tangent vector at $x$ if and only if for all smooth $f\colon U\to \R$ the directional derivatives agree.
+    \begin{proof}
+	Let $\gamma_{1},\gamma_{2}$ be equivalent paths.
+	We choose a chart $(V,\varphi)$ around $x$.
+	Up to some shrinking we may assume $V=U$.
+	We may replace $X$ by $\varphi(V)$, $f$ by $f\circ \varphi^{-1}$ and $\gamma_{i}$ by $\varphi\circ \gamma_{i}$.
+	This does not change the directional derivatives.
+	\[ \partial_{\gamma_{i}}f=\left( \frac{\partial f}{\partial x_{1}},\ldots,\frac{\partial f}{\partial x_{n}}\right )\begin{pmatrix} \gamma_{i_{1}}'(0) \\ \vdots \\ \gamma_{i_{n}}'(0)\end{pmatrix} \]
+	Hence it only depends on the equivalence class of the paths.
+	Conversely, assume $\gamma_{1},\gamma_{2}$ define the same directional derivatives.
+	Choose a chart $(U,\varphi)$ around $x$.
+	Consider the coordinate functions $x_{i}\colon \R^{n}\to \R$.
+	Then consider $f_{i}=x_{i}\circ \varphi \colon U\to \R$.
+	The tangent vectors are then given on each component by the directional derivatives of the $f_{i}$.
+    \end{proof}
+\end{lm}
 
 \bibliographystyle{alpha}
 \bibliography{refs}
