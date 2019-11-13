@@ -12,15 +12,23 @@
 \usepackage[mathscr]{euscript}
 \usepackage{enumitem}
 \usepackage{tikz-cd}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage[noabbrev]{cleveref}
 \usepackage{todonotes}
 \usepackage{bbm}
 \usepackage{caption}
 \usepackage{subcaption}
 
+\definecolor{darkgreen}{RGB}{0,100,0}
+\definecolor{darkblue}{RGB}{0,0,100}
+\definecolor{darkred}{RGB}{100,0,0}
+
+\newtheoremstyle{darkgreentheorem}{}{}{\itshape}{}{\color{darkgreen}\bfseries}{}{ }{}
+\newtheoremstyle{darkbluedefinition}{}{}{}{}{\color{darkblue}\bfseries}{}{ }{}
+\newtheoremstyle{darkredexample}{}{}{}{}{\color{darkred}\bfseries}{}{ }{}
+
 % Plain theorems
-\theoremstyle{plain}
+\theoremstyle{darkgreentheorem}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
@@ -28,15 +36,18 @@
 \newtheorem{conj}[thm]{Conjecture}
 
 % Definition theorems
-\theoremstyle{definition}
+\theoremstyle{darkbluedefinition}
 \newtheorem{defn}[thm]{Definition}
-\newtheorem{nota}[thm]{Notation}
+
+% Example theorem
+\theoremstyle{darkredexample}
 \newtheorem{exa}[thm]{Example}
-\newtheorem{pbl}[thm]{Problem}
-\newtheorem{q}[thm]{Question}
 
 % Remark theorems
 \theoremstyle{remark}
+\newtheorem{pbl}[thm]{Problem}
+\newtheorem{q}[thm]{Question}
+\newtheorem{nota}[thm]{Notation}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{exe}[thm]{Exercise}
 
@@ -101,6 +112,7 @@
 \DeclareMathOperator{\ihom}{\underline{Hom}}
 \DeclareMathOperator{\iext}{\underline{Ext}}
 \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Div}{Div}
 
 % New commands
 \newcommand{\pe}{*_{pro\acute et}}
@@ -2177,6 +2189,150 @@ Recall that a path defines a directional derivative:
 	The tangent vectors are then given on each component by the directional derivatives of the $f_{i}$.
     \end{proof}
 \end{lm}
+
+\section{[WS] Kodaira 4 (Yuhang): Quadratic transformations}
+
+Recall: let $X$ be a complex manifold and let $E\to X$ be a vector bundle on $X$.
+Denote the associated connection by $D$.
+Then the curvature $\Theta$ is defined as
+\[ \Theta = D^{2} =D\circ D\colon \A^{0}(E)\to \A^{2}(E). \]
+
+\begin{prop}
+    Given a Hermitian holomorphic line bundle $E\to X$ with Hermitian metric $h$ and the induced connection $D_{h}$, we have
+    \begin{enumerate}
+	\item $\Theta$ is a $(1,1)$-type.
+	\item $\bar{\partial} \Theta =0$.
+	\item If given a locally finite cover $\{U_{i}\}$ of $X$ which is a holomorphic trivialization, with holomorphic frame $f_{i}$ on $U_{i}$, then
+	    \[ \Theta(f_{i})=\bar{\partial}\partial \log(h_{i}). \]
+    \end{enumerate}
+\end{prop}
+
+\begin{lm}
+    Given two Hermitian line bundles $E,F$ over $X$ with hermitian metrics $h_{E},h_{F}$, then the associated curvature satisfies the following
+    \[ \Theta_{E\ot F}=\Theta_{E}+\Theta_{F}. \]
+    \begin{proof}
+	Consider cover $\{U_{i}\}$ of $X$, then locally on $U_{i}$ we have
+	\[ \Theta_{E\ot F}=\bar{\partial}\partial \log(h_{E,i}h_{F,i})=\bar{\partial}\partial \log(h_{E,i})+\bar{\partial}\log(h_{E,i})=\Theta_{E}+\Theta_{F}.\]
+    \end{proof}
+\end{lm}
+
+\subsection{Quadratic transformations}
+
+Let $X$ be a complex manifold and $p\in X$.
+Let $U$ be a coordinate nbhd of $p$ in $X$ with local coordinates $z_{1},\ldots,z_{n}$ such that $p=(0,\ldots,0)$ with respect to this coordinates.
+Consider the product $U\tms \P^{n-1}$, where we use $[t_{1},\ldots,t_{n}]$ as homogeneous coordinates for $\P^{n-1}$.
+Then let
+\[ W=\{ ((z_{1},\ldots,z_{n}),[t_{1},\ldots,t_{n}])\in U\tms \P^{n-1} \mid t_{i}z_{j}=t_{j}z_{i} \text{ for all } i,j\}.\]
+\begin{enumerate}
+    \item There is a holomorphic projection $\pi\colon W\to U$ sending $(z,t)\mapsto z$.
+    \item $S:=\pi^{-1}(0)\cong \P^{n-1}$.
+    \item $\pi|_{W\setminus S}$ is biholomorphic.
+\end{enumerate}
+
+\begin{defn}
+    The \textit{quadratic transformation} $\tilde{X}=Q_{p}(X)$ of $X$ at $p$ is defined as
+    \[ \tilde{X}=W\bigcup_{U\setminus \{p\}}(X\setminus \{p\}) \]
+    with projection $\pi_{p}\colon \tilde{X}\to X$.
+\end{defn}
+
+We set $\tilde{U}_{i}\sub W$ as the set given by $t_{i}\neq 0$, the local coordinates of $\tilde{U}$ being given by
+\[ z(i)_{j}=\begin{cases} \frac{z_{j}}{z_{i}}=\frac{t_{j}}{t_{i}} & \text{ if } j\neq i, \\ z_{i} &\text{ if } i=j.\end{cases} \]
+and $\pi_{\tilde{U}_{i}}$ being given by
+\[(z(i)_{1},\ldots,z(i)_{n})\mapsto (z(i)_{1}z(i)_{i},\ldots,z(i)_{i},\ldots,z(i)_{n}z(i)_{i}).\]
+
+\begin{exa}
+    Consider $V=\{ x^{2}=y^{2}\}\sub \C^{2}$.
+    \begin{enumerate}
+	\item $\pi_{0}^{-1}(V\setminus \{0\})\sub Q_{0}(\C^{2})$ is given by the equation
+	    \[ \{ ((z_{1},z_{2}),[t_{1},t_{2}])\in \C^{2}\tms \P^{1}\mid z_{1}t_{2}=z_{2}t_{1},z_{1}^{2}=z_{2}^{2},(z_{1},z_{2})\neq (0,0)\} \]
+	\item Consider the affine chart with $t_{1}=1$.
+	    Then we have equations
+	    \begin{multline*}
+		\{(z_{1},z_{2},t_{2})\in \C^{3}\mid z_{1}t_{2}=z_{2},z_{1}^{2}=z_{0}^{2},(z_{1},z_{2})\neq (0,0) \} =\\  =\{ (z_{1},z_{1}t_{2},t_{2})\in \C^{3}\mid t_{2}^{2}=1,z_{1}\neq 0\} =\\
+		=\{ (z_{1},z_{1},1)\in \C^{3}\mid z_{1}\neq 0 \} \cup \{(z_{1},-z_{1},-1)\in \C^{3}\mid z_{1}\neq 0\}
+	    \end{multline*}
+	    We take the closure to obtain the final equations
+	    \[ \{(z_{1},z_{1},1)\in \C^{3}\}\cup \{(z_{1},-z_{1},-1)\in \C^{3}\} \]
+    \end{enumerate}
+\end{exa}
+
+\subsection{Divisors}
+
+\begin{defn}
+    Let $X$ be a complex manifold.
+    An \textit{analytic subvariety} of $X$ is a closed subset $Y\sub X$ such that for any point $x\in X$ there exists an open nbhd $x\in U\sub X$ such that $Y\cap U$ is the zero locus of finitely many holomorphic functions $f_{1},\ldots,f_{r}\in \O_{X}(U)$.
+    An analytic subvariety $Y$ is called \textit{irreducible} if it cannot be written as $Y=Y_{1}\cup Y_{2}$ for some proper analytic subvarieties $Y_{i}\sub Y$.
+\end{defn}
+
+\begin{defn}
+    An \textit{analytic hypersurface} is an analytic subvariety $Y\sub X$ of codimension $1$.
+\end{defn}
+
+\begin{defn}
+    A \textit{Weil divisor} $D$ on $X$ is a formal linear combination
+    \[ D=\sum a_{i}[Y_{i}] \]
+    with $a_{i}\in \Z$ and $Y_{i}\sub X$ irreducible analytic hypersurfaces.
+    The divisor group is denoted by $\Div(X)$.
+\end{defn}
+
+\textbf{Facts:}
+\begin{enumerate}
+    \item Weil divisors are the same as Cartier divisors on a complex manifolds.
+    \item Up to linear equivalence and if $X$ is projective, divisors are also the same as elements of the Picard group.
+\end{enumerate}
+
+Let $X$ be a compact complex manifold and $\pi_{p}\colon \tilde{X}\to X$ a quadratic transformation.
+Let $S=\pi_{p}^{-1}(p)$ be the exceptional divisor, which locally in $W$ is given by $z_{1}=\ldots =z_{n}=0$.
+The line bundle associated to $S$ is denoted by $L(S)\to \tilde{X}$.
+We denote the hyperplane bundle $H\to S$ and its given by $(t_{i}=0)$.
+\begin{align*}
+    \sigma \colon W & \to \P^{n-1} \\
+    (z,t) & \mapsto t
+\end{align*}
+
+\begin{prop}
+    $L|_{W}=\sigma^{*}H\dual$.
+    \begin{proof}
+	In $\P^{n-1}$, the hyperplane is given by $[t_{j}/t_{i}=0]$ in $V_{i}\sub \P^{n-1}$.
+	Over $V_{i}\cap V_{j}$ we have
+	\[ h_{ij}=\frac{t_{i}}{t_{j}}\left(\frac{t_{i}}{t_{j}}\right)^{-1}=\frac{t_{j}}{t_{i}}.\]
+	$\sigma^{*}H$ has the same transition in $(U\tms (V_{i}\cap V_{j}))\sub W$.
+	For $L|_{W}$ in $((U\tms V_{i}))\sub W$, $S$ is given by $[z_{i}=0]$, thus the transition function is
+	\[ g_{ij}=\frac{z_{i}}{z_{j}}. \]
+	Since $g_{ij}=g_{ij}^{-1}$, $L|_{W}=\sigma^{*}H\dual $.
+    \end{proof}
+\end{prop}
+
+\begin{lm}
+    Denoting the canonical line bundles by $K_{(-)}$, we have
+    \[ K_{\tilde{X}}=\pi_{p}K_{X}\ot L_{p}^{n-1}. \]
+    \begin{proof}
+	Since $\pi_{p}$ on $\tilde{X}\setminus W$ is biholomorphic and $L_{p}|_{X\setminus W}$ is trivial, the pullback of the canonical is the canonical over this open.
+	On $W$, observe that $K_{X}$ on $U$ is trivial.
+	We only need to show that $K_{\tilde{X}}|_{W}=L_{p}^{n-1}|_{W}$.
+	Consider $f=dz_{1}\wedge \cdots \wedge dz_{n}$ on $U\sub X$.
+	Then $\pi_{p}^{*}f$ on $\tilde{U}_{i}$ is given by
+	\[ f_{i}=z_{i}^{n-1}dz(i)_{1}\wedge \cdots \wedge dz(i)_{n}.\]
+    \end{proof}
+\end{lm}
+
+Let $L_{p}\to \tilde{X}$ be the line bundle associated to the exceptional divisor $S$.
+If we blow up $2$ points $p\neq q$, we get $Q_{p}(Q_{q}(X))\cong Q_{q}(Q_{p}(X))$.
+We denote the projection $\pi_{p,q}$ and $L_{p,q}$ the dual of the line bundle associated to the divisor $\pi_{p,q}^{-1}(\{p,q\})$.
+
+\begin{prop}
+    Let $E\to X$ be a positive holomorphic line bundle.
+    Then there exists an integer $\mu_{0}$ such that if $\mu >\mu_{0}$, then for any points $p,q\in X$ with $p\neq q$ we have that
+    \begin{enumerate}
+	\item $\pi_{p}^{*}E^{\mu}\ot L_{p}\dual \ot K_{Q_{p}(X)}\dual $,
+	\item $\pi_{p}^{*}E^{\mu}\ot (L_{p}\dual)^{2}\ot K_{Q_{p}(X)}\dual $, and
+	\item $\pi_{p,q}^{*}E^{\mu}\ot L_{p,q}\dual \ot K_{Q_{p}Q_{q}(X)}\dual $
+    \end{enumerate}
+    are all positive holomorphic line bundles.
+\end{prop}
+
+[Recall the definition of positive line bundle and the fact that the hyperplane bundle is positive.]
+
 
 \bibliographystyle{alpha}
 \bibliography{refs}
