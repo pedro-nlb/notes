@@ -1,56 +1,31 @@
-\documentclass[11pt,A4]{article}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[UKenglish]{babel}
-\usepackage{mathtools}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{manfnt}
-\usepackage{marginnote}
-\usepackage[dvipsnames]{xcolor}
-%\usepackage{mathrsfs}
-\usepackage[mathscr]{euscript}
-\usepackage{enumitem}
-\usepackage{tikz-cd}
-\usepackage[hidelinks]{hyperref}
-\usepackage[noabbrev]{cleveref}
-\usepackage{todonotes}
-\usepackage{bbm}
-\usepackage{caption}
-\usepackage{subcaption}
+\documentclass[12pt]{article}
 
-\definecolor{darkgreen}{RGB}{0,100,0}
-\definecolor{darkblue}{RGB}{0,0,100}
-\definecolor{darkred}{RGB}{100,0,0}
+% BASIC PREAMBLE
+\input{preamble}
 
-\newtheoremstyle{darkgreentheorem}{}{}{\itshape}{}{\color{darkgreen}\bfseries}{}{ }{}
-\newtheoremstyle{darkbluedefinition}{}{}{}{}{\color{darkblue}\bfseries}{}{ }{}
-\newtheoremstyle{darkredexample}{}{}{}{}{\color{darkred}\bfseries}{}{ }{}
-
-% Plain theorems
+% THEOREM ENVIRONMENTS
+% Theorems, propositions, etc (green)
 \theoremstyle{darkgreentheorem}
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{thm}{Theorem}
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{conj}[thm]{Conjecture}
-
-% Definition theorems
+% Definitions (blue)
 \theoremstyle{darkbluedefinition}
 \newtheorem{defn}[thm]{Definition}
-
-% Example theorem
+% Examples (red)
 \theoremstyle{darkredexample}
 \newtheorem{exa}[thm]{Example}
-
-% Remark theorems
+% Remarks (black)
 \theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
 \newtheorem{pbl}[thm]{Problem}
 \newtheorem{q}[thm]{Question}
 \newtheorem{nota}[thm]{Notation}
-\newtheorem{rem}[thm]{Remark}
 \newtheorem{exe}[thm]{Exercise}
 
+% MATH FONTS
 % Mathbb
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -66,7 +41,6 @@
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
 \newcommand{\Gm}{\mathbb{G}_{m}}
 \newcommand{\bbA}{\mathbb{A}}
-
 % Mathscr for categories
 \newcommand{\scrC}{\mathscr{C}}
 \newcommand{\Top}{\mathscr{T}op}
@@ -81,7 +55,6 @@
 \newcommand{\Db}{\mathscr{D}^{\mathrm{b}}}
 \newcommand{\QCoh}{\mathscr{QC}oh}
 \newcommand{\Coh}{\mathscr{C}oh}
-
 % Mathcal for sheaves
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
@@ -93,7 +66,7 @@
 \newcommand{\X}{\mathcal{X}}
 \renewcommand{\H}{\mathcal{H}}
 
-% Math operators
+% MATH OPERATORS
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Fun}{Fun}
@@ -114,8 +87,8 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Div}{Div}
 
-% New commands
-\newcommand{\pe}{*_{pro\acute et}}
+% OTHER COMMANDS
+\newcommand{\pe}{*_{proét}}
 \renewcommand{\u}[1]{\underline{#1}}
 \newcommand{\ot}{\otimes}
 \newcommand{\op}{\oplus}
@@ -131,7 +104,6 @@
 \newcommand{\mono}{\hookrightarrow}
 \newcommand{\LCA}{\mathrm{LCA}}
 
-
 \title{Various lecture notes}
 \author{Pedro Núñez}
 \date{\today}
@@ -145,9 +117,6 @@
 \section{About these notes}
 
 The purpose of these notes is to keep the material seen in lectures a bit organized and easily accesible from one single place, but they don't intend to be complete and they will surely be full of typos and mistakes\footnote{If you find any, please let me know! You can do this from GitHub or write me an email directly at pedro.nunez[at]math.uni-freiburg.de.}.
-
-If interesting questions occur during the lectures they will be reflected here in \textcolor{blue}{blue color}.
-If I want to add anything which was not said in the lecture, I will use \textcolor{ForestGreen}{green color} instead.
 
 Warnings will be marked with a \href{https://en.wikipedia.org/wiki/Bourbaki_dangerous_bend_symbol}{dangerous bend} symbol on the margin \db.
 
@@ -610,12 +579,7 @@ Connectedness, example: unit interval.
 Continuous image of connected is connected.
 
 Hausdorffness, example: euclidean topology on $\R^{n}$.
-Non-example: real line with two origins.
-
-\begin{rem}
-    \color{ForestGreen}
-    \db These two examples show that Hausdorffness is not a local property, because the real line with two origins is locally the same as $\R$.
-\end{rem}
+Non-example: real line with two origins\footnote{These two examples show that Hausdorffness is not a local property, because the real line with two origins is locally the same as $\R$.}
 
 Equivalently, $X$ is Hd if and only if $\Delta\subseteq X\times X$ is closed.
 Hausdorffness is hereditary.
@@ -723,7 +687,6 @@ We start then with a curve, in which the problem is completely solvable:
 \end{center}
 
 Starting from this we can build up our Hodge diamonds modulo $m$.
-[\textit{Some sketch of proof here is omitted, see future paper I guess.}]
 
 \subsection{Positive characteristic}
 
@@ -1463,8 +1426,7 @@ There is a more general notion of manifold with boundary, but we will not need i
 \end{exa}
 
 \begin{exa}
-    Real projective $n$-space (recall we defined it via the usual quotient map) with the usual charts $x_{i}\neq 0$.
-    \textcolor{ForestGreen}{Second contability follows from the projection being an open map.}\footnote{For instance, the identity on $\R$ from the euclidean topology to the cofinal topology is not open and its image is not second countable.}
+    Real projective $n$-space (recall we defined it via the usual quotient map) with the usual charts $x_{i}\neq 0$ is a manifold\footnote{Second contability follows from the projection being an open map. For instance, the identity on $\R$ from the euclidean topology to the cofinal topology is not open and its image is not second countable.}.
 \end{exa}
 
 \begin{exe}
@@ -2332,7 +2294,6 @@ We denote the projection $\pi_{p,q}$ and $L_{p,q}$ the dual of the line bundle a
 \end{prop}
 
 [Recall the definition of positive line bundle and the fact that the hyperplane bundle is positive.]
-
 
 \bibliographystyle{alpha}
 \bibliography{refs}
