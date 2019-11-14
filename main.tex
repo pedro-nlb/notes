@@ -41,6 +41,7 @@
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
 \newcommand{\Gm}{\mathbb{G}_{m}}
 \newcommand{\bbA}{\mathbb{A}}
+\newcommand{\V}{\mathbb{V}}
 % Mathscr for categories
 \newcommand{\scrC}{\mathscr{C}}
 \newcommand{\Top}{\mathscr{T}op}
@@ -56,6 +57,7 @@
 \newcommand{\QCoh}{\mathscr{QC}oh}
 \newcommand{\Coh}{\mathscr{C}oh}
 % Mathcal for sheaves
+\newcommand{\calA}{\mathcal{A}}
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
@@ -65,6 +67,8 @@
 \newcommand{\U}{\mathcal{U}}
 \newcommand{\X}{\mathcal{X}}
 \renewcommand{\H}{\mathcal{H}}
+% Mathfrak for ideals
+\newcommand{\m}{\mathfrak{m}}
 
 % MATH OPERATORS
 \DeclareMathOperator{\Hom}{Hom}
@@ -86,6 +90,7 @@
 \DeclareMathOperator{\iext}{\underline{Ext}}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Der}{Der}
 
 % OTHER COMMANDS
 \newcommand{\pe}{*_{proét}}
@@ -2294,6 +2299,180 @@ We denote the projection $\pi_{p,q}$ and $L_{p,q}$ the dual of the line bundle a
 \end{prop}
 
 [Recall the definition of positive line bundle and the fact that the hyperplane bundle is positive.]
+
+\section{[LT] Lecture 8 - 14.11.19}
+
+\begin{defn}
+    Let $X$ be a smooth (resp. complex) manifold, $x\in X$ a point and $U,V\sub X$ open nbhds of $x$ in $X$.
+    Let $f\colon U\to \R$ (resp. $\C$) and $g\colon V\to \R$ (resp. $\C$) be two smooth (resp. holomorphic) functions.
+    We say that $f$ and $g$ are equivalent at $x$ if there is a nbhd $W\subseteq U\cap V$ of $x$ such that $f|_{W}=g|_{W}$.
+    A \textit{germ of a smooth (resp. holomorphic) function} at $x$ is an equivalence clas for this relation.
+    We use $\calA_{x}$ (resp. $\O_{x}$) for the local rings of germs of smooth (resp. holomorphic) functions at $x$.
+\end{defn}
+
+\begin{defn}
+    Let $X$ be a smooth manifold and $x\in X$.
+    A \textit{derivation at $x$} is an $\R$-linear map $D\colon \calA\to \R$ such that
+    \[ \text{(Leibniz)} \quad \forall [f],[g]\in \calA_{x},, D(fg)=D(f)g(x)+f(x)D(g).\]
+    We will denote the $\R$-vector space of derivations at $x$ by $\Der_{\R}(\calA_{x},\R)$.
+\end{defn}
+
+\begin{lm}
+    Let $X$ be a smooth manifold and $x\in X$.
+    Let $\gamma\colon (-\varepsilon, \varepsilon)\to X$ be a path through $x$.
+    The map $\partial_{\gamma}\colon \calA_{x}\to \R$ sending $f\mapsto \partial_{\gamma}f$ is a well-defined $\R$-linear derivation.
+    \begin{proof}
+	$\R$-linearity is okay, so let us check the Leibniz rule.
+	\[ \partial_{\gamma}(fg)=((fg)\circ \gamma)'(0)=((f\circ \gamma)(g\circ \gamma))'(0),\]
+	from which we can conclude applying the product rule.
+    \end{proof}
+\end{lm}
+
+\begin{prop}
+    Let $X$ be a smooth manifold of dimension $n$ and $p\in X$.
+    \begin{enumerate}
+	\item $\Der_{\R}(\calA_{p},\R)$ is an $\R$-vector space of dimension $n$.
+	\item $T_{p}X\cong \Der_{\R}(\calA_{p},\R)$.
+    \end{enumerate}
+    \begin{proof}
+	WLOG $X=U\sub \R^{n}$ open.
+	Let $x_{1},\ldots,x_{n}\colon U\to \R$ be the coordinate functions and define paths $\gamma_{k}(t)=p+te_{k}$ for $1\leqslant k\leqslant n$ and small values of $t>0$.
+	Then $\partial_{\gamma_{k}}$ is by definition the partial derivative $\frac{\partial}{\partial x_{k}}=:\partial_{k}$.
+	The claim is that $\partial_{1},\ldots,\partial_{n}$ is a basis for $\Der_{\R}(\calA_{p},\R)$.
+	First we show linear independence.
+	Suppose that $0=\sum_{k}\lambda_{k}\partial_{k}$.
+	Let $v=\sum_{k}\lambda_{k}e_{k}$.
+	Then $D_{v}=\sum_{k}\lambda_{k}\partial_{k}=0$, so the tangent vector $\gamma(t)=p+tv$ is equivalent to zero.
+	This implies that $v=0$, so $\lambda_{1}=\ldots=\lambda_{n}=0$.
+	Now we show that $\partial_{1},\ldots,\partial_{n}$ generate $\Der_{\R}(\calA_{p},\R)$.
+	Let $\partial\colon \calA_{p}\to \R$ be a derivation and let $\lambda_{k}:=\partial x_{k}$ for $1\leqslant k\leqslant n$.
+	The claim is that $\partial =\sum_{k}\lambda_{k}\partial_{k}$.
+	Let $f\colon U\to \R$ smooth and consider the expansion
+	\[ (*)\quad f(y)=f(p)+\sum_{k}(\partial_{k}f)(y_{k}-p_{k})+\sum_{k,l}g_{kl}(p)(y_{k}-p_{k})(y_{l}-p_{l}) \]
+	for $g_{kl}$ smooth.
+	Apply $\partial $ and $\sum_{k}\lambda_{k}\partial_{k}$ to $(*)$ to get
+	\[ \partial f=0+(\sum_{k}(\partial_{k} f)\partial y_{k})|_{y=p} \]
+	and similarly with $\sum_{k}\lambda_{k}\partial_{k}$.
+	We find that $\partial f=\sum_{k}\lambda_{k}\partial_{k} f$.
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    $T_{x}X\cong \Der_{\R}(\calA_{x},\R)\cong \Hom_{\R}(\m_{x}/\m_{x}^{2},\R)$.
+\end{cor}
+
+\begin{defn}
+    Let $X$ be a smooth manifold of dimension $n$.
+    \begin{enumerate}
+	\item $TX:=\coprod_{x\in X}T_{x}X\xrightarrow{\pi}X$ is called the \textit{tangent bundle}.
+	    For coordinate chart $(U,\varphi)$ we have
+	    \begin{align*}
+		\pi^{-1}(U)&\xrightarrow{\sim} U\tms \R^{n}\\
+		\sum_{k}\lambda_{k}(x)\partial_{k}&\mapsto (x,\lambda_{1}(x),\ldots,\lambda_{n}(x))
+	    \end{align*}
+	    We give $TX$ the topology obtained from the $\pi^{-1}(U)$ by gluing, so that it becomes a rank $n$ vector bundle over $X$ and thus a smooth manifold of dimension $2n$.
+	\item $T^{*}X$ denotes the dual vector bundle of $TX$, called the \textit{cotangent bundle}.
+	\item A \textit{vector field} on $X$ over $U\sub X$ open is a smooth section $\xi\colon U\to TX$ of $\pi$.
+	\item A \textit{differential form} on $X$ over $U\sub X$ oepn is a smooth section of $T^{*}X$.
+	\item A \textit{differential form} of degree $r$ on $X$ over $U\sub X$ open is a smooth section of $\Lambda^{r}T^{*}X$.
+    \end{enumerate}
+\end{defn}
+
+\begin{exe}
+    $U\sub \R^{n+1}$ oepn, $F\colon U\to \R$ smooth function, $X=\V(F):=\{ x\in U\mid F(x)=0\}$.
+    If the gradient of $F$ is nonzero on $X$, then give an explicit identification of $T_{x}X$ with the space of tangent directions to $X$ in $\R^{n+1}$.
+\end{exe}
+
+\begin{rem}
+    $T_{x}^{*}X\cong \m_{x}/\m_{x}^{2}$.
+    If $f\colon U\to \R$ smooth, then we have a differential form $df\colon y\mapsto [f-f(y)]$.
+    Show (exercise) that $df$ is smooth.
+    [\textit{Hint:} in a coordinate chart $(U,\varphi)$, $d\varphi_{k}(x)\in T_{x}^{*}X$ is dual to $\partial_{k}$ for $1\leqslant k\leqslant n$.]
+\end{rem}
+
+\subsection{Functoriality}
+
+Let $\psi\colon X\to Y$ be a smooth map between smooth manifolds and let $x\in X$.
+Then we get an induced map
+\begin{align*}
+    d\psi_{x}\colon T_{x}X&\longrightarrow T_{\psi(x)}Y \\
+    \partial &\longmapsto [f\mapsto \partial(f\circ \psi)]
+\end{align*}
+which is $\R$-linear.
+
+\begin{defn}
+    Let $f\colon X\to Y$ be a smooth map.
+    Then the \textit{pushforward along $f$} is the map
+    \[df\colon TX\xrightarrow{\coprod df_{x}} TY, \]
+    which is a morphism of smooth vector bundles (exercise).
+\end{defn}
+
+\begin{prop}
+    \begin{enumerate}
+	\item $d(\id_{X})=\id_{TX}$.
+	\item If $f\colon X\to Y$, $g\colon Y\to Z$ are smooth maps, then $dg\circ df=d(g\circ f)$.
+    \end{enumerate}
+\end{prop}
+
+\begin{rem}
+    In other words, $X\mapsto TX$, $f\mapsto df$ is a functor.
+\end{rem}
+
+\begin{cor}
+    If $f\colon X\to Y$ is a diffeomorphism, then $df\colon TX\to TY$ is a diffeomorphism of smooth vector bundles.
+\end{cor}
+
+\subsection{Immersions and embeddings}
+
+\begin{defn}
+    We say that a map $f\colon X\to Y$ is an \textit{immersion} if it is smooth and for all $x\in X$ the differenrial $df_{x}$ is injective.
+    We say that a map $f\colon X\to Y$ is a \textit{submersion} if it is smooth and for all $x\in X$ the differential $df_{x}$ is surjective.
+\end{defn}
+
+\begin{defn}
+    We say that $X$ is a \textit{submanifold} of $Y$ if there exists an injective immersion $X\mono Y$.
+\end{defn}
+
+\begin{defn}
+    We say that $f\colon X\to Y$ is a \textit{embedding} if it is an immersion that is a diffeomorphism onto $f(X)$.
+\end{defn}
+
+\begin{exa}
+    $(x,y)\mapsto x$ from $\R^{2}$ to $\R$ is a submersion but not an immersion.
+\end{exa}
+
+\begin{exa}
+    $x\mapsto (x,0)$ from $\R$ to $\R^{2}$ is an immersion, but not a submersion.
+    In fact, it is an embedding.
+\end{exa}
+
+\begin{exe}
+    $S^{1}\mono \R^{2}$ is an embedding.
+\end{exe}
+
+\begin{exa}
+    $X=Y=\R$ and $f(x)=x^{3}$ is injective, but it is neither an immersion nor a submersion.
+\end{exa}
+
+\begin{exa}
+    $X=(\frac{-\pi}{4},\frac{3\pi}{4})$, $Y=\R^{2}$ and $f\colon X\to Y$ sending $x\mapsto \cos(x)\cos(2x),\sin(x)\cos(2x))$.
+    Then $f$ is injective but it is not an embedding\footnote{This example shows that being an embedding is not local on the source.} (it already fails to be a homeomorphism onto its image).
+\end{exa}
+
+\subsection{Tangent bunles to complex manifolds}
+
+To translate the previous constructions to the holomorphic setting, replace $\gamma\colon (-\varepsilon,\varepsilon)\to X$ by $\gamma\colon \bbD(0,\varepsilon)\to X$ holomorphic.
+Equivalence classes of such are $\C$-linear derivations
+\[ \Der_{\C}(\O_{x},\C)\cong (\m_{x}/\m_{x}^{2})\dual. \]
+
+We get the \textit{holomorphic tangent bundle} $TX\to X$ of rank $\dim_{\C}(X)$ as before.
+Let $X_{\R}$ denote the real manifold underlying $X$.
+Then we have $(TX)_{\R}\cong T(X_{\R})$ as smooth bundles, but this is not a $\C$-linear isomorphism.
+
+\begin{rem}
+    Let $X$ be a complex manifold.
+    Then $TX\not\cong T(X_{\R})\ot_{\R}\C$.
+\end{rem}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
