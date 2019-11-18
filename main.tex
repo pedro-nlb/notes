@@ -6,7 +6,7 @@
 % THEOREM ENVIRONMENTS
 % Theorems, propositions, etc (green)
 \theoremstyle{darkgreentheorem}
-\newtheorem{thm}{Theorem}
+\newtheorem{thm}{Theorem}[section]
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
@@ -56,6 +56,7 @@
 \newcommand{\Db}{\mathscr{D}^{\mathrm{b}}}
 \newcommand{\QCoh}{\mathscr{QC}oh}
 \newcommand{\Coh}{\mathscr{C}oh}
+\newcommand{\Solid}{\mathscr{S}olid}
 % Mathcal for sheaves
 \newcommand{\calA}{\mathcal{A}}
 \newcommand{\calC}{\mathcal{C}}
@@ -108,6 +109,7 @@
 \newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\mono}{\hookrightarrow}
 \newcommand{\LCA}{\mathrm{LCA}}
+\newcommand{\solid}{^{\blacksquare}}
 
 \title{Various lecture notes}
 \author{Pedro Núñez}
@@ -2473,6 +2475,162 @@ Then we have $(TX)_{\R}\cong T(X_{\R})$ as smooth bundles, but this is not a $\C
     Let $X$ be a complex manifold.
     Then $TX\not\cong T(X_{\R})\ot_{\R}\C$.
 \end{rem}
+
+\section{[CM] Solid abelian groups - 18.11.19}
+
+\begin{defn}
+    Let $S$ be a profinite set, given as $\varprojlim_{i} S_{i}$.
+    Then we define
+    \[ \Z[S]\solid=\varprojlim_{i}\Z[S_{i}],\]
+    called the free solid abelian group on $S$.
+\end{defn}
+
+A condensed abelian group is called solid if...
+A complex of condensed abelian groups is called solid if...
+
+Later we will show that $C\in \D(\Cond(\Ab))$ is solid if and only if $H^{i}(C)$ is solid for all $i$.
+
+\begin{nota}
+    Denote $\Solid\sub \Cond(\Ab)$ the full subcategory of solid condensed abelian groups.
+\end{nota}
+
+\begin{rem}
+    $\Z[S]\solid=\varprojlim_{i}\Z[S_{i}]=\varprojlim_{i}\hom(C(S_{i},\Z),\Z)$$=\hom(\varinjlim_{i}C(S_{i},\Z),\Z)=\hom(C(S,\Z),\Z)$.
+\end{rem}
+
+\begin{thm}[Theorem 5.4]
+    $S$ profinite.
+    Then $C(S,\Z)$ is a free abelian group.
+    \begin{proof}[Sketch]
+	We can find a continuous injection $S\mono \prod_{I}\{0,1\}$.
+	We can take $I=\{ Z \sub S\mid Z\text{ clopen }\}$.
+	Injectivity then is a consequence of total disconnectedness.
+	The data of a continuous function $\varphi\colon S\to \Z$ is equivalent to a decomposition $S=\coprod_{finite}S_{i}$ where $S_{i}$ is clopen.
+	So a generating system of $C(S,\Z)$ is given by... a basis is given by... (see Scholze's notes).
+    \end{proof}
+\end{thm}
+
+\begin{cor}
+    $\Z[S]\solid=\prod_{I}\Z$.
+    \begin{proof}
+	$\Z[S]\solid=\hom(C(S,\Z),\Z)=\prod_{I}\hom(\Z,\Z)=\prod_{I}\Z$.
+    \end{proof}
+\end{cor}
+
+\begin{prop}[Proposition 5.7]
+    If $S$ is profinite, then $\Z[S]\solid$ is solid in $\D(\Cond(\Ab))$ and $\Cond(\Ab)$.
+    \begin{proof}
+	Have to check: $R\Hom(\Z[T],\Z[T]\solid)\cong R\Hom(\Z[T]\solid,\Z[S]\solid)$, $T$ profinite.
+	Reduce $\Z[S]\solid =\Z$.
+	From the previous lecture we know $R\Hom(\Z[T],\Z)=R\Gamma (T,\Z)=C(T,\Z)[0]$.
+	We have a SES $0\to \prod_{J}\Z\to \prod_{J}\R\to \prod_{J}\R/\Z\to 0$, where $\Z[T]\solid =\prod_{J}\Z$.
+	Apply $R\Hom(-,\Z)$.
+	We get a triangle
+	\[R\Hom(\prod \R/\Z,\Z)\to R\Hom(\prod \R,\Z)\to R\Hom(\prod \Z,\Z)\xrightarrow{+1}\cdots\]
+	Note $R\Hom(\prod \R,\Z)=R\Hom_{\R}(\prod \R, R\hom(\R,\Z))=0$.
+	This follows from Theorem 4.3. $R\Hom(\R/\Z,\Z)=\Z[-1]$, so $R\Hom(\R,\Z)=0$.
+	Thus $R\Hom(\prod\Z,\Z)\cong R\Hom(\prod \R/\Z,\Z)[-1]$.
+	By theorem 4.3. this is $\bigoplus_{J}\Z[-1][1]=\bigoplus_{J}\Z$.
+	By 5.4 this is precisely $C(T,\Z)$.
+    \end{proof}
+\end{prop}
+
+So far we have a notion of solid and we have the notion of free solid abelian groups.
+The question is: can we solidify every condensed abelina group?
+Turns out we can:
+
+\begin{thm}[Theorem 5.8]
+    \begin{enumerate}[label=\roman*)]
+	\item $\Solid\sub \Cond(\Ab)$ is an abelian subcategory with all limits, colimits and extensions, projective generators $\prod_{I}\Z$ coming from free solid abelian groups and with a left adjoint $L=(-)\solid\colon \Cond(\Ab)\to \Solid$ to the inclusion $\Solid \sub \Cond(\Ab)$ and it extends the functor $\Z[S]\mapsto \Z[S]\solid$.
+	\item $\D(\Solid)\sub \D(\Cond(\Ab))$ is fully faithful and has essential image precisely the solid objects in $\D(\Cond(\Ab))$.
+	    We have the same description as before, i.e. a complex is solid iff all its cohomologies are solid.
+	    We have moreover a left adjoint to this inclusion $\D(\Solid)\sub \D(\Cond(\Ab))$, denoted $C\mapsto C^{\blacksquare, L}$, which is actually the left derived functor of $L$.
+    \end{enumerate}
+\end{thm}
+
+\begin{lm}[Lemma 5.9]
+    Let $\A$ be an abelian category with colimits.
+    Let $\A_{0}\sub \A$ be compact projective generators.
+    Let $F\colon \A_{0}\to \A$ be a functor together with a natural transformation $\id\to F$ such that:
+    For objects $Y,Z$ direct sums of images of $F$, $f\colon Y\to Z$ with kernel $K$, we hvae that
+    \[ R\Hom(\F(X),K)\xrightarrow{\sim} R\Hom(X,K).\]
+    Let $\A_{F}\sub \A$ be the full subcategory of all objects $Y\in \A$ such that for all $X\in \A_{0}$ we have
+    \[ \Hom(F(X),Y)\xrightarrow{\sim}\Hom(X,Y).\]
+    Let $\D_{F}(\A)\sub \D(\A)$ be the full subcategory of all $C\in \D(\A)$ such that for $X\in \A_{0}$ we have
+    \[ R\Hom(F(X),C)\xrightarrow{\sim}R\Hom(X,C).\]
+    Then: $\A_{F}\sub \A$ is an abelian category with colimits, limits and extensions.
+    The images $F(X)$ for $X\in \A_{0}$ are compact, projective generatros of $\A_{F}$.
+    Have a left adjoint $L\colon \A\to \A_{F}$ to the inclusion that extends our functor $F\colon \A_{0}\to \A_{F}$.
+    Similar for the derived category: we get a left adjoint to the inclusion $\D_{F}(\A)\sub \D(\A)$ which is the left derived functor of $\A\to \A_{F}$.
+    Moreover, $\D(\A_{F})\to \D(\A)$ is fully faithful and has essential image $\D_{F}(\A)$.
+    Furthermore, $C\in D(\A)$ lies in $\D_{F}(\A)$ if and only if all $H^{i}(C)\in \A_{F}$.
+\end{lm}
+
+\begin{lm}[Lemma 5.10]
+    Let $\A$ be an abelian category with colimits and $\A_{0}\sub \A$ be compact projective generators.
+    Let $F\colon \A_{0}\to \A$ be a functor together with a natural transformation $\id\to F$ such that for all $X\in \A_{0}$ and all complexes $C=\cdots\to C_{1}\to C_{0}\to 0\to \cdots $ with $C_{i}$ is direct sum of images of $F$ we have
+    \[ R\Hom(F(X),C)\xrightarrow{\sim}R\Hom(X,C).\]
+    Then we have for all $X\in \A_{0}$ and all $f\colon Y\to Z$ wtih kernel $K$ and $Y$, $Z$ direct sums of images of $F$ that
+    \[ R\Hom(F(X),K)\xrightarrow{\sim}R\Hom(X,K).\]
+    \begin{proof}
+	Let $Y$, $Z$, $f$ and $K$ as in the statement.
+	Take a resolution
+	\[ \cdots \to \op_{ij}X_{ij}\to \cdots \to K\]
+	with $X_{ij}\in \A_{0}$.
+	Denote this projective resolution of $K$ by $B$.
+	We get a complex $C=(\cdots \to \op F(X_{ij})\to \cdots \to 0)$.
+	By assumption $R\Hom(F(X_{ij}),Y)=R\Hom(X_{ij},Y)$.
+	Then by a spectral sequence argument we have $R\Hom(B,Y)=R\Hom(C,Y)$.
+	The same for $Z$.
+	Thus, $B\to C\to Y$ factors through $B\to K\sub Y$, so composing with $Y\to Z$ we get $0$.
+	Hene $B\xrightarrow{\sim}K$ (factors over $C$) and $B$ is a retract of $C$.
+	The condition $R\Hom(F(X),C)\xrightarrow{\sim}R\Hom(X,C)$ passes to $B$, thus to $K$.
+    \end{proof}
+\end{lm}
+
+\subsection{Proof of theorem 5.8}
+
+We take $\A_{0}$ to be the full subcategory of objects $\Z[S]$ for $S$ extremally disconnected and $\A=\Cond(\Ab)$.
+The functor $F\colon \A_{0}\to \A$ is $\Z[S]\mapsto \Z[S]\solid$.
+This is indeed a functor because $\Z[S]\solid=\hom(C(S,\Z),\Z)=\hom(\hom(\Z[S],\Z),\Z)$ is functorial on $\Z[S]$.
+We check the assumptions of lemma 5.10.
+Let $C=(\cdots \to C_{1}\to C_{0}\to 0)$ be a complex with $C_{i}$ a direct sum of $F$, i.e. $C_{i}=\op \prod \Z$.
+We want to show that $R\Hom(\Z[S]\solid,C)=R\Hom(\Z[S],C)$ for $S$ extremally disconnected.
+Let $\M(S,\Z)=\hom(C(S,\Z),\Z)=\Z[S]\solid$, $\M(S,\R)=\hom(C(S,\Z),\R)=\prod \R$ and $\M(S,\R/\Z)=\hom(C(S,\Z),\R/\Z)=\prod \R/\Z$.
+We have a SES
+\[ 0\to \M(S,\Z)\to \M(S,\R)\to \M(S,\R/\Z)\to 0.\]
+
+The claim is that $R\hom(\M(S,\R/\Z),C)(S')=R\Gamma (S\tms S',C)[-1]$.
+Let us see first why this claim implies that we are in the assumptions of lemma 5.10.
+Let $S=\{*\}$.
+Then $R\hom(\R/\Z,C)(S')=R\Gamma(S',C)[-1]=R\Hom(\Z[S'],C)[-1]$$=R\hom(\Z,C)(S')[-1]=R\hom(\Z[1],C)(S')$.
+This comes from the SES
+\[ 0\to \Z\to \R\to \R/\Z\to 0 \]
+which gives the triangle $R\hom(\R/\Z,C)\to R\hom(\R,C)\to R\hom(\Z,C)\to \cdots$.
+Since $R\hom(\R,C)=0$ we get $R\hom(\R/\Z,C)\cong R\hom(\Z,C)[-1]$.
+Thus $R\hom(\M(S,\R),C)=R\hom(\M(S,\R),R\hom(\R,C))=0$.
+We have a distinguished triangle
+\[ R\hom(\M(S,\R/\Z),C)\to R\hom(\M(S,\R),C)\to R\hom(\M(S,\Z),C) \]
+The middle term is again zero, so
+\[ R\hom(\M(S,\Z),C)=R\hom(\M(S,\R/\Z),C)[1]\overset{claim}{=} R\Gamma(S\tms S',C)=R\hom(\Z[S],C)(S')\]
+
+For the claim: if $X$ is a compact Hausdorff topological space, then $\Z[X]$ is pseudo coherent, i.e. the ext-groups commute with filtered colimits.
+In particular, since $\M(S,\R/\Z)=\prod \R/\Z$, we get that $\Z[\prod \R/\Z]$ is pseudo-coherent.
+Because of the resolution
+\[ \cdots \to \Z[\prod \R/\Z]\to \prod \R/\Z\to 0\]
+we also have that $\prod \R/\Z$ is pseudo coherent.
+Also, if $\Z[S]$ is pseudo coherent, then so is $\Z[S]\ot \prod \R/\Z$.
+Claim for $C=M[0]$, $M=\op \prod \Z$.
+\begin{multline*}
+    R\hom(\M(S,\R/\Z),\op \prod \Z)=\op R\hom(\M(S,\R/\Z),\prod \Z) =\\
+    \op \prod R\hom(\M(S,\R/\Z),\Z) \overset{LLM 4.3}{=} C(S\tms S',\Z)[-1]
+\end{multline*}
+Hence the claim for $C$ concentrated in one degree, which formally implies the claim for $C$ bounded (with triangles and induction on the length).
+In general: $C$ can be written as the homotopy colimit of the truncations $C_{\leqslant n}$ (see \cite[Tag 093W]{sta19}).
+Homotopy colimit means that we have a triangle
+\[ \op C_{\leqslant n} \xrightarrow{1-\op f_{n}}\op C_{\leqslant n}\to C \]
+Apply $R\hom(\M(S,\R/\Z),-)$ to this triangle.
+Then use pseudo coherence to take the direct sum out.
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
