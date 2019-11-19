@@ -92,6 +92,7 @@
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Div}{Div}
 \DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\rk}{rk}
 
 % OTHER COMMANDS
 \newcommand{\pe}{*_{proét}}
@@ -2631,6 +2632,199 @@ Homotopy colimit means that we have a triangle
 \[ \op C_{\leqslant n} \xrightarrow{1-\op f_{n}}\op C_{\leqslant n}\to C \]
 Apply $R\hom(\M(S,\R/\Z),-)$ to this triangle.
 Then use pseudo coherence to take the direct sum out.
+
+\section{[LT] Lecture 7 - 19.11.19}
+
+\subsection{Fundamental examples}
+
+\begin{prop}
+    Let $f\colon X\to Y$ be a smooth map of smooth manifolds.
+    Then $\Gamma_{f}=\{ (x,f(x))\mid x\in X\}\sub X\tms Y$ is a closed embedded submanifold.
+    \begin{proof}
+	It is closed by Hausdorffness.
+	Let $\varphi\colon X\to X\tms Y$ sending $x\mapsto (x,f(x))$ (which is smooth).
+	Let $\pi \colon X\tms Y\to X$ be the projection onto the first factor (also smooth).
+	Then $\pi\circ \varphi=\id_{X}$, so $d(\pi\circ \varphi)=(d\pi)\circ (d\varphi)=\id_{TX}$, so $d\varphi_{x}$ is injective for all $x\in X$.
+	Thus $\varphi $ is an immersion.
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    $X\sub \CP^{n}$ vanishing locus of a famliy of homogeneous polynomials.
+    If the Jacobian matrix has maximal rank at each point of $X$, then $X$ is an embedded submanifold of $\CP^{n}$.
+    \begin{proof}
+	Use implicit function theorem and previous proposition.
+    \end{proof}
+\end{cor}
+
+\begin{thm}[Constant rank theorem]
+    Let $f\colon X\to Y$ be a smooth map of smooth manifolds and let $m=\dim{X}$, $n=\dim{Y}$, $x\in X$ and $y=f(x)$.
+    If $f$ is of constant rank $r$, then we can find charts $(U,\varphi)$ at $x$ and $(V,\psi)$ at $y$ such that $f(U)\sub V$ and for all $t\in \varphi(U)$ we have $(\psi \circ f\circ \varphi^{-1})(t_{1},\ldots,t_{r},0,\ldots,0)$.
+    [Here the rank of $f$ at $x$, denoted $\rk_{x}(f)=\rk(df_{x})$.]
+    \begin{proof}
+	WLOG $X=W\sub \R^{m}$, $Y=W'\sub \R^{n}$ open and $x=0$, $y=0$.
+	Then $df_{0}$ is the Jacobian matrix.
+	Define $\varphi \colon W\to \R^{m}$ by
+	\[ \varphi(x)=(f_{1}(x),\ldots,f_{r}(x),x_{r+1},\ldots,x_{m}) \]
+	for all $x\in W$ (we may choose charts so that the first $r$ coordinates are linearly indepenent).
+	$\varphi(0)=0$ and
+	\[ d\varphi_{0}=\begin{pmatrix} \left(\frac{\partial f_{k}}{\partial x_{l}}\right) & * \\ 0 & I_{m-r} \end{pmatrix}. \]
+	    Since $d\varphi_{0}$ is invertible, by the inverse function theorem we can find $0\in W_{1}\sub W$ open and $0\in U_{1}\sub \R^{m}$ open such thath
+	\[ \varphi|_{W_{1}}\colon W_{1}\to U_{1} \]
+	is a diffeomorphism.
+	On $U_{1}$ we have $(f\circ \varphi^{-1})(x)=(x_{1},\ldots,x_{r},\tilde{f}_{r+1}(x),\ldots,\tilde{f}_{n}(x))$ for some smooth functions $\tilde{f}_{k}$ with $r<k\leqslant n$.
+	We have
+	\[ ((df)\circ (d\varphi^{-1}))_{0}=d(f\circ \varphi^{-1})_{0}=\begin{pmatrix} I_{r} & 0 \\ * & \left( \frac{\partial \tilde{f}_{k}}{\partial x_{l}}\right) \end{pmatrix}.\]
+	$d\varphi^{-1}$ is invertible, so $\rk(d(f\circ \varphi^{-1}))=\rk(df)=r$ on $U_{1}$.
+	Hence $\left(\frac{\partial \tilde{f}_{k}}{\partial x_{l}}\right) = 0 $, so $\tilde{f}_{k}$ is independent of $x_{r+1},\ldots, x_{n}$.
+	$T(y_{1},\ldots,y_{n}):=(y_{1},\ldots,y_{r}, y_{r+1}+\tilde{f}_{r+1}(y_{1},\ldots,y_{r}),\ldots,y_{n}+\tilde{f}_{n}(y_{1},\ldots,y_{n}))$.
+	We have $T(0)=0$ and
+	\[ dT_{y}=\begin{pmatrix} I_{r} & 0 \\ * & I_{n-r}\end{pmatrix}. \]
+	Hence $T$ is a diffeomorphism from a nbhd of $0\in \tilde{V}\sub \R^{n}$ to a nbhd of $0\in V\sub W'$.
+	Choose $\tilde{U}\sub U$ open such that $(f\circ \varphi^{-1})(\tilde{U})\sub V$.
+	Let $U:=\varphi^{-1}(\tilde{U})$ and $\psi=T^{-1}$.
+	Consider
+	\[ \tilde{U}\xrightarrow{\varphi^{-1}}U\xrightarrow{f}V\xrightarrow{\psi}\tilde{V}. \]
+	For $x\in \tilde{U}$ we get $(x_{1},\ldots,x_{r},0,\ldots,0)$ after applying the previous composition.
+    \end{proof}
+\end{thm}
+
+Special cases:
+\begin{enumerate}
+    \item $f$ submersion.
+    \item $f$ immersion.
+\end{enumerate}
+
+In the first case, if $f\colon X\to Y$ is a submersion, locally on $X$ and on $Y$ we have
+\begin{align*}
+    \R^{n+r} &\longrightarrow \R^{n} \\
+    (t_{1},\ldots,t_{n+r})&\longmapsto (t_{1},\ldots,t_{n})
+\end{align*}
+
+\begin{prop}
+    If $f\colon X\to Y$ is a smooth map of smooth manifolds and $y\in Y$ is such that for all $x\in f^{-1}\{y\}$ the map $df_{x}$ is surjective, then $f^{-1}\{y\}\sub X$ is an embedded submanifold.
+    \begin{proof}
+	Exercise!
+    \end{proof}
+\end{prop}
+
+\subsection{Ehresmann's theorem}
+
+\begin{defn}
+    A smooth map $f\colon X\to Y$ is a \textit{trivial fibration} if there exists a smooth manifold $F$ and a diffeomorphism $\varphi\colon X\to Y\tms F$ such that
+    \begin{center}
+	\begin{tikzcd}
+	    X\arrow{rr}{\varphi}\arrow{dr}{f} && Y\tms F\arror{dl}{\pi} \\
+	    & Y &
+	\end{tikzcd}
+    \end{center}
+    We say that $f$ is a \textit{locally trivial fibration} if for all $y\in Y$ there exists an open $y\in U\sub Y$ such that $f^{-1}(U)\to U$ is a trivial fibration.
+\end{defn}
+
+\begin{exe}
+    $\R^{m}\tms \R^{n}\to \R^{n}$ sending $(x,y)\mapsto x$ or $\bbT^{2}\to S^{1}$ projecting onto one of its factors.
+\end{exe}
+
+\begin{exe}
+    The Mobius strip is a locally trivial fibration which is not globally trivial.
+\end{exe}
+
+\begin{thm}[Ehresmann]
+    Let $f\colon X\to Y$ be a smooth, surjective, submersive and proper map of smooth manifolds.
+    Then $f$ is a locally trivial fibration.
+    \begin{proof}[Idea]
+	Locally on $X$ we have trivializations, so we get some horizontal lines.
+	We extend them across other neighbourhoods in a way that is compatible with the corresponding trivializations to obtain trivializations locally on $Y$.
+    \end{proof}
+\end{thm}
+
+\subsection{Proper maps}
+
+\begin{defn}
+    Let $f\colon X\to Y$ be a function and $X,Y$ topological spaces.
+    We say that $f$ is \textit{proper} if for all $K\sub Y$ quasi-compact we have that $f^{-1}(K)$ is quasi-compact.
+\end{defn}
+
+\begin{exa}
+    $X\to *$ is proper if and only if $X$ is quasi-compact.
+\end{exa}
+
+\begin{exa}
+    $\R\to \R/\Z=S^{1}$ is not proper.
+\end{exa}
+
+\begin{prop}
+    Let $f\colon X\to Y$ continuous.
+    \begin{enumerate}
+	\item If $f$ is closed with quasi-compact fibres, then $f$ is proper.
+	\item If $f$ is proper and $Y$ is a compactly generated Hausdorff space, then $f$ is closed.
+	\item If $X$ is quasi-compact and $Y$ is Hausdorff, then $f$ is closed and proper.
+    \end{enumerate}
+    \begin{proof}
+	For $1)$, let $K\sub Y$ be q.c.
+	The claim is that $f^{-1}(K)$ is q.c.
+	Let $U_{\alpha}$ be an open cover of $f^{-1}(K)$ and consider the fibre $f^{-1}\{k\}$ for $k\in K$.
+	We can find a finite subcover $U_{\alpha_{i}}$ of the fibre.
+	Since $f$ is closed, $f(X\setminus \cup_{i}U_{\alpha_{i}})$ is also closed.
+	Hence $V_{k}:=Y\setminus f(X\setminus \cup_{i}U_{\alpha_{i}})$ is open.
+	By construction $k\in V_{k}$ for each $k\in K$, so $V_{k}$ is an open cover of $K$.
+	We can find a finite subcover by q.c.
+	But then $f^{-1}(K)\sub f^{-1}(V_{k_{1}}\cup \cdots V_{k_{n}})\sub \cup_{j} U_{\alpha_{i_{j}}}$, so this is the desired finite subcover.
+
+	For $2)$, recall that compact generation means that we can test closedness by intersecting with all compact subspaces.
+	Let $Z\sub X$ be closed and $K\sub Y$ be quasi-compact.
+	Claim: $f(Z)\cap K$ is closed.
+	We know that $f^{-1}(K)$ is q.c., so $f^{-1}(K)\cap Z$ is q.c.
+	Continuous image of q.c. is q.c., so $f(f^{-1}(K)\cap Z)=K\cap f(Z)$ q.c.
+	Since $Y$ is Hausdorff, $K\cap f(Z)$ is closed.
+
+	For $3)$, if $Z$ is closed in a q.c. space, then it is q.c.
+	Hence $f(Z)$ is q.c. inside a Hd space, so it is again closed.
+	Properness is left as an exercise.
+    \end{proof}
+\end{prop}
+
+\db If $f\colon X\to Y$ is proper and $j\colon U\sub X$ is an open subset, then there is no reason to expct the composition $U\to Y$ is proper.
+From this we can also build counterexamples to the Ehresmann theorem, e.g. remove a bunch of points from a covering space.
+
+\subsection{Flows}
+
+Let $X$ be a smooth manifold.
+
+\begin{defn}
+    A \textit{global flow} on $X$ is a smooth map 
+    \[ \R\tms X\to X \]
+    such that for all $x\in X$ and for all times $s,t\in \R$ we have
+    \begin{enumerate}[label=\roman*)]
+	\item $\Phi(0,x)=x$.
+	\item $\Phi(s,\Phi(t,x))=\Phi(s+t,x)$.
+    \end{enumerate}
+\end{defn}
+
+\begin{exa}
+    Let $X=\R$ and $L\colon \R\tms \R\to \R$ sending $(s,t)\mapsto s+t$.
+\end{exa}
+
+\begin{exa}
+    Consider $\Phi\colon \R\tms \R^{2}\to \R^{2}$ sending
+    \[ \left(t,\begin{pmatrix} p \\ q \end{pmatrix}\right)\mapsto e^{-t/2}\begin{pmatrix} \cos(t) & \sin(t) \\ -\sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} p & q \end{pmatrix}. \]
+\end{exa}
+
+\begin{defn}
+    Let $\Phi$ be a flow on $X$.
+    The \textit{velocity field} of $\Phi$ is the vector field
+    \begin{align*}
+	\arrow{\Phi}\colon X&\longrightarrow TX \\
+	x&\longmapsto (t\mapsto \Phi(t,x))
+    \end{align*}
+\end{defn}
+
+We will see that all vector fields are velocoty fields of flows.
+
+\begin{defn}
+    Let $\Phi\colon \R\tms X\to X$ be a flow and $x,y\in X$.
+    We will say that $x\sim y$ if and only if there exists some $t\in \R$ such that $\Phi(t,x)=y$.
+\end{defn}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
