@@ -2633,7 +2633,7 @@ Homotopy colimit means that we have a triangle
 Apply $R\hom(\M(S,\R/\Z),-)$ to this triangle.
 Then use pseudo coherence to take the direct sum out.
 
-\section{[LT] Lecture 7 - 19.11.19}
+\section{[LT] Lecture 9 - 19.11.19}
 
 \subsection{Fundamental examples}
 
@@ -2714,7 +2714,7 @@ In the first case, if $f\colon X\to Y$ is a submersion, locally on $X$ and on $Y
     A smooth map $f\colon X\to Y$ is a \textit{trivial fibration} if there exists a smooth manifold $F$ and a diffeomorphism $\varphi\colon X\to Y\tms F$ such that
     \begin{center}
 	\begin{tikzcd}
-	    X\arrow{rr}{\varphi}\arrow{dr}{f} && Y\tms F\arror{dl}{\pi} \\
+	    X\arrow{rr}{\varphi}\arrow{dr}{f} && Y\tms F\arrow{dl}{\pi} \\
 	    & Y &
 	\end{tikzcd}
     \end{center}
@@ -2807,15 +2807,15 @@ Let $X$ be a smooth manifold.
 
 \begin{exa}
     Consider $\Phi\colon \R\tms \R^{2}\to \R^{2}$ sending
-    \[ \left(t,\begin{pmatrix} p \\ q \end{pmatrix}\right)\mapsto e^{-t/2}\begin{pmatrix} \cos(t) & \sin(t) \\ -\sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} p & q \end{pmatrix}. \]
+    \[ \left(t,\begin{pmatrix} p \\ q \end{pmatrix}\right)\mapsto e^{-t/2}\begin{pmatrix} \cos(t) & \sin(t) \\ -\sin(t) & \cos(t) \end{pmatrix} \begin{pmatrix} p \\ q \end{pmatrix}. \]
 \end{exa}
 
 \begin{defn}
     Let $\Phi$ be a flow on $X$.
     The \textit{velocity field} of $\Phi$ is the vector field
     \begin{align*}
-	\arrow{\Phi}\colon X&\longrightarrow TX \\
-	x&\longmapsto (t\mapsto \Phi(t,x))
+	\vec{\Phi}\colon X&\longrightarrow TX \\
+	x&\longmapsto \frac{d}{dt}|_{0}\Phi(t,x)
     \end{align*}
 \end{defn}
 
