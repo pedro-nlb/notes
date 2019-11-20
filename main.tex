@@ -2826,6 +2826,142 @@ We will see that all vector fields are velocoty fields of flows.
     We will say that $x\sim y$ if and only if there exists some $t\in \R$ such that $\Phi(t,x)=y$.
 \end{defn}
 
+\section{[WS] Kodaira 5 - 20.11.19}
+
+\begin{thm}
+    If $X$ is a Hodge manifold, then there exists an embedding into $\CP^{m}$ for $m\in \N$.
+\end{thm}
+
+Recall that a Hodge manifold is a Kaehler manifold such that the Kaehler form is positive and integral.
+
+Last week we have seen that there exists $\mu_{0}\in \N$ such that
+\begin{enumerate}[label=\roman*)]
+    \item $\pi_{p}^{*}E^{\mu}\ot L_{p}^{*}\ot K_{Q_{p}(X)}^{*}$,
+    \item $\pi_{p}E^{\mu}\ot (L_{p}^{*})^{2}\ot K_{Q_{p}(X)}^{*}$, and
+    \item $\pi_{p,q}E^{\mu}\ot L_{p,q}\ot K_{Q_{p,q}(X)}^{*}$
+\end{enumerate}
+are positive.
+We get
+\[ X\longrightarrow \P(\Gamma(F))\]
+for $F=E^{\mu}$.
+
+For $p\in X$ consider $\m_{p}\sub \O_{X}$.
+We consider the exact sequence
+\[ 0\to \m_{p}^{2}\to \O_{X}\to \O_{X}/\m_{p}^{2}\to 0\]
+and the exact sequence
+\[ 0\to \m_{p,q}\to \O_{X}\to \O_{X}/\m_{p,q} \to 0, \]
+where $\m_{p,q}=\{f\in \O_{X}\mid f(p)=f(q)=0 \}$.
+Tensor both short exact sequences with $\O_{X}(F)$.
+We have
+\[ ((\O_{X}/\m_{p}^{2})\ot \O_{X}(F))_{x}=\begin{cases} \O_{p}/\m_{p}^{2}\ot F_{p} &\text{ if }x=p \\
+    0 &\text{ if }x\neq p
+\end{cases}\]
+and
+\[ ((\O_{X}/\m_{p,q})\ot \O_{X}(F))_{x}=\begin{cases} F_{p} &\text{ if } x=p \\
+    F_{q} &\text{ if }x=q \\
+    0 &\text{ if }p\neq x\neq q
+\end{cases} \]
+
+\begin{lm}
+    $\O_{p}/\m_{p}^{2}\cong \C\op T_{p}^{*}(X)$ via $f\mapsto f(p)+df(p)$.
+    \begin{proof}
+	Choose local coordinates around $p$.
+	Then
+	\[ f(z)=f(p)+\sum_{|\alpha|\geqslant 1}\frac{1}{\alpha !}\frac{\partial^{|\alpha|} f}{\partial z^{\alpha}}(p)(z-p)^{\alpha}, \]
+	whence
+	\[ [f]_{p}=[f(p)+\sum_{|\alpha|=1}\frac{\partial f}{\partial z^{\alpha}}(p)(z-p)^{\alpha} \]
+    \end{proof}
+\end{lm}
+
+Consider $\Gamma(F)\xrightarrow{r} \O_{X}/\m_{p}^{2}\ot \O_{X}(F) $.
+For a local fram $f\in \Gamma(U,F)$ and $\xi\in \Gamma(F)$ we have
+\[ r(\xi)=(\xi(f)(p),d\xi(f)(p))\ot f(p). \]
+
+Similarly we denote $\Gamma(F)\xrightarrow{s} F_{p}\op F_{q}$.
+
+\begin{lm}
+    If $s$ and $r$ are surjective for all $p,q\in X$, then there exists an embedding $X\mono \CP^{m}$ where $m+1$ is the dimension of $\Gamma(F)$.
+    \begin{proof}
+	Choose a basis $\{\varphi_{0},\ldots,\varphi_{m}\}$ of $\Gamma(F)$ and let $p\in X$ and $f\in \Gamma(U,F)$ a local frame.
+	We define
+	\begin{align*}
+	    \Phi_{p}\colon X &\longrightarrow \CP^{m} \\
+	    x &\longmapsto [\varphi_{0}(f)(x),\ldots,\varphi_{m}(f)(x)]
+	\end{align*}
+	This is well defined by surjectivity of $r$, i.e. we can find some $i$ such that $\varphi_{i}(f)(p)\neq 0 $.
+	Let $\tilde{f}=cf$ be a different local frame, where $c$ is a non-vanishing holomorphic function.
+	Then $\varphi_{i}(\tilde{f})=c\varphi_{i}(f)$, so $[\varphi_{0}(\tilde{f})(x),\ldots]=[\varphi_{0}(f)(x),\ldots ]$.
+	For a basis $\{\tilde{\varphi}_{i}=\sum_{j}c_{ij}\varphi_{j} \}$ of $\Gamma(F)$, we have the following:
+	\begin{center}
+	    \begin{tikzcd}
+		& \CP^{m}\arrow{d}{C=[c_{ij}]} \\
+		X\arrow{ur}{\Phi_{\varphi}} \arrow{r}{\Phi_{\tilde{\varphi}}} & \CP^{m}
+	    \end{tikzcd}
+	\end{center}
+	Since $C$ is non-singular, the map on the right is biholomorphic.
+	To prove that $\Phi_{\varphi}$ is an immersion at $p\in X$, we choose $\xi_{0},\ldots,\xi_{n}\in \Gamma(F)$ (for $n=\dim(X)$) such that $\xi_{0}(f)(p)=1$, $\xi_{i}(f)(p)=0$ and $d\xi_{i}(f)(p)=dz^{j}$ for $f\in \Gamma(U,F)$ a local frame and for $z$ a local basis of $X$ around $p$.
+	We complete $\xi_{0},\ldots,\xi_{n}$ to a basis of $\Gamma(F)$, call this basis $\tilde{\varphi}$, and we consider $\Phi_{\tilde{\varphi}}$.
+	We choose homogeneous coordinates $(1,x_{1},\ldots,x_{n},\ldots)$ in $\CP^{m}$.
+	Then
+	\begin{multline*}
+	    \left(\det(\frac{\partial (x_{1},\ldots,x_{n})}{\partial (z_{1},\ldots,z_{n})})dz^{1}\wedge \ldots \wedge dz^{n}\right)|_{p}=\\
+	    =d\left(\frac{\xi_{1}(f)}{\xi_{0}(f)}\right)|_{p}\wedge \ldots \wedge d\left(\frac{\xi_{n}(f)}{\xi_{0}(f)}\right)|_{p}=dz^{1}\wedge\ldots \wedge dz^{n}.
+	\end{multline*}
+	Since $\Phi_{\tilde{\varphi}}$ is an immersion, $\Phi_{\varphi}$ is an immersion.
+	Let $p,q\in X$.
+	Since $s$ is surjective, we find $\xi_{0},\xi_{1}\in \Gamma(F)$ such that $\xi_{0}(p)\neq 0\neq \xi_{1}(q)$, $\xi_{0}(p)\neq 0\neq\xi_{1}(q)$, $\xi_{1}(p)=0=\xi_{0}(q)$.
+	We get a complete basis $\tilde{\varphi}$.
+	$\Phi_{\tilde{\varphi}}(p)\neq \Phi_{\tilde{\varphi}}(q)$.
+    \end{proof}
+\end{lm}
+
+\begin{lm}
+    Let $X$ be a Hodge manifold.
+    $r,s$ are surjective for all points $p,q\in X$.
+    \begin{proof}
+	Let $p\in X$.
+	Consider the blowup $\pi_{p}\colon Q_{p}(X)\to X$ and denote $\tilde{F}=\pi_{p}^{*}(F)$ the pullback.
+	Denote also the exceptional fibre by $S=\pi_{p}^{-1}(\{p\})$ and $J_{S}=\{f\in \O_{Q_{p}(X)}\mid f|_{S}=0\}$.
+	Consider the exact sequence
+	\[ 0\to \O(\tilde{F})\ot J_{S}^{2}\to \O(\tilde{F})\to \O(\tilde{F})\ot \O_{Q_{p}(X)}/J_{S}^{2}\to 0 \]
+	and the exact sequence
+	\[ 0\to \O(F)\ot \m_{p}^{2}\to \O(F)\to \O(F)\to \O(F)\ot \O_{Q_{p}(X)}/\m_{p}^{2}\to 0. \]
+	Now consider the diagram
+	\begin{center}
+	    \begin{tikzcd}
+		0\arrow{r} & \Gamma(\O(\tilde{F})\ot J_{S}^{2})\arrow{r}\arrow{d}{\alpha} & \Gamma(\O(\tilde{F}))\arrow{r}\arrow{d}{\beta} & \Gamma(\O(\tilde{F})\ot \O_{Q_{p}(X)}/J_{S}^{2}) \\
+		0\arrow{r} & \Gamma(\O(F)\ot \m_{p}^{2})\arrow{u}{\pi_{p}^{*}}\arrow{r} & \Gamma(\O(F))\arrow{u}{\pi_{p}^{*}}\arrow{r} & \Gamma(\O(F)\ot \O_{Q_{p}(X)}/\m_{p}^{2})\arrow{u}{\pi_{p}^{*}}
+	    \end{tikzcd}
+	\end{center}
+	Let $\xi\in \Gamma(\O(\tilde{F}))$, $\tilde{\beta}(\xi)(x)=\Pi_{p}\xi(\pi_{p}^{-1}(x))$ for all $x\in X\setminus \{p\}$, where $\Pi_{p}\colon \tilde{F}\to F$.
+	For $n=1$, nothing happens, so $\beta=\id$.
+	For $n>1$ we have $\tilde{\beta}(\xi)\in \Gamma(X\setminus \{p\},F)$.
+	By Hartog's theorem, there exists a unique holomorphic extension $\tilde{\beta}(\xi)$ to $\Gamma(X,F)$.
+	Denote it by $\beta(\xi)$.
+	Then $\pi_{p}^{-1}=\beta$.
+	We have $\alpha=\beta|_{\Gamma(\O(\tilde{F})\ot J_{S})}$.
+	We are left to show that $H^{1}(\O(\tilde{F})\ot J_{S}^{2})=0$.
+	$J_{S}$ is the sheaf of a line bundle.
+	$(z^{i},t)=S=\{t=0\}$.
+	If $L$ is the line bundle associated to $S$, then $J_{S}$ is the sheaf $L\dual$.
+	$H^{1}(\O(\tilde{F})\ot J_{S}^{2})=H^{1}(\O(\tilde{F})\ot (L\dual)^{2})$.
+
+	Recall that $F=E^{\mu}$ for $\mu\geqslant \mu_{0}$ such that
+	\[ \pi_{p}^{*}E^{\mu}\ot (L\dual)^{2}\ot K_{Q_{p}(X)}\dual >0.\]
+	By Kodaira-vanishing we have $H^{1}(\O(\tilde{F})\ot (L\dual)^{2})=0$, hence we can complete the exact sequence above to
+	\[ 0\to \Gamma(\O(\tilde{F})\ot J_{S}^{2})\to \Gamma(\O(\tilde{F}))\to \Gamma(\O(\tilde{F})\ot \O/J_{S}^{2}) \to 0.\]
+	This implies that $r$ is surjective for all $p,q\in X$.
+	
+	It remains to show that $s$ is surjective for all $p,q\in X$.
+	Let $\pi_{p,q}\colon \tilde{X}=Q_{p,q}(X)\to X$ be the blowup at these two points and $\pi_{p,q}^{*}F=:\tilde{F}$.
+	Let $J_{S}=\{f\in \O_{\tilde{X}}\mid f|_{\pi_{p,q}^{-1}(\{p,q\})}=0 \}$.
+	We get a ``horizontal ladder'' commutative diagram as in the previous case, in which we again we get a zero on the right of the first row.
+	This means that $s$ is surjective.
+    \end{proof}
+\end{lm}
+
+
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
