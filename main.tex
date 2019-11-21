@@ -2960,6 +2960,196 @@ Similarly we denote $\Gamma(F)\xrightarrow{s} F_{p}\op F_{q}$.
     \end{proof}
 \end{lm}
 
+\section{[LT] Lecture 10 - 21.11.19}
+
+\subsection{Flows, vector fields and integral curves}
+
+Let $X$ be a smooth manifold.
+
+\begin{defn}
+    Let $\gamma\colon \R\to X$ be smooth.
+    The \textit{velocity vector} $\frac{d}{dt}|_{t=s}$ of $\gamma$ at $s\in \R$ is
+    \[ \frac{d\gamma}{dt}|_{t=s}:=d\gamma(\vec{L}(s))=[\gamma L_{s}]=[t\mapsto \gamma(s+t)]\in T_{\gamma(s)}X, \]
+    where $L\colon \R\tms \R\to \R$ sends $(s,t)\mapsto s+t$ and $L_{s}\colon \R\to \R$ sends $t\mapsto t
+    +s$, and $\vec{L}$ denotes the velocity vector field of $L$.
+\end{defn}
+
+\begin{defn}
+    Let $\xi\colon X\to TX$ be a smooth vector field.
+    An \textit{integral curve} of $\xi$ starting at $p\in X$ is a smooth path $\gamma\colon J\to X$ defined on some open interval $0\in J\sub \R$ such that
+    \begin{enumerate}
+	\item For all $s\in J$ we have $\frac{d\gamma}{dt}|_{t=s}=\xi(\gamma(s))$.
+	\item $\gamma(0)=p$.
+    \end{enumerate}
+\end{defn}
+
+\begin{exa}
+    $X=\R^{2}$ and $\xi=\frac{\partial}{\partial x}$, $p=(a,b)$ and $\gamma(t)=(t+a,b)$.
+\end{exa}
+
+\begin{exa}
+    $X=\R^{2}$, $\xi=x\frac{\partial}{\partial x}+y\frac{\partial}{\partial y}$.
+    $\gamma(t)=(x(t),y(t))$, $p=(a,b)$.
+    We need to solve the differential equation $\gamma'(t)=\xi(\gamma(t))$ and $\gamma(0)=(a,b)$.
+    The first condition is equivalent to
+    \[ x'(t)\frac{\partial}{\partial x}|_{\gamma(t)}+y'(t)\frac{\partial }{\partial y}|_{\gamma(t)}=x(t)\frac{\partial }{\partial x} + y\frac{\partial }{\partial y} \]
+    and the second one is equivalent to $x(0)=a$ and $y(0)=b$.
+    Hence
+    \[ \gamma(t)=(ae^{t},be^{t}).\]
+\end{exa}
+
+\begin{rem}
+    \db There are vector fields that are not velocity vector fields of global flows.
+\end{rem}
+
+\begin{exa}
+    $X=\R_{<0}\tms \R$, $\xi=\frac{\partial }{\partial x}$.
+    Integral curve $\gamma(t)=(t+a,b)$ but $\gamma$ is only defined for $t<-a$.
+\end{exa}
+
+\begin{defn}
+    A \textit{flow domain} $D$ is an open $D\sub \R\tms X$ such that
+    \begin{enumerate}
+	\item For all $p\in X$ the set $D_{p}:=\{t\in \R\mid (t,p)\in D\}$ is an open interval.
+	\item For all $p\in X$ we have $0\in D_{p}$.
+    \end{enumerate}
+\end{defn}
+
+\begin{defn}
+    A \textit{local flow} $\Phi\colon D\to X$ is a smooth map such that
+    \begin{enumerate}
+	\item $D$ is a flow domain.
+	\item For all $p\in X$ we have $\Phi(0,p)=p$.
+	\item For all $p\in X$, all $s\in D_{p}$ and all $t\in D_{\Phi(s,p)}$ we have
+	    \[ t+s\in D_{p}\Rightarrow \Phi(t,\Phi(s,p))=\Phi(t+s,p).\]
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    Local flows have velocity vector fields defined just as for global flows.
+\end{rem}
+
+\begin{defn}
+    A local flow $\Phi\colon D\to X$ is \textit{maximal} if there is no flow domain $E$ strictly containing $D$ together with an extension $\bar{\Phi}$ of the flow $\Phi$ to $E$.
+\end{defn}
+
+\begin{exe}
+    If $\Phi\colon D\to X$ is a local flow, then $\vec{\Phi}$ is a smooth vector field and for all $p\in X$, and for all $p\in X$, $\Phi^{(p)}:=\Phi(-,p)$ is an integral curve of $\vec{\Phi}$ starting at $p$.
+\end{exe}
+
+\begin{thm}[ODE existence, uniqueness and smoothness]
+    Let $U\sub \R^{n}$ be an open set and $\xi\colon U\to \R^{n}$ be a smooth map.
+    Let $(t_{0},x_{0})\in \R\tms U$.
+    For each $0<\varepsilon <<1$ there exists $x_{0}\in U_{0}\sub U$ open neighbourhood and a smooth map
+    \[ \Phi\colon (t_{0}-\varepsilon,t_{0}+\varepsilon)\tms U_{0}\to U \]
+    such that for all $x\in U_{0}$, $\gamma(t):=\Phi(t,x)$ is the unique solution to the initial value problem given by $\gamma_{k}'(t)=\xi_{k}(\gamma(t))$ and $\gamma_{k}(t_{0})=x_{k}$ on the interval $(t_{0}-\varepsilon ,t_{0}+\varepsilon )$.
+\end{thm}
+
+For a proof, see Lee's \textit{Introduction to smooth manifolds}, appendix D.
+
+\begin{lm}
+    Let $\xi$ be a smooth vector field on $X$, and $\gamma_{0},\gamma_{1}\colon J\to X$ integral curves of $\xi$ on an open interval $J\sub \R$.
+    Let $S:=\{t\in J\mid \gamma_{0}(t)=\gamma_{1}(t)\}$.
+    If $S\neq \varnothing$, then $S=J$, i.e. $\gamma_{0}=\gamma_{1}$.
+    \begin{proof}
+	Let $t_{0}\in S$.
+	Since $X$ is Hausdorff, the set $S$ is closed.
+	For all $t_{1}\in S$, $\gamma_{0}$ and $\gamma_{1}$ are solutions of the same ODE with initial condition $\gamma_{0}(t_{1})=p=\gamma_{1}(t_{1})$.
+	By the ODE theorem, the two integral curves agree on an open neighbourhood of $t_{1}$.
+	Hence $S$ is also closed in $J$.
+	Since $J$ is connected, we conclude $S=J$.
+    \end{proof}
+\end{lm}
+
+\begin{thm}[Flow theorem]
+    Let $\xi$ be a smooth vector field on $X$.
+    Then there exists a unique maximal local flow $\Phi\colon D\to X$ such that $\vec{\Phi}=\xi$.
+\end{thm}
+
+\begin{lm}[Escape lemma]
+    Let $K\sub X$ be quasi-compact.
+    $\Phi\colon D\to X$ maximal local flow on $X$ such that for some $p\in X$ we have $D_{p}=(a_{p},b_{p})\sub \R$ with $b_{p}<\infty$.
+    Then $\exists \varepsilon >0$ such that $\Phi(t,p)\not\in K$ for $t>b_{p}-\varepsilon$.
+    \begin{proof}
+	Let $K$ be q.c.
+	Then $\exists \varepsilon >0$ such that $[-\varepsilon,\varepsilon ]\tms K\sub D\cap (\R\tms K)$.
+	Indeed, choose an open cover $\{(-\delta_{\alpha},\delta_{\alpha})\tms U_{\alpha}\}_{\alpha\in A}$ of $\{0\}\tms K$ by subsets of $D$ with $\delta_{\alpha}>0$ and $U_{\alpha}\sub X$ open.
+	Choose a finite subcover corresponding to a finite subset $A'\sub A$ and let $0<\varepsilon <\min_{\alpha\in A'}{\delta_{\alpha}}$.
+	If $T\in (b_{p}-\varepsilon,b_{p})$ has $\Phi(T,p)\in K$, then let $\Phi(t,p):=\Phi(t-T,\Phi(T,p))$ for $t\in [T,T+\varepsilon ]$.
+	This extends $\Phi$ to a larger flow domain, so $\Phi$ was not maximal.
+	This contradicts our assumption.
+    \end{proof}
+\end{lm}
+
+Now we can prove Ehresmann's fibration theorem!
+
+\begin{thm}[Ehresmann's fibration]
+    Let $f\colon X\to Y$ be a proper submersion fo smooth manifolds.
+    Then $f$ is a locally trivial fibration.
+    \begin{proof}
+	WLOG $Y=\R^{n}$ (being proper/submersive is local on the target).
+	Submersive maps are open maps (exercise) and last time we showed that proper maps are closed, so $F(X)\sub Y$ is open and closed.
+	Since $\R^{n}$ is connected, $f(X)=\R^{n}$ or $X=\varnothing$ (which a priori was not ruled out from our definition of manifolds).
+	WLOG $X\neq\varnothing$.
+	This reduces the claim to the follwoing special case.
+	\begin{lm}
+	    Let $f\colon X\to \R^{n}$ surjective proper submersion.
+	    Then $f$ is a trivial fibration,
+	    \begin{proof}
+		Constant rank theorem: for all $p\in X$ there exist charts $\varphi_{p}\colon U_{p}\to V_{p}$ for $U_{p}\sub X$ and $V_{p}\sub \R^{n+k}$ opens such that
+		\begin{center}
+		    \begin{tikzcd}
+			U_{p}\arrow{d}{\varphi_{p}}\arrow{r}{f} & \R^{n}\arrow[equal]{d} \\
+			V_{p}\sub \R^{n+m}\arrow{r}{\pi} & \R^{n} \\
+			(x_{1},\ldots,x_{n+})\arrow[maps to]{r} & (x_{1},\ldots,x_{n})
+		    \end{tikzcd}
+		\end{center}
+		Choose a partition of unity $\{\psi_{k}\}_{k\geqslant 0}$ subordinate to the cover $\{U_{p}\}_{p\in X}$.
+		For all $k\geqslant 0$, fix $p\in X$ such that $\Supp(\psi_{k})\sub U_{p}$ and set $\varphi_{k}:=\varphi_{p}$.
+		For all $1\leqslant i\leqslant n$, let $\xi_{i}\colon X\to TX$ be the smooth vector field given by
+		\begin{multline*}
+		    \xi_{i}(q)=\sum_{k}\psi_{k}(q)d(\varphi_{k}^{-1})\frac{\partial}{\partial x_{i}}(\varphi_{k}(q)) =\\
+		    = \sum_{k}\psi_{k}(q)[t\mapsto \varphi^{-1}_{k}(\varphi_{k}(q)+te_{i}) ]
+		\end{multline*}
+		$f|_{U_{k}}=\pi\circ \varphi_{k}$.
+		Goal: $df\xi_{i}(q)=\frac{\partial }{\partial x_{i}}(f(q))$.
+		\begin{multline*}
+		    df\xi_{i}(q)=\sum_{k}\psi_{k}(q)d(f\varphi_{k}^{-1})\frac{\partial }{\partial x_{i}}(\varphi_{k}(q)) =\\
+		    =\sum_{k} \psi_{k}(q)d\pi_{k}\frac{\partial }{\partial x_{i}}(\varphi_{k}(q))=\sum_{k}\psi_{k}(q)\frac{\partial}{\partial x_{i}}(f(q)) =\\
+		    =\frac{\partial}{\partial x_{i}}(f(q))
+		\end{multline*}
+		This shows that $\xi_{i}$ lifts $\frac{\partial}{\partial x_{i}}$.
+		Fix $1\leqslant i\leqslant n$.
+		Then $\bar{\gamma_{i}}(t):=u+te_{i}$ unique solution to the ODE $\bar{\gamma}_{i}'(t)=e_{i}$ adn $\bar{\gamma}_{i}(0)=u$.
+		$\Phi_{i}\colon D_{i}\to X$ is locally given by $\xi_{i}$.
+		$D_{i,q}:=\{t\in \R\mid (t,q)\in D_{i}\}$.
+		$\gamma_{i}(t):=\Phi_{i}(t,q)$.
+		We have a commutative diagram
+		\begin{center}
+		    \begin{tikzcd}
+			D_{i,q}\arrow{dr}{\gamma'_{i}}\arrow{r}{\gamma_{i}} & X\arrow{d}{\xi_{i}}\arrow{r}{f} & \R^{n} \arrow{d}{\frac{\partial }{\partial x_{i}}} \\
+			& TX \arrow{r}{df} & T\R^{n}
+		    \end{tikzcd}
+		\end{center}
+		$df(\gamma_{i}')=\frac{d}{dt}(f\circ \gamma_{i})$, $(f\circ \gamma_{i})(0)=f(q)$.
+		By ODE uniqueness, $f(\Phi_{i}(t,q))=f(\gamma_{i}(t))=f(q)+te_{i}$.
+
+		Claim: $D_{i}=\R\tms X$, i.e. $\Phi_{i}$ is global.
+		$f(\Phi_{i}(t,q))=f(q)+te_{i}$, so for all $a,b\in \R$ the image $f(\Phi_{i}((a,b),q)$ is contained in some q.c. $K\sub \R^{n}$.
+		Hence $\Phi_{i}((a,b),q)\sub f^{-1}(K)$ q.c. (by properness).
+		By the escape lemma, $D_{i,q}=\R$.
+		
+		Knowing that the flow is global we can define an explicit diffeomorphism as follows:
+		\begin{align*}
+		    \tau\colon \R^{n}\tms f^{-1}(0) & \longrightarrow X \\
+		    (t,q) &\longmapsto ((\Phi_{1})_{t_{1}}\circ (\Phi_{2})_{t_{2}}\circ \cdots \circ (\Phi_{n})_{t_{n}})(q)
+		\end{align*}
+		The inverse of this diffeomorphism is given by the formula
+		\[ \tau^{-1}(q)=(f(q),((\Phi_{n})_{-f_{n}(q)}\circ \cdots \circ (\Phi_{1})_{-f_{1}(q)})(q)). \]
+	    \end{proof}
+	\end{lm}
+    \end{proof}
+\end{thm}
 
 
 \bibliographystyle{alpha}
