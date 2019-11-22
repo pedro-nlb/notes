@@ -38,6 +38,7 @@
 \newcommand{\bbE}{\mathbb{E}}
 \newcommand{\bbT}{\mathbb{T}}
 \newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbH}{\mathbb{H}}
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
 \newcommand{\Gm}{\mathbb{G}_{m}}
 \newcommand{\bbA}{\mathbb{A}}
@@ -93,6 +94,8 @@
 \DeclareMathOperator{\Div}{Div}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Exc}{Exc}
 
 % OTHER COMMANDS
 \newcommand{\pe}{*_{proét}}
@@ -3150,6 +3153,119 @@ Now we can prove Ehresmann's fibration theorem!
 	\end{lm}
     \end{proof}
 \end{thm}
+
+\section{[FS] Automorphisms of foliations (Erwan Rousseau) - 22.11.19}
+
+Joint work with F. Lo Bianco, J. Pereia and F. Tauzet.
+
+\begin{exa}
+    \begin{enumerate}
+	\item Let $X$ be projective over $\C$ and $\pi\colon X\to B$, a foliation $\F$ onto a projective curve $B$ with $g(B)\geqslant 2$.
+	    Let $\Aut(X,\F)\sub\Aut(X)$ be the subgroup of automorphisms preserving $\F$.
+	    We have a map $\Aut(X,\F)\to \Aut(B)$.
+	    The second one is finite because $B$ is a hyperbolic projective curve.
+	    Hence $\exists $ finite index subgroup in $\Aut(X,\F)$ which leaves each leaf invariant.
+	    Thus we have a finite transverse action.
+	\item Let $\pi\colon X\to \P^{1}$ a foliation, $\kappa(X)\geqslant 0$, then $\Aut(X,\F)$ has a finite transverse action.
+	    Corollary of Viehweg-Zuo: $\pi$ has at least $3$ singular fibres.
+	    $\Aut(X,\F)\to \Aut(\P^{1},p_{1}+\ldots +p_{s})$, where $p_{i}$ correspond to the singular fibres, with $s\geqslant 3$, and $K_{\P^{1}}+\sum(p_{i}) >0$ (log version of general type).
+	    Hence $\Aut(\P^{1},p_{1}+\ldots+p_{s})$ is finite.
+	\item Lo Bianco:
+	    \begin{center}
+		\begin{tikzcd}
+		    X\arrow{d}{\pi}\arrow{r}{f} & X\arrow{d}{\pi} \\
+		    B\arrow{r}{f_{B}} & B
+		\end{tikzcd}
+	    \end{center}
+	    such that $\kappa(X)\geqslant 0$ and $\exists L\to B$ big line bundle preserved by $f_{B}$.
+	    Hence $f_{B}$ is terzian.
+    \end{enumerate}
+\end{exa}
+
+\begin{q}
+    Can we generalize these statements to more general fibrations?
+\end{q}
+$g(B)\geqslant 2\Rightarrow $ \textit{transverse hyperbolic foliations}.
+$(X,\F)$ codimension $1$, holomorphic.
+$\F$ is defined by local first integrals $F_{i}\colon U_{i}\to \bbD$, which are uniquely define modulo $\Aut(\bbD)$, i.e. we can glue them with relations of the form $F_{j}=\psi_{ij}\circ F_{i}$.
+
+Associated to a foliation, we have two natural objects to consider.
+There is a monodromy action, so we pass to the universal cover.
+We get the \textit{developing map} $\pi\colon \tilde{X}\to bbD$.
+The second natural object is the monodromy $\rho\colon \pi_{1}(X)\to PSL_{2}(\R)$, which is the obstruction to the analytic continuation, i.e. when we go along a path the result differs by an element of $PSL_{2}(\R)$.
+
+\begin{thm}
+    Let $X$ be a projective manifold and $\F$ a trasnversally hyperbolic $\F$.
+    Then $\Aut(X,\F)$ is transversally finite (i.e. there is a finite index subgroup which preserves every fibre).
+    \begin{proof}
+	We have $2$ cases analyzing the monodromy.
+	Let $G=\rho(\pi_{1}(X))$ be the image of the monodromy.
+	First case would be that it is a compact lattice.
+	And the second case is that it is dense (in the euclidean topology).
+	In the first case we have a foliation $\pi\colon X\to C=\bbD/G$ (hyperbolic up to an etale cover of $X$).
+	In the second case, use a result of Calette-Simpson ($X$ projective): there exists a morphism $\psi\colon X\to Y=\bbD^{N}/\Gamma$ such that $\F=\psi^{*}\F_{i}$, where $\F_{i}$ is called Hilbert modular foliation.
+	$\psi \colon X\to Z=\psi(X)\sub Y=\bbD^{N}/\Gamma$.
+	By a result of Burenbarbe-Cadael: $Z$ is of general type.
+	We pass to the Stein factorization $\pi \colon X\to B$ (such that $\psi\colon X\xrightarrow{\pi}B\to Z$).
+	To conclue, $\pi$ is $\Aut(X,\F)$ invariant $\Leftarrow \F_{i}$ is purely transcendental, i.e. the leaves do not contain algebraic curves.
+    \end{proof}
+\end{thm}
+
+From the proof one sees that we can deduce the following:
+
+\begin{thm}
+    Let $(X,\F)$ be transversally hyperbolic.
+    Then any entire curve $f\colon \C\to X$ is not Zariski dense.
+    \begin{proof}
+	\begin{center}
+	    \begin{tikzcd}
+		& \C\arrow{dr}{f} & \\
+		\tilde{X}\arrow{d} \arrow{rr} & & X\\
+		\bbD & &
+	    \end{tikzcd}
+	\end{center}
+	Hence $f$ has to be tangent to $\F$.
+	If the leaf is algebraic, then we are good.
+	If not, we use argument as in the previous theorem.
+    \end{proof}
+\end{thm}
+
+In the language of Campana, a manifold with the previous property is called \textit{non-special}.
+
+Recall: Lang has a beautiful dictionary for general type stuff.
+Let $X$ be projective $/\C$.
+Define $\Exc(X)=\overline{\cup f(\C)}$ where $f\colon \C\to X$ are entire curves and the closure is taken in the Zariski topology.
+His conjecture is
+\[ X \text{ is of general type } \Leftrightarrow \Exc(X)\neq X.\]
+There are also connections to arithmetic: $X$ of general type should correspond to the fact that $X$ is pseudo-mordellic, i.e. that the set of rational points is not dense.
+
+Now extend to the non-special case: $X=\P^{1}\tms C_{g\geqslant 2}$ ($\Exc(X)=X$).
+By Faltings, the rational points can only show up in finitely many fibres.
+We can always lift an entire curve $f\colon \C\to X$ to the projectivized tangent bundle $\P(T_{X})\to X$ by taking its derivative $f_{[1]}\colon \C\to \P(T_{X})$.
+Set
+\[ \Exc_{1}(X)=\overline{\cup f_{[1]}(\C)} \]
+with the closure taken on the Zariski topology.
+
+\begin{conj}
+    $X$ non-special iff $\Exc_{1}(X)\neq X$.
+\end{conj}
+
+\begin{q}
+    If we have a projective manifold $X$ and $\F$ a foliation such that any entire curve $f\colon \C\to X$ is tangent to $\F$, is any entire curve non-Zariski dense?
+\end{q}
+
+\db Both statements can be false if $X$ is not Kaehler!
+
+\begin{exa}[Oelijeklaus-Toma manifolds]
+    Let $K$ be a number field, $\sigma_{1},\ldots,\sigma_{s}$ real embeddigs, $\sigma_{s+1},\ldots, \sigma_{s+2t}$ complex embeddings.
+    Assume $t>0$.
+    $a\in \O_{K}$ act on $\bbH^{s}\tms \C^{t}$ as a translation by $(\sigma_{1}(a),\ldots,\sigma_{s+t}(a))$.
+    $u\in \O_{K}^{\tms}$ act by multiplication.
+    The amalgamated product of $U$ and $\O_{K}$ acts on $\bbH^{s}\tms \C^{t}$, so $\exists U$ such that $X(K,U)$ is a compact complex manifold.
+    $\O_{K}^{*,+}/U$.
+    We get automorphisms of $X(K,U)$.
+    By Dirichlet, $\O_{K}^{\tms}$ has rank $t-1$.
+\end{exa}
 
 
 \bibliographystyle{alpha}
