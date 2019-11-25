@@ -114,6 +114,7 @@
 \newcommand{\mono}{\hookrightarrow}
 \newcommand{\LCA}{\mathrm{LCA}}
 \newcommand{\solid}{^{\blacksquare}}
+\newcommand{\dsolid}{^{L\blacksquare}}
 
 \title{Various lecture notes}
 \author{Pedro Núñez}
@@ -3266,6 +3267,156 @@ with the closure taken on the Zariski topology.
     We get automorphisms of $X(K,U)$, and then we can apply Dirichlet's theorem.
 \end{exa}
 
+\section{[CM] Solid Abelian Groups II (Vincent) - 25.11.19}
+
+\textbf{Goal:} Corollaries of the big theorem of last time, solidified tensor product and some computations.
+
+Reference for details of the next proof: \textit{$\beta S$ as a topological space}.
+\begin{cor}
+    Compact projective objects in $\Solid$ are precisely the condensed abelian groups
+    \[ \prod_{I} \Z \]
+    for arbitrary indexing set $I$.
+    \begin{proof}
+	We know $S=\beta S_{0}$, $|S_{0}|>> 0$.
+	We get $\Z[S]\solid \cong \prod_{I}\Z$, and $|I|>|S_{0}|$.
+	
+	1. The first claim is that $I$ can be taken arbitrarly large.
+	For this we bound it below by the cardinality of $S_{0}$ and then show that $S_{0}$ can be taken arbitrarly large.
+	Clopen subsets forming a basis of $S=\beta S_{0}$ are \textit{Stone sets}
+	\[ \hat{A}\overset{1:1}{\longrightarrow} A\sub S_{0} \quad \hat{p} \text{ for each }p\in S_{0}\]
+	\[ \hat{A}\sub \hat{B} \Leftrightarrow A\sub B\]
+	Basis of $C(S,\Z)$ is given by minimal words in $e_{\mu}$ for $\mu\sub S$ clopen.
+	The functions $e_{\hat{p}}$ are part of this basis (not completely obvious), so we get our bound.
+
+	2. If $I$ is given, $I_{0}\to I$, $\Z^{I}\to \Z^{I_{0}}$ admits a retract, so $\Z^{I}$ is projective and compact.
+
+	The other direction is omitted.
+    \end{proof}
+\end{cor}
+
+\begin{cor}
+    $\D(\Solid)$ is compactly generated and compact objects are bounded complexes with terms $\prod_{I}\Z$.
+    We have an equivalence of categories $\D(\Solid)^{w}\xrightarrow{\sim} \Db(\Z)^{op}$ sending $C\mapsto R\Hom(C,\Z)$ from left to right and $C'\mapsto R\ihom(C',\Z)$.
+    \begin{proof}
+	Key ingredient in this proof: Stacks Project, tag 07LT and tag 07VI.
+	The idea is then first get $\D(\Solid)^{w}\cong (\D(\Solid)^{w})\dual $ sending $C\mapsto R\ihom(C,,\Z)$.
+	Then get $(\D(\Solid)^{w})\dual \cong \Db(\Z)^{op}$ sending $R\ihom(C,\Z)\mapsto R\Hom(C,\Z)$.
+    \end{proof}
+\end{cor}
+
+\begin{rem}
+    $\cdots \to 0 \to \prod_{I}\Z \to 0 \to \cdots \mapsto R\Hom(\prod_{I}\Z,\Z)\overset{p. 34}{\cong} \cdots \to 0\to \op_{I}\Z\to 0\to \cdots $.
+\end{rem}
+
+\begin{cor}
+    The derived solidification of $\R$ is trivial, i.e. $\R\dsolid=0$.
+    \begin{proof}
+	$\Hom_{\D(\Solid)}(\R\dsolid,C)=0$ for all solid $\C$.
+	Indeed, it is isomorphic by adjunction to $\Hom_{\D(\Cond)}(\R,C)=H^{0}(R\Hom(\R,C))=0$, where we use equation 6.2 to conclude (i.e. $\R\ihom(\R,C)=0$ for $C$ is positive degrees with $C_{i}=\op\prod\Z$).
+    \end{proof}
+\end{cor}
+
+\begin{cor}
+    Let $C\in \D(\Solid)$.
+    Then for all profinite $S$ we have $\R\ihom(\Z[S]\solid,C)\cong R\ihom(\Z[S],C)$.
+    \begin{proof}
+	With $C$ as in the previous corollary, by equation 6.1, we have
+	\begin{multline*}
+	    R\ihom(\Z[S]\solid,C)(S')\cong R\Gamma(S\tms S',C)\cong R\Hom(\Z[S\tms S'],C) \\
+	    R\Hom(\Z[S]\ot Z[S'],C)\cong R\ihom(\Z[S],C)(S')
+	\end{multline*}
+    \end{proof}
+\end{cor}
+
+\subsection{Solidified tensor products}
+
+The motivation is that $\Z_{p}\ot \R$ is in no good way a topological group.
+And $\Z_{p}\hat{\ot}\R$ is tricky, because there are mny ways.
+We want to define $(-)\ot\solid (-)$ and $(-)\dsolid(-)$.
+
+\begin{thm}
+    \begin{enumerate}
+	\item There is a unique way to endow $\Solid$ with a symmetric monoidal structure such that $(-)\solid$ is a symmetric monoidal structure.
+	\item Same on $\D(\Solid)$ such that $(-)\dsolid$ is symmetric monoidal.
+    \end{enumerate}
+    Furthermore, $(-)\ot\dsolid (-)$ is the leff derived of $(-)\ot\solid(-)$.
+    \begin{proof}
+	Assume $(-)\solid$ or $(-)\dsolid$ is symmetric monoidal.
+	Then $M\ot\solid N=(M\ot N)\solid$ and $C\ot\dsolid C'=(C\ot\dsolid(-)C')\dsolid$.
+	This shows uniqueness.
+	For the existence it suffices to show
+	\[ (M\ot\solid N)\cong (M\ot N)\solid\xrightarrow{\sim} (M\solid\ot N\solid)\solid=M\solid\ot\solid N\solid, \quad (*)\]
+	meaning that associator, unit, and all those coherence conditions follow from the condensed abelian group world.
+	To show the previous isomorphism, we consider the factorization
+	\begin{center}
+	    \begin{tikzcd}
+		(M\ot N)\solid\arrow{dr}{\sim}\arrow{rr} & & (M\solid\ot N\solid)\solid \\
+		& (M\solid \ot N)\solid\arrow{ur}{\sim} & 
+	    \end{tikzcd}
+	\end{center}
+	Both tensoring and solidification commutes with colimmits, so it will suffice to show this on projective generators.
+	Consider the diagram
+	\begin{center}
+	    \begin{tikzcd}
+		P.Gen \tms P.Gen \arrow[bend left=45]{d}{(M\ot N)\solid}\arrow[bend right=45]{d}{(M\solid \ot N)\solid}\arrow{r} & \Cond\tms \Cond \arrow[dashed]{dl} \\
+		\Solid
+	    \end{tikzcd}
+	\end{center}
+	and then use abstract nonsense (Kan extensions).
+	We have
+	\[(\Z[S]\ot \Z[T])\solid \cong (\Z[S]\solid\ot \Z[T])\solid,\]
+	and for $A\in \Solid$ we have
+	\[ \Hom((\Z[S]\solid \ot \Z[T]),A)\cong \ihom(\Z[S]\solid,A)(T).\]
+	The LHS is iso. to $\Hom((\Z[S]\ot \Z[T])\solid,A)$ and the RHS to $\ihom(\Z[S],A)(T)$.
+	Erase all squares except the one on $\ihom(\Z[S]\solid,A)(T)$ to finish.
+	
+	To show that $(-)\ot\dsolid (-)$ is the left derived functor of $(-)\ot\solid(-)$, we reduce again to projective generators.
+	But if $\M=\Z[S]\solid $ and $\M'=\Z[T]\solid$, then
+	\[ (*)\quad \M\ot\dsolid\M'\cong \M\ot\solid \M'[0].\]
+    \end{proof}
+\end{thm}
+
+\subsection{Calculations}
+
+\begin{prop}
+    Let $\M=\Z^{I}\in \Solid$ and $\M'=\Z^{J}\in \Solid$.
+    Then $\M\ot\dsolid \M'\cong \prod_{I\tms J} \Z $.
+\end{prop}
+
+Using this we can start computing.
+
+\begin{exa}
+    $\Z[[U]]\ot\dsolid \Z[[T]]\cong \prod_{\N}\Z\ot\dsolid \prod_{\N}\Z \cong \prod_{\N\tms\N}\Z\cong \Z[[U,T]]$.
+\end{exa}
+
+\begin{exa}
+    Recall the analytic completion:
+    \[ (*) \quad 0\to \Z[[U]]\xrightarrow{(u-p)}\Z[[U]]\to \Z_{p}\to 0.\]
+    where we consider it as a sequence in condensed abelian groups.
+    The reason is taht for LCA we have: $A\epi B$ implies $\u{A}\epi \u{B}$.
+    Then express the previous SES defining each object as a limit and use commutativity of limits with $\u{-}$.
+    Hence the functor $\u{-}$ yields a SES.
+\end{exa}
+
+Thus we have a projective resolution $(*)$ of $\Z_{p}$ and we can compute tensor products
+\[ \Z_{p}\ot\dsolid \Z[[U]] \cong \Z_{p}[[U]] \]
+and
+\[ \Z_{p}\ot \dsolid \Z_{p}=\begin{cases} 0 &\text{ if } l\neq p \\ \Z_{p} & \text{ if } l=p\end{cases} \]
+If $X$ is any of the above, then $X\ot\dsolid \R=(X\ot^{L}\R)\dsolid=(X\dsolid\ot^{L}\R\dsolid)\dsolid=0$.
+
+\begin{exa}
+    Let $X$ be a CW complex.
+    Then $\Z[X]\dsolid \cong H_{\bullet}(X)$.
+    \begin{proof}
+	Note that the RHS commutes with colimits.
+	The LHS is a composition of stuff that commutes with colimits, so it also commutes with colimits.
+	Thus we can assume that $X$ is a finite CW complex, in particular compact and Hausdorff.
+	Thus $\Z[X]$ is pseudo coherent in $\Cond$ and $\Z[X]\dsolid$ is pseudo coherent in $\D(\Solid)$.
+	Also $H_{\bullet}(X)\cong C_{\bullet}(X)$ is pseudo coherent.
+	On such objects, $R\ihom(-,\Z)$ takes discrete values in $\D(\Z)^{\geqslant 0}$.
+	It is fully faithful.
+    \end{proof}
+\end{exa}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
