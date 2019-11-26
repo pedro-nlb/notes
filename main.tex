@@ -96,6 +96,7 @@
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Exc}{Exc}
+\DeclareMathOperator{\Hess}{Hess}
 
 % OTHER COMMANDS
 \newcommand{\pe}{*_{proét}}
@@ -3417,6 +3418,158 @@ If $X$ is any of the above, then $X\ot\dsolid \R=(X\ot^{L}\R)\dsolid=(X\dsolid\o
 	It is fully faithful.
     \end{proof}
 \end{exa}
+
+\section{[LT] Lecture 12 - 26.11.19}
+
+\begin{thm}[Flow theorem]
+    Let $\xi$ be a smooth vector field on $X$.
+    There exists a unique maximal flow $\Phi$ on $X$ such that
+    \[ \frac{d\Phi}{dt}=\xi .\]
+    \begin{proof}
+	By the ODE theorem, there exists an integral curve of $\xi$ starting at each point $p\in X$.
+	Define
+	\[ \operatorname{intcurve}(\xi,p)=\{ \text{ integral curves of }\xi\text{ starting at }p\} \]
+	and $A(\xi,p)=\{\operatorname{dom}(\gamma)\mid \gamma\in \operatorname{intcurve}(\xi,p)\}$.
+	Set also $D_{p}=\cup_{J\in A(\xi,p)}J \sub \R$ and
+	\begin{align*}
+	    \Phi_{p} \colon D_{p} & \to X \\
+	    t & \mapsto \gamma(t) 
+	\end{align*}
+	where $\gamma\colon J\to X$ is in $\operatorname{intcurve}(\xi,p)$.
+	By the ODE theorem, $\Phi_{p}$ is well-defined.
+	Define
+	\[ D(\xi):=\{ (t,p))\in \R\tms X\mid t\in D_{p} \}\]
+	and
+	\begin{align*}
+	    \Phi\colon D(\xi) & \to X \\
+	    (t,p) & \mapsto \Phi_{p}(t)
+	\end{align*}
+	It remains to show:
+	\begin{enumerate}
+	    \item For all $p\in X$ we have $\Phi(0,p)=p$.
+	    \item For all $p\in X$ and all $s,t\in \R$ we have $\Phi(t,\Phi(s,p))=\Phi(t+s,p)$ when both sides are defined.
+	    \item $D(\xi)\sub \R\tms X$ is open.
+	    \item $\Phi\colon D(\xi)\to X$ is smooth.
+	\end{enumerate}
+	Point $1)$ is okay by definition.
+	For $2)$, let $s\in D_{p}$, $q:=\Phi(s,p)$, $\gamma(t):=\Phi(t+s,p)$ where defined.
+	Chain rule implies that $\gamma\in \operatorname{intcurve}(\xi,q)$, so $\gamma=\Phi_{q}$ and $\Phi(t+s,p)=\Phi(t,\Phi(s,p))$.
+
+	For $3)$ and $4)$, let $W:=\{ (t,p)\in D(\xi)\mid \text{ there exists an open interval }0,t\in J\sub \R\text{ and there exists an open neighbourhood }p\in U\sub X \text{ such that } \Phi \text{ is defined and smooth on }J\tms U \}$.
+	Since $W\sub \R\tms X$ is open and $\Phi|_{W}$ is smooth, it suffices to show that $W=D(\xi)$.
+	Suppose $(t_{0},p_{0})\in D(\xi)\setminus W$.
+	We have two cases: $t_{0}>0$ and $t_{0}<0$.
+	Both are proved by the same method, so let us do $t_{0}>0$.
+	Let $\tau:=\sup\{t\in \R\mid (t,p_{0})\in W \}$.
+	By the ODE theorem, $\Phi$ is defined and smooth in an open neighbourhood of $(0,p_{0})$ by $(*)$, where
+	\[ (*)\quad \text{double check taht }(0,p)\in W \forall p\in X.\]
+	Hence $\tau>0$.
+	$q_{0}=\Phi_{p_{0}}(\tau)$.
+
+	By the ODE theorem, there exists $\varepsilon >0$ and an open nbhd $q_{0}\in U_{0}$ such that $\Phi\colon (-\varepsilon, \varepsilon)\tms U_{0}\to X$ is defined and smooth.
+	Let $t_{1}<\tau$ with $t_{1}+\varepsilon >\tau$, $\Phi_{p_{0}}(t_{1})\in U_{0}$.
+	$t_{1}<\tau$ implies... proof erased from the board (change of lecturer), sorry!
+    \end{proof}
+\end{thm}
+
+\subsection{Some elements of Morse theory}
+
+Morse theory is a method that we have to understand the topology of manifolds.
+We do this via a Morse function $X\to \R$.
+[Picture in all the books and on Wikipedia with the torus sitting vertically on a plane.
+The function is given by the height.
+Ehresmann applies, but above the topology of the fibre is different from in the one in the middle.
+The reason are some special points in which Ehresmann does not apply.]
+See book on the references! (\textit{Topology from the differential viewpoint} by John Milnor).
+
+\begin{defn}
+    Let $X$ be a smooth manifold and $f\colon X\to \R$ smooth.
+    A point $x\in X$ is called \textit{critical} if $f$ does not have full rank at this point, i.e. if $df_{x}=0$.
+    A value $t\in \R$ is called a \textit{critical value} of $f$ if there is a critical point in $f^{-1}(t)$.
+    In the non-critical points, the rank of $df_{x}$ is maximal, i.e. rank $1$, and $f$ is a submersion near $X$.
+\end{defn}
+
+\begin{thm}[Sard]
+    Let $f\colon X\to \R^{n}$ smooth map.
+    Let $\Sigma\sub X$ be the set of points $x\in X$ such that $df_{x}$ is not surjective.
+    Then $f(\Sigma)\sub \R^{n}$ has (Lebesgue) measure $0$.
+    \begin{proof}
+	See [Hir94,pp. 68-72] or [Mil97,pp.16-19].
+    \end{proof}
+\end{thm}
+
+\begin{exa}[Torus]
+    There are 4 critical values.
+    The bottom is a minimum of $h$, the top is a maximum of $h$, the other two are saddle points.
+    By calculus we can distinguish these cases by looking at the second derivatives (or at the Hessian matrix).
+\end{exa}
+
+\begin{defn}
+    Let $f\colon X\to \R$ smooth, $x\in X$ a critical point.
+    We define the bilinear form
+    \[ \Hess_{x}(f)\colon T_{x}X\tms T_{x}X\to \R \]
+    by $\left(\frac{\partial}{\partial x_{i}},\frac{\partial}{\partial x_{j}}\right)\mapsto \frac{\partial^{2} f}{\partial x_{i}\partial x_{j}}(x) $, where $x_{1},\ldots,x_{n}$ are local coordinates of $X$ near $x$.
+\end{defn}
+
+\begin{exe}
+    This is well defined, i.e. independent of the choice of local coordinates.
+\end{exe}
+
+Note that $\Hess_{x}(f)$ is symmetric ($f$ is even $C^{\infty}$).
+Symmetric bilinear forms are classified: there is a basis of the vector space such that the representing matrix has the following shape
+\[ \begin{pmatrix} -I_{r} & 0 & 0 \\ 0 & I_{s} & 0 \\ 0 & 0 & 0\end{pmatrix} \]
+We call $r+s$ the \textit{rank} and $r$ the \textit{index}.
+
+\begin{defn}
+    We say that $x\in X$ is a \textit{non-degenerate} critical point if it is a critical point and $\Hess_{x}(f)$ is non-degenerate, i.e. invertible, i.e. $n=r+s$.
+\end{defn}
+
+\begin{exa}
+    $X=\R^{n}$, $f(x_{1},\ldots,x_{n})=-x_{1}^{2}-x_{2}^{2}-\cdots -x_{r}^{2} + x_{r+1}^{2}+\cdots +x_{r+s}^{2}$.
+    Let $\partial_{i}$ denote $\frac{\partial}{\partial x_{i}}$.
+    \[ df=\frac{\partial f}{\partial x_{1}}\partial_{1}+\cdots +\frac{\partial f}{\partial x_{n}}\partial_{n}=0 \]
+    \[ \operatorname{grad}(f)=(-2x_{1},\ldots) \]
+    Critical points: $\{ x\in \R^{n}\mid x_{1}=\ldots=X_{r+s}=0\}$.
+    Hessian matrix is diagonal with first some -2's and then some 2's.
+    It is non-degenerate if and only if there is a single critical point (at the origin).
+\end{exa}
+
+\begin{prop}[Morse lemma]
+    Let $P\in X$ be a non-degenerate critical point of a smooth function $f$.
+    Then there is an open neighbourhood $U$ of $P$ and coordinate functions $x_{1},\ldots,x_{n}$ on $X$ such that
+    \[ f(x)=f(P)-\sum_{i=1}^{r}x_{i}^{2}+\sum_{i=r+1}^{n}x_{i}^{2} \]
+    where $r$ is the index of $f$ at $P$.
+    \begin{proof}
+	WLOG $X\sub \R^{n}$ and $P=0$.
+	Let $x_{1},\ldots,x_{n}$ be the standard coordinates on $\R^{n}$.
+	\[ f(x_{1},\ldots,x_{n})=f(0)+\sum_{i=1}^{n}(\frac{\partial f}{\partial x_{i}})(0)x_{i}+\sum_{i,j}x_{i}x_{j}g_{ij}(x_{1},\ldots,x_{n}) \]
+	for smooth functions $g_{ij}\colon X\to \R$.
+	The linear term goes away, because $0$ is a critical point.
+	The remaining term is a bilinear map $x^{t}Gx$ with $G=(g_{ij})_{i,j}$.
+	WLOG $g_{ij}$ is symmetric (replace $g_{ij}$ by $\frac{1}{2}(g_{ij}+g_{ji})$).
+	Applying the product rule for derivatives we have
+	\[ \frac{\partial f}{\partial x_{k}}=\sum_{j}x_{j}g_{kj}+\sum_{i}x_{i}g_{ik}+\sum_{i,j}x_{i}x_{j}\frac{\partial g_{ij}}{\partial x_{k}} \]
+	The previous two terms can be groupes as $2\sum_{j}x_{j}g_{kj}$.
+	Now
+	\[ \frac{\partial^{2} f}{\partial x_{l}\partial x_{k}}=2g_{kl}+2\sum x_{j}\frac{\partial g_{kj}}{\partial x_{l}} +2\sum x_{j}\frac{\partial g_{lj}}{\partial x_{k}}+\sum x_{i}x_{j}\frac{\partial g_{ij}}{\partial x_{i}\partial x_{j}} \]
+	Hence $\Hess_{0}(f)=(2g_{kl}(0))$.
+	They form a non-degenerate matrix.
+	Let $A\sub \operatorname{GL}_{n}(\R)$ be the matrix that transforms this mateix into normal form as above, i.e.
+	\[ A^{t}(g_{ij}(0))A=\begin{pmatrix} -I_{r} & 0 \\ 0 & I_{n-r}\end{pmatrix} \]
+	We make a change of cooridnates $x'=A^{-1}x$.
+	WLOG $f(0)=0$, so that
+	\[ f(x')=x'^{t}A^{t}(g_{ij})Ax'=\sum_{i,j}x_{i}'x_{j}'g'_{ij}(x') \]
+	such that $(g'_{ij}(0))=A^{t}(g_{ij})A$.
+	[To be continued on thursday!]
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    Non-degenerate critical points are isolated.
+    \begin{proof}
+	Compute in the previous coordinates.
+    \end{proof}
+\end{cor}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
