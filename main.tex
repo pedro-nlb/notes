@@ -44,30 +44,35 @@
 \newcommand{\bbA}{\mathbb{A}}
 \newcommand{\V}{\mathbb{V}}
 % Mathscr for categories
-\newcommand{\scrC}{\mathscr{C}}
-\newcommand{\Top}{\mathscr{T}op}
-\newcommand{\CHaus}{\mathscr{CH}aus}
-\newcommand{\ED}{\mathscr{ED}}
-\newcommand{\A}{\mathscr{A}}
-\newcommand{\CG}{\mathscr{CG}}
-\newcommand{\Ab}{\mathscr{A}b}
-\newcommand{\Set}{\mathscr{S}et}
-\newcommand{\D}{\mathscr{D}}
-\newcommand{\K}{\mathscr{K}}
-\newcommand{\Db}{\mathscr{D}^{\mathrm{b}}}
-\newcommand{\QCoh}{\mathscr{QC}oh}
-\newcommand{\Coh}{\mathscr{C}oh}
-\newcommand{\Solid}{\mathscr{S}olid}
+\newcommand{\bfC}{\mathbf{C}}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\CHaus}{\mathbf{CHaus}}
+\newcommand{\ED}{\mathbf{ED}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\CG}{\mathbf{CG}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\K}{\mathbf{K}}
+\newcommand{\Db}{\mathbf{D}^{\mathrm{b}}}
+\newcommand{\QCoh}{\mathbf{QCoh}}
+\newcommand{\Coh}{\mathbf{Coh}}
+\newcommand{\Solid}{\mathbf{Solid}}
+\renewcommand{\Vec}{\mathbf{Vec}}
+\newcommand{\Mod}{\mathbf{Mod}}
+\newcommand{\Sh}{\mathbf{Sh}}
 % Mathcal for sheaves
 \newcommand{\calA}{\mathcal{A}}
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
+\newcommand{\E}{\mathcal{E}}
 \newcommand{\G}{\mathcal{G}}
 \renewcommand{\L}{\mathcal{L}}
 \newcommand{\M}{\mathcal{M}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\U}{\mathcal{U}}
 \newcommand{\X}{\mathcal{X}}
+\newcommand{\I}{\mathcal{I}}
 \renewcommand{\H}{\mathcal{H}}
 % Mathfrak for ideals
 \newcommand{\m}{\mathfrak{m}}
@@ -81,7 +86,6 @@
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\PSh}{PSh}
-\DeclareMathOperator{\Sh}{Sh}
 \let\Re\relax
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
@@ -156,7 +160,7 @@ We will then look at the category of solid modules, in which the 6-functor forma
 \begin{defn}
     Pro\'{e}tale site of a point, denoted $\pe$, is the category of profinite sets with finite jointly surjective families of continuous maps as covers.
     A \textit{condensed set} (resp. group, ring, ...) is a sheaf of sets (resp. groups, rings, ...) on $\pe$.
-    We denote by $\Cond(\scrC)$ the category of condensed objects of a category $\scrC$.
+    We denote by $\Cond(\bfC)$ the category of condensed objects of a category $\bfC$.
 \end{defn}
 
 \begin{defn}
@@ -171,7 +175,7 @@ We will then look at the category of solid modules, in which the 6-functor forma
     \end{enumerate}
 \end{defn}
 
-We will call $X(*)$ the \textit{underlying object} in $\scrC$ of a condensed object.
+We will call $X(*)$ the \textit{underlying object} in $\bfC$ of a condensed object.
 
 \begin{rem}
     We will use $T$ for topological spaces vs. $X,Y$ for condensed sets, as opposed to Scholze's mixing of those notations.
@@ -189,7 +193,7 @@ Note that $U_{i}\cap U_{j}$ is just the fiber product of the two inclusions.
 \end{defn}
 
 \begin{defn}
-    $F$ a presheaf on $\scrC$.
+    $F$ a presheaf on $\bfC$.
     A collection $(s_{i})\in \prod_{i}F(U_{i})$ for $\{f_{i}\colon U_{i}\to U\}$ a covering is called a \textit{matching family} if for all $h\colon V\to U$ we have $g^{*}(s_{i})=h^{*}(s_{j})$ for $g$ and $h$ in the diagram
     \begin{center}
 	\begin{tikzcd}
@@ -209,7 +213,7 @@ Note that $U_{i}\cap U_{j}$ is just the fiber product of the two inclusions.
 \end{rem}
 
 \begin{thm}
-    If $\scrC$ is a site, then $\Ab(\scrC)$ is an abelian category.
+    If $\bfC$ is a site, then $\Ab(\bfC)$ is an abelian category.
 \end{thm}
 
 \begin{defn}
@@ -222,11 +226,11 @@ AB2) For every $f\colon A\to B$, the natural map $\operatorname{coim}(f)\to \im{
 AB3) All colimit exist.
 AB4) AB3) + arbitrary direct sums are exact.
 AB5) AB3) + arbitrary filtered colimits are exact.
-AB6) AB3) + $J$ an index set, $\forall j\in J$ a filtered category (think of directed set) $I_{j}$, functors $M\colon I_{j}\to \scrC$, then
+AB6) AB3) + $J$ an index set, $\forall j\in J$ a filtered category (think of directed set) $I_{j}$, functors $M\colon I_{j}\to \bfC$, then
 \[\varinjlim_{(i_{j}\in I_{j})_{j}}\prod_{j} M_{i_{j}}\to \prod_{j\in J}\varinjlim_{i_{j}\in I_{j}} M_{i_{j}} \]
 
 \begin{thm}
-    $\scrC$ a site. Then $\Ab(\scrC)$ satisfies AB3), AB4), AB5) and AB6).
+    $\bfC$ a site. Then $\Ab(\bfC)$ satisfies AB3), AB4), AB5) and AB6).
 \end{thm}
 
 In fact, our case is even nicer:
@@ -1332,7 +1336,7 @@ Recollection of simplicial sets and simplicial objects on a category.
 Convention: we also consider the empty set (``$-1$-simplices'').
 
 \begin{defn}
-    A \textit{hypercover} of $X\in \Ob(\scrC)$ is a simplicial object in $\scrC$ such that $X_{-1}=X$ with some nice properties.
+    A \textit{hypercover} of $X\in \Ob(\bfC)$ is a simplicial object in $\bfC$ such that $X_{-1}=X$ with some nice properties.
 \end{defn}
 
 \begin{defn}
@@ -1945,7 +1949,7 @@ Goal of this lecture: there is a ``classical'' approach to locally compact abeli
     Then there is a natural isomorphism of condensed abelian groups
     \[ \ihom(\u{A},\u{B})\xrightarrow{\sim} \u{\Hom_{\Top\Ab}(A,B)} \]
     \begin{proof}
-	Recall that we have this functor $\u{(-)}\colon \Top\scrC\to \Cond(\scrC)$ sending $T\mapsto \u{T}$, where $\u{T}(S)=\Hom_{\Top}(S,T)$.
+	Recall that we have this functor $\u{(-)}\colon \Top\bfC\to \Cond(\bfC)$ sending $T\mapsto \u{T}$, where $\u{T}(S)=\Hom_{\Top}(S,T)$.
 	Recall Proposition 1.7. in the script: this functor is faithful, and restricted to the category of compactly generated Hausdorff objects it is also full.
 	Recall also that if $S$ is profinite and $M$ is a condensed abelian group, then
 	\[ M(S)=\Hom_{\Cond(\Ab)}(\Z[S],M). \]
@@ -3570,6 +3574,196 @@ We call $r+s$ the \textit{rank} and $r$ the \textit{index}.
 	Compute in the previous coordinates.
     \end{proof}
 \end{cor}
+
+\section{[WS] Derived cats 1 (Ivan) - Introduction to coherent sheaves - 27.11.19}
+
+As a motivation we have:
+
+\begin{thm}[Swoun theorem]
+    Let $M$ be a smooth real manifold.
+    Then the additive functor
+    \[ \Vec(M)\to \Mod(\calC^{\infty}(M)) \]
+    sending $E$ to its global sections induces an equivalence of categories onto the full subcategory of finitely generated projective $\calC^{\infty}(M)$-modules.
+\end{thm}
+
+\begin{rem}
+    \begin{enumerate}
+	\item Given any vector bundle $E$, there exists $F$ such that $E\op F$ is trivial.
+	    Hence $\Gamma(M,E)$ is a direct summand of a free module, thus projective.
+	\item Any vector bundle $E$ admits a finite tirvializing coer $\{U_{i}\}$.
+	    Using partitions of unity we can extend local frames to a finite number of global sections generating $\Gamma(M,E)$ over $\calC^{\infty}(M)$.
+    \end{enumerate}
+\end{rem}
+
+\textbf{Moral 1:} The category of vector bundles is somehow weird to consider, meaning that it is not an abelian category.
+
+What goest wrong explicitly? Consider $M=\R$ and $E=\R\tms \R$.
+Consider the endomorphism
+\begin{align*}
+    \varphi\colon\R\tms\R&\to \R\tms \R \\
+    (x,\lambda)&\mapsto (x,x\lambda)
+\end{align*}
+The kernel is not a vector bundle, because the fibres have different dimensions.
+
+\begin{rem}
+    What if we take $X$ to be a compact complex manifold?
+    By the maximum principle, $\O_{X}(X)\cong \C$.
+    It is not true that the category of holomorphic vector bundles on $X$ is equivalent to finite dimensional $\C$-vector spaces.
+\end{rem}
+
+\textbf{Moral 2:} When things get more rigid, we cannot read everything from the global sections.
+We need to take into account also local sections.
+
+The right functor to consider in general is $\Vec(X)\to \Sh(X)$, associating to a vector bundle $E$ its sheaf of sections.
+
+From now on we will work with $X$ connected complex manifold/irreducible algebraic variety over $\C$.
+$\O_{X}$ will denote the sheaf of holomorphic or regular functions on $X$.
+
+\begin{rem}
+    We can multiply local sections of $E$ by local functions.
+    So we actually have sheaves of $\O_{X}$-modules.
+\end{rem}
+
+\begin{defn}
+    Sheaves of $\O_{X}$-modules.
+\end{defn}
+
+\begin{rem}
+    If $E=X\times \C^{m}$, then $\E=\O_{X}^{m}$.
+    If $E$ is any vector bundle, then $\E$ is a locally free sheaf.
+\end{rem}
+
+\begin{defn}
+    Locally free sheaves of $\O_{X}$-modules.
+\end{defn}
+
+Hence our functor $\Vec(X)\to \Sh(X)$ takes values in the full subcategory of locally free sheaves.
+
+\begin{thm}
+    The functor $\Vec(X)\to \{ \text{ locally free sheaves }\}$ is an equivalence of categories.
+    \begin{proof}
+	Fix a trivializing cover $U_{i}$.
+	We want to show that vector bundles tirvial on $\{U_{i}\}$ are the same as locally free sheaves free on $\{U_{i}\}$.
+	We show that both these categories are equivalent to the category of transition functions.
+    \end{proof}
+\end{thm}
+
+\begin{rem}
+    More explicitly we can write
+    \[ E:=\coprod_{x\in X} \E_{x}/\m_{x}\E_{x}. \]
+\end{rem}
+
+So we have a fully faithful functor $\Vec(X)\to \Mod(X)$ into an abelian category.
+The problem is that the abelian category $\Mod(X)$ is too big.
+This leads to the following definition:
+
+\begin{defn}
+    An $\O_{X}$-module $\F$ is called \textit{coherent} if locally it is the cokernel of two vector bundles, i.e. for all $x\in X$ there is an open neighbourhood $x\in U\sub X$ and an exact sequence
+    \[ \O_{U}^{\op m}\to \O_{U}^{\op n}\to \F|_{U}\to 0.\]
+\end{defn}
+
+This is a natural generalization of vector bundles.
+We will see that these sheaves do form an abelian category.
+
+\begin{exa}
+    \begin{enumerate}
+	\item Any locally free sheaf is coherent.
+	\item $X=\C^{2}$, $0\in \C^{2}$ the origin.
+	    Let $\I_{0}\sub \O_{X}$ be the subsheaf of all functions vanishing at $0$.
+	    We have an exact sequence
+	    \[ 0\to \O_{X}\xrightarrow{\begin{pmatrix} y \\ -x \end{pmatrix}} \O_{X}^{\op 2}\xrightarrow{(x,y)} \I_{0}\to 0.\]
+	    Hence $\I_{0}$ is a coherent sheaf.
+	    But $\I_{0}$ is not locally free, because the fibres are $\C$ if $x\neq 0$ and $\C^{2}$ if $x=0$.
+	\item $X=\C^{2}$ and $0\in \C^{2}$.
+	    We define the skyscraper sheaf with value $\C$ at $0$ by
+	    \[ \delta_{0}(U)=
+	    \begin{cases}
+		\C &\text{ if } 0\in U \\
+		0 &\text{ otherwise}
+	    \end{cases}
+	    \]
+	    $\delta_{0}$ is not locally free, but we have a short exact sequence
+	    \[ 0\to \I_{0}\to \O_{X}\to \delta_{0}\to 0 \]
+	    and thus an exact sequence
+	    \[ \O_{X}^{\op 2}\to \O_{X}\to \delta_{0}\to 0.\]
+    \end{enumerate}
+\end{exa}
+
+\textbf{Facts:}
+\begin{enumerate}
+    \item $\F$ coherent has always locally a resolution by locally free sheaves.
+    \item $i\colon Z\mono X$ smooth (closed) submanifold.
+	We have $\I_{Z}$ and $i_{*}\O_{X}$ coherent, and we have a short exact sequence
+	\[ 0\to \I_{Z}\to \O_{X}\to i_{*}\O_{Z}\to 0.\]
+\end{enumerate}
+
+\subsection{Why care about coherent sheaves?}
+
+\begin{enumerate}
+    \item They are singular vector bundles in a way, so they are useful to compactify moduli spaces of vector bundles.
+    \item To completely characterize projective varieties with Gabriel's theorem.
+	So $\Coh(X)$ is not very manageable.
+\end{enumerate}
+
+Instead we will consider $\Db(X)=\Db(\Coh(X))$ in the following lectures.
+The goal will be Bondal-Orlov's recognition theorem: smooth projective varieties with ample or antiample canonical bundles are completely determined by their bounded derived categories.
+
+In order to let the derived category machinery work, we need to start with an abelian category.
+Before giving the proof, we need a characterization of cohrent sheaves.
+
+\subsection{Characterization of coherent sheaves}
+
+An $\O_{X}$-module $\F$ is coherent if and only if the following two conditions hold:
+\begin{enumerate}
+    \item Locally we have an exact sequence $\O_{U}^{\op n}\to \F|_{U}\to 0$, i.e. $\F$ is of \textit{finite type}.
+    \item For all $U\sub X$, any $\O_{U}^{\op m}\to \F|_{U}$ has finite type kernel.
+\end{enumerate}
+
+When is $\O_{X}$ coherent with respect to this second definition?
+In the algebraic setting, this follows from noetherianity arguments.
+In the analytic setting, this is a deep theorem due to Oka.
+	    
+\subsection{The category of coherent sheaves is abelian}
+
+\begin{thm}
+    $\Coh(X)$ is abelian.
+    \begin{proof}
+	Since $\Coh(X)$ sits inside the abelian category $\Mod(X)$, we only need to check that given $\F,\G\in \Coh(X)$, the following three properties hold:
+	\begin{enumerate}
+	    \item $\F\op \G\in \Coh(X)$.
+	    \item $\ker(\varphi)\in \Coh(X)$ for all $\varphi\colon \F\to \G$.
+	    \item $\coker(\varphi)\in \Coh(X)$.
+	\end{enumerate}
+	Condition $1)$ is left to the interested reader.
+
+	For $2)$, condition $b)$ in our characterization is trivial.
+	To check $a)$, consider $U\sub X$ and $\O_{U}^{\op n}\to \F|_{U}\to 0$ exact.
+	We have a diagram
+	\begin{center}
+	    \begin{tikzcd}
+		\ker(\tilde{\varphi})\arrow[dashed]{d}\arrow{r} & \O_{U}^{\op n}\arrow{d}\arrow[dashed]{dr}{\tilde{\varphi}} & \\
+		\ker(\varphi|_{U})\arrow{r} & \F|_{U}\arrow{r}{\varphi}\arrow{d} & \G|_{U} \\
+		& 0 & 
+	    \end{tikzcd}
+	\end{center}
+	Since $\ker(\tilde{\varphi})$ is of finite type, we have $\ker(\tilde{\varphi})\epi \ker(\varphi|_{U})$, so $\ker(\varphi)$ is also finite type.
+	
+	For $3)$, since $\G\epi \coker(\varphi)$ is a quotient, $a)$ is trivial.
+	So let us check $b)$.
+	Let $\bar{\psi}\colon \O_{U}^{\op n}\to \coker(\varphi|_{U})$ be a map.
+	We need to check that $\ker(\bar{\psi})$ is of finite type.
+	Consider the diagram
+	\begin{center}
+	    \begin{tikzcd}
+		0\arrow{r} & \O_{U}^{\op m}\arrow{r}\arrow{d}{\Phi} & \O_{U}^{\op n}\op \O_{U}^{\op n}\arrow[dashed]{d}{\psi}\arrow{r} & \O_{U}^{\op n}\arrow[dashed]{dl}\arrow{d}{\bar{\psi}}\arrow{r} & 0\\
+		0\arrow{r} & \im(\varphi|_{U})\arrow{r} & \G|_{U}\arrow{r} & \coker(\varphi|_{U}) \arrow{r} & 0 
+	    \end{tikzcd}
+	\end{center}
+	in which both rows are exact.
+	Apply the snake lemma to get $\ker(\psi)\to \ker(\bar{\psi})\to 0=\coker(\Phi)$.
+	Since $\ker(\psi)$ is of finite type, so is $\ker(\bar{\psi})$.
+    \end{proof}
+\end{thm}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
