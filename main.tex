@@ -3765,6 +3765,138 @@ In the analytic setting, this is a deep theorem due to Oka.
     \end{proof}
 \end{thm}
 
+\section{[LT] Lecture 12 - 28.11.19}
+
+The next step in our proof is to make a non-linear change of coordinates to get rid of the $g_{ij}$ of the last time by completing the square.
+We have $g_{11}(0)=\pm 1$.
+Consider for instance $g_{11}(0)=1$.
+Then $g_{11}$ is positive on a nbhd of $0$.
+We replace $X$ by this neighbourhood, so that $g_{11}$ is positive on $X$ and we can take roots.
+We put
+\[ y_{1}=\sqrt{g_{11}}x_{1}+\sqrt{g_{11}}^{-1}g_{12}x_{2}+\cdots +\sqrt{g_{11}}^{-1}g_{1n}x_{n} \]
+and hence $y_{1}^{2}=g_{11}x_{1}^{2}+2g_{12}x_{1}x_{2}+\cdots +2g_{1n}x_{1}x_{n}+$ rest (without $x_{1}$).
+In the new coordinates $y_{1},x_{2},\ldots,x_{n}$ we have
+\[ f=y^{2}+\sum_{i,j>1} x_{i}x_{j}h_{ij} \]
+with new functions $h_{ij}$.
+By induction, we find new coordinates $y_{2},\ldots,y_{n}$ such that $f$ has the desired form.
+
+The case $g_{11}(0)=-1$ is similar.
+In this case $g_{11}$ is negative on a neighbourhood of $0$, so we replace again $X$ by this neighbourhood.
+The coordinate that we have to do then is
+\[ y_{1}=\sqrt{-g_{11}}x_{1}+\sqrt{-g_{11}}^{-1}g_{12}x_{2}+\cdots +\sqrt{-g_{11}}^{-1}g_{1n}x_{n}, \]
+so that $-y_{1}^{2}=g_{11}x_{1}^{2}+2g_{12}x_{1}x_{2}+\cdots$, and then finish the argument as before.
+This concludes the proof.
+
+\subsection{Same story in the holomorphic setting}
+
+\begin{defn}
+    Let $X$ be a complex manifold and $f\colon X\to \C$ holomorphic.
+    A point $x\in X$ is called \textit{critical point} if $df_{x}=0$.
+    A value $t\in \C$ is called a \textit{critical value} if there is a critical point in $X$ mapping to $t$ under $f$.
+\end{defn}
+
+\begin{rem}
+    In a non-critical point, $\rk_{\C}(df_{x})=1$, so $f$ is a submersion of smooth manifolds.
+    If in addition $f$ is proper, then we can apply Ehresmann to get a local fibration of smooth manifolds away from the critical values.
+\end{rem}
+
+\begin{defn}
+    Let $X$ be a complex manifold and $f\colon X\to \C$ holomorphic.
+    Let $x\in X$ be a critical point.
+    We define the $\C$-bilinear form
+    \begin{align*}
+	\Hess_{x}(f)\colon T_{x}X\times T_{x}X & \to \C \\
+	(\partial_{z_{i}},\partial_{z_{j}}) & \mapsto \frac{\partial^{2} f}{\partial z_{j}\partial z_{i}}(x)
+    \end{align*}
+    with $z_{1},\ldots,z_{n}$ local coordinates near $x$.
+\end{defn}
+
+As in the real case, $\Hess_{x}(f)$ is well-defined and symmetric.
+There is a basis of $T_{x}X$ such that the bilinear form is represented by the diagonal matrix
+\[ \begin{pmatrix} I_{s} & 0 \\ 0 & 0\end{pmatrix} \]
+
+\begin{defn}
+    We say that $x\in X$ is a \textit{non-degenerate critical point} if it is a critical point and the bilinear form given by the Hessian is non-degenerate.
+    In this case, we also say that the fibre $X_{f(x)}$ has an \textit{ordinary double point}.
+\end{defn}
+
+\begin{exa}
+    Let $X=\C^{n}$, $f(x_{1},\ldots,x_{n})=\sum_{i=1}^{s}x_{i}^{2}$ with $s\leqslant n$.
+    Then $df=(2x_{1},\ldots,2x_{s},0,\ldots,0)$.
+    Critical points are $\{x\in \C^{n}\mid x_{1}=\cdots =x_{s}=0\}$.
+    In the Hessian matrix at $x$ written as above we get $I_{s}=2\id$.
+    It is non-degenerate if and only if $s=n$, i.e. if and only if $0$ is the only critical point.
+    The fibre is then $X_{0}=\{\sum x_{i}^{2}=0\}$.
+\end{exa}
+
+$f\colon X\to \C$ smooth, $p\in X$ non-degenerate critical point.
+Then $\exists U$ open nbhd of $p$ and local coordinates $x_{1},\ldots,x_{n}$ on $U$ such that
+\[ f(x)=f(p)-\sum_{i=1}^{r}x_{i}^{2}+\sum_{i=r+1}^{n}x_{i}^{2} \]
+
+\begin{prop}[Morse lemma]
+    Let $p\in X$ be non-degenerate critical point of a holomorphic function $f\colon X\to \C$.
+    Then there is an open nbhd $U$ of $p$ and local holomorphic coordinates $x_{1},\ldots,x_{n}$ such that
+    \[ f(x)=f(p)+\sum_{i=1}^{n}x_{i}^{2} \]
+    \begin{proof}
+	Same argument as in the smooth case.
+    \end{proof}
+\end{prop}
+
+\subsection{Topology of level sets}
+
+[Torus picture]
+
+Let $f\colon X\to \R$ be smooth.
+Our aim is to understand the set $X_{\leqslant M}=f^{-1}((-\infty,M])$ or more generally the sets $X_{[M_{1},M_{2}]}$ and $X_{M}$ for $M\in \R$ and $[M_{1},M_{2}]\sub \R$.
+
+\begin{lm}
+    If $M$ is not a critical value with non-empty fibre, then $X_{\leqslant M}$ is a manifold with boundary, i.e. every point has a nbhd homeomorphic to an open set in $\R_{\geqslant 0}\times \R^{n-1}$.
+    \begin{proof}
+	The preimage of $(-\infty,M)$ is open in $X$, hence a manifold.
+	Consider $x_{0}\in X_{M}$, which is not a critical point by assumption.
+	By assumption, $f$ is a submersion near $x_{0}$.
+	By the constant rank theorem, there are local coordinates near $x_{0}$ such taht $f$ is the projection to the first coordinate.
+	This is the coordinate chart for the manifold with boundary.
+    \end{proof}
+\end{lm}
+
+\begin{defn}
+    Let $X$ be a smooth manifold.
+    A function $f\colon X\to \R$ is called a \textit{Morse function} if all critical points are non-degenerate and if it is exhaustie, i.e. if for every $M\in \R$ the closed subset $X_{\leqslant M}$ is compact.
+\end{defn}
+
+In particular, $f$ is proper.
+Hence, if $[M_{1},M_{2}]$ does not contain a critical value, $f$ defines a trivial fibration
+\[ X_{[M_{1},M_{2}]}\cong [M_{1},M_{2}]\times K \]
+for the compact fibre $K$.
+
+\begin{defn}
+    Cells, cell complexes, finite cell complexes.
+\end{defn}
+
+\begin{exe}
+    $X$ and $Y$ finite cell complexes.
+    Show that $X\times Y$ also has the structure of a finite cell complex.
+\end{exe}
+
+\begin{defn}
+    Homotopy relative to a subspace.
+    Homotopy equivalence and homotopy type.
+\end{defn}
+
+\begin{defn}
+    $X$ topological space, $A\sub X$ closed subset, $i\colon A\to X$ the inclusion.
+    We say that $A$ is a \textit{deformation retract} of $X$ if there is a continuous map $r\colon X\to A$ such that $r\circ i=\id_{A}$ and a homotopy relative to $A$ from $i\circ r$ to $\id_{X}$.
+\end{defn}
+
+Hence this is stronger than homotopy equivalence.
+
+\begin{thm}
+    $X$ a smooth manifold, $f\colon X\to \R$ a Morse function and $M\in \R$.
+    Then $X_{\leqslant M}$ has the homotopy type of a finite cell complex.
+\end{thm}
+
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
