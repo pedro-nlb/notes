@@ -38,6 +38,7 @@
 \newcommand{\bbE}{\mathbb{E}}
 \newcommand{\bbT}{\mathbb{T}}
 \newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbF}{\mathbb{F}}
 \newcommand{\bbH}{\mathbb{H}}
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
 \newcommand{\Gm}{\mathbb{G}_{m}}
@@ -62,6 +63,7 @@
 \newcommand{\Mod}{\mathbf{Mod}}
 \newcommand{\Sh}{\mathbf{Sh}}
 % Mathcal for sheaves
+\newcommand{\calX}{\mathcal{X}}
 \newcommand{\calA}{\mathcal{A}}
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
@@ -91,6 +93,7 @@
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Supp}{Supp}
 \DeclareMathOperator{\ihom}{\underline{Hom}}
 \DeclareMathOperator{\iext}{\underline{Ext}}
@@ -3896,6 +3899,124 @@ Hence this is stronger than homotopy equivalence.
     Then $X_{\leqslant M}$ has the homotopy type of a finite cell complex.
 \end{thm}
 
+\section{[FS] Christian Gleissner - Klein's quartic, Fermat's cubic and rigid manifolds with Kodaira dimension 1 - 29.11.19}
+
+Joint work with Ingrid Bauer.
+We work over $\C$.
+
+\begin{defn}
+    $X$ compact $\C$-mfd.
+    \begin{enumerate}[label=\alph*)]
+	\item $X$ is (locally) rigid iff for all deformations $f\colon (\calX,X)\to (S,0)$ there exists $0\in U\sub S$ open such that for all $t\in U$ we have $\calX_{t}\cong X$, where $\cong$ means biholomorphic.
+	\item $X$ is infinitesimally rigid iff $H^{1}(T_{X})=0$.
+    \end{enumerate}
+\end{defn}
+
+The (locally) means that we have defined locally rigidness, but we only say rigid.
+We have $b)\Rightarrow a)$, and in 2016 Bauer and Pignatelli proved that $a)$ does not imply $b)$.
+
+\begin{exa}
+    $\P^{1}\tms\P^{1}=X$ has $H^{1}(T_{X})=0$ but $X$ is deformation equivalent to the Hirzebruch surface $\bbF_{2}$.
+\end{exa}
+
+\textbf{Curves:} only $\P^{1}$ is rigid, so for $\kappa(X)\neq -\infty$ we know that $X$ is not rigid.
+
+\textbf{Surfaces:} if $X$ is rigid, then $\kappa(X)=-\infty$ or $\kappa(X)=2$.
+
+\textbf{Dimension at least 3:}
+\begin{enumerate}[label=\alph*)]
+    \item Beauville '83: rigid CY mfds $X_{n}$ with $n=3,4,6$ ($\kappa(X_{n})=0$).
+    \item Catanese Bauer '16: for all $n\geqslant 4$ there is a rigid $n$-fold $X_{n}$ with $\kappa(X_{n})=0$.
+    \item Catanese Bauer '16: for all $n\geqslant 3$ and all $2\leqslant \kappa\leqslant n$ there exists $X_{n,\kappa}$ an $n$-fold which is rigid and has $\kappa(X_{n,\kappa})=\kappa$.
+\end{enumerate}
+
+\begin{thm}[-,Bauer]
+    For all $n\geqslant 3$ there exists a rigid $X_{n}$ with $\kappa(X_{n})=1$.
+\end{thm}
+
+\subsection{Idea of the construction}
+
+Start with $Y_{n}$ an $n$-fold with $\kappa(Y_{n})=1$, e.g. $Y_{n}=E^{n-1}\tms C$ for $E$ elliptic curve and $C$ hyperbolic curve.
+Take a finite subgroup $G\sub \Aut(Y_{n})$ such that $H^{1}(T_{Y_{n}})^{G}=0$.
+Then consider $X_{n}=Y_{n}/G$.
+
+\begin{rem}
+    If codimension of fixed locus is at least $2$, then $H^{1}(T_{Y_{n}})^{G}=H^{1}(T_{X_{n}})$.
+\end{rem}
+
+\begin{pbl}
+    \begin{enumerate}[label=\alph*)]
+	\item $X_{n}$ may be singular.
+	    We want $\kappa(X_{n})=1$, so we only allow canonical singularities.
+	\item We need to compare $H^{1}(T_{\hat{X}_{n}})$ with $H^{1}(T_{X_{n}})$.
+    \end{enumerate}
+\end{pbl}
+
+Consider the Leray spectral sequence:
+\[ E_{2}^{p,q}=H^{p}(R^{q}f_{*}T_{\hat{X}_{n}})\Rightarrow H\grd(T_{\hat{X}_{n}}) \]
+The low terms yield the 5-term spectral sequence
+\[ 0\to E_{2}^{1,0}\to H^{1}(T_{\hat{X}_{n}})\to E_{2}^{01}\to E_{2}^{20}\to H^{2}(T_{\hat{X}_{2}}) \]
+We want $f_{*}T_{\hat{X}_{n}}=T_{X_{n}}$ and $R^{1}f_{*}T_{\hat{X}_{n}}=0$, for which we need to choose our resolution carefully.
+
+\subsection{The quotient $X_{n}$}
+
+$C=\{x_{0}^{3}x_{1}+x_{1}^{3}x_{2}+x_{2}^{3}x_{0}=0\}\sub \P^{2}$ with $g(C)=3$ (Klein's quartic).
+Then $\Aut(C)\cong \operatorname{PSL}(2,\bbF_{7})$, which has order 168 (maximum for $g=3$ curves).
+We choose $\lambda^{7}=1$ and
+\[ G=\left\langle \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix},
+    \begin{pmatrix} \lambda^{4} & 0 & 0 \\ 0 & \lambda^{2} & 0 \\ 0 & 0 & \lambda \end{pmatrix}\right\rangle \]
+Call $S$ resp. $T$ the first resp. second matrix.
+Then $\ord(S)=3$ and $\ord(T)=7$ and $G\cong \Z/7\Z\tms \Z/3\Z$.
+This group acts on $E=\C/\Z[\omega]$ by $f_{S}(z)=\omega z$ and $f_{T}(z)=z+\frac{1+3\omega}{7}$.
+We take $Y_{n}=E^{n-1}\tms C$ with $G\to Y_{n}$ via
+\[ S^{a}T^{b}(z_{1},\ldots,z_{n-1},Y)=(f_{S^{a}T^{b}}(z_{1}),\ldots, f_{S^{a}T^{b}}(z_{n-1}),S^{a}T^{b}y) \]
+and set $X_{n}=Y_{n}/G$.
+
+\begin{prop}
+    $X_{n}$ has $3^{n-1}$ singularities of type $\frac{1}{3}(1,\ldots,1)$ and $3^{n-1}$ singularities of type $\frac{1}{3}(1,\ldots,1,2)$ (all isolated).
+    This implies that they are canonical, and in particular $\kappa(X_{n})=1$.
+\end{prop}
+
+\subsection{Verification that $H^{1}(T_{Y_{n}})^{G}=0$}
+
+\begin{rem}
+    $H^{0}(\Omega_{E}^{\ot q})^{G}=\langle dz^{\ot q} \rangle^{G}=0$ if $q=1$ or $q=2$.
+\end{rem}
+
+\begin{lm}
+    $H^{0}(\Omega_{C}^{\ot q})^{G}=0$ for $q=1$ and $q=2$.
+\end{lm}
+
+\begin{cor}
+    $H^{1}(T_{Y_{n}})^{G}=0$.
+    \begin{proof}
+	Remark plus lemma plus Kuenneth plus Serre duality.
+    \end{proof}
+\end{cor}
+
+\subsection{The resolution $f\colon \hat{X}_{n}\to X_{n}$}
+
+\begin{rem}
+    To construct $f$ such that $f_{*}T_{\hat{X}_{n}}=T_{X_{n}}$ and $R^{1}f_{*}T_{\hat{X}_{n}}=0$ is a local problem, since the singular locus is isolated.
+\end{rem}
+
+Hence we can use toric geometry.
+We resolve our singularity locally with some $U$.
+They glue to a toric variety $U_{\Sigma}$, where $\Sigma $ is the corresponding fan.
+For any toric variety we have an Euler sequence like the one on projective space:
+\[ 0\to \O_{U_{\Sigma}}\to \bigoplus_{i=1}^{3}\O(D_{i})\op \O(E)\to T_{U_{\Sigma}}\to 0 \]
+Toric, quotient and canonical singularities are all rational.
+Hence $R^{i}f_{*}\O_{U_{\Sigma}}=0$ for $i\geqslant 1$.
+Thus
+\[ R^{1}f_{*}T_{U_{\Sigma}}\cong \bigoplus R^{1}f_{*}\O(D_{i})\op R^{1}f_{*}\O(E) \]
+For example for the right one we use the standard short exact sequence
+\[ 0\to \O_{U_{\Sigma}}\to \O_{U_{\Sigma}}(E)\to \O_{E}(E)\to 0 \]
+Which implies that
+\[ R^{1}f_{*}\O_{U_{\Sigma}}(E)=R^{1}f_{*}\O_{E}(E)=H^{1}(E,\O_{E}(E))=0 \]
+because $\O_{E}(E)=\O_{\P^{2}}(9)$.
+Similarly for the other one, so $R^{1}f_{*}T_{U_{\Sigma}}=0$.
+We are done if we show that $f_{*}T_{U_{\Sigma}}$ is reflexive, because then $f_{*}T_{U_{\Sigma}}=T_{U}$.
+This follows by a result of Greb, Kebekus and Peternell, which show that $f_{*}\Omega_{U_{\Sigma}}^{2}$ is reflexive.
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
