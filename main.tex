@@ -65,6 +65,7 @@
 % Mathcal for sheaves
 \newcommand{\calX}{\mathcal{X}}
 \newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
 \newcommand{\calC}{\mathcal{C}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\E}{\mathcal{E}}
@@ -123,6 +124,7 @@
 \newcommand{\LCA}{\mathrm{LCA}}
 \newcommand{\solid}{^{\blacksquare}}
 \newcommand{\dsolid}{^{L\blacksquare}}
+\newcommand{\usolid}{_{\blacksquare}}
 
 \title{Various lecture notes}
 \author{Pedro Núñez}
@@ -4017,6 +4019,148 @@ because $\O_{E}(E)=\O_{\P^{2}}(9)$.
 Similarly for the other one, so $R^{1}f_{*}T_{U_{\Sigma}}=0$.
 We are done if we show that $f_{*}T_{U_{\Sigma}}$ is reflexive, because then $f_{*}T_{U_{\Sigma}}=T_{U}$.
 This follows by a result of Greb, Kebekus and Peternell, which show that $f_{*}\Omega_{U_{\Sigma}}^{2}$ is reflexive.
+
+\section{[CM] Analytic Rings (Johan) - 2.12.19}
+
+\subsection{What we have seen so far and where we are going}
+
+In the last two talks we looked at things called \textit{solid abelian groups}.
+To every extremelly disconnected set $S$ we attached the object $\Z[S]\solid$.
+Dario showed us that using this functor we can define the subcategory $\Solid\sub \Cond(\Ab)$, and we got a long list of good categorical properties.
+In the next talk, Vincent told us about the tensor product and how to complete it in a decent way.
+The goal for this talk is to look at what the ingredients were in the last two talks to get this category and this nice properties and axiomatize it.
+This will lead first to preanalytic rings and then to analytic rings.
+The previous construction will then be an example of an analytic ring $\Z\usolid$.
+
+\subsection{Preanalysis}
+
+\begin{defn}
+    A \textit{pre-analytic ring} $\calA$ consists of the data:
+    \begin{enumerate}[label=\roman*)]
+	\item A condensed ring $\u{\calA}$.
+	\item A functor
+	    \[ \{ \text{ extremally disconnected sets }\}\to \Mod_{\u{\calA}}^{\text{cond}} \]
+	    sending $S\mapsto \calA[S]$.
+	\item A natural transformation $S\to \calA[S]$.
+    \end{enumerate}
+    with the condition that the functor $S\mapsto \calA[S]$ takes finite disjoint unions to products.
+\end{defn}
+
+\begin{defn}
+    A morphism $\calA\to \calB$ is a morphism of condensed rings $\u{\calA}\to \u{\calB}$ together with a natural transformation $\calA[S]\to \calB[S]$ of $\u{\calA}$-modules.
+\end{defn}
+
+\begin{exa}
+    \begin{enumerate}[label=\roman*)]
+	\item $\Z\usolid$ is given by $\u{\Z\usolid}=\Z$ with the functor $S\mapsto \Z[S]\solid$ (nat. trasnf. left to reader).
+	\item $\Z_{p,\blacksquare}$ is given by $\u{\Z_{p}}$ with the functor $S\mapsto \lim_{i}\Z_{p}[S_{i}]$.
+	\item If $A$ is a condensed ring, then $A\usolid$ is given by $\u{A}=A$ and $S\mapsto \lim_{i}A[S_{i}]$.
+	    Remark: $A\usolid[S]$ are the $A$-valued measures on $S$.
+	\item If $A$ is a discrete ring, then $(A,\Z)\usolid$ is given by $\u{A}$ and $S\mapsto \Z\usolid[S]\ot_{\Z}A$.
+	\item If $A$ is a condensed ring we can take $A$ itself and $S\mapsto A[S]$, but this is not well-behaved.
+    \end{enumerate}
+\end{exa}
+
+\subsection{Analysis}
+
+\begin{thm}
+    Let $\calA$ be a pre-analytic ring.
+    TFAE:
+    \begin{enumerate}[label=\roman*)]
+	\item For any complex
+	    \[ C=\cdots \to C_{i}\to \cdots\to C_{1}\to C_{0}\to 0 \]
+	    of $\u{\calA}$-modules such that all $C_{i}$ are direct sums of $\calA[T]$ for varying $T$, the map
+	    \[ R\ihom_{\u{\calA}}(\calA[S],C)\to R\ihom_{\u{\calA}}(\u{\calA}[S],C) \]
+	    is an isomorphism in $\Cond(\Ab)$ for all $S$.
+	\item For all $I,J$ and extremally disconnected families $(S_{i})_{i\in I}$ and $(S'_{j})_{j\in J}$ and all maps $f\colon \op_{i\in I}\calA[S_{i}]\to \op_{j\in J}\calA[S'_{j}]$ with kernel $K$, the map
+	    \[ R\ihom_{\u{\calA}}(\calA[S],K)\to R\ihom_{\u{\calA}}(\u{\calA}[S],K) \]
+	    is an isomorphism for all $S$.
+    \end{enumerate}
+\end{thm}
+
+\begin{defn}
+    An \textit{analytic ring} $\calA$ is a pre-analytic ring which satisfies any of the previous equivalent conditions.
+\end{defn}
+
+\begin{rem}
+    The analogous of property $i)$ above was our original definition of solid abelian groups.
+\end{rem}
+
+\begin{exa}
+    $\Z\usolid$ is analytic.
+\end{exa}
+
+\begin{defn}
+    Let $\calA$ be an analytic ring.
+    We define with $\Mod_{\calA}^{cond}$ as the full subcategory of $\Mod_{\u{\calA}}^{cond}$ of objects $\M$ for which the map
+    \[ \Hom_{\u{\calA}}(\calA[S],\M)\to \M(S) \]
+    is an isomorphism for all $S$.
+\end{defn}
+
+\begin{prop}
+    $\Mod_{\calA}^{cond}\sub \Mod_{\u{\calA}}^{cond}$ is stable under limits, colimits and extensions.
+    The $\calA[S]$ form a family of compact projective generators.
+    The inclusion functor admits a lefta djoint
+    \[ M\longmapsto M\ot_{\u{\calA}}\calA \]
+    If $\u{\calA}$ is commutative, then there is a unique symmetric monoidal tensor product $\ot_{\calA}$ on $\Mod_{\calA}^{cond}$ such that the functor
+    \[ M\longmapsto M\ot_{\calA}\calA \]
+    is symmetric monoidal.
+\end{prop}
+
+The functor $\D(\Mod_{\calA}^{cond})\to \D(\Mod_{\u{\calA}}^{cond})$ is fully faithful and its essential image is stable under limits, colimits and it is given by those $C$ in $\D(\Mod_{\u{\calA}}^{cond})$ such that
+\[ R\Hom_{\u{\calA}}(\calA[S],C)\to R\Hom_{\u{\calA}}(\u{\calA}[S],C) \]
+is an isomorphism for all $S$.
+In that case, the derived internal homs also agree.
+
+We also have $C\in \D(\Mod_{\calA}^{cond})$ if and only if all $H^{i}(C)$ are in $\Mod_{\calA}^{cond}$.
+
+The functor admits a left adjoint which is the left derived of $(-)\ot_{\u{\calA}}\calA$
+\[ C\longmapsto C\ot_{\u{\calA}}^{L}\calA. \]
+If $\u{\calA}$ is commutative, then $\exists !$ $\ot_{\calA}^{L}$ on $\D(\Mod_{\calA}^{cond})$ such that the functor $C\mapsto C\ot_{\u{\calA}}^{L}\calA$ is symmetric monoidal.
+
+\subsection{New names for old things}
+
+\[ \Solid \leftrightarrow \Mod_{\Z\usolid}^{cond} \]
+\[ (M\mapsto M\solid) \leftrightarrow (M\mapsto M\ot_{\Z}\Z\usolid) \]
+\[ \ot\solid \leftrightarrow \ot_{\Z\usolid} \]
+\[ (C\mapsto C\dsolid) \leftrightarrow (C\mapsto C\ot_{\Z}^{L}\Z\usolid \]
+\[ \ot\dsolid \leftrightarrow \ot_{\Z\usolid}^{L} \]
+
+\subsection{Some more results}
+
+\begin{prop}
+    Let $f\colon \calA\to \calB$ be a morphism.
+    The functor
+    \[ \Mod_{\u{\calA}}^{cond}\xrightarrow{\ot_{\u{\calA}}\u{\calB}} \Mod_{\u{\calB}}^{cond}\xrightarrow{\ot_{\u{\calB}}\calB} \Mod_{\calB}^{cond} \]
+    factors over $\Mod_{\calA}^{cond}$ via a functor denoted $M\ot_{\calA}\calB$.
+
+    Analogously for the derived version $C\mapsto C\ot_{\calA}^{L}\calB$.
+\end{prop}
+
+\begin{prop}
+    \begin{enumerate}[label=\roman*)]
+	\item $\Z_{p,\blacksquare}$ is analytic.
+	\item For any discrete $A$, $(A,\Z)\usolid$ is also analytic.
+    \end{enumerate}
+    \begin{proof}
+	Denote both analytic rings with $\calA$ for the moment.
+	Take a complex $C$ as in the definition above.
+	We need to check that
+	\[ R\ihom_{\u{\calA}}(\calA[S],C)\to R\ihom_{\u{\calA}}(\u{\calA}[S],C) \]
+	is an isomorphism for all $S$.
+	Note that $C$ is in $\D(\Solid)$.
+	We also have that $\calA[S]=\Z\usolid[S]\ot_{\Z\usolid}^{L}\u{\calA}$.
+	Now we get a long chain of equalities:
+	\begin{multline*}
+	    R\ihom_{\u\calA}(\calA[S],C)=R\ihom_{\u{\calA}}(\Z\usolid[S]\ot_{\Z\usolid}^{L}\u{\calA},C)= \\
+	    = R\ihom(\Z\usolid[S],C) = R\ihom(\Z[S],C)=R\ihom_{\u{\calA}}(\u{\calA}[S],C) 
+	\end{multline*}
+    \end{proof}
+\end{prop}
+
+\begin{exa}
+    If we take $(\Q_{p},\Z_{p})\usolid$, then $(\Q_{p},\Z_{p})\usolid[S]$ are the measures $\M(S,\Z_{p})[\frac{1}{p}]$ with $p$ inverted, which is equal to $\M^{b}(S,\Q_{p})$, where $b$ stands for bounded.
+\end{exa}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
