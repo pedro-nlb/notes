@@ -4162,6 +4162,101 @@ If $\u{\calA}$ is commutative, then $\exists !$ $\ot_{\calA}^{L}$ on $\D(\Mod_{\
     If we take $(\Q_{p},\Z_{p})\usolid$, then $(\Q_{p},\Z_{p})\usolid[S]$ are the measures $\M(S,\Z_{p})[\frac{1}{p}]$ with $p$ inverted, which is equal to $\M^{b}(S,\Q_{p})$, where $b$ stands for bounded.
 \end{exa}
 
+\section{[LT] Lecture 13 - 3.12.19}
+
+Recall that a deformation retract of $X$ onto $A\sub X$ is a homotopy between the identity on $X$ and a retraction $r\colon X\to A$ (composed with the inclusion) relative to $A$.
+
+\begin{exa}
+    Let $f\colon X\to \R^{n}$ be a trivial fibration.
+    Then $f^{-1}(y_{0})$ is a deformation retract of $X$.
+\end{exa}
+
+\begin{prop}
+    Let $f\colon X\to \R$ be a Morse function and $\lambda\in \R$ a critical value.
+    Let $\lambda<M\in \R$ such that $f$ does not have critical values in $(\lambda,M]$.
+    Then for all $0<\varepsilon <M-\lambda$ the level set $X_{\leqslant \lambda +\varepsilon }$ is a deformation retract of $X_{\leqslant M}$.
+    \begin{proof}
+	Apply the Ehresmann lemma to the restriction of $f$ to $X_{[\lambda+\varepsilon, M]}$ (for which we make this interval slightly bigger without introducing any critical values).
+	Then there is a diffeomorphism
+	\[ X_{[\lambda+\varepsilon, M]}\cong X_{\lambda+\varepsilon}\times [\lambda+\varepsilon, M]. \]
+	The retraction of $[\lambda+\varepsilon,M]$ to $\{\lambda +\varepsilon\}$ induces a deformation on the bodret(?).(boundary? borders?)
+	[...]
+    \end{proof}
+\end{prop}
+
+Now we want to study critical points.
+Let $X=\R^{2}$ and $f\colon X\to \R$ defined by $(x_{1},x_{2})\mapsto -x_{1}^{2}+x_{2}^{2}$.
+The critical value is $0$ and the critical point is $(0,0)$.
+The fibre at $0$ is $X_{0}=f^{-1}(0)=\{(x_{1},x_{2})\mid x_{2}^{2}-x_{1}^{2}=0 \}$, which is the union of two lines.
+The preimage of some $\alpha\in \R_{\neq 0}$ is
+\[ X_{\alpha}=\{(x_{1},x_{2})\mid (x_{2}-x_{1})(x_{2}+x_{1})=\alpha \}. \]
+Setting the first factor to $a$ and the second to $b$, we have equations of the form $ab=1$, $ab=-1$, and so on.
+The level sets are hyperbolas which are asymptotically coming closer to the fibre $X_{0}$.
+Nord and south correspond to $\alpha>0$, whereas east and west correspond to $\alpha<0$.
+
+We want to get from $X_{<-\varepsilon}$ to $X_{<\varepsilon }$.
+We glue on $[-\sqrt{\varepsilon},\sqrt{\varepsilon}]\sub \R$ ($x_{1}$ axis).
+[Picture]
+
+More generally, let $X=\R^{n}$ and $f(x_{1},\ldots,x_{n})=-\sum_{i=1}^{r}x_{i}^{2}+\sum_{i=r+1}^{n}x_{i}^{2}$.
+The picture is the same but now the axes are higher dimensional.
+We want to compare $X_{\leqslant -\varepsilon }$ to $X_{\leqslant \varepsilon}$.
+The interval is replaced by $B^{r}(\varepsilon)=\{x\mid \sum_{i=1}^{r}x_{i}^{2}\leqslant \varepsilon, x_{r+j}=0\}$.
+We have $B^{r}(\varepsilon)\sub X_{\leqslant \varepsilon}$.
+
+Its intersection with $X_{\leqslant -\varepsilon}$ is
+\[ B^{r}(\varepsilon)\cap X_{\leqslant -\varepsilon }=\partial B^{r}(\varepsilon)=S^{r-1} \]
+
+\begin{lm}
+    With notation as above, $X_{\leqslant \varepsilon}$ deformation retracts to $X_{\leqslant -\varepsilon }\cup B^{r}(\varepsilon)$.
+    \begin{proof}
+	We need to define a deformation from $X_{\leqslant \varepsilon}$ to the subset (which is clear from the picture).
+	Voisin [Voi07, Prop.1.12] and Milnor [Mil63, p.15-19] write this down.
+	We use a third method, inspired by the differential geometric approach to Morse theory.
+	Let $G\colon \R^{n}\to \R^{n}$ be the negative gradient field
+	\[ G(x_{1},\ldots,x_{n})=-(\partial_{1} f,\partial_{2} f,\ldots, \partial_{n} f)=(2x_{1},\ldots,2x_{r},-2x_{r+1},\ldots,-2x_{n}) \]
+	Let $\Phi$ be its flow.
+	Going along the flow reduces the value of $f$.
+	They flow in the direction of steepest descent.
+	$0$ is a fixed point.
+	Most flow lines tend to infinity as $t$ goes to $\pm \infty$.
+	In particular, they connect a point on the level set $X_{\varepsilon}$ to a point on the level set $X_{-\varepsilon}$ after a finite amount of time.
+	The flow is faster away from the origin, so we can do this whole deformation in finite time.
+	On the exceptional set $\{(x_{1},\ldots,x_{r},0,\ldots,0)\}$ the point $0$ is repelling, and on $\{ (0,\ldots,0,x_{r+1},\ldots,x_{n})\}$ it is attracting.
+	The repelling set (also called the \textit{unstable} manifold) is where we find $B^{r}(\varepsilon)$.
+	We proceed as follows.
+	Follow $\Phi$ for a finite amount of time until the points on $X_{\varepsilon}$ with $|x|>R$ until they have reached $X_{-\varepsilon}$.
+	Then move along the flow $(x,t)\mapsto (x_{1},\ldots,x_{r},tx_{r+1},\ldots,tx_{n})$.
+	In both cases we leave points stationary once they reached $X_{\leqslant -\varepsilon }\cup B^{r}(\varepsilon)$.
+    \end{proof}
+\end{lm}
+
+\begin{thm}
+    Let $X$ be a smooth manifold and $f\colon X\to \R$ be a Morse function and $\lambda\in \R$ a critical value.
+    Let $x_{1},\ldots,x_{n}$ be the critical points for the values $r_{1},\ldots,r_{n}$, called their Morse indices.
+    Then there is $\varepsilon >0$ small enough such that there is a deformation retraction from $X_{\leqslant \lambda+\varepsilon}$ to $X_{\leqslant \lambda-\varepsilon}\cup (\cup_{i=1}^{m}B^{r_{i}})$ with cells $B^{r_{1}},\ldots,B^{r_{n}}$ of dimensions $r_{1},\ldots,r_{n}$ glued to $X_{\leqslant \lambda-\varepsilon }$ along their boundaries such that their boundaries remain disjoint.
+    \begin{proof}
+	The idea is to use the negative gradient flow away from the critical points.
+	The values $\varepsilon$ can be chosen such that the exceptional balls are disjoint.
+	Within the exceptional ball we use the deformation constructed in the lemma.
+	However, the gradient is not a well-defined tangent vector.
+	The invariant object is
+	\[ df=(\partial_{1} f)dx_{1}+\cdots +(\partial_{n} f)dx_{n} \]
+	In the proof of the lemma, we use an identification of $T^{*}X$ and $TX$.
+	More precisely, we choose a scalar product.
+	Globally, such an object is called a Riemann metric.
+	They exist (partition of unity).
+	Hence the proof is complete.
+    \end{proof}
+\end{thm}
+
+\begin{rem}
+    To ensure finiteness we may want to take $X$ compact.
+    Otherwise infinitely many balls, but no big deal in any case.
+\end{rem}
+
+[Picture, contrasting the local picutre above with our Morse picture of a torus]
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
