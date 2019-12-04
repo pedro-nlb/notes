@@ -1,20 +1,79 @@
-\documentclass[12pt]{article}
+\documentclass[A4paper, british]{amsart}
 
-% BASIC PREAMBLE
+%% KEY LINES IN THIS TEX FILE %% (enter line number+gg to go)
+
+%
+% LOCAL FONT DEFINITIONS -- need to come first
+%
+%\usepackage{mathpazo}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+%
+% STANDARD PREAMBLE
+%
 \input{$HOME/git/templates/preamble}
+\allowdisplaybreaks
 
+%
+% ABOUT FONT DEFINTIONS IN THE PREAMBLE
+%
+% Mathscr for sheaves use \sA, where A can be any letter. Exceptions and additions:
+% % \E (vector bundles)
+% % \F (coherent sheaves)
+% % \G (coherent sheaves)
+% % \hom (sheaf hom)
+% % \I (ideal sheaves)
+% % \L (line bundles)
+% % \M (line bundles)
+% % \O (structure sheaf)
+% % \w (canonical sheaf)
+%
+% Mathcal use \calA. Exceptions and additions:
+% % \U (open cover)
+% % \X (families of varieties)
+% % \Y (families of varieties)
+%
+% Mathbb use \bbA. Exceptions and additions:
+% % \A (affine space)
+% % \C (complex numbers)
+% % \Gm (puctured affine line)
+% % \k (field)
+% % \N (natural numbers)
+% % \P (projective space)
+% % \Q (rational numbers)
+% % \R (real numbers)
+% % \S (sphere)
+% % \T (torus)
+% % \V (geometric vector bundle)
+% % \Z (integers)
+%
+% Boldfont for categories use \bfA. Additions:
+% % \Coh (coherent sheaves)
+% % \D (derived category)
+% % \Db (bounded derived category)
+% % \PSh (presheaves)
+% % \QCoh (quasi-coherent sheaves)
+% % \Sh (sheaves)
+%
+% Mathfrak for ideals
+% % From \a to \e
+% % \m and \n for maximal ideals
+
+%
 % THEOREM ENVIRONMENTS
-% Theorems, propositions, etc (green)
+%
+% Theorems, propositions, etc (dark green)
 \theoremstyle{darkgreentheorem}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{lm}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{conj}[thm]{Conjecture}
-% Definitions (blue)
+% Definitions (dark blue)
 \theoremstyle{darkbluedefinition}
 \newtheorem{defn}[thm]{Definition}
-% Examples (red)
+% Examples (dark red)
 \theoremstyle{darkredexample}
 \newtheorem{exa}[thm]{Example}
 % Remarks (black)
@@ -25,62 +84,9 @@
 \newtheorem{nota}[thm]{Notation}
 \newtheorem{exe}[thm]{Exercise}
 
-% MATH FONTS
-% Mathbb
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\1}{\mathbbm{1}}
-\newcommand{\C}{\mathbb{C}}
-\renewcommand{\P}{\mathbb{P}}
-\newcommand{\CP}{\mathbb{CP}}
-\newcommand{\bbE}{\mathbb{E}}
-\newcommand{\bbT}{\mathbb{T}}
-\newcommand{\bbD}{\mathbb{D}}
-\newcommand{\bbF}{\mathbb{F}}
-\newcommand{\bbH}{\mathbb{H}}
-\newcommand{\cbbD}{\bar{\mathbb{D}}}
-\newcommand{\Gm}{\mathbb{G}_{m}}
-\newcommand{\bbA}{\mathbb{A}}
-\newcommand{\V}{\mathbb{V}}
-% Mathscr for categories
-\newcommand{\bfC}{\mathbf{C}}
-\newcommand{\Top}{\mathbf{Top}}
-\newcommand{\CHaus}{\mathbf{CHaus}}
-\newcommand{\ED}{\mathbf{ED}}
-\newcommand{\A}{\mathbf{A}}
-\newcommand{\CG}{\mathbf{CG}}
-\newcommand{\Ab}{\mathbf{Ab}}
-\newcommand{\Set}{\mathbf{Set}}
-\newcommand{\D}{\mathbf{D}}
-\newcommand{\K}{\mathbf{K}}
-\newcommand{\Db}{\mathbf{D}^{\mathrm{b}}}
-\newcommand{\QCoh}{\mathbf{QCoh}}
-\newcommand{\Coh}{\mathbf{Coh}}
-\newcommand{\Solid}{\mathbf{Solid}}
-\renewcommand{\Vec}{\mathbf{Vec}}
-\newcommand{\Mod}{\mathbf{Mod}}
-\newcommand{\Sh}{\mathbf{Sh}}
-% Mathcal for sheaves
-\newcommand{\calX}{\mathcal{X}}
-\newcommand{\calA}{\mathcal{A}}
-\newcommand{\calB}{\mathcal{B}}
-\newcommand{\calC}{\mathcal{C}}
-\newcommand{\F}{\mathcal{F}}
-\newcommand{\E}{\mathcal{E}}
-\newcommand{\G}{\mathcal{G}}
-\renewcommand{\L}{\mathcal{L}}
-\newcommand{\M}{\mathcal{M}}
-\renewcommand{\O}{\mathcal{O}}
-\newcommand{\U}{\mathcal{U}}
-\newcommand{\X}{\mathcal{X}}
-\newcommand{\I}{\mathcal{I}}
-\renewcommand{\H}{\mathcal{H}}
-% Mathfrak for ideals
-\newcommand{\m}{\mathfrak{m}}
-
+%
 % MATH OPERATORS
+%
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Fun}{Fun}
@@ -88,7 +94,6 @@
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\PSh}{PSh}
 \let\Re\relax
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
@@ -106,7 +111,19 @@
 \DeclareMathOperator{\Exc}{Exc}
 \DeclareMathOperator{\Hess}{Hess}
 
+%
 % OTHER COMMANDS
+%
+% Additional categories
+\newcommand{\CHaus}{\mathbf{CHaus}}
+\newcommand{\ED}{\mathbf{ED}}
+\newcommand{\CG}{\mathbf{CG}}
+\newcommand{\Solid}{\mathbf{Solid}}
+% Uncategorized
+\newcommand{\CP}{\mathbb{CP}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\cbbD}{\bar{\mathbb{D}}}
+\newcommand{\1}{\mathbbm{1}}
 \newcommand{\pe}{*_{proét}}
 \renewcommand{\u}[1]{\underline{#1}}
 \newcommand{\ot}{\otimes}
@@ -126,9 +143,33 @@
 \newcommand{\dsolid}{^{L\blacksquare}}
 \newcommand{\usolid}{_{\blacksquare}}
 
-\title{Various lecture notes}
+%
+% AUTHOR INFO
+%
 \author{Pedro Núñez}
+
+%
+% CONTENT DETAILS
+%
+\title[Various lecture notes]{Various lecture notes}
 \date{\today}
+
+%
+% LINKS AND PDF OPTIONS
+%
+\makeatletter
+\hypersetup{
+  pdfauthor={\authors},
+  pdftitle={\@title},
+  pdfstartview={Fit},
+  pdfpagelayout={TwoColumnRight},
+  pdfpagemode={UseOutlines},
+  bookmarks,
+  colorlinks,
+  linkcolor=linkblue,
+  citecolor=linkred,
+  urlcolor=linkred}
+\makeatother
 
 \begin{document}
 
@@ -138,11 +179,13 @@
 
 \section{About these notes}
 
-The purpose of these notes is to keep the material seen in lectures a bit organized and easily accesible from one single place, but they don't intend to be complete and they will surely be full of typos and mistakes\footnote{If you find any, please let me know! You can do this from GitHub or write me an email directly at pedro.nunez[at]math.uni-freiburg.de.}.
+The purpose of these notes is to keep the material seen in lectures a bit organized and easily accesible from one single place, but they don't intend to be complete and they will surely be full of typos and mistakes\footnote{If you find any, please let me know! You can do this from \href{https://github.com/pedro-nlb/notes}{GitHub} or more directly with an email at \href{mailto:pedro.nunez@math.uni-freiburg.de}{pedro.nunez@math.uni-freiburg.de}}.
 
 Warnings will be marked with a \href{https://en.wikipedia.org/wiki/Bourbaki_dangerous_bend_symbol}{dangerous bend} symbol on the margin \db.
 
-\section{[CM] Talk 1 (Johan Commelin): Condensed Sets - 21.10.19}
+The notation will probably not be coherent, but I tend to use bold for categories (e.g. $\Set$) and mathscr for sheaves (e.g. $\F$).
+
+\section{[CM] Talk 1 (Johan Commelin) - Condensed Sets - 21.10.19}
 
 \subsection{Introduction}
 
@@ -736,9 +779,9 @@ See the full script on \href{https://github.com/pedro-nlb/cag}{GitHub}.
 
 \subsection{Recollections from the previous talk}
 
-Recall $\pe$ and $\A=\Sh(\pe,\Ab)$.
+Recall $\pe$ and $\bfA=\Sh(\pe,\Ab)$.
 
-Equivalent description of $\A$ from last talk.
+Equivalent description of $\bfA$ from last talk.
 
 \subsection{A nicer description of our category}
 
@@ -746,22 +789,22 @@ Equivalent description of $\A$ from last talk.
     Extremally disconnected.
 \end{defn}
 
-Note that $\mathscr{ED}\subsetneq \mathscr{CH}$.
+Note that $\ED\subsetneq \CHaus$.
 
-\textbf{Fact:} $S\in \mathscr{CH}$ is in $\mathscr{ED}$ if and only if every surjection $S'\twoheadrightarrow S$ from a compact Hausdorff space admits a section.
-Using Stone-\v{C}ech compactification $\beta$, this implies that every $S\in \mathscr{CH}$ admits a surjection from an extremally disconnected set
+\textbf{Fact:} $S\in \CHaus$ is in $\ED$ if and only if every surjection $S'\twoheadrightarrow S$ from a compact Hausdorff space admits a section.
+Using Stone-\v{C}ech compactification $\beta$, this implies that every $S\in \CHaus$ admits a surjection from an extremally disconnected set
 \[ \exists \tilde{S}=\beta(S_{disc})\twoheadrightarrow S \]
 
 \begin{lm}
-    $\A=\Sh(\ED,\Ab)$.
+    $\bfA=\Sh(\ED,\Ab)$.
 \end{lm}
 
 \begin{cor}
-$\A=\{ \F\in \Fun(\ED^{op},\Ab)\mid i) \wedge ii)\}$.
+$\bfA=\{ \F\in \Fun(\ED^{op},\Ab)\mid i) \wedge ii)\}$.
 \end{cor}
 
 \begin{cor}
-(Co)limits exist in $\A$ and can be constructed pointwise.
+(Co)limits exist in $\bfA$ and can be constructed pointwise.
 \end{cor}
 
 \subsection{Abelianity and compact-projective generation}
@@ -769,11 +812,11 @@ $\A=\{ \F\in \Fun(\ED^{op},\Ab)\mid i) \wedge ii)\}$.
 Recall definition of Grothendieck category.
 
 \begin{thm}
-    $\A$ is abelian with (AB6) and (AB4*) and it is generated by compact projective objects.
+    $\bfA$ is abelian with (AB6) and (AB4*) and it is generated by compact projective objects.
 \end{thm}
 
 \begin{cor}
-    $\A$ has enough injectives and projectives.
+    $\bfA$ has enough injectives and projectives.
 \end{cor}
 
 \begin{center}
@@ -785,7 +828,7 @@ Recall definition of Grothendieck category.
 Briefly outline monoidal categories.
 
 \begin{prop}
-    $\A$ is symmetric monoidal and the functor $\Z[-]\colon \Cond(\Set)\to \A$ is symmetric monoidal.
+    $\bfA$ is symmetric monoidal and the functor $\Z[-]\colon \Cond(\Set)\to \bfA$ is symmetric monoidal.
 \end{prop}
 
 \begin{prop}
@@ -793,7 +836,7 @@ Briefly outline monoidal categories.
 \end{prop}
 
 \begin{prop}
-    For all $\F\in\A$ the functor $\F\ot(-)$ has a right adjoint $[\F,-]$, i.e. $\A$ is closed symmetric monoidal.
+    For all $\F\in\bfA$ the functor $\F\ot(-)$ has a right adjoint $[\F,-]$, i.e. $\bfA$ is closed symmetric monoidal.
 \end{prop}
 
 \subsection{Derived category}
@@ -805,7 +848,7 @@ Brief description.
 \end{rem}
 
 Basic derived functors
-\[ RF\colon \D^{+}(\A)=\K^{+}(\mathcal{I})\to \D(\mathscr{B}). \]
+\[ RF\colon \D^{+}(\bfA)=\K^{+}(\mathcal{I})\to \D(\mathscr{B}). \]
 
 \begin{exa}
     $\Hom(-,\F)$ and $\Hom\grd(-,\F\grd)$.
@@ -1001,11 +1044,11 @@ Outline for today:
 \subsubsection{Cohomology Theories}
 
 1. Recall the \textit{Dolbeault-Cohomology} defined as
-\[ H^{p,q}(X):=\frac{\ker(\bar{\partial}\colon \A^{p,q}(X)\to \A^{p,q+1}(X))}{\im(\bar{\partial}\colon \A^{p,q-1}(X)\to \A^{p,q}(X))}.\]
+\[ H^{p,q}(X):=\frac{\ker(\bar{\partial}\colon \calA^{p,q}(X)\to \calA^{p,q+1}(X))}{\im(\bar{\partial}\colon \calA^{p,q-1}(X)\to \calA^{p,q}(X))}.\]
 
 2. Recall the \textit{de Rham cohomology} defined as
-\[ H_{dR}^{k}(X,\C)=\frac{\ker(d\colon \A_{\C}^{k}(X)\to \A_{\C}^{k+1}(X))}{\im(d\colon \A_{\C}^{k-1}(X)\to \A_{\C}^{k}(X))}, \]
-where $\A_{\C}^{k}=\Gamma(X,\Lambda^{k}TX^{*}\ot \C)$.
+\[ H_{dR}^{k}(X,\C)=\frac{\ker(d\colon \calA_{\C}^{k}(X)\to \calA_{\C}^{k+1}(X))}{\im(d\colon \calA_{\C}^{k-1}(X)\to \calA_{\C}^{k}(X))}, \]
+where $\calA_{\C}^{k}=\Gamma(X,\Lambda^{k}TX^{*}\ot \C)$.
 
 \begin{thm}
     On a compact Kaehler manifold $(X,I,<\cdot,\cdot>)$ we have
@@ -1072,7 +1115,7 @@ where $h_{\alpha}$ is the metric on $U_{\alpha}$.
 
     We say that $M$ is Kaehler, if it admits some metric such that the associated Kaehler form is closed ($dw=0$).
 
-    In that case, $w\in \A^{1,1}(M)$ defines a cohomology class $[w]\in H^{1,1}(M)$, called the \textit{Kaehler class}.
+    In that case, $w\in \calA^{1,1}(M)$ defines a cohomology class $[w]\in H^{1,1}(M)$, called the \textit{Kaehler class}.
 \end{defn}
 
 \begin{exa}[The Fubini-Study metric on $\CP^{n}$]
@@ -1548,49 +1591,49 @@ There is a more general notion of manifold with boundary, but we will not need i
 
 Let $X$ be a compact complex manifold and $E$ a holomorphic vector bundle\footnote{Which we sometimes identify with its sheaf of smooth sections. If we want to consider holomorphic sections, then we will use the notation $\O(E)$.} on $X$.
 
-Let $\A^{p,q}(E)$ denote the sheaf of $E$-valued $(p,q)$-forms, i.e. $\A^{p,q}(E)=\A^{p,q}\ot E$.
-There is no analogue of $d$ on $\A^{p,q}$, but
-\[ \bar{\partial }\colon \A^{p,q}(E)\to \A^{p,q+1}(E) \]
+Let $\calA^{p,q}(E)$ denote the sheaf of $E$-valued $(p,q)$-forms, i.e. $\calA^{p,q}(E)=\calA^{p,q}\ot E$.
+There is no analogue of $d$ on $\calA^{p,q}$, but
+\[ \bar{\partial }\colon \calA^{p,q}(E)\to \calA^{p,q+1}(E) \]
 is well defined.
 Why?
-We can take a holomorphic frame $\{ e_{\alpha}\}$ for $E$, and if we are given $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$ with $\eta_{\alpha}\in \A^{p,q}$, then $\bar{\partial }\eta=\sum\bar{\partial}\eta_{\alpha}\ot e_{\alpha}$.
-\[ 0\to \Omega^{p}(E)\to \A^{p,0}(E)\xrightarrow{\bar{\partial}_{E}} \A^{p,1}(E)\xrightarrow{\bar{\partial}_{E}}\cdots \]
+We can take a holomorphic frame $\{ e_{\alpha}\}$ for $E$, and if we are given $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$ with $\eta_{\alpha}\in \calA^{p,q}$, then $\bar{\partial }\eta=\sum\bar{\partial}\eta_{\alpha}\ot e_{\alpha}$.
+\[ 0\to \Omega^{p}(E)\to \calA^{p,0}(E)\xrightarrow{\bar{\partial}_{E}} \calA^{p,1}(E)\xrightarrow{\bar{\partial}_{E}}\cdots \]
 where $\Omega^{p}(E)$ are the $p$-holomorphic forms on $E$.
 This way we obtain \textit{generalized Dolbeault cohomology}:
-\[ (H^{p,q}(X,E):=)H^{q}(X,\Omega^{p}\ot E):=\frac{\ker(\A^{p,q}(E)\xrightarrow{\bar{\partial}}\A^{p,q+1}(E))}{\im(\A^{p,q-1}(E)\to \A^{p,q}(E))} \]
+\[ (H^{p,q}(X,E):=)H^{q}(X,\Omega^{p}\ot E):=\frac{\ker(\calA^{p,q}(E)\xrightarrow{\bar{\partial}}\calA^{p,q+1}(E))}{\im(\calA^{p,q-1}(E)\to \calA^{p,q}(E))} \]
 
 \subsection{Vector bundles and metrics}
 
 Recall that an \textit{Hermitian metric} of $X$ is
 \[ \sum_{i,j}h_{i,j}dz_{i}\ot d\bar{z}_{j},\]]
 where $\{z_{i}\}$ is a local holomorphic coordinate system and $h_{i,j}$ is a positive definite hermitian form.
-This induces a metric on every $\A^{p,q}(X)$ and a volume form
+This induces a metric on every $\calA^{p,q}(X)$ and a volume form
 \[ \vol=\sqrt{\det(h_{i,j})}dz_{1}\wedge d\bar{z}_{1}\wedge \cdots \]
 
-We define the \textit{Hodge $*$-operator} $\bar{*}\colon \A^{p,q}(X)\to \A^{n-p,n-q}(X)$ by
-\[ \alpha\wedge \bar{*}\beta = (\alpha,\beta)\vol \in \A^{n,n}(X).\]
+We define the \textit{Hodge $*$-operator} $\bar{*}\colon \calA^{p,q}(X)\to \calA^{n-p,n-q}(X)$ by
+\[ \alpha\wedge \bar{*}\beta = (\alpha,\beta)\vol \in \calA^{n,n}(X).\]
 An \textit{Hermitian metric} $h_{E}$ on $E$ is a hermitian metric on every fiber $E_{x}$ of $E$ varying smoothly.
 Such an $h_{E}$ induces $E\xrightarrow{\sim} \bar{E}^{*}$ sending $\sigma \mapsto h_{E}(\sigma,-)$.
 Now we have the skew-linear map
 \begin{align*}
-    \bar{*}_{E}\colon \A^{p,q}(E) &\to \A^{n-p,n-q}(E^{*}) \\
+    \bar{*}_{E}\colon \calA^{p,q}(E) &\to \calA^{n-p,n-q}(E^{*}) \\
     \alpha \ot e &\mapsto \bar{*}(\alpha)\ot h_{E}(-,e)
 \end{align*}
 And the maps
 \begin{align*}
-    \Lambda \colon \A^{p,q}(E)\ot \A^{p',q'}(E^{*}) & \to \A^{p+p',q+q'}(X) \\
+    \Lambda \colon \calA^{p,q}(E)\ot \calA^{p',q'}(E^{*}) & \to \calA^{p+p',q+q'}(X) \\
     (\alpha \ot e)\ot (\beta \ot f) & \mapsto f(e)(\alpha\wedge \beta)
 \end{align*}
 
 Let $\{ e_{\alpha }\}$ be a unitary frame of $E$, i.e. $h_{E}(e_{\alpha},e_{\beta})=\delta_{\alpha\beta}$.\footnote{We can choose either a unitary frame or a holomorphic frame, but not both at the same time. Hence we work rather with smooth sections and consider such a unitary frame.}
 If we have $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$, then $\bar{*}_{E}(\eta)=\sum \bar{*}\eta_{\alpha}\ot e_{\alpha}^{*}$, where $\{ e_{\alpha}^{*}\}$ is the dual unitary frame on $E^{*}$.
-We have $\bar{*}_{E^{*}}\bar{*}_{E}=(-1)^{r(2n-r)}$ on $\A^{r}(E)$.
+We have $\bar{*}_{E^{*}}\bar{*}_{E}=(-1)^{r(2n-r)}$ on $\calA^{r}(E)$.
 
-$\bar{\partial }_{E}\colon \A^{p,q}(E)\to \A^{p,q+1}(E)$ yields $\bar{\partial }_{E}^{*}$ adjoint map, with description $\bar{\partial }_{E}^{*}=-\bar{*}_{E^{*}}\bar{\partial }_{E^{*}}\bar{*}_{E}$.
+$\bar{\partial }_{E}\colon \calA^{p,q}(E)\to \calA^{p,q+1}(E)$ yields $\bar{\partial }_{E}^{*}$ adjoint map, with description $\bar{\partial }_{E}^{*}=-\bar{*}_{E^{*}}\bar{\partial }_{E^{*}}\bar{*}_{E}$.
 
 We now consider the laplacian
-\[\Delta_{\bar{\partial}_{E}}=\bar{\partial}_{E}^{*}\bar{\partial}_{E} +\bar{\partial }_{E}\bar{\partial}_{E}^{*}\colon \A^{p,q}(E)\to \A^{p,q}(E)\]
-and denote $\H^{p,q}(E)=\{\sigma \in \A^{p,q}(E)\mid \Delta_{\bar{\partial }_{E}}(\sigma )=0\}$.
+\[\Delta_{\bar{\partial}_{E}}=\bar{\partial}_{E}^{*}\bar{\partial}_{E} +\bar{\partial }_{E}\bar{\partial}_{E}^{*}\colon \calA^{p,q}(E)\to \calA^{p,q}(E)\]
+and denote $\H^{p,q}(E)=\{\sigma \in \calA^{p,q}(E)\mid \Delta_{\bar{\partial }_{E}}(\sigma )=0\}$.
 
 \begin{thm}
     $\H^{p,q}(E)\cong H^{p,q}(X,E)=H^{q}(X,\Omega^{p}\ot E)$.
@@ -1603,23 +1646,23 @@ For $p=0$, $H^{q}(X,\O(E))\cong H^{n-q}(X,K_{X}\ot E^{*})$ where $K_{X}$ denotes
 
 \subsection{Connections}
 
-Need replacement for $d\colon \A^{r}(X)\to \A^{r+1}(X)$.
+Need replacement for $d\colon \calA^{r}(X)\to \calA^{r+1}(X)$.
 
 \begin{defn}
     Let $E\to X$ be a vector bundle.
-    A \textit{connection} is $\nabla \colon \A^{0}(E)\to \A^{1}(E)$ such that $\nabla(f\xi)=df\cdot \xi + f\nabla \xi$ for all $f\in \calC^{\infty}(X)$ and all $xi\in \A^{0}(E)$.
+    A \textit{connection} is $\nabla \colon \calA^{0}(E)\to \calA^{1}(E)$ such that $\nabla(f\xi)=df\cdot \xi + f\nabla \xi$ for all $f\in \calC^{\infty}(X)$ and all $xi\in \calA^{0}(E)$.
 \end{defn}
 
-$\A^{1}(E)=\A^{1,0}(E)\op \A^{0,1}(E)$.
+$\calA^{1}(E)=\calA^{1,0}(E)\op \calA^{0,1}(E)$.
 $\nabla =\nabla'+ \nabla''$.
-$\nabla'\colon \A^{0}(E)\to \A^{1,0}(E)$ and $\nabla''\colon \A^{0}(E)\to \A^{0,1}(E)$.
+$\nabla'\colon \calA^{0}(E)\to \calA^{1,0}(E)$ and $\nabla''\colon \calA^{0}(E)\to \calA^{0,1}(E)$.
 
 \begin{defn}
     We say that $\nabla $ is compatible with the complex structure if $\nabla''=\bar{\partial}_{E}$, or equivalently if $\nabla''\sigma=0$ for every holomorphic section $\sigma$.
 \end{defn}
 
 \begin{defn}
-    $\nabla$ is compatible with the metric on $E$ if for all $\xi,\eta\in \A^{0}(E)$ we have
+    $\nabla$ is compatible with the metric on $E$ if for all $\xi,\eta\in \calA^{0}(E)$ we have
     \[ d\langle \xi ,\eta \rangle =\langle \nabla \xi ,\eta\rangle + \langle \xi,\nabla\eta \rangle.\]
 \end{defn}
 
@@ -1627,17 +1670,17 @@ $\nabla'\colon \A^{0}(E)\to \A^{1,0}(E)$ and $\nabla''\colon \A^{0}(E)\to \A^{0,
     There exists a unique connection $\nabla$ on an holomorphic vector bundle $E$ with hermitian metric $h_{E}$ such that it is compatible with the complex stracture and with the metric.
     It is called the \textit{Chern connection}.
 
-    We can extend $\nabla \colon \A^{r}(E)\to \A^{r+1}(E)$ by asking that
+    We can extend $\nabla \colon \calA^{r}(E)\to \calA^{r+1}(E)$ by asking that
     \[ \nabla(\eta\ot e)=d\eta \ot e+(-1)^{r}\eta \wedge \nabla(e) \]
-    for $\eta \in \A^{r}(X)$ and $e\in A^{0}(E)$.
+    for $\eta \in \calA^{r}(X)$ and $e\in A^{0}(E)$.
 \end{thm}
 
 \begin{defn}
-    $\nabla^{2}\colon \A^{0}(E)\to \A^{2}(E)$ is called the \textit{curvature}.
+    $\nabla^{2}\colon \calA^{0}(E)\to \calA^{2}(E)$ is called the \textit{curvature}.
 \end{defn}
 
 $\nabla^{2}$ is linear over $\calC^{\infty}(X)$.
-For all $f\in \calC^{\infty}$ and $\sigma \in \A^{0}(E)$ we have
+For all $f\in \calC^{\infty}$ and $\sigma \in \calA^{0}(E)$ we have
 \[ \nabla^{2}(f\sigma)=\nabla(df\ot \sigma + f\nabla \sigma)=-df\wedge \nabla\sigma +df\wedge \nabla \sigma +f\nabla^{2}\sigma.\]
 
 Let $E$ a holomorphic line bundle over $X$ with a Hermitian metric $h_{E}$ and $\nabla$ the corresponding Chern connection.
@@ -1672,11 +1715,11 @@ Recall that $c_{1}(E)=[\frac{i}{2\pi}\Theta ]\in H^{1,1}(X)$, where
     Let $E>0$ (i.e. let $E$ be a positive line bundle).
     Then $H^{q}(X,\Omega^{p}\ot E)=0$ for every $p+q>n$, which by Kodaira-Serre duality is equivalent to saying that for every $E<0$ we have $H^{q}(X,\Omega^{p}\ot E)=0$ for all $p+q<0$.
     \begin{proof}
-	Let $L=w\wedge (-)\colon \A^{p,q}(E)\to \A^{p+1,q+1}(E)$ and consider its adjoint operator $L^{*}$.
-	In a unitary frame $\{e_{\alpha}\}$ of $E$, for $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$, then $L(\eta)=\sum w\wedge \eta_{\alpha}\ot e_{\alpha}$ and $L^{*}(\eta)=\sum L^{*}(\eta_{\alpha})\ot e_{\alpha}$, where $L^{*}$ adjoint on $\A^{p,q}(X)$.
-	So $[L,L^{*}]$ is multiplicative on $\A^{p,q}(E)$ by the scalar $(p+q-n)$.
-	[Recall: $[L^{*},\bar{\partial}]=-i\partial^{*}$ on $\A^{p,q}(X)$]
-	Here $[L^{*},\bar{\partial}]=-i(\nabla')^{*}$ on $\A^{p,q}(E)$.
+	Let $L=w\wedge (-)\colon \calA^{p,q}(E)\to \calA^{p+1,q+1}(E)$ and consider its adjoint operator $L^{*}$.
+	In a unitary frame $\{e_{\alpha}\}$ of $E$, for $\eta=\sum \eta_{\alpha}\ot e_{\alpha}$, then $L(\eta)=\sum w\wedge \eta_{\alpha}\ot e_{\alpha}$ and $L^{*}(\eta)=\sum L^{*}(\eta_{\alpha})\ot e_{\alpha}$, where $L^{*}$ adjoint on $\calA^{p,q}(X)$.
+	So $[L,L^{*}]$ is multiplicative on $\calA^{p,q}(E)$ by the scalar $(p+q-n)$.
+	[Recall: $[L^{*},\bar{\partial}]=-i\partial^{*}$ on $\calA^{p,q}(X)$]
+	Here $[L^{*},\bar{\partial}]=-i(\nabla')^{*}$ on $\calA^{p,q}(E)$.
 
 	To prove the Kodaira vanishing theorem we only need two inequalities which are called the \textit{Nakano inequalities}: for every harmonic form $\xi \in \H^{p,q}(E)$ we have
 	\begin{enumerate}[label=\arabic*)]
@@ -1872,8 +1915,8 @@ We study the function $g(\tau)=\Phi^{-1}(\exp(2\pi i\tau)\Phi(\psi))$, $\im(\tau
 \end{thm}
 
 \begin{conj}
-    Suppose $\calC$ is an invertible curve in $\bbA^{2}$.
-    Then if $|\calC\cap (\L_{\alpha}^{\infty})^{2}|=\infty$, $\calC$ is a component of a curve defined by $f^{0,n}(X)-f^{0,n}(Y)=0$ or $\calC$ is of the form $\beta\times \bbA^{1}$, $\bbA^{1}\times \beta$ for $\beta\in\L_{\alpha}^{\infty}$.
+    Suppose $\calC$ is an invertible curve in $\A^{2}$.
+    Then if $|\calC\cap (\L_{\alpha}^{\infty})^{2}|=\infty$, $\calC$ is a component of a curve defined by $f^{0,n}(X)-f^{0,n}(Y)=0$ or $\calC$ is of the form $\beta\times \A^{1}$, $\A^{1}\times \beta$ for $\beta\in\L_{\alpha}^{\infty}$.
 \end{conj}
 
 Here $\L_{\alpha}^{\infty}=\cup_{n\in\N}\L_{\alpha}^{(n)}$.
@@ -1935,7 +1978,7 @@ Goal of this lecture: there is a ``classical'' approach to locally compact abeli
 		\LCA^{op}&\xrightarrow{\sim} \LCA \\
 		A & \mapsto \Hom_{\Top\Ab}(A,\Pi)
 	    \end{align*}
-	    where the hom-space is considered with the compact open topology and $\bbT:=U(1)=\R/\Z$.
+	    where the hom-space is considered with the compact open topology and $\T:=U(1)=\R/\Z$.
 	    We denote the hom-space above by $A\dual$.
 	\item Pontryagin duality exchanges compact and discrete groups.
     \end{enumerate}
@@ -1966,7 +2009,7 @@ Goal of this lecture: there is a ``classical'' approach to locally compact abeli
 \end{prop}
 
 \begin{thm}[Theorem 4.3]
-    Suppose $A=\prod_{I}\bbT$ be a condensed abelian group, where $I$ is any index set.
+    Suppose $A=\prod_{I}\T$ be a condensed abelian group, where $I$ is any index set.
     \begin{enumerate}[label=\roman*)]
 	\item For any discrete abelian group $M$,
 	    \[ R\ihom(A,M)=\bigoplus_{I}M[-1]. \]
@@ -2002,12 +2045,12 @@ Now we prove the theorem (Theorem 4.3).
 
 Proof of $i)$ first.
 If $I$ finite, we can assume that $I$ is a singleton.
-Let's just assume that $A=\bbT$.
-We need to compute $\R\Hom(\bbT,M)$..
-We have a triangle $\Z\to \R\to \bbT\xrightarrow{+1}$, which rotated yields a distinguished triangle
-\[ \R\to \bbT\to \Z[1]\xrightarrow{1}.\]
+Let's just assume that $A=\T$.
+We need to compute $\R\Hom(\T,M)$..
+We have a triangle $\Z\to \R\to \T\xrightarrow{+1}$, which rotated yields a distinguished triangle
+\[ \R\to \T\to \Z[1]\xrightarrow{1}.\]
 So the claim is equivalent to the claim $\R\Hom(\R,M)=0$ for any discrete group $M$, because we have a distinguished triangle
-\[ \R\ihom(\Z[1],M)\to R\Hom(\bbT,M)\to R\Hom(\R,M) \xrightarrow{+1}\]
+\[ \R\ihom(\Z[1],M)\to R\Hom(\T,M)\to R\Hom(\R,M) \xrightarrow{+1}\]
 It suffices to show that $0\to \R$ induces an iso after applying $R\Hom(-,M)$, for which in turn it is sufficient to know that the pullback $0\times \id \colon S\to \R^{r}\times S$ induces an iso in all cohomology groups
 \[ H^{i}(\R^{r}\times S,M))\to H^{i}(S,M). \]
 Now we use the result that $R\Gamma(\R^{r}\tms S,M)=\R\varprojlim_{r}R\Gamma([-n,n]^{r}\tms S,M)$, and since $[-n,n]\tms S$ is compact, by the last talk this is classical sheaf cohomology, where we can use homotopy invariance.
@@ -2029,7 +2072,7 @@ After $n$ iterations we obtain
 Note that $[2^{n}]^{*}(f)$ stays bounded as $n\to \infty$.
 
 \begin{cor}
-    $R\ihom(\R,\R)=\R$ using again the triangle $\Z\mono\R\epi\bbT$.
+    $R\ihom(\R,\R)=\R$ using again the triangle $\Z\mono\R\epi\T$.
 \end{cor}
 
 Recall the goal theorem: $\Db(\LCA)\mono \Db(\Cond(\Ab))$ is fully faithful.
@@ -2179,7 +2222,7 @@ Recall that a path defines a directional derivative:
 Recall: let $X$ be a complex manifold and let $E\to X$ be a vector bundle on $X$.
 Denote the associated connection by $D$.
 Then the curvature $\Theta$ is defined as
-\[ \Theta = D^{2} =D\circ D\colon \A^{0}(E)\to \A^{2}(E). \]
+\[ \Theta = D^{2} =D\circ D\colon \calA^{0}(E)\to \calA^{2}(E). \]
 
 \begin{prop}
     Given a Hermitian holomorphic line bundle $E\to X$ with Hermitian metric $h$ and the induced connection $D_{h}$, we have
@@ -2564,34 +2607,34 @@ Turns out we can:
 \end{thm}
 
 \begin{lm}[Lemma 5.9]
-    Let $\A$ be an abelian category with colimits.
-    Let $\A_{0}\sub \A$ be compact projective generators.
-    Let $F\colon \A_{0}\to \A$ be a functor together with a natural transformation $\id\to F$ such that:
+    Let $\bfA$ be an abelian category with colimits.
+    Let $\bfA_{0}\sub \bfA$ be compact projective generators.
+    Let $F\colon \bfA_{0}\to \bfA$ be a functor together with a natural transformation $\id\to F$ such that:
     For objects $Y,Z$ direct sums of images of $F$, $f\colon Y\to Z$ with kernel $K$, we hvae that
     \[ R\Hom(\F(X),K)\xrightarrow{\sim} R\Hom(X,K).\]
-    Let $\A_{F}\sub \A$ be the full subcategory of all objects $Y\in \A$ such that for all $X\in \A_{0}$ we have
+    Let $\bfA_{F}\sub \bfA$ be the full subcategory of all objects $Y\in \bfA$ such that for all $X\in \bfA_{0}$ we have
     \[ \Hom(F(X),Y)\xrightarrow{\sim}\Hom(X,Y).\]
-    Let $\D_{F}(\A)\sub \D(\A)$ be the full subcategory of all $C\in \D(\A)$ such that for $X\in \A_{0}$ we have
+    Let $\D_{F}(\bfA)\sub \D(\bfA)$ be the full subcategory of all $C\in \D(\bfA)$ such that for $X\in \bfA_{0}$ we have
     \[ R\Hom(F(X),C)\xrightarrow{\sim}R\Hom(X,C).\]
-    Then: $\A_{F}\sub \A$ is an abelian category with colimits, limits and extensions.
-    The images $F(X)$ for $X\in \A_{0}$ are compact, projective generatros of $\A_{F}$.
-    Have a left adjoint $L\colon \A\to \A_{F}$ to the inclusion that extends our functor $F\colon \A_{0}\to \A_{F}$.
-    Similar for the derived category: we get a left adjoint to the inclusion $\D_{F}(\A)\sub \D(\A)$ which is the left derived functor of $\A\to \A_{F}$.
-    Moreover, $\D(\A_{F})\to \D(\A)$ is fully faithful and has essential image $\D_{F}(\A)$.
-    Furthermore, $C\in D(\A)$ lies in $\D_{F}(\A)$ if and only if all $H^{i}(C)\in \A_{F}$.
+    Then: $\bfA_{F}\sub \bfA$ is an abelian category with colimits, limits and extensions.
+    The images $F(X)$ for $X\in \bfA_{0}$ are compact, projective generatros of $\bfA_{F}$.
+    Have a left adjoint $L\colon \bfA\to \bfA_{F}$ to the inclusion that extends our functor $F\colon \bfA_{0}\to \bfA_{F}$.
+    Similar for the derived category: we get a left adjoint to the inclusion $\D_{F}(\bfA)\sub \D(\bfA)$ which is the left derived functor of $\bfA\to \bfA_{F}$.
+    Moreover, $\D(\bfA_{F})\to \D(\bfA)$ is fully faithful and has essential image $\D_{F}(\bfA)$.
+    Furthermore, $C\in D(\bfA)$ lies in $\D_{F}(\bfA)$ if and only if all $H^{i}(C)\in \bfA_{F}$.
 \end{lm}
 
 \begin{lm}[Lemma 5.10]
-    Let $\A$ be an abelian category with colimits and $\A_{0}\sub \A$ be compact projective generators.
-    Let $F\colon \A_{0}\to \A$ be a functor together with a natural transformation $\id\to F$ such that for all $X\in \A_{0}$ and all complexes $C=\cdots\to C_{1}\to C_{0}\to 0\to \cdots $ with $C_{i}$ is direct sum of images of $F$ we have
+    Let $\bfA$ be an abelian category with colimits and $\bfA_{0}\sub \bfA$ be compact projective generators.
+    Let $F\colon \bfA_{0}\to \bfA$ be a functor together with a natural transformation $\id\to F$ such that for all $X\in \bfA_{0}$ and all complexes $C=\cdots\to C_{1}\to C_{0}\to 0\to \cdots $ with $C_{i}$ is direct sum of images of $F$ we have
     \[ R\Hom(F(X),C)\xrightarrow{\sim}R\Hom(X,C).\]
-    Then we have for all $X\in \A_{0}$ and all $f\colon Y\to Z$ wtih kernel $K$ and $Y$, $Z$ direct sums of images of $F$ that
+    Then we have for all $X\in \bfA_{0}$ and all $f\colon Y\to Z$ wtih kernel $K$ and $Y$, $Z$ direct sums of images of $F$ that
     \[ R\Hom(F(X),K)\xrightarrow{\sim}R\Hom(X,K).\]
     \begin{proof}
 	Let $Y$, $Z$, $f$ and $K$ as in the statement.
 	Take a resolution
 	\[ \cdots \to \op_{ij}X_{ij}\to \cdots \to K\]
-	with $X_{ij}\in \A_{0}$.
+	with $X_{ij}\in \bfA_{0}$.
 	Denote this projective resolution of $K$ by $B$.
 	We get a complex $C=(\cdots \to \op F(X_{ij})\to \cdots \to 0)$.
 	By assumption $R\Hom(F(X_{ij}),Y)=R\Hom(X_{ij},Y)$.
@@ -2605,8 +2648,8 @@ Turns out we can:
 
 \subsection{Proof of theorem 5.8}
 
-We take $\A_{0}$ to be the full subcategory of objects $\Z[S]$ for $S$ extremally disconnected and $\A=\Cond(\Ab)$.
-The functor $F\colon \A_{0}\to \A$ is $\Z[S]\mapsto \Z[S]\solid$.
+We take $\bfA_{0}$ to be the full subcategory of objects $\Z[S]$ for $S$ extremally disconnected and $\bfA=\Cond(\Ab)$.
+The functor $F\colon \bfA_{0}\to \bfA$ is $\Z[S]\mapsto \Z[S]\solid$.
 This is indeed a functor because $\Z[S]\solid=\hom(C(S,\Z),\Z)=\hom(\hom(\Z[S],\Z),\Z)$ is functorial on $\Z[S]$.
 We check the assumptions of lemma 5.10.
 Let $C=(\cdots \to C_{1}\to C_{0}\to 0)$ be a complex with $C_{i}$ a direct sum of $F$, i.e. $C_{i}=\op \prod \Z$.
@@ -2736,7 +2779,7 @@ In the first case, if $f\colon X\to Y$ is a submersion, locally on $X$ and on $Y
 \end{defn}
 
 \begin{exe}
-    $\R^{m}\tms \R^{n}\to \R^{n}$ sending $(x,y)\mapsto x$ or $\bbT^{2}\to S^{1}$ projecting onto one of its factors.
+    $\R^{m}\tms \R^{n}\to \R^{n}$ sending $(x,y)\mapsto x$ or $\T^{2}\to S^{1}$ projecting onto one of its factors.
 \end{exe}
 
 \begin{exe}
@@ -3909,7 +3952,7 @@ We work over $\C$.
 \begin{defn}
     $X$ compact $\C$-mfd.
     \begin{enumerate}[label=\alph*)]
-	\item $X$ is (locally) rigid iff for all deformations $f\colon (\calX,X)\to (S,0)$ there exists $0\in U\sub S$ open such that for all $t\in U$ we have $\calX_{t}\cong X$, where $\cong$ means biholomorphic.
+	\item $X$ is (locally) rigid iff for all deformations $f\colon (\X,X)\to (S,0)$ there exists $0\in U\sub S$ open such that for all $t\in U$ we have $\X_{t}\cong X$, where $\cong$ means biholomorphic.
 	\item $X$ is infinitesimally rigid iff $H^{1}(T_{X})=0$.
     \end{enumerate}
 \end{defn}
