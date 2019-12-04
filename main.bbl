@@ -1,9 +1,16 @@
 \begin{thebibliography}{{Sta}19}
 
-\bibitem[GH78]{gh78}
-P.~Griffiths and J.~Harris.
-\newblock {\em Principles of Algebraic Geometry}.
-\newblock John Wiley \& Sons, 1978.
+\bibitem[GH94]{gh78}
+Phillip Griffiths and Joseph Harris.
+\newblock {\em Principles of algebraic geometry}.
+\newblock Wiley Classics Library. John Wiley \& Sons, Inc., New York, 1994.
+\newblock Reprint of the 1978 original.
+
+\bibitem[Huy06]{huy06}
+D.~Huybrechts.
+\newblock {\em Fourier-{M}ukai transforms in algebraic geometry}.
+\newblock Oxford Mathematical Monographs. The Clarendon Press, Oxford
+  University Press, Oxford, 2006.
 
 \bibitem[{Sta}19]{sta19}
 The {Stacks project authors}.

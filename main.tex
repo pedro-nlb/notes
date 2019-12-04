@@ -80,6 +80,7 @@
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{pbl}[thm]{Problem}
+\newtheorem{fact}[thm]{Fact}
 \newtheorem{q}[thm]{Question}
 \newtheorem{nota}[thm]{Notation}
 \newtheorem{exe}[thm]{Exercise}
@@ -4299,6 +4300,209 @@ Its intersection with $X_{\leqslant -\varepsilon}$ is
 \end{rem}
 
 [Picture, contrasting the local picutre above with our Morse picture of a torus]
+
+\section{[WS] Derived Cats 2 (Luca) - Introduction to Derived Categories - 4.12.19}
+
+\subsection{Overview}
+
+Last week we introduced the category of coherent sheaves on any algebraic variety $X$.
+We showed that both $\Coh(X)$ and $\Mod(X)$ are abelian categories.
+
+Today: given any abelian category $\bfA$ we construct its derived category $\D(\bfA)$, which roughly speaking is the category of cochain complexes of objects in $\bfA$ in which we have inverted the class of all quasi-isomoprhisms.
+
+\begin{defn}
+    A morphism $I\grd\to J\grd$ in $\bfC(\bfA)$ is a quasi-isomorphism if all the maps induced in cohomology $H^{i}(I\grd)\to H^{i}(J\grd)$ are isomorphisms.
+\end{defn}
+
+Motivation: given $\F\in \Coh(X)$ we can encode all cohomology groups $H^{i}(X,\F)$ into a single complex of coherent sheaves.
+
+\subsection{Construction of sheaf cohomology}
+
+\begin{fact}
+    \begin{enumerate}
+	\item $\Mod(X)$ contains special objects called \textit{injective objects}, which have nice algebraic properties.
+	\item $\F\in \Mod(X)$ admits an \textit{injective resolution}, i.e. an exact sequence
+	    \[ 0\to \F\to \I^{0}\to\I^{1}\to \cdots \]
+	    in which all $\I^{i}$ are injective sheaves.
+	    In other words, a quasi-isomorphism
+	    \[ \F[0]\to (\cdots \to 0\to \I^{0}\to \I^{1}\to \cdots) \]
+	    in which $\F[0]=\F$ denotes the sheaf $\F$ seen as a complex concentrated on degree zero.
+    \end{enumerate}
+\end{fact}
+
+\begin{defn}
+    The cohomology groups $H^{i}(X,\F)$ are defined as follows:
+    \begin{enumerate}
+	\item Take an injective resolution $\F\to \I\grd$.
+	\item Apply the global section functor $\Gamma(X,-)$ to the complex $\I\grd$.
+	\item Take cohomology on degree $i$ of the resulting complex.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    The functor $\Gamma(X,-)$ is left exact, so $H^{0}(X,\F)=\Gamma(X,\F)$ as expected.
+    But it is not exact, and this is the reason why we get interesting cohomology groups.
+\end{rem}
+
+\begin{fact}
+    Let $\I\grd,\sJ\grd$ be two injective resolutions of $\F$.
+    Then the identity on $\F$ induces a morphism $\I\grd\to \sJ\grd$ which is uniquely defined up to homotopy.
+    In particular, since the roles are symmetric, $\I\grd$ and $\sJ\grd$ are quasi-isomorphic via these maps.
+    This implies that the cohomology groups are well-defined.
+\end{fact}
+
+In practice we use other kinds of resolutions such as flasque resolutions, which are more meaningful geometrically.
+
+\begin{fact}
+    If we have an injective resolution $\I\grd$ and a flasque resolution $\L\grd$ of our sheaf $\F$, then we have a quasi-isomorphism $\L\grd\to \I\grd$ which is unique up to homotopy.
+    Hence flasque resolutions compute the right cohomology groups.
+\end{fact}
+
+Summarizing:
+\begin{enumerate}
+    \item The injective resolution of $\F$ is a more intrinsic cohomological invariant.
+    \item Flasque resolutions have more geometric nature than injective resolutions.
+\end{enumerate}
+
+Let $\L_{1}\grd$ and $\L_{2}\grd$ be two flasque resolutions of $\F$.
+Unfortunately, we cannot find a quasi-isomorphism $\L_{1}\grd\to \L_{2}\grd$.
+Instead, we can find an injective resolution $\I\grd$ of $\F$ and a diagram of the form
+\begin{center}
+    \begin{tikzcd}
+	\L_{1}\grd\arrow[swap]{dr}{qis} & & \L_{2}\grd\arrow{dl}{qis} \\
+	& \I\grd &
+    \end{tikzcd}
+\end{center}
+
+This will give isomorphisms between the cohomology groups of each flasque resolution, but they do not come from a morphism between the comlpexes.
+Therefore we want to invert quasi-isomorphisms.
+
+\subsection{From abelian category to derived category}
+
+Let $\bfA$ be an abelian category.
+Its \textit{derived category} $\D(\bfA)$ is constructed in two steps:
+\begin{enumerate}
+    \item First we pass from cochain complexes to the homotopy category $\K(\bfA)$, which is the quotient of $\K(\bfA)$ by chain-homotopies.
+	Hence injective resolutions are unique (up to unique isomorphism) in $\K(\bfA)$.
+    \item From $\K(\bfA)\to \D(\bfA)$ we pass by inverting quasi-isomorphisms.
+	This is analogous to inverting non-zero integers to pass from $\Z$ to $\Q$.
+	The key propertie of the set $S$ of quasi-isomorphisms in $\K(\bfA)$ which allows us to do this is the following.
+	For all $s\in S$ quasi-isomorphism and all diagrams in $\K(\bfA)$ of the form
+	\begin{center}
+	    \begin{tikzcd}
+		\F\grd\arrow{r}{f}\arrow{d}{s} & (\F'')\grd \\
+		(\F')\grd &
+	    \end{tikzcd}
+	\end{center}
+	can be completed into a diagram\footnote{This cannot be taken to be a pushout diagram (see \cite[Exercise 2.19]{huy06}), but we can take it to be a \textit{homotopy pushout}? (suggested by Sebastian)}
+	\begin{center}
+	    \begin{tikzcd}
+		\F\grd\arrow{r}{f}\arrow{d}{s} & (\F'')\grd\arrow{d}{t} \\
+		(\F')\grd\arrow{r}{g} & \G\grd
+	    \end{tikzcd}
+	\end{center}
+	in which $t\in S$.
+	This allows us to define morphisms in $\D(\bfA)$ by \textit{calculus of fractions}: a morphism in $\D(\bfA)$ is represented by a diagram
+	\begin{center}
+	    \begin{tikzcd}
+		\F\grd\arrow[swap]{dr}{f} & & \G\grd\arrow{dl}{t} \\
+		& \sH\grd &
+	    \end{tikzcd}
+	\end{center}
+	which can be thought of as $t^{-1}f$.
+\end{enumerate}
+
+\subsection{Triangles in $\D(\bfA)$}
+
+In an abelian category $\bfA$, every short exact sequence gives raise to a long exact sequence in cohomology.
+Indeed, from the short exact sequence $0\to \F'\to \F\to \F''\to 0$ of objects in $\bfA$, we get the short exact sequence $0\to (\I')\grd\to \I\grd\to (\I'')\grd\to 0$ of complexes.
+This yields then a long exact cohomology sequence in $\bfA$.
+
+\begin{q}
+    Given more generally a morphism $f\colon \F\grd\to \G\grd$ in $\bfC(\bfA)$, can we put all maps $H^{i}(f)$ into a long exact sequence?
+\end{q}
+
+\begin{defn}
+    The \textit{cone of $f$} is a complex $C(f)\grd$ which on degree $n$ is given by $\F^{n+1}\op \G^{n}$ and whose differential is given by
+    \[ d^{n}=\begin{pmatrix} -d_{\F\grd}^{n+1} & 0 \\ f^{n+1} & d_{\G\grd}^{n} \end{pmatrix} \]
+\end{defn}
+
+\begin{fact}
+    \begin{enumerate}
+	\item We have a short exact sequence
+	    \[ 0\to \G\grd\to C(f)\grd \to \F\grd[1] \to 0 \]
+	    where $(\F\grd[1])^{m}=\F^{m+1}$ and $d_{\F\grd[1]}=-d_{\F\grd}$.
+	    This induces a long exact sequence in cohomology
+	    \[ \cdots \to H^{i}(\G\grd)\to H^{i}(C(f)\grd)\to H^{i+1}(\F\grd)\xrightarrow{H^{i+1}(f)} H^{i+1}(\G\grd)\to \cdots \]
+	\item Given a short exact sequence
+	    \[ 0\to \F\grd\xrightarrow{f}\to \G\grd\xrightarrow{g} \sH\grd \to 0 \]
+	    we get two quasi-isomorphisms $C(f)\grd\to \sH\grd$ and $\F\grd[1]\to C(g)\grd$, which in the derived category will become isomorphisms.
+	\item We also get
+	    \[ \cdots \to C(f)\grd[-1]\to \F\grd\to \G\grd \to C(f)\grd\to \F\grd[1]\xrightarrow{f[1]}\to \cdots \]
+	    in which the composition of any two consecutive morphisms is null-homotopic, hence $0$ in the derived category.
+    \end{enumerate}
+\end{fact}
+
+\begin{rem}
+    In the previous situation we get a long exact sequence
+    \[ \cdots \to H^{i}(\F\grd)\to H^{i}(\G\grd)\to H^{i}(C(f)\grd)\to H^{i+1}(\F\grd)\to \cdots \]
+\end{rem}
+
+\begin{defn}
+    A \textit{triangle} in $\D(\bfA)$ is a sequence of morphisms
+    \[ (\L')\grd\to \L\grd (\L'')\grd\to (\L')\grd[1] \]
+    isomorphic (in $\D(\bfA)$) to a sequence of the form
+    \[ \F\grd\xrightarrow{f} \G\grd\to C(f)\to \F\grd[1], \]
+    where a morphism of triangles is defined as a commutative diagram between them in the straightforward way.
+\end{defn}
+
+\begin{fact}
+    \begin{enumerate}
+	\item $(\id,0,0)$ is a triangle.
+	\item Every morphism $\F\grd\to \G\grd$ is part of a triangle.
+	\item Triangles are stable under rotation (watch out for the sign!).
+	\item Any triangle gives raise to a long exact cohomology sequence.
+    \end{enumerate}
+\end{fact}
+
+\begin{fact}
+    We can always complete a morphism of triangles when one of the maps in the commutative diagram is missing.
+\end{fact}
+
+\subsection{Derived functors}
+
+Let $\bfA=\Coh(X)$.
+The naive extension of $\Gamma(X,-)$ to $\D(X)$ does not work (for example, it does not map zero objects to zero objects, so it would not preserve isomorphisms).
+But we can define a best approximation for $\Gamma(X,-)$ on $\D^{+}(\Coh(X))$.
+
+\begin{defn}
+    The \textit{right derived functor} $\bfR\Gamma(X,-)\colon \D^{+}(\Mod(X))\to \D^{+}(\C)$ is defined as follows:
+    \begin{enumerate}
+	\item For $\F\in D^{+}(\Mod(X))$, take an injective resolution $\F\grd\xrightarrow{\sim}\I\grd$.
+	\item Apply $\Gamma(X,-)$ to $\I\grd$ componentwise.
+	    The resulting complex is by definition $\bfR\Gamma(X,\F\grd)$.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    This is again well-defined and we may use flasque resolutions to compute.
+\end{rem}
+
+\begin{rem}
+    The entire construction can be dualize replacing injective objects with projective objects, left exact functors with right exact functors, right derived functors with left derived functors and bounded below by bounded above.
+\end{rem}
+
+\subsection{Useful formulas}
+
+Functors on $\Coh(X)$:
+\begin{enumerate}
+    \item $\Gamma(X,-)$ left exact.
+    \item $\Hom(-,-)$ left exact in both variables.
+    \item $\hom(-,-)$ left exact in both variables.
+    \item $\ot $ right exact.
+\end{enumerate}
+
+Compatibilities (see \cite[Chapter 3]{huy06}).
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
