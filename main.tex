@@ -4504,6 +4504,125 @@ Functors on $\Coh(X)$:
 
 Compatibilities (see \cite[Chapter 3]{huy06}).
 
+\section{[LT] Lecture 14 - 5.12.19}
+
+\subsection{Vanishing spheres(?)}
+
+$X$ complex manifold, $f\colon X\to \C$ holomorphic, $g=\Re(f)\colon X\to \R$.
+Let $x\in X$ be non-critical for $f$.
+Then $x$ is non-critical for $g$.
+
+\begin{lm}
+    $X$ a complex manifold of dimension $n$, $f\colon X\to \C$ holomorphic, $x\in X$ a non-degenerate critical point of $f$.
+    Then $x$ is also a non-degenerate critical point with respect to $g$ of Morse index $n$.
+    \begin{proof}
+	We use local coordinatees from the holomorphic Morse lemma.
+	\[ f(z_{1},\ldots,z_{n})=\sum_{j=1}^{n}z_{j}^{2} \]
+	for $z_{j}=x_{j}+iy_{j}$.
+	Then
+	\[ g(x_{1},y_{1},\ldots,x_{n},y_{n})=\sum_{j=1}^{n}(x_{j}^{2}-y_{j}^{2}).\]
+    \end{proof}
+\end{lm}
+
+We concentrate on the local behaviour.
+Let $f\colon X\to V\sub \C$ be holomorphic, with $0\in \Delta\sub V$ a small enough open disk around $0$.
+
+\begin{thm}
+    Let $f\colon X\to V$ be holomorphic with $\dim{X}=n$.
+    Let $x_{0}\in X$ with $f(x_{0})=0$ an ordinary double point.
+    Let $t\in \Delta^{*}:=\Delta\setminus \{0\}$.
+    Then $X_{\Delta}=f^{-1}(\Delta)$ deformation retracts to $X_{t}\cup B_{t}^{n}$, where $B_{t}^{n}$ is an $n$-dimensional real ball (cell) glued to $X_{t}$ along the \textit{vanishing sphere} $S_{t}^{n-1}$.
+    \begin{proof}
+	Idea:
+	\begin{enumerate}
+	    \item $X_{\Delta}$ retracts to $X_{\Delta,g\leqslant \varepsilon}$.
+	    \item $X_{\Delta,g\leqslant -\varepsilon}$ retracts to $X_{g=-\varepsilon}$.
+	    \item Morse theory tells us that we get from one to the other by gluing an $n$-cell.
+	    \item $X_{g=-\varepsilon}\sim X_{-\varepsilon}$, all fibres are diffeomorphic away from the critical value by Ehresmann.
+	\end{enumerate}
+    \end{proof}
+\end{thm}
+
+Near $x_{0}$ we consider an open set $\U\sub X$ homeomorphic to a ball in $\C^{n}$, local coordinates $z_{1},\ldots,z_{n}$ on $\U$ centered at $x_{0}$ such that $f(z_{1},\ldots,z_{n})=\sum_{i=1}^{n}z_{i}^{2}$.
+For $t=se^{i\theta}\in \Delta^{*}$ we denote $\U_{t}=\U\cap f^{-1}(t)$,
+\[ S_{t}^{n-1}=\{ z\in \U\mid z_{j}=\sqrt{s}e^{i\theta/2}x_{j}, x_{j}\in \R, \sum_{j=1}^{n}x_{j}^{2}=1 \}\sub \U_{t} \]
+and
+\[ B_{t}^{n}=\{ z\in \U \mid z_{j}=\sqrt{s}e^{i\theta/2}x_{j}, x_{j}\in \R, \sum_{j=1}^{n}x_{j}^{2}\leqslant 1 \}\sub \{ z\in \U\mid |f(z)|\leqslant s\}. \]
+We cannot make $\U$ larger, but we can make $\Delta$ smaller.
+Once $\U$ is big enough compared to $\Delta$, the these sets do not depend on $\U$.
+$S_{t}^{n-1}$ is a sphere and $B_{t}^{n}$ is a ball.
+
+\begin{defn}
+    $S_{t}^{n-1}$ is the \textit{vanishing sphere} of the family $(\U_{\tau})_{\tau\in \Delta}$ and $B_{t}^{n}$ is called the \textit{cone of the vanishing sphere}.
+    Its boundary is $S_{t}^{n-1}$.
+\end{defn}
+Note that $\lim_{t\to 0}S_{t}^{n-1}=\{0\}\sub \U_{0}$.
+
+\begin{rem}
+    $S_{t}^{n-1}$ depends on the choice of coordinates. 
+    Once we have introduced homology, we will see that the homology class of $S_{t}^{n-1}$ (the \textit{vanishing cycle}) is independent of the choice of coordinates.
+\end{rem}
+
+\begin{exa}
+    Let $t=-\varepsilon \in \Delta^{*}$.
+    Then $-\varepsilon =\varepsilon e^{\pi i}$.
+    \[ B_{-\varepsilon}^{n}=\{z\in \U\mid z_{j}=\sqrt{\varepsilon}e^{\pi i/2}x_{j},x_{j}\in \R,\sum_{j=1}^{n}x_{j}\leqslant 1\}= \]
+    \[ =B_{g}^{n}(=\{ (x_{1},\ldots,x_{m})\mid x_{n+1}=x_{n+2}=\cdots =x_{m}=0 ,\sum_{j}^{n} x_{j}^{2}\leqslant \varepsilon \}) \]
+    \[ = \{ (x_{1},y_{1},\ldots,x_{n},y_{n})\mid x_{1}=x_{2}=\cdots=x_{n}=0,\sum_{j}y_{j}^{2}\leqslant \varepsilon \}.\]
+\end{exa}
+
+\begin{proof}[Proof of the theorem above]
+    $f\colon X\to V$, restrict to $X_{\Delta}=f^{-1}(\Delta)\to \Delta$.
+    WLOG $t=-\varepsilon$.
+    We use the Ehresmann flow wrt $g$.
+    It exists as long as we avoid $0$.
+    It induces a retract from $X_{\Delta,g\leqslant -\varepsilon }$ to $X_{\Delta,g=-\varepsilon}$ and from $X_{\Delta}$ to $X_{\Delta,g\leqslant \varepsilon}$.
+    We use the deformation of real Morse theory from $X_{\Delta, -\varepsilon \leqslant g\leqslant \varepsilon }$ to $X_{\Delta,g=-\varepsilon}\cup B_{-\varepsilon}^{n}$ via the vanishing sphere.
+    The level set $X_{\Delta,g=-\varepsilon}$ is the preimage under $f$ of $\Delta_{-\varepsilon}=\{z\in \Delta\mid \Re(z)=-\varepsilon\}$.
+    We use the Ehresmann flow to deform $X_{\Delta,g=-\varepsilon }$ to $X_{-\varepsilon}$.
+\end{proof}
+
+\subsection{Lefschetz pencils}
+
+\begin{pbl}
+    $X$ compact $\C$-manifold.
+    Then all $f\colon X\to \R$ holomorphic are constant.
+\end{pbl}
+
+The solution will be to restrict our attention to algebraic varieties inside projective space and define an algebraic analogue of Morse functions.
+$X\to \C$ replaced by $X\dashrightarrow \CP^{1}$.
+
+\subsection{Recollections on algebraic varieties}
+Definition, singular and regular points, dimension, irreducibility (we consider $\varnothing$ irreducible).
+
+\begin{defn}
+    Let $X\sub \C^{N}$ be an algebraic variety and $x\in X$.
+    \begin{enumerate}
+	\item $T_{x}X\sub T_{x}\C^{N}$ is the subset of vectors $v\in T_{x}\C^{N}$ such that $df_{y}(v)=0$ for all $y\in X$ and all $f\in \C[z_{1},\ldots,z_{N}]$ vanishing on $X$.
+	\item $\hat{T}_{x}X\sub \P^{N}$ \textit{projective completion} of $T_{x}X$ is defined as $\P(T_{x}X\op \C)$.
+    \end{enumerate}
+\end{defn}
+
+Let the projective space $\P$ be written as $\P(V)$ for some vector space $V$.
+Then the \textit{dual} projective space is defined as $\P(V\dual)$, denoted $\P(V)\dual=\P\dual$.
+Note that $\xi\in \P\dual$ corresponds to a class of linear forms $[\xi\colon V\to \C]$ which in turn corresponds to a set of clases of vectors $\{ [v]\in \P\mid \xi(v)=0\}=:H_{\xi}$, which is a hyperplane in $\P$.
+On the other hand, a point $p\in \P$ corresponds to a hyperplane $H_{p}=\{ H\sub \P\mid p\in H\}$ or equivalently to the hyperplane of classes $\{[\xi]\in \P\dual \mid \xi(p)=0 \}$.
+
+We have a canonical isomorphism $\P\cong (\P\dual)\dual$.
+
+\textit{Incidence variety:} $\Phi=\{ (x,\xi)\in \P\tms \P\dual \mid x\in H_{\xi}\}\sub \P\tms \P\dual=\{(x,\xi)\in \P\tms \P\dual\mid \xi\in H_{x}\}$.
+This is a projective variety (via the Segre embedding $\P^{n}\tms \P^{m}\to \P^{(n+1)(m+1)-1}$).
+
+\begin{rem}
+    $(\P\tms \P\dual)\dual\cong \P\dual \tms (\P\dual)\dual\cong \P\dual \tms \P\cong \P\tms \P\dual$.
+    Hence we may also regard $\Phi $ as a subvariety of $\P\dual \tms \P$.
+\end{rem}
+
+\begin{exe}
+    We have two projections from $\Phi$ to $\P$ and to $\P\dual$.
+    Show that both are Zariski-locally trivial fibrations with fibres $\P^{N-1}$.
+\end{exe}
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
