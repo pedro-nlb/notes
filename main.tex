@@ -77,6 +77,7 @@
 % Remarks (black)
 \theoremstyle{remark}
 \newtheorem{rem}[thm]{Remark}
+\newtheorem{obs}[thm]{Observation}
 \newtheorem{pbl}[thm]{Problem}
 \newtheorem{fact}[thm]{Fact}
 \newtheorem{q}[thm]{Question}
@@ -97,6 +98,7 @@
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Supp}{Supp}
@@ -2531,7 +2533,7 @@ Then we have $(TX)_{\R}\cong T(X_{\R})$ as smooth bundles, but this is not a $\C
     Then $TX\not\cong T(X_{\R})\ot_{\R}\C$.
 \end{rem}
 
-\section{[CM] Solid abelian groups - 18.11.19}
+\section{[CM] Talk 5 (Dario) - Solid abelian groups - 18.11.19}
 
 \begin{defn}
     Let $S$ be a profinite set, given as $\varprojlim_{i} S_{i}$.
@@ -3317,7 +3319,7 @@ with the closure taken on the Zariski topology.
     We get automorphisms of $X(K,U)$, and then we can apply Dirichlet's theorem.
 \end{exa}
 
-\section{[CM] Solid Abelian Groups II (Vincent) - 25.11.19}
+\section{[CM] Talk 6 (Vincent) - Solid Abelian Groups II - 25.11.19}
 
 \textbf{Goal:} Corollaries of the big theorem of last time, solidified tensor product and some computations.
 
@@ -4060,7 +4062,7 @@ Similarly for the other one, so $R^{1}f_{*}T_{U_{\Sigma}}=0$.
 We are done if we show that $f_{*}T_{U_{\Sigma}}$ is reflexive, because then $f_{*}T_{U_{\Sigma}}=T_{U}$.
 This follows by a result of Greb, Kebekus and Peternell, which show that $f_{*}\Omega_{U_{\Sigma}}^{2}$ is reflexive.
 
-\section{[CM] Analytic Rings (Johan) - 02.12.19}
+\section{[CM] Talk 7 (Johan) - Analytic Rings - 02.12.19}
 
 \subsection{What we have seen so far and where we are going}
 
@@ -4763,6 +4765,139 @@ The idea is that special varieties are not the opposite of general type varietie
 	\item We get height bounds for $\sigma \colon C\to \X_{m}\to (S,\Delta)$.
 	\item Every entire curve $f\colon \C\to X$ is degenerate, meaning that $\overline{f(\C)}\neq X$.
     \end{enumerate}
+\end{thm}
+
+\section{[CM] Talk 8 (Tanuj) - Six functor formalism - 09.12.19}
+
+Last time we defined \textit{preanalytic rings} as the data
+\[ \sA=(\u{\sA},S\mapsto \sA[S],S\to \sA[S] ) \]
+where $\u{\sA}$ is a condensed ring, the second thing is a module in $\Mod_{\u{\sA}}^{cond}$ and the third thing is a natural transformation.
+
+\begin{exa}
+    $A$ discrete ring.
+    Then $A\usolid=(A,S\mapsto \lim A[S_{i}],\ldots )$.
+    $(A,\Z)\usolid=(A,S\mapsto \Z\usolid [S]\ot A)$.
+\end{exa}
+
+Recall also that a \textit{analytic ring} is a preanalytic ring $\sA$ for which any complex
+\[ C:= (\cdots \to C_{i}\to \cdots \to C_{0}\to 0 \]
+in which the terms are direct sums of objects of the form $\sA[T]$ has the property that
+\[ \bfR\Hom_{\u{\sA}}(\sA[S],C)\to \bfR\Hom_{\sA}(\u{\sA}[S],C)) \]
+is an isomorphism.
+
+We also saw that there exists a nice subcategory $\Mod_{\sA}^{cond}\sub \Mod_{\u{\sA}}^{cond}$ which was explicitly described as the full subcategory of objects satisfying...
+
+Let $A$ be a finitely generated $\Z$-algebra.
+We will bee looking at $A=\Z[T]$.
+The functor
+\[ j_{*}\colon D(A\usolid)\to D((A,\Z)\usolid) \]
+admits a left adjoint $j^{*}$ which in turn has a left adjoint $j_{!}$.
+
+\begin{thm}
+    \begin{enumerate}
+	\item $A\usolid$ is an analytic ring.
+	\item $j_{*}$ is a full inclusion $D(A\usolid)\sub D((A,\Z)\usolid)$.
+	\item $j^{*}\colon D((A,\Z)\usolid)\to D(A\usolid)$ admits a left adjoint $j_{!}$.
+	    Moreover, it satisfies
+	    \[ j_{!}j^{*}(M)=M\ot_{(A,\Z)\usolid}j_{!}A. \]
+    \end{enumerate}
+\end{thm}
+
+\textbf{Goal 1:} $A\usolid$ is an analytic ring.
+
+We immediately specialize to $A=\Z[T]$.
+Define $A_{\infty}:=\Z((T^{-1}))$ which is the Laurent power series in $T^{-1}$.
+
+\begin{obs}
+    We have a short exact sequence
+    \[ 0 \to \Z[[U]]\ot A\xrightarrow{(-)\cdot (UT-1)} \Z[[U]]\ot A\xrightarrow{U\mapsto T^{-1}}A_{\infty}\to 0. \]
+\end{obs}
+
+\begin{rem}
+    The first two guys in the previous short exact sequence are compact projective, hence $A_{\infty}$ is compact as well.
+\end{rem}
+
+\begin{obs}
+    If $C\in D(\Cond(A))$ whose terms are products of direct sums of $A$.
+    \[ \bfR\ihom_{A}(A_{\infty},C)=0 .\]
+\end{obs}
+
+\begin{rem}
+    Through a series of reductions we can assume that $C=A$ (this uses compactness of $A_{\infty}$).
+\end{rem}
+
+We can compute from the previous short exact sequence
+\[ \bfR\Hom_{\Z}(\Z[[U]],A)\xrightarrow{UT-1}\bfR\Hom(\Z[[U]],A) \]
+same as
+\[ \frac{A[U^{-1}]}{A}\xrightarrow{UT-1} \frac{A[U^{-1}]}{A}. \]
+
+Why is this true?
+We have a pairing $\Z[[T]]\times \Z[T]\to \Z$.
+Now $\Z[[T]]\cong \prod_{\N}\Z$ and $\Z[T]\cong \op_{\N} \Z$.
+We use here the isomorphisms seen in previous lectures
+\[ \Hom(\prod \Z,\Z)\cong \op \Z \quad \text{and}\quad \Hom(\op \Z,\Z)\cong \prod \Z. \]
+
+\begin{obs}
+    For any indexing set $I$, for the injective map
+    \[ (\prod_{I}\Z)\ot A\to \prod_{I}A \]
+    the cokernel is naturally an $A_{\infty}$-module.
+\end{obs}
+
+Let us see now that $A\usolid$ is an analytic ring.
+We take any $C$ of the form mentioned above.
+We need to show that for any $S$ we have an isomorphism
+\[ \bfR\ihom(A[S],C)\xrightarrow{\sim}\bfR\ihom(A\usolid[S],C).\]
+
+Since $C\in D((A,\Z)\usolid)$ and $(A,\Z)\usolid$ is an analytic ring, we have an isomorphism
+\[ \bfR\ihom(A[S],C)\xrightarrow{\sim} \bfR\ihom((A,\Z)\usolid,C). \]
+
+We have $(A,\Z)\usolid[S]=\Z\usolid[S]\ot A\cong (\prod_{I}\Z)\ot A$ and $A\usolid[S]=\prod_{I}A$.
+By the previous observation of being an $A_{\infty}$-module and since $\bfR\ihom(A_{\infty},C)=0$ we have the desired isomorphism.
+
+The goal now is defining $j_{!}$, which should be the left adjoint to $j^{*}$.
+The pullback $j^{*}$ is defined as
+\[ j^{*}(M)=M\ot_{(A,\Z)\usolid}^{L} A\usolid. \]
+First we define an endofunctor $D((A,\Z)\usolid)\to D((A,\Z)\usolid)$ by sending
+\[ M\mapsto M\ot_{A\ot_{\Z}^{L}\Z\usolid}A_{\infty}/A [-1]. \] 
+We can then find a dashed functor $j_{!}$ yielding a factorization as in the commutative diagram below
+\begin{center}
+    \begin{tikzcd}
+	& D((A,\Z)\usolid) \\
+	D(A\usolid)\arrow[dashed]{ur}{j_{!}} & \\
+	& D((A,\Z)\usolid) \arrow{ul}{j^{*}}\arrow{uu}
+    \end{tikzcd}
+\end{center}
+
+Assuming for the moment that we have the desired adjunction, we get that our functor is fully faithful for free, because
+\[ j^{*}j_{*}=\id \dashv j_{!}j^{*}. \]
+$j_{!}$ is a fully faithful functor and left adjoint to $j^{*}$.
+We will show that $j_{!}\dashv j^{*}$ by this iso...
+
+For all $M,N\in D((A,\Z)\usolid)$, it suffices to show
+\[ \bfR\ihom_{A}(j_{!}M,N)\overset{(1)}{\cong} \bfR\Hom(j_{!}M,N\ot_{(A,\Z)\usolid}^{L}A\usolid\overset{(2)}{\cong} \bfR\Hom(M,N\ot_{(A,\Z)\usolid}^{L}A\usolid ). \]
+Isomorphism $(2)$ follows from the cone of $j_{!}M\to M$ being an $A_{\infty}$-modules.
+Isomorphism $(1)$ follows from:
+\begin{enumerate}
+    \item $j^{*}$ has kernel an $A_{\infty}$-module.
+    \item The cone of $N\to N\ot_{(A,\Z)\usolid}^{L}A\usolid$ is an $A_{\infty}$-module.
+\end{enumerate}
+This implies that $j_{!}$ is an adjoint as claimed.
+
+What about $j^{!}$? This is given by the theorem below (Theorem 8.2. in Scholze's notes).
+
+What about other f.g. $\Z$-algebras?
+This is done in the appendix to lecture VIII.
+
+\begin{thm}
+    Let $A$ be a finitely generated $\Z$-algebra.
+    Let $f\colon \Spec{A}\to \Spec{\Z}$.
+    We can form a left adjoint
+    \[ f_{!}\colon D(A\usolid)\to D((A,\Z)\usolid)\to D(\Z\usolid). \]
+    Then $f_{!}$ commutes with all direct sums, preserves compact objects and we have a projection formula
+    \[ f_{!}((M\ot^{L}_{\Z\usolid}A\usolid)\ot^{L}_{A\usolid} N)\cong M\ot_{\Z\usolid}^{L}f_{!}M. \]
+    We can also form a right adjoint
+    \[ f^{!}\colon D(\Z\usolid)\to D(A\usolid) \]
+    with $f^{!}M=(M\ot_{\Z\usolid}^{L}A\usolid )\ot_{A\usolid}^{L}f^{!}\Z$.
 \end{thm}
 
 \bibliographystyle{alpha}
