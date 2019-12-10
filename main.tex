@@ -4900,6 +4900,164 @@ This is done in the appendix to lecture VIII.
     with $f^{!}M=(M\ot_{\Z\usolid}^{L}A\usolid )\ot_{A\usolid}^{L}f^{!}\Z$.
 \end{thm}
 
+\section{[LT] Lecture 15 - 10.12.19}
+
+\textbf{Goal:} generalize the duality of $(\P,\P\dual)$ seen last time to $(X,X\dual)$ for $X\sub \P$ a projective variety.
+
+\begin{defn}
+    The hyerplane $\xi\in \P\dual$ is \textit{tangent to $X$ at $x\in X$} if $\hat{T}_{x}X\sub H_{\xi}$ or, equivalently, $x\in H_{\xi}$ and $T_{x}X\sub T_{x}H_{\xi}$.
+\end{defn}
+
+\subsection{Motivational example}
+Let $X$ be a nonsingular hypersurface in $\P$, i.e. $X=V(f)$ for $f$ a homogeneous nonconstant polynomial and $X=X_{reg}$.
+For all $x\in X$ we have a hyperplane $\hat{T}_{x}X\sub \P$.
+We can define the generalization of the Guass map:
+\begin{align*}
+    \varphi\colon X & \to \P\dual \\
+    x & \mapsto [\hat{T}_{x}X]
+\end{align*}
+In suitable coordinate charts, $\varphi$ is given by $\varphi(x)=df_{x}$.
+Hence $\varphi$ is an algebraic map.
+Now define
+\[ X\dual=\varphi(X)=\{\xi\in \P\dual \mid \xi \text{ tangent to }X\text{ at some }x\in X\}. \]
+For all $\xi\in X\dual$ we have $\dim_{\xi}(X\dual)=N-1$.
+Intuition: we can move a tangent hyperplane $(\hat{T}_{x}X)$ in any direction along $X$ and $\dim(X)=N-1$.
+
+\begin{rem}
+    Even if $X$ is smooth, $X\dual$ may have singularities.
+    For example, if $\xi$ is tangent to $X$ at $x$ and $y$ with $x\neq y$, then we have some singularities ($X\dual$ looks like a quotient of $X$ by an equivalence relation near $\varphi(x)=\varphi(y)$).
+
+    In particular, we do not have a definition of $(X\dual)\dual$ yet.
+\end{rem}
+
+\subsection{Dual varieties in general}
+
+\textbf{Idea:} $X\sub \P$ projective variety, $x\in X$ and $\xi\in \P\dual$.
+We say that $\xi$ is \textit{tangent to $X$ at $x$} if
+\begin{enumerate}
+    \item $x\in X_{reg}$ and $\xi$ is tangent to $X_{reg}$ at $x$, or
+    \item $x\in X_{sing}$ and $\xi$ is a limit of hyperplanes tangent to $X_{reg}$.
+\end{enumerate}
+\[ X\dual=\{\xi\in \P\dual \mid \xi \text{ tangent to }X\text{at some }x\in X\}. \]
+
+Consider
+\[ \Psi_{X}^{\circ}=\{(x,\xi)\in \P\tms \P\dual \mid x\in X_{reg} \text{ and }\xi\text{ tangent to }X_{reg} \text{ at } x\} \sub \Psi_{X}, \]
+where $\Psi_{X}$ is the Zariski closure of $\Psi_{X}^{\circ}$.
+Since $X_{reg}\sub X$ is open and tangency is a closed condition on $X_{reg}$, we see that $\Psi_{X}^{\circ}$ is a quasi-projective variety.
+We have projections
+\begin{center}
+    \begin{tikzcd}
+	& \Psi_{X}\arrow[swap]{dl}{p_{1}}\arrow{dr}{p_{2}} & \\
+	\P & & \P\dual
+    \end{tikzcd}
+\end{center}
+
+\begin{defn}
+    The \textit{dual variety} of $X$ is defined as $X\dual=p_{2}(\Psi_{X})\sub \P\dual$.
+\end{defn}
+
+\begin{rem}
+    \begin{enumerate}
+	\item $X\dual \sub \P^{N}$ is Zariski closed, so $X\dual$ is a projective variety.
+	\item $X$ nonsingular implies that $\Psi_{X}^{\circ}=\Psi_{X}$ is already closed.
+	\item $X$ nonsingular implies that $p_{1}$ is a Zariski locally trivial fibration with fibres isomorphic to projective spaces of dimension $N-1-\dim(X)$.
+	\item $X$ nonsingular and irreducible, then $\Psi_{X}$ is nonsingular and irreducible.
+	    Hence $X\dual$ is irreducible.
+	\item $X$ nonsingular hypersurface implies that $p_{1}$ is an isomorphism and $p_{2}$ is the Gauss map defined before.
+    \end{enumerate}
+\end{rem}
+
+\textbf{Goal:} imitate Morse function by choosing $L=\P^{1}\mono \P\dual$ such that $L\cap (X\dual)_{sing}=\varnothing$ and $L$ is transverse to $X\dual$.
+
+\begin{nota}
+    $\Phi_{X}=\{(x,\xi)\in \P\tms \P\dual \mid x\in X\cap H_{\xi} \}= X\times_{\P}\Phi\sub X\tms \P\dual$.
+\end{nota}
+
+\begin{rem}
+    We have a commutative diagram with morphisms whose fibres are as indicated below:
+    \begin{center}
+	\begin{tikzcd}
+	    & & & \P\dual \\
+	    \Psi_{X}\arrow[hook]{r}\arrow[swap]{drr}{\P^{N-1-\dim(X)}} & \Phi_{X}\arrow{dr}{\P^{N-1}}\arrow[hook]{r} & \Phi \arrow{ur}{\P^{N-1}}\arrow[hook]{r}\arrow{dr}{\P^{N-1}} & \P\tms \P\dual \arrow[swap]{u}{p_{2},\P^{N}}\arrow{d}{p_{1},\P^{N}} \\
+	    & & X\arrow[hook]{r} & \P
+	\end{tikzcd}
+    \end{center}
+\end{rem}
+
+\begin{rem}
+    $X$ nonsingular irreducible implies that $\Phi_{X}$ is nonsingular and irreducible, since $p_{1}\colon \Phi_{X}\to X$ is a locally trivial fibration with fibres $\P^{N-1}$.
+
+    The fibers of $p_{2}\colon \Phi_{X}\to \P\dual$ are of the form $p_{2}^{-1}(\xi)=X\cap H_{\xi}$.
+\end{rem}
+
+\begin{nota}
+    Define $Y$ as the following pullback:
+    \begin{center}
+	\begin{tikzcd}
+	    Y\arrow[hook]{r}\arrow{d} &\Phi_{X}\arrow{d}{p_{2}} \\
+	    \P^{1}=L\arrow[hook]{r}{i} & \P\dual 
+	\end{tikzcd}
+    \end{center}
+\end{nota}
+
+\textbf{Goal:} find a suitable inclusion $i$ such that $Y\to L$ behaves like a Morse function.
+
+\subsection{Critical points of $P_{2}$}
+
+Assume from now on that $X$ is nonsingular.
+
+\begin{lm}
+    \begin{enumerate}
+	\item The critical points of $p_{2}\colon \Phi_{X}\to \P\dual$ are the points of the form $(x,\xi)$ with $\xi$ tangent to $X$ at $x$, i.e. critical points of $p_{2}$ are $\Psi_{X}$.
+	\item $(x,\xi)$ critical point of $p_{2}$ implies that
+	    \[ (dp_{2})(T_{(x,\xi)}\Phi_{X})=T_{\xi}(X\dual). \]
+    \end{enumerate}
+    \begin{proof}
+	For $(1)$, let $(x,\xi)\in \Phi_{X}$.
+	If $\xi$ is not tangent to $X$ at $x$, then each infinitesimal path through $\xi$ consists of hyperplanes intersecting $X$ near $x$.
+	Hence $(dp_{2})_{(x,\xi)}$ is surjective.
+	Conversely, if $\xi$ is tangent to $X$ at $x$, then the infinitesimal path through $\xi$ in the direction normal to $X$ consists of hyperplanes that do not intersect with $X$ near $x$ (except for $\xi$ itself).
+	This normal direction in $T_{\xi}(\P\dual)$ is not in the image of $(dp_{2})_{(x,\xi)}$.
+
+	For $(2)$, use similar arguments.
+	The image of $(dp_{2})_{(x,\xi)}$ consits of infinitesimal paths through $\xi$ consisting of hyperplanes intersecting $X$ near $x$.
+	If $\xi$ is tangent to $X$ at $x$, then such paths are the ones along which $\xi$ remains tangent to $X$, i.e. elements of $T_{\xi}(X\dual)$.
+    \end{proof}
+\end{lm}
+
+\begin{thm}
+    Let $X$ be a nonsingular irreducible projective variety $\sub \P$ and $x\in \P$.
+    \begin{enumerate}
+	\item $x\in X \Leftrightarrow H_{x}$ is tangent to $X\dual$.
+	\item $(X\dual)\dual = X$.
+    \end{enumerate}
+    \begin{proof}
+	Note that $(1)\Leftrightarrow (2)$.
+	Via the identification $(\P\dual)\dual= \P$ we have
+	\[ \Psi_{X\dual}=\{ (x,\xi)\in \P\times \P\dual \mid H_{x}\text{ tangent to }X\dual \text{ at }\xi\} \]
+	Condition $(2)$ is equivalent to $\Psi_{X\dual}=\Psi_{X}$.
+	Let us check this.
+
+	We have $x\in X\Leftrightarrow \exists \xi$ such that $(x,\xi)\in \Psi_{X}$.
+	$H_{x}$ tangent to $X\dual$ iff $\exists \xi$ such that $(x,\xi)\in \Psi_{X\dual}$.
+	Both $\Psi_{X}$ and $\Psi_{X\dual}$ are closed and irreducible subvarieties of the same dimension, so it suffices to show the inclusion $\Psi_{X}\sub \Psi_{X\dual}$.
+
+	Let $\Omega=\{ (x,\xi)\in \Psi_{X} \mid \xi\in (X\dual)_{reg} \}\sub \Psi_{X}$.
+	This can also be described as the set
+	\[ \{(x,\xi)\mid \xi \text{ tangent to }X\text{ at }x \text{ and only at }x\} \]
+	We have $\varnothing \neq \Omega\sub \Psi_{X}$ is a Zariski-open ($(X\dual)_{reg}\sub X\dual$ is dense open and $p_{2}\colon \Psi_{X}\to X\dual$ is dominant).
+	Hence $\bar{\Omega}=\Psi_{X}$, so it suffices to show that $\Omega\sub \Psi_{X\dual}$.
+	$\{x\}\times H_{x}\sub \Phi_{X}$.
+	$T_{\xi}(H_{x})\overset{(*)}{\sub} (dp_{2})(T_{(x,\xi)}\Phi_{X}$ by the lemma, and also $(dp_{2})(T_{(x,\xi)}\Psi_{X}\sub (dp_{2})(T_{(x,\xi)}\Phi_{X})$ and $(dp_{2})(T_{(x,\xi)}\Psi_{X})\overset{(**)}{\sub} T_{\xi}(X\dual)$.
+
+	$(x,\xi)\in \Omega$ implies $(**)$ is an equiality.
+	$(*)$ is also an equality.
+	Hence $T_{\xi}(X\dual)\sub T_{\xi}(H_{x})$ and therefore $H_{x}$ is tangent to $X\dual $ at $\xi$, i.e. $(x,\xi)\in \Psi_{X\dual}$.
+    \end{proof}
+\end{thm}
+
+
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
