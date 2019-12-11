@@ -98,6 +98,7 @@
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\ord}{ord}
@@ -133,6 +134,7 @@
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\grd}{^{\bullet}}
+\newcommand{\prp}{^{\perp}}
 \newcommand{\dual}{^{\vee}}
 \newcommand{\db}{\marginnote{\dbend}}
 \newcommand{\tms}{\times}
@@ -5056,7 +5058,86 @@ Assume from now on that $X$ is nonsingular.
     \end{proof}
 \end{thm}
 
+\section{[WS] Derived Cats 3 (Severin) - The derived category of projective space and semiorthogonal decompositions - 11.12.19}
 
+\textbf{Main result:}
+\[ \Db(\P^{n}) \cong \langle \O,\O(1),\ldots, \O(n) \rangle \cong \Db(A), \]
+where $A$ is a finite dimensional $\C$-algebra, namely
+\[ A\cong \End(\O\op \O(1) \op \cdots \op \O(n)). \]
+
+Recall that from an abelian category $\bfA$ we constructed first its homotopy category $\K(\bfA)$ and then its derived category $\D(\bfA)$.
+For $A,B\in \bfA$, we have $\Hom_{\D(\bfA)}(A,B[i])\cong \Hom_{\D(\bfA)}(A,I\grd[i])$, where $I\grd$ is an injective resolution of $B$.
+Hence such a morphism is determined by $f\in \Hom(A,I^{i})$ such that $df=0$, hence $f$ is nullhomotopic.
+This implies that
+\[ \Hom_{\D(\bfA)}(A,B[i])\cong \Ext^{i}(A,B). \]
+
+\begin{defn}
+    An object $E\in \D(\bfA)$ is called \textit{exceptional} if
+    \[ \Hom_{\D(\bfA)}(E,E[i])=\begin{cases}
+	\C & \text{ if } i=0 \\
+	0 & \text{ if } i\neq 0 
+    \end{cases}
+    \]
+\end{defn}
+
+\begin{exa}
+    \begin{enumerate}
+	\item By Kodaira vanishing, the line bundle $\O(j)$ on $\P^{n}$ is exceptional, because:
+	    \[ \Ext\grd(\O(j),\O(j))\cong H\grd(\O)=\begin{cases}
+		\C & \text{ if } \bullet=0 \\
+		0 & \text{ otherwise.}
+	    \end{cases}
+	    \]
+	\item By the same argument, any line bundle on a Fano variety is exceptional.
+	\item Let $x\in X$ be a point in a smooth projective variety.
+	    Let $\tilde{X}$ be the blowup and $E$ be the exceptional divisor.
+	    Then $\O_{E}(j)$ is an exceptional object on $\tilde{X}$, seen as a sheaf on $\tilde{X}$ via the pushforward along the inclusion.
+	\item $\O_{P}$ is not exceptional, because
+	    \[ \Ext^{1}(\O_{P},\O_{P})\cong T_{P}X. \]
+	\item A line bundle on a cruve of genus $\geqslant 1$ is not exceptional.
+	\item The structure sheaf on a K3 surface is not exceptional.
+    \end{enumerate}
+\end{exa}
+
+\begin{defn}
+    $E_{1},\ldots,E_{n}$ is an \textit{exceptional collection} if each $E_{i}$ is exceptional and $\bfR \Hom\grd_{\D}(E_{j},E_{i})=0$ whenever $j>i$.
+\end{defn}
+
+\begin{exa}
+    Again by Kodaira vanishing, $\O,\ldots,\O(n)$ on $\P^{n}$ are an exceptional collection.
+\end{exa}
+
+\begin{defn}
+    An exceptional collection is \textit{full} if $E_{i}$ generate $\D(\bfA)$ as a triangulated category.
+\end{defn}
+
+\begin{thm}[Beilinson]
+    $\O,\ldots,\O(n)$ on $\P^{n}$ is full.
+    \begin{proof}[Sketch of the proof]
+	$\O,\ldots,\O(n)$.
+	\begin{enumerate}
+	    \item These sheaves generate skyscraper sheaves $\O_{\{P\}}$ where $\{l_{1}=\cdots=l_{n}=0\}$.
+	    \item Exceptional objects $\langle \O(j)\rangle \mono \Db(X)$ yield admissible subcategories, meaning that the inclusion functor has left and right adjoints.
+	    \item $\langle \O,\ldots,\O(n)\rangle\prp=0$, where $(-)\prp$ means the orthogonal complement, which is the full subcategory of objects $F\in \Db(X)$ such that $\bfR\Hom(-,F)$ vanishes on $\langle \O,\ldots,\O(n)\rangle$.
+	\end{enumerate}
+    \end{proof}
+\end{thm}
+
+Now we generalize this:
+
+\begin{defn}
+    $\D(X)\cong \langle \bfC_{1},\ldots,\bfC_{n}\rangle$ is called a \textit{semiorthogonal deocmposition} if all subcategories $\bfC_{i}$ are admissible and $\bfC_{j}\sub(\bfC_{i})\prp$ whenever $j<i$.
+\end{defn}
+
+\begin{rem}
+    $E$ is exceptional if and only if $\Db(\C)\to \Db(X)$ given by $V\grd\mapsto V\grd\ot E$ has adjoint $\bfR\Hom(E,-)$.
+\end{rem}
+
+\begin{exa}
+    $X\sub \P^{n}$ degree $d\leqslant n$ hypersurface, then
+    \[ \Db(X)=\langle \bfC,\O_{X},\ldots,\O_{X}(n-d)\rangle \]
+    for some admissible subcategory $\bfC$.
+\end{exa}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
