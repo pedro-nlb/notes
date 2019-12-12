@@ -41,8 +41,6 @@
 % % \P (projective space)
 % % \Q (rational numbers)
 % % \R (real numbers)
-% % \S (sphere)
-% % \T (torus)
 % % \V (geometric vector bundle)
 % % \Z (integers)
 %
@@ -1980,7 +1978,7 @@ Goal of this lecture: there is a ``classical'' approach to locally compact abeli
 		\LCA^{op}&\xrightarrow{\sim} \LCA \\
 		A & \mapsto \Hom_{\Top\Ab}(A,\Pi)
 	    \end{align*}
-	    where the hom-space is considered with the compact open topology and $\T:=U(1)=\R/\Z$.
+	    where the hom-space is considered with the compact open topology and $\bbT:=U(1)=\R/\Z$.
 	    We denote the hom-space above by $A\dual$.
 	\item Pontryagin duality exchanges compact and discrete groups.
     \end{enumerate}
@@ -2011,7 +2009,7 @@ Goal of this lecture: there is a ``classical'' approach to locally compact abeli
 \end{prop}
 
 \begin{thm}[Theorem 4.3]
-    Suppose $A=\prod_{I}\T$ be a condensed abelian group, where $I$ is any index set.
+    Suppose $A=\prod_{I}\bbT$ be a condensed abelian group, where $I$ is any index set.
     \begin{enumerate}[label=\roman*)]
 	\item For any discrete abelian group $M$,
 	    \[ R\ihom(A,M)=\bigoplus_{I}M[-1]. \]
@@ -2047,12 +2045,12 @@ Now we prove the theorem (Theorem 4.3).
 
 Proof of $i)$ first.
 If $I$ finite, we can assume that $I$ is a singleton.
-Let's just assume that $A=\T$.
-We need to compute $\R\Hom(\T,M)$..
-We have a triangle $\Z\to \R\to \T\xrightarrow{+1}$, which rotated yields a distinguished triangle
-\[ \R\to \T\to \Z[1]\xrightarrow{1}.\]
+Let's just assume that $A=\bbT$.
+We need to compute $\R\Hom(\bbT,M)$..
+We have a triangle $\Z\to \R\to \bbT\xrightarrow{+1}$, which rotated yields a distinguished triangle
+\[ \R\to \bbT\to \Z[1]\xrightarrow{1}.\]
 So the claim is equivalent to the claim $\R\Hom(\R,M)=0$ for any discrete group $M$, because we have a distinguished triangle
-\[ \R\ihom(\Z[1],M)\to R\Hom(\T,M)\to R\Hom(\R,M) \xrightarrow{+1}\]
+\[ \R\ihom(\Z[1],M)\to R\Hom(\bbT,M)\to R\Hom(\R,M) \xrightarrow{+1}\]
 It suffices to show that $0\to \R$ induces an iso after applying $R\Hom(-,M)$, for which in turn it is sufficient to know that the pullback $0\times \id \colon S\to \R^{r}\times S$ induces an iso in all cohomology groups
 \[ H^{i}(\R^{r}\times S,M))\to H^{i}(S,M). \]
 Now we use the result that $R\Gamma(\R^{r}\tms S,M)=\R\varprojlim_{r}R\Gamma([-n,n]^{r}\tms S,M)$, and since $[-n,n]\tms S$ is compact, by the last talk this is classical sheaf cohomology, where we can use homotopy invariance.
@@ -2074,7 +2072,7 @@ After $n$ iterations we obtain
 Note that $[2^{n}]^{*}(f)$ stays bounded as $n\to \infty$.
 
 \begin{cor}
-    $R\ihom(\R,\R)=\R$ using again the triangle $\Z\mono\R\epi\T$.
+    $R\ihom(\R,\R)=\R$ using again the triangle $\Z\mono\R\epi\bbT$.
 \end{cor}
 
 Recall the goal theorem: $\Db(\LCA)\mono \Db(\Cond(\Ab))$ is fully faithful.
@@ -2781,7 +2779,7 @@ In the first case, if $f\colon X\to Y$ is a submersion, locally on $X$ and on $Y
 \end{defn}
 
 \begin{exe}
-    $\R^{m}\tms \R^{n}\to \R^{n}$ sending $(x,y)\mapsto x$ or $\T^{2}\to S^{1}$ projecting onto one of its factors.
+    $\R^{m}\tms \R^{n}\to \R^{n}$ sending $(x,y)\mapsto x$ or $\bbT^{2}\to S^{1}$ projecting onto one of its factors.
 \end{exe}
 
 \begin{exe}

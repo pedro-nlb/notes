@@ -1,5 +1,11 @@
 \begin{thebibliography}{{Sta}19}
 
+\bibitem[Bre93]{bre93}
+Glen~E. Bredon.
+\newblock {\em Topology and geometry}, volume 139 of {\em Graduate Texts in
+  Mathematics}.
+\newblock Springer-Verlag, New York, 1993.
+
 \bibitem[GH94]{gh78}
 Phillip Griffiths and Joseph Harris.
 \newblock {\em Principles of algebraic geometry}.
@@ -16,5 +22,11 @@ D.~Huybrechts.
 The {Stacks project authors}.
 \newblock The stacks project.
 \newblock \url{https://stacks.math.columbia.edu}, 2019.
+
+\bibitem[Wei94]{wei94}
+Charles~A. Weibel.
+\newblock {\em An introduction to homological algebra}, volume~38 of {\em
+  Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, 1994.
 
 \end{thebibliography}
