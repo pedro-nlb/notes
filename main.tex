@@ -98,6 +98,7 @@
 \DeclareMathOperator{\Re}{Re}
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\vol}{vol}
@@ -5138,6 +5139,205 @@ Now we generalize this:
     \[ \Db(X)=\langle \bfC,\O_{X},\ldots,\O_{X}(n-d)\rangle \]
     for some admissible subcategory $\bfC$.
 \end{exa}
+
+\section{[LT] Lecture 16 - 12.12.19}
+
+Recall our setting:
+\begin{center}
+    \begin{tikzcd}
+	& \Phi=\{(x,\xi)\in \P\times \P\dual\mid x\in H_{\xi}\}\arrow{dl}{p_{1}}\arrow{dr}{p_{2}} & \\
+	\P & & \P\dual
+    \end{tikzcd}
+\end{center}
+
+\subsection{Trivailization of $p_{1}$ over $U=\{x\in \P\mid x_{0}\neq 0\}$}
+
+\begin{align*}
+    U\times (\P^{N-1})\dual & \to p_{1}^{-1}(U) \\
+    (x,z) & \mapsto (x, [-\sum_{k=1}^{N} x_{k}z_{k}:x_{0}z_{1}:\cdots :x_{0}z_{N}])
+\end{align*}
+where $z=[z_{1}:\cdots :z_{N}]\in \P^{N-1}$ is identified with the hyperplane $V(\sum_{k=1}^{N}z_{k}w_{k})\sub \P^{N-1}$.
+
+\begin{lm}[Lemma A]
+    Let $(a,\alpha)\in \Phi_{X}$.
+    The following are equivalent:
+    \begin{enumerate}
+	\item $(a,\alpha)\in \Psi_{X}$.
+	\item $\hat{T}_{a}X\sub H_{\alpha}$.
+	\item $(dp_{2})(T_{(a,\alpha)}\Phi_{X})\neq T_{\alpha}(\P\dual)$.
+	\item $(a,\alpha)$ critical point of $p_{2}\colon \Phi_{X}\to \P\dual$.
+	\item $(dp_{2})(T_{(a,\alpha)}\Phi_{X})=T_{\alpha}H_{a}$.
+    \end{enumerate}
+    \begin{proof}
+	Unwrapping the definitions we have
+	\[ (1)\Leftrightarrow (2) \quad \text{and} \quad (3)\Leftrightarrow (4). \]
+	Choose coordinates on $\P$ and $\P\dual$ such that $a=[1:0:\cdots:0]$ and $H_{\alpha}=V(x_{N})$.
+	Using the trivialization of $p_{1}$ given above in this coordinate system, $p_{2}$ looks like
+	\[ \A^{N}\times \A^{N-1}\ni (x,u)\mapsto (-\sum_{k=1}^{N-1}x_{k}u_{k}-x_{N},u_{1},\ldots,u_{N-1}) \]
+	in a neighbourhood of $(a,\alpha)$.
+	
+	For $(1)\Leftrightarrow (3)$: the restriction of $p_{2}$ to $(\A^{N}\cap X)\times \A^{N-1}$ is not submersive if and only if $dx_{N}|_{T_{0}(\A^{N}\cap X)}=0$, if and only if $\hat{T}_{\alpha}X\sub H_{\alpha}$.
+
+	For $(3)\Leftrightarrow (5)$ we have $\{a\}\times H_{\alpha}\sub \Phi_{X}$.
+	Hence $T_{\alpha}H_{\alpha}=dp_{2}(T_{(a,\alpha)}(\{a\}\times H_{\alpha}))\sub dp_{2}(T_{(a,\alpha)}\Phi_{X})$.
+	$\dim(T_{\alpha}H_{a})=N-1$.
+	Hence $T_{\alpha}H_{a}=dp_{2}(T_{(a,\alpha)}\Phi_{X}) \Leftrightarrow dp_{2}(T_{(a,\alpha)}\Phi_{X}) < N$.
+    \end{proof}
+\end{lm}
+
+\subsection{Transversality}
+
+\begin{defn}
+    $N$ smooth manifold, $L,M\sub N$ submanifolds.
+    We say that $L$ is \textit{transverse} to $M$ if for all $p\in L\cap M$ we have
+    \[ T_{p}L+T_{p}M=T_{p}N. \]
+\end{defn}
+
+\begin{exa}
+    Coordinate hyperplanes in $\C^{N}$.
+\end{exa}
+
+\begin{exa}[Non-example]
+    $H\sub \P$ hyperplane tangent to $X\sub \P$.
+\end{exa}
+
+More generally, $f\colon X\to Z$ and $g\colon Y\to Z$ are \textit{transverse} if for all $x\in X$ and all $y\in Y$ with $z=f(x)=g(y)$ we have $\im(df_{x})+\im(dg_{y})=T_{z}Z$.
+
+\begin{defn}
+    A \textit{projective line} is a subvariety $L\sub \P$ cut out by $N-1$ linear homogeneous polynomials.
+\end{defn}
+
+\begin{exa}
+    $L=V(x_{0},\ldots,x_{N-2})\cong \P^{1}$.
+\end{exa}
+
+\begin{defn}
+    Let $L\sub \P$ be a projective line and $X\sub \P$ be a projective variety.
+    Then $L$ is \textit{transverse to $X$} if
+    \begin{enumerate}
+	\item $L\cap X_{sing}=\varnothing$, and
+	\item $L$ is transverse to $X_{reg}$.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    Let $L$ be trasnverse to $X$.
+    Then $\dim(X)=N-1$ at each $x\in L\cap X$.
+\end{rem}
+
+\textbf{Henceforth:} $X\sub \P$ irreducible nonsingular projective varietyi, $X\neq \P$.
+
+\begin{lm}
+    Let $\xi\in \P\dual\setminus X\dual$.
+    \begin{enumerate}
+	\item $\P(\xi)=\{L\sub \P\dual \mid L \text{ projective line and }\xi\in L\}$ is a projective space of dimension $N-1$.
+	\item $\{L\in \P(\xi)\mid L \text{ transverse to }X\dual \}\sub \P(\xi)$ is open and dense.
+    \end{enumerate}
+    \begin{proof}
+	$(1)$ is an exercise.
+	For $(2)$, consider 
+	\begin{align*}
+	    \varphi\colon X\dual &\to \P(\xi) \\
+	    \eta &\mapsto \overline{\xi\eta}
+	\end{align*}
+	In other words, $\eta$ is mapped to the projective line in $\P\dual$ spanned by $\xi $ and $\eta$.
+
+	Facts:
+	$\varphi$ algebraic and $X\dual$ projective implies that $\varphi(X\dual)\sub \P(\xi)$ is closed, so $\P(\xi)\setminus \varphi(X\dual)$ is open.
+	$\varphi$ algebraic implies that $\dim(\varphi(X\dual))\leqslant \dim(X\dual)$.
+
+	If $\dim(X\dual)<N-1$, then $\dim(\varphi(X\dual))<N-1$.
+	Hence $\P(\xi)\setminus \varphi(X\dual)\neq \varnothing$.
+	
+	If $\dim(X\dual)=N-1$, then let $\eta\in (X\dual)_{reg}$.
+	$\dim(\hat{T}_{\eta}(X\dual))=N-1$.
+	$\eta$ critical point of $\varphi $ iff $\overline{\xi\eta}\sub \hat{T}_{\eta}(X\dual)$ iff $\overline{\xi\eta}$ not transverse to $X\dual$ at $\eta$.
+
+	Therefore
+	\[ \{L\sub \P(\xi)\mid L \text{ not transverse to }X\dual\}=\varphi((X\dual)_{sing})\cup \operatorname{critical}(\varphi|_{(X\dual)_{reg}})\subsetneq \P(\xi). \]
+    \end{proof}
+\end{lm}
+
+\subsection{Construction of Lefschetz pencil}
+
+\begin{defn}
+    A \textit{pencil of hyperplanes} is a projective line in $\P\dual$.
+\end{defn}
+
+Choose $\xi_{0}\in \P\dual\setminus X\dual$.
+$\xi_{0}$ classifies a hyperplane $H_{\xi_{0}}$ transverse to $X$ by definition of $X\dual$.
+
+Let $L\sub \P\dual$ be any projective line through $\xi_{0}$ transverse to $X\dual$ [such exist by the lemma].
+Let $A=L\dual=\{x\in \P\mid L\sub H_{x}\}\sub \P$ is the \textit{axis} of the pencil $L$.
+
+\begin{rem}
+    $\codim_{\P}(L\dual)=2$.
+    If $L=\overline{\xi_{0}\eta}$ for some $\eta$, then $L\dual$ is given by the hyperplanes in $\P\dual$ containing $\xi_{0}$ and $\eta$.
+\end{rem}
+
+\begin{rem}
+    $L=\{\eta\in \P\dual \mid A\sub H_{\eta}\}$ [hence the name axis].
+\end{rem}
+
+\begin{nota}
+    $Y=X\cap A$, $\tilde{X}=\{(x,\xi)\in X\times L\mid x\in H_{\xi}\}$.
+    We have projections $p_{1}\colon \tilde{X}\to X$ and $p_{2}\colon \tilde{X}\to L$, given by the restriction of the projections from $\P\times \P\dual$.
+    Moreover, $\tilde{X}=p_{1}^{-1}(X)\cap p_{2}^{-1}(L)\sub \P\times \P\dual$.
+    $\tilde{Y}=p_{1}^{-1}(Y)=Y\times L\sub \tilde{X}$ closed subspace.
+\end{nota}
+
+\begin{rem}
+    $p_{1}\colon \tilde{X}\setminus \tilde{Y}\to X\setminus Y$ is an isomorphism with inverse given by $x\mapsto (x,\xi)$, where $H_{\xi}$ is the hyperplane spanned by $A$ and $x$.
+\end{rem}
+
+\begin{rem}
+    For all $\xi\in L$ we have $p_{2}^{-1}(\xi)=X\cap H_{\xi}$ hyperplane section.
+    We call $p_{2}\colon \tilde{X}\to L$ a \textit{Lefschetz fibration} and $L$ a \textit{Lefschetz pencil} on $X$.
+\end{rem}
+
+\begin{prop}[Proposition 1]
+    $A$ is transverse to $X$.
+    In particular, $Y=X\cap A$ is of codimension $2$ in $X$.
+    \begin{proof}
+	Supose $A$ is transverse to $X$ at $a\in A\cap X$.
+	Then $\exists$ hyperplane $H\sub \P$ such that $\hat{T}_{a}X\cup A\sub H$.
+
+	\[ \overset{A \text{ axis of }L }{\Rightarrow} \exists \alpha \in L \text{ s.t. }H=H_{\alpha}\]
+	\[ \Rightarrow (a,\alpha)\in \Psi_{X} \]
+	\[ \Rightarrow \alpha \in X\dual \]
+	L transverse to $X\dual$ implies that $X\dual$ is non singular of dimension $N-1$ at $\alpha$.
+	\[ \overset{\text{Last time}}{\Rightarrow} T_{\alpha}(X\dual)=H_{\alpha} \]
+	$a\in A\Rightarrow L\sub H_{a}\Rightarrow \hat{T}_{a}X+L= H_{a}$.
+	Contradiction: $L$ transverse to $X\dual$.
+    \end{proof}
+\end{prop}
+
+\begin{prop}[Proposition 2]
+    $p_{2}\colon \Phi_{X}\to \P\dual$ is transverse to $L$.
+    In particular $\tilde{X}=p_{2}^{-1}(L)$ is non singular.
+    \begin{proof}
+	Let $(a,\alpha)\in \tilde{X}$.
+	If $p_{2}$ is submersive at $(a,\alpha)$, there is nothing left to do.
+	Suppose $(a,\alpha)$ is a critical point of $p_{2}$.
+	By Lemma A, $(a,\alpha)\in \Psi_{X}$, hence $(dp_{2})(T_{(a,\alpha)}\Phi_{X})=T_{\alpha}H_{a}\supseteq T_{\alpha}(X\dual)$.
+
+	Since $L$ is transverse to $X\dual$ at $\alpha$, $(dp_{2})(T_{(a,\alpha)}\Phi_{X})+T_{\alpha}L\supseteq T_{\alpha}(X\dual)+T_{\alpha}L=T_{\alpha}(\P\dual)$.
+	Hence $p_{2}$ is transverse to $L$ at $(a,\alpha)$.
+    \end{proof}
+\end{prop}
+
+\begin{prop}[Proposition 3]
+    Critical points of $p_{2}\colon \tilde{X}\to L$ do not intersect $\tilde{Y}$.
+    \begin{proof}
+	Let $(a,\alpha)\in \tilde{X}$ be a critical point of $p_{2}$.
+	By definition of axis $A$, $p_{2}\colon \tilde{Y}=Y\times L\to L$ is the projection.
+
+	By proposition 1, $Y$ is nonsingular.
+	Hence $p_{2}$ is submersive along $Y\times L$.
+    \end{proof}
+\end{prop}
+
+
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
