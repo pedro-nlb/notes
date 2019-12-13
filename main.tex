@@ -98,6 +98,9 @@
 \DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ext}{\E xt}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Hilb}{Hilb}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\ord}{ord}
@@ -118,6 +121,7 @@
 % Additional categories
 \newcommand{\CHaus}{\mathbf{CHaus}}
 \newcommand{\ED}{\mathbf{ED}}
+\newcommand{\HH}{HH}
 \newcommand{\CG}{\mathbf{CG}}
 \newcommand{\Solid}{\mathbf{Solid}}
 % Uncategorized
@@ -5335,7 +5339,174 @@ Let $A=L\dual=\{x\in \P\mid L\sub H_{x}\}\sub \P$ is the \textit{axis} of the pe
     \end{proof}
 \end{prop}
 
+\section{[FS] Pieter Belmans - Deformations of Hilbert schemes of points via derived categories - 13.12.19}
 
+Let $k=\C$, $X$ a smooth projective variety of dimension $\geqslant 2$.
+Whenever $\dim{X}=2$ we will denote $X=S$.
+
+The ingredients for deformation theory of varieties are:
+\begin{enumerate}
+    \item $H^{1}(X,\sT_{X})$ parametrizes first order deformations, i.e. deformations of $X$ over the dual numbers.
+    \item $H^{0}(X,\sT_{X})$ parametrizes infinitesimal automorphisms of $X$, which we can regard as the Lie algebra of $\Aut(X)$.
+    \item $H^{2}(X,\sT_{X})$ gives obstructions to higher order liftings.
+\end{enumerate}
+
+The talk of today's talk is to see how to compute dimensions of those vector spaces.
+
+\subsection{Classification of surfaces}
+
+The first step is to look at the Kodaira dimension $\kappa(S)\in \{-\infty,0,1,2\}$.
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+	$\kappa$ & $H^{0}(\sT_{S})$ & $H^{1}(\sT_{S})$ & $H^{2}(\sT_{S})$ \\
+	$2$ & $0$ & $\geqslant 0$ & $\geqslant 0$ \\
+	$0$ (only K3) & $0$ & $20$ & $0$ \\
+	$-\infty$ (only $\P^{2}$) & $8$ & $0$ & $0$
+    \end{tabular}
+\end{center}
+
+The number $0$ in the middle column of $\P^{2}$ tells us that $\P^{2}$ is \textit{rigid}.
+
+\subsection{Hilbert schemes}
+
+These are moduli spaces of ideal sheaves of colength $n$, i.e. $\I\sub \O_{S}$ s.t. support of $\O_{S}/\I$ is finite of length $n$, i.e. moduli of stable sheaves with Chern character $(1,0,-n)$.
+
+\[ \Hilb^{n}(S)\to \Sym^{n}(S):=S^{n}/\Sym_{n} \]
+The quotient on the right is singular of dimension $2n$.
+This is a crepant resolution called \textit{Hilbert-Chow} resolution.
+
+\begin{exa}
+    If we take $S$ a K3 surface, then $\Hilb^{n}(S)$ is a hyperkaehler variety (Beauville).
+    [There exist 2 infinite families and 2 sporadic examples of hyperkaehler varieties, so it would be interesting to find more example.]
+\end{exa}
+
+\begin{q}
+    How does the deformation theory of $S$ influence the deformation theory of $\Hilb^{n}(S)$?
+\end{q}
+
+Let $\bbH=\Hilb^{n}(S)$.
+\begin{center}
+    \begin{tabular}{c|c|c|c}
+	$\kappa$ & $H^{0}(\sT_{\bbH})$ & $H^{1}(\sT_{\bbH})$ & $H^{2}(\sT_{\bbH})$ \\
+	$2$ (general type) & $(*)$ & $(*)$ & $(*)$ \\
+	$0$ (K3) & $0$ & $21$ & $0$ \\
+	$-\infty$ ($\P^{2}$) & $8$ & $10$ & $0$
+    \end{tabular}
+\end{center}
+
+$(*)$ Fantucchi: deformations are isomorphic.
+
+\begin{rem}
+    These numbers are independent of $n$.
+\end{rem}
+
+\begin{thm}[Hitchin]
+    If $H^{1}(S,\O_{S})=0$, then there exists a SES
+    \[ 0\to H^{1}(S,\sT_{S})\to H^{1}(\bbH,\sT_{\bbH})\to H^{0}(S,\w_{S}\dual)\to 0 \]
+\end{thm}
+This SES explains some of the previous numbers in the table above.
+
+\begin{rem}[Left column]
+    \begin{enumerate}
+	\item Boinsiine: $\Aut(S)\mono \Aut(\Hilb^{n}(S))$ for all $S$ s.t. this is an iso on the identity components, i.e. $H^{0}(S,\sT_{S})\cong H^{0}(\bbH,\sT_{\bbH})$.
+	\item If $S$ is a K3.
+	    Beauville construced (in the 1980's) for a quartic surface an automorphism of $\Hilb^{2}(S)$ which does not come from $S$ itself.
+	    This shows that the previous inclusion can be strict.
+	\item B-Oberdieck-Rennemo: $S$ (weak) Fano or of general type.
+	    The result is: the previous inclusion is an isomorphism unless $n=2$ and $S=C_{1}\tms C_{2}$ is the product of two curves.
+	    The point is that the automorphism swapping the $C_{1}'s$ in $C_{1}\times C_{2}\times C_{1}\times C_{2}=S\times S$ can be lifted to $\Hilb^{2}(C_{1}\times C_{2})$.
+    \end{enumerate}
+\end{rem}
+
+\begin{q}
+    \begin{enumerate}
+	\item Can we explain these extra deformations?
+	\item What about other moduli spaces of sheaves? Because every result mentioned so far depends very much on the Hilbert-Chow resolution.
+	\item What can we say about higher dimensions?
+    \end{enumerate}
+\end{q}
+
+\textbf{Goal:} reprove Hitchin in a way that is easier to generalize (using derived categories).
+
+\subsection{Hochschild cohomology}
+
+\[ \HH^{i}(X):=\Ext^{i}_{X\times X}(\Delta_{*}\O_{X},\Delta_{*}\O_{X})\cong \Hom_{\Db(X\times X)}(\Delta_{*}\O_{X},\Delta_{*}\O_{X}[i]) \]
+
+We have:
+\begin{thm}[Hochschild-Kostant-Rosenberg decomposition]
+    \[ \HH^{i}(X)\cong \bigoplus_{p+q=i}H^{p}(X,\Lambda^{q}\sT_{X}) \]
+\end{thm}
+
+And also:
+\begin{thm}[Lowen-Van der Bergh]
+    $\HH^{2}(X)$ controls deformation theory of $\Coh(X)$, as an abelian category.
+    \[ \HH^{2}(X)\cong H^{2}(X,\O_{X})\op H^{1}(X,\sT_{X})\op H^{0}(X,\Lambda^{2}\sT_{X}) \]
+\end{thm}
+
+We will assume $H^{2}(X,\O_{X})=0$.
+The part on $H^{1}(X,\sT_{X})$ controls geometric deformations, whereas $H^{0}(X,\Lambda^{2}\sT_{X})$ controls noncommutative deformations, which are related to Poisson geometry.
+
+\textbf{Goal:} compare $H^{i}(\sT_{\bbH})$ to $\HH^{i+1}(S)$.
+
+\subsection{Comparison}
+
+On $S\times \bbH$ there is a universal ideal sheaf, which we will denote by $\I$, which exists because the Hilbert scheme of points is a \textit{fine} moduli space.
+This gives an instance of a Fourier-Mukai transform
+\begin{align*}
+    \Phi_{\I}\colon \Db(S) & \to \Db(\bbH) \\
+    \E & \mapsto \bfR \gamma_{\bbH,*}(\gamma_{S}^{*}\E\ot^{\bfL}\I) 
+\end{align*}
+
+\begin{thm}[Krug-Soma]
+    If $H^{1}(S,\O_{S}=H^{2}(S,\O_{S})=0$, then $\Phi_{\I}$ is fully faithful.
+\end{thm}
+
+This implies that the functor $(-)*\I\colon \Db(S\tms S)\to \Db(S\tms \bbH)$ sending $\Delta_{*}\O_{S}$ to $\I$ is fully faithful.
+
+From now on: joint work with Theo Rouedschloleus, Lie Fu.
+
+\[ \HH^{i}(S)=\Hom_{S\times S}(\Delta_{*}\O_{S},\Delta_{*}\O_{S}[i])=\Ext^{i}_{S\times \bbH}(\I,\I) \]
+
+We try to compute this ext group with the relative local to global spectral sequence.
+
+\[ E_{2}^{ij}=H^{i}(\bbH,\ext_{\gamma_{\bbH}}^{j}(\I,\I))\Rightarrow \Ext_{S\times \bbH}^{i+j}(\I,\I) \]
+where $\ext_{\gamma_{\bbH}}$ is the $j^{\mathrm{th}}$-derived functor of $\gamma_{\bbH,*}\circ \hom(\I,-)$.
+Here $\bbH$ could be another moduli space of sheaves.
+\begin{enumerate}
+    \item $j=0$ get $\O_{\bbH}$.
+    \item $j=1$ get $\sT_{\bbH}$.
+    \item $j=2$ get $0$.
+    \item $j\geqslant 3$ get $0$.
+\end{enumerate}
+
+\begin{exe}
+    Write own $E_{2}$ and use it to reprove Hitchins.
+\end{exe}
+
+\subsection{Higher dimensions}
+
+Usually, $\Hilb^{n}(X)$ is very singular, except when $n=2$ or $n=3$.
+We will work in the case $n=2$.
+
+\begin{thm}[B-Fu-Roued...]
+    \[ \Phi_{\I}\colon \Db(X)\to \Db(\Hilb^{2}(X)) \]
+    is fully faithful if $H^{i}(X,\O_{X})=0$ for all $i\geqslant 1$.
+\end{thm}
+
+\begin{thm}[B-Fu-Roued...]
+    Given the previous result, the previous spectral sequence degenerates at $E_{2}$.
+    Moreover, a partial description of what happens on $E_{2}$ can be given.
+\end{thm}
+
+\begin{cor}
+    Deformation theory of $X$ is equal to the deformation theory of $\Hilb^{2}(X)$.
+\end{cor}
+
+\begin{exa}
+    $\P^{2}$ is rigid but $\Hilb^{2}(\P^{2})$ is not.
+    On the other hand, $\P^{3}$ is rigid and $\Hilb^{2}(\P^{3})$ as well.
+    Both of them have non-commutative deformations.
+\end{exa}
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
