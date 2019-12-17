@@ -5514,6 +5514,78 @@ We will work in the case $n=2$.
     Both of them have non-commutative deformations.
 \end{exa}
 
+\section{[LT] Lecture 17 - 17.12.19}
+
+\textit{Recall:} $f\colon X\to Z$ is transverse to $g\colon Y\to Z$ if $\im(df_{x})+\im(dg_{y})=\dim(T_{z}Z)$ for each $x\in X$ and each $y\in Y$ such that $f(x)=z=g(y)$.
+
+\begin{prop}
+    $f\colon X\to Y$ smooth map, $i\colon Z\mono Y$ smooth submanifold of codimension $r$.
+    If $f$ is transverse to $i$, then $f^{-1}(Z)\sub X$ is a submanifold of codimension $r$ as well.
+    \begin{proof}
+	The condition is local at each $x\in f^{-1}(Z)$.
+	Let $x\in f^{-1}(Z)$ and $y=f(x)\in Z$.
+	Constant rank theorem implies that $Z=V(g_{1},\ldots,g_{r})$ with $g_{k}$ independent smooth functions $Z\to \R$.
+	Hence $f^{-1}(Z)=V(g_{1}\circ f,\ldots,g_{r}\circ f)$.
+	$g=(g_{1},\ldots,g_{r})\colon Z\to \R^{r}$ submersion.
+	$d(g\circ f)_{x}=dg_{y} \circ df_{x}$.
+	$d(g\circ f)_{x}(T_{x}X)=dg_{y}(\im(df_{x}))$.
+	This is equal to $dg_{y}(\im(df_{x})+\ker(dg_{y}))$, which in turn is equal to $dg_{y}(\im(df_{x})+T_{y}Z)$ and equal to $dg_{y}(T_{y}Y)$, which by submersivity of $g$ is equal to $\R^{r}$.
+	Hence $g\circ f$ is submersive at $x$.
+	Thus $f^{-1}(Z)=(g\circ f)^{-1}(0)$ is a submanifold of codimension $r$.
+    \end{proof}
+\end{prop}
+
+\begin{prop}[Proposition 4]
+    $p_{2}\colon \operatorname{critpt}(p_{2}\colon \tilde{X}\to L)\xrightarrow{\sim}L\cap X\dual$, i.e., each singular fiber of $p_{2}\colon \tilde{X}\to L$ has a unique singularity.
+    \begin{proof}
+	Similar to proofs from the end of the previous lecture.
+    \end{proof}
+\end{prop}
+
+\begin{prop}[Proposition 5]
+    Each critical point $(a,\alpha)$ of $p_{2}\colon \tilde{X}\to L$ is non degenerate.
+    \begin{proof}
+	When proving proposition 4 we find that $(a,\alpha)$ is also a critical point of $p_{2}\colon \Phi_{X}\to \P\dual$.
+	Hence $T_{a}X\sub T_{a}H_{\alpha}$.
+	$a\not\in A$ implies that we can choose coordinates $[z_{0},\ldots,z_{N}]$ on $\P$ such that
+	\begin{enumerate}
+	    \item $a=[1,0,\ldots,0]$,
+	    \item $A=V(z_{0},z_{N})$,
+	    \item $H_{\alpha}=V(z_{N})$, and
+	    \item $\Phi=\{ ([z_{0},\ldots,z_{N}],[\xi_{0},\ldots,\xi_{N}])\mid \sum_{k}z_{k}\xi_{k}=0\}$.
+	\end{enumerate}
+	Here $\xi_{i}$ are a dual basis to the $z_{i}$.
+	We want to describe $p_{2}\colon \Phi_{X}\to \P\dual$ in a neighbourhood of $(a,\alpha)$.
+	Let $U:=\{x\in X\mid x=[1:x_{1}:\ldots:x_{N}]\}$.
+	Last time: trivialization of $p_{1}$ over $U$.
+	$\varphi\colon U\times \P^{N-1}\to p_{1}^{-1}(U)$ was given by
+	\[ (x,[z_{1},\ldots,z_{N}])\mapsto (x,[-\sum_{k\geqslant 0}x_{k}z_{k}:z_{1}:\ldots:z_{N}]) \]
+	Let $t_{1},\ldots,t_{d}$ be local holomorphic coordinates on $X$ near $a$.
+	Then we have functions $x_{k}(t)=x_{k}(t_{1},\ldots,t_{d})$ such that each point in a neighbourhood of $a$ in $X$ can be written in the form $[1:x_{1}(t):\ldots:x_{N}(t)]$.
+	Hence we get local coordinates on $\Phi_{X}$ near $(a,\alpha)$
+	\[ (t_{1},\ldots,t_{d},z_{1},\ldots,z_{N-1})\mapsto \varphi([1:x_{1}(t):\ldots:x_{N}(t)],[z_{1}:\ldots:z_{N-1}]) \]
+	The map $p_{2}\colon \Phi_{X}\to \P\dual$ takes the form
+	\[ (t_{1},\ldots,t_{d},z_{1},\ldots,z_{N-1})\mapsto (-\sum_{k>0} x_{k}(t)z_{k},z_{1},\ldots,z_{N-1})=:(g(t,z),z_{1},\ldots,z_{N-1}) \]
+	Now compute the Jacobian matrix of $p_{2}$ in these coordinates:
+	\[ \begin{pmatrix} \frac{\partial g}{\partial t_{1}} & \cdots & \frac{\partial g}{\partial t_{d}} & * & \cdots & * \\ & 0 & & & I & \end{pmatrix} \]
+	$\Psi=\operatorname{critpt}(p_{2}\colon \Phi_{X}\to \P\dual)=\{ p\in \Phi_{X}\mid \text{ the above Jacobian does not have full rank }\}$.
+	Hence $\Psi=V(\frac{\partial g}{\partial t_{1}},\ldots,\frac{\partial g}{\partial t_{d}})$ locally.
+	Hence $p_{2}|_{\Psi_{X}}$ has rank $N-1$.
+	Thus the Jacobian of $\frac{\partial g}{\partial t_{k}}$ with the Jacobian of $p_{2}$ has rank $N+d-1$.
+	\[ \begin{pmatrix} \frac{\partial^{2} g}{\partial t_{1}^{2}} & \cdots & \frac{\partial^{2}g}{\partial t_{1}\partial t_{d}} & \\
+	    \vdots & & \vdots & * \\
+	    \frac{\partial^{2}g}{\partial t_{1}\partial t_{d}} & \cdots & \frac{\partial^{2} g}{\partial^{2}t_{d}} & \\
+	    0 & \cdots & 0 & I
+	\end{pmatrix} \]
+	Hence the Hessian has full rank $d$, so $f$ has non-degenerate critical point at $(a,\alpha)$.
+    \end{proof}
+\end{prop}
+
+\subsection{Singular (co)homology}
+
+The plan is to sketch the construction and state the main properties.
+See the references Spanier and Hatcher.
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
