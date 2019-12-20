@@ -5599,6 +5599,160 @@ Long exact sequences, which can be arranged into a spectral sequence.
 Excision.
 Eilenberg-Steenrod axioms.
 
+\section{[FS] Simon Felten - Smoothing (Toroidal) Normal Crossing Spaces - 20.12.19}
+
+Joint work with M. Filip, H. Ruddit.
+
+\subsection{What does this mean?}
+
+\begin{defn}
+    A complex space $X$ is a \textit{normal crossing} space if it is locally isomorphic to $\{x_{1}\cdots x_{r}=0\}\in \C^{n}$ for $r\leqslant n$.
+    It is \textit{simple} if its irreducible components are smooth.
+\end{defn}
+
+\begin{exa}
+    The crossing of two lines is SNC.
+    The nodal curve is NC but not SNC.
+    The cusp is not NC.
+\end{exa}
+
+\begin{exa}
+    $X=\{x_{0}\cdots x_{3}=0\}\sub \P^{3}$.
+\end{exa}
+
+\begin{defn}[Smoothing]
+    \begin{center}
+	\begin{tikzcd}
+	    X\arrow{d}\arrow[hook]{r} & \X\arrow{d} \\
+	    \{ 0 \} \arrow[hook]{r} & \Delta=\{ z\in \C\mid |z|<1\}
+	\end{tikzcd}
+    \end{center}
+\end{defn}
+
+\begin{exa}
+    $\X=\{sx_{0}x_{1}x_{2}x_{3}-t(x_{0}^{4}+\cdots x_{3}^{4}) \}\sub \P^{3}\times \P^{1}$ mapping to $\P^{1}$.
+\end{exa}
+
+\begin{q}
+    Which compact nc spaces have a smoothing?
+\end{q}
+
+\subsection{Spectral sequences}
+
+First we start with the classical case.
+Let $X$ be a compact Kaehler manifold.
+We have the Hodge decomposition:
+\[ H^{k}(X,\C)=\op_{p+q=k}H^{q}(X,\Omega_{X}^{p}) \]
+This is not well behaved under deformations, because holomorphicity isn't.
+A key substitute is the Hodge filtration, and related to it the degeneracy of the Hodge-de Rahm spectral sequence
+\[ E_{1}^{p,q}=H^{1}(X,\Omega_{X}^{p})\Rightarrow \bbH^{p+q}(X,\Omega_{X}\grd)\cong H^{p+q}(X,\C) \]
+This sequence degenerates at $E_{1}$.
+
+\textbf{Algebraic proof:} Faltings in 1985, Deligne-Illusie in 1987.
+
+Now we look at the open case.
+Consider $D\sub X$ an nc divisor.
+Then $j\colon U=X\setminus D\mono X$ and we can consider \textit{logarithmic differential forms} $\Omega_{X}\grd(\log{D})\sub j_{*}\Omega_{U}\grd$.
+
+\begin{exa}
+    $\{ z_{1}=0\}\sub \C^{2}$.
+    Then the log differentials are $\O_{\C^{2}}\frac{dz_{1}}{z_{1}}\op \O_{\C^{2}}dz_{2}$.
+\end{exa}
+
+In this situation we also have the Hodge-de Rahm spectral sequence.
+\[ E_{1}^{p,q}=H^{q}(X,\Omega_{X}^{p}(\log{D}))\Rightarrow \bbH^{p+q}(X,\Omega_{X}\grd(\log{D}))\cong H^{p+q}(U,\C) \]
+
+Finally we come to the toroidal case.
+A \textit{toroidal pair} is a pair $(X,D)$ where $D$ is a divisor such that etale locally $D\sub X$ is isomorphic to $D_{\Sigma}\sub X_{\Sigma}$.
+
+$j\colon V\sub X$ locus where $X$ is regular, then $D|_{V}\sub V$ is nc.
+$\Omega_{X}\grd(\log{D})=j_{*}\Omega_{V}\grd(\log{D|_{V}})$ is the de Rham complex.
+
+\begin{thm}[F-Filip-Ruddet, Danilov's conjecture]
+    The Hodge-de Rham spectral sequence $E_{1}^{p,q}=H^{q}(X,\Omega_{X}^{p}(\log{D})\Rightarrow \bbH^{p+q}(X,\Omega_{X}\grd(\log{D})) $ degenerates at $E_{1}$.
+\end{thm}
+
+History:
+\begin{enumerate}
+	\item Danilov: $D=\varnothing$.
+	\item Kato-Illusie-Nakayama: $D$ is locally the entire toric bdy.
+	\item Steenbrink: related result in the orbifold case.
+\end{enumerate}
+
+\subsection{Smoothing}
+
+We first recall \textit{semistalbe reduction}.
+In the analytic case we have
+\begin{center}
+    \begin{tikzcd}
+	\Y\arrow{d}{\pi} \\
+	\Delta
+    \end{tikzcd}
+\end{center}
+an algebraic degeneration, flat and proper, such that $\Y_{t}$ is smooth for $t\neq 0$.
+Now we can consider the base change
+\begin{center}
+    \begin{tikzcd}
+	\X=\operatorname{Bl}(\tilde{\Y})\arrow{dr}{f}\arrow{r} & \tilde{\Y}\arrow{d}{\tilde{\pi}}\arrow{r} & \Y\arrow{d}{\pi} \\
+	& \Delta \arrow{r}{z\mapsto z^{n}} & \Delta
+    \end{tikzcd}
+\end{center}
+such that $\X$ is smooth, $f^{-1}(0)\sub \X$ is snc divisor.
+$f$ is called a \textit{semistable degeneration}.
+
+\begin{thm}[Friedmann 1983]
+    $X$ compact SNC space.
+    $X=f^{-1}(0)$ for some semistable $f\colon \X\to \Delta$.
+    Then $\sT_{X}^{1}=\ext^{1}(\Omega_{X}^{1},\O_{X})\cong \O_{D}$ for $D=X_{sing}$.
+    ($X$ is $d$-semistable).
+
+    If $X$ is an SNC surface, compact and Kaehler, $d$-semistable, $K_{X}=0$, $H^{1}(X,\O_{X})=0$.
+    Then $\exists f\colon \X\to \Delta$ semistable with $f^{-1}(0)\cong X$.
+\end{thm}
+
+\begin{thm}[Kawamata-Namikawa, 1994]
+    $X$ compact SNC space, Kaehler comp., $\dim{X}=d$.
+    $K_{X}=0$, $H^{d-1}(X,\O_{X})=0$. $H^{d-2}(\tilde{X},\O_{\tilde{X}})=0$, $d$-semistable.
+    Then $\exists $ semistable $f\colon \X\to \Delta$ with $f^{-1}(0)\cong X$.
+\end{thm}
+
+$d$-semistability is closedly related to $\X$ being smooth.
+
+\begin{thm}[F-Filip-Ruddet]
+    $X$ proper algebraic NC space.
+    Assume that $-K_{X}$ is effective.
+    $\sT_{X}^{1}$ is globally generated, $D=X_{sing}$ is projective.
+    Then $\exists$ smoothing.
+\end{thm}
+
+\subsection{Examples}
+
+\begin{exa}
+    $\P^{3}$ is a smooth Fano variety.
+    $D\sub \P^{3}$ smooth anticanonical divisor.
+    We get $X$ by gluing two copies of $\P^{3}$ along this anticanonical divisor, i.e.
+    \[ X=\P^{3}\sqcup_{D}\P^{3} \]
+    Then $\sT_{X}^{1}\not\cong \O_{D}$.
+\end{exa}
+
+\begin{rem}
+    $\X\to \Delta$ is semistable outside of a locus $Z$.
+\end{rem}
+
+\begin{exa}
+    $X=\{xy=0\}\sub \C^{3}$.
+    $D\cong \C$.
+    $t\in \sT_{X}^{1}$.
+    Then $Z=\{s=0\}=\{x\}$.
+    Smoothing:
+    \begin{center}
+	\begin{tikzcd}
+	    X\arrow{d}\arrow[hook]{r} & \X=\{ xy-ts=0\}\sub \C^{4}\arrow{d} \\
+	    \{0\}\arrow{r} & \C_{s}
+	\end{tikzcd}
+    \end{center}
+\end{exa}
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
