@@ -5753,6 +5753,177 @@ $d$-semistability is closedly related to $\X$ being smooth.
     \end{center}
 \end{exa}
 
+\section{[LT] Lecture 19 - 07.01.20}
+
+Recall that on the algebraic geometry side we had a variety $X\sub \P^{n}$ and a fibration
+\begin{center}
+    \begin{tikzcd}
+	X\arrow[dashed]{d} & \tilde{X}\arrow{l}\arrow{dl}\sub \P^{n}\tms(\P^{n})\dual \\
+	L\cong \P^{1}\sub (\P^{n})\dual & 
+    \end{tikzcd}
+\end{center}
+
+The fibres of the morphism $\tilde{X}\to L$ have only ordinary double points, i.e. non-degenerate critical points.
+
+On the differential geometry side, Morse theory gives us information about the topology of $\tilde{X}$.
+
+Finally, on the algebraic topology side we gave a brief introduction to singular homology, which will be the invariant appearing in the statement of our goal result.
+
+\begin{exa}
+    For $n>0$ we have
+    \[ H_{i}(S^{n},R)=\begin{cases}
+	R & \text{ if } i=0,n\\
+	0 & \text{ if } i\neq 0,n
+    \end{cases}
+    \]
+\end{exa}
+
+The next aim is to formulate Poincare duality.
+For this we will need singular cohomology.
+
+\subsection{Singular cohomology}
+
+\begin{defn}
+    \textit{Singular cohomology} with coefficients in $R$ is defined as the cohomology of the singular cochain complex, which is the dual of the singular chain complex.
+\end{defn}
+
+\begin{rem}
+    If $R$ is a field, then dualizing is exact.
+    This is not the case anymore for the integers.
+\end{rem}
+
+For $R=\Z$ we have the universal coefficeint theorem
+\[ 0\to \Ext^{1}(H_{n-1}(X,\Z),\Z)\to H^{n}(X,\Z)\to \Hom(H_{n}(X,\Z),\Z)\to 0 .\]
+
+\begin{exa}
+    Since the homology groups of spheres are free finitely generated, cohomology with $\Z$ coefficients is dual of homology.
+\end{exa}
+
+Define also relative singular cohomology.
+The dual of $S_{*}(X,A,R):=S_{*}(X,R)/S_{*}(A,R)$ is the kernel of the restriction map $S^{*}(X,R)\to S^{*}(A,R)$.
+Relative cohomology is then defined as the cohomology of this complex.
+In particular, we get a long exact sequence associated to the pair $(X,A)$.
+
+Cohomology has a ring structure given already on the level of cochains by the \textit{cup product} (see Hatcher).
+
+\begin{defn}
+    Let $S_{c}^{*}(X,R)\sub S^{*}(X,R)$ be the subcomplex of cochains $\sigma$ such that there is a compact $K\sub X$ such that $\sigma$ vanishes on all chains on $X\setminus K$.
+    The cohomology of this complex is called \textit{cohomology with compact supports}.
+    Equivalently,
+    \[ H^{i}_{c}(X,R)=\varinjlim_{K}H^{i}(X,X\setminus K,R). \]
+\end{defn}
+
+By excision, the right hand side only depends on a neighbourhood of $K$ in $X$.
+
+\begin{rem}
+    If $X$ is compact, then cohomology with compact support agrees with usual singular cohomology.
+\end{rem}
+
+\begin{rem}
+    Cohomology with compact supports is not homotopy invariant, e.g. $\R^{n}$ and a point.
+\end{rem}
+
+There is a pairing $\cap \colon S_{k}(X,R)\tms S_{c}^{l}(X,R)\to S_{k-l}(X,R)$ inducing the \textit{cap product} (see Hatcher).
+
+\subsection{Orientations}
+
+Consider the $\R$-vector space $V$ of dimension $d$.
+An \textit{orientation} on $V$ is a choice of an equivalence class of bases, where two bases are equivalent if the transition matrix has positive determinant.
+Alternatively, take $\det{V}=\Lambda^{d}V$, which is a $1$-dimensional $\R$-vector space.
+An orientation of $V$ is a choice of an $\R_{>0}$ equivalence classes of bases of $\det{V}$.
+
+\begin{exa}
+    If $V$ is a complex vector space of dimension $1$ and $v\in V$ is non-zero, then $v$ gives rise to the $\R$-basis $(v,iv)$.
+    Consider the basis change given by multiplication with $\alpha=a+ib\in \C^{\tms}$.
+    Over $\R$ we get the base change matrix
+    \[ \begin{pmatrix} a & -b \\ b & a\end{pmatrix} \]
+    The determinant is always positive, hence $v$ induces a canonical orientation of $V$ as an $\R$-vector space.
+\end{exa}
+
+\begin{exe}
+    If $V$ is a $\C$-vector space of higher dimension, then any complex basis gives raise to a canonical orientation of $V$ as an $\R$-vector space.
+\end{exe}
+
+\begin{defn}
+    Let $X$ be a smooth manifold.
+    An \textit{orientation} of $X$ is the choice of an orientation of the tangent bundle $TU$ for all charts $U\sub X$ such that the transition maps are orientation preserving.
+    $X$ is called orientable if an orientation exists.
+\end{defn}
+
+\begin{exa}
+    $\R P^{2}$ is not orientable.
+\end{exa}
+
+\begin{lm}
+    Let $X$ be a complex manifold.
+    Then $X$ is orientable.
+    \begin{proof}
+	Consider the transition matrix $(\varphi_{a,b})_{a,b}$ from one holomorphic chart to the other.
+	The induced base change maps on $TU$ are $\C$-linear, and by the exercise above they preserve the orientation.
+    \end{proof}
+\end{lm}
+
+\begin{defn}
+    Let $X$ be a smooth manifold of dimension $d$.
+    We consider \textit{local homology} $H_{d}(X,X\setminus \{x\},R)$ of $X$ at $x$.
+    By excision, we may replace $X$ by a ball in a coordinate chart, hence by homotopy equivalence we have
+    \[ H_{d}(X,X\setminus\{ x\},R)\cong H_{d}(B^{d},S^{d-1},R)\cong R. \]
+    An $R$-orientation of $X$ at $x$ is a choice of a generator of $H_{d}(X,X\setminus \{ x\},R)$.
+    An \textit{orientation} of $X$ is a function $\mu\colon x\mapsto \mu_{x}$ which assigns to every point $x$ an $R$-orientation of $X$ at $x$ satisfying the local consistency condition: every $x\in X$ has a neighbourhood $U\sub X$ homeomorphic to a ball in $\R^{n}$ containing a smaller ball $B$ of finite radius around $x$ such that the local orientations $\mu_{y}$ for all $y\in B$ are the image of one generator of $H_{d}(X,X\setminus B,R)$ under the maps $H_{d}(X,X\setminus B,R)\to H_{d}(X,X\setminus \{y\},R)$.
+\end{defn}
+
+\begin{lm}
+    If $X$ is a smooth orientable manifold, then the choice of an orientation on $X$ gives us an $R$-orientation for every ring $R$.
+    \begin{proof}
+	It suffices to do $R=\Z$.
+	Everything else follows by basechange.
+	The choice of an orientation defines compatible isomorphisms with $H_{d}(B^{d},S^{d-1},\Z)$.
+    \end{proof}
+\end{lm}
+
+\begin{thm}
+    Let $X$ be a connected compact orientable smooth manifold of dimension $d$.
+    Then we have isomorphisms
+    \[ H_{d}(X,R)\xrightarrow{\sim} H_{d}(X,X\setminus \{x\},R) \]
+    for all $x\in X$.
+    Moreover, $H_{n}(X,R)=0$ for all $n>d$.
+    \begin{proof}
+	See Hatcher, theorem 3.26.
+    \end{proof}
+\end{thm}
+
+\begin{defn}
+    A \textit{fundamental class} for $X$ is a class $[X]\in H_{d}(X,R)$ such that $[X]$ induces an $R$-orientation at $x$ for all $x\in X$.
+\end{defn}
+
+For the non-compact case we have
+
+\begin{thm}
+    Let $X$ be an oriented connected smooth manifold of dimension $d$ and $K\sub X$ compact.
+    Then there is a unique class in $H_{d}(X,X\setminus K,R)$ whose image in $H_{d}(X,X\setminus\{x\},R)$ agrees with the orientation for all $x\in K$.
+    Moreover, $H_{n}(X,X\setminus K,R)=0$ for $n>d$.
+    \begin{proof}
+	See Hatcher, lemma 3.27.
+    \end{proof}
+\end{thm}
+
+\subsection{Poincare duality}
+
+$X$ smooth compact orientable manifold of dimension $d$.
+Capping with the fundamental class $[X]$ gives us a map
+\[ [X]\cap (-)\colon H^{l}(X,R)\to H_{d-l}(X,R) \]
+for all $l\leqslant d$.
+
+\begin{thm}[Poincare duality]
+    This is an isomorphism.
+    \begin{proof}
+	See Hatcher, theorem 3.30.
+    \end{proof}
+\end{thm}
+
+If $R=F$ is a field, then Poincare duality takes the form
+\[ H^{l}(X,F)\cong H^{d-l}(X,F)\dual. \]
+
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
 
