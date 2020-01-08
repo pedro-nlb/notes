@@ -102,6 +102,7 @@
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Hilb}{Hilb}
 \DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Supp}{Supp}
@@ -109,16 +110,20 @@
 \DeclareMathOperator{\iext}{\underline{Ext}}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Pic}{Pic}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\rk}{rk}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Exc}{Exc}
 \DeclareMathOperator{\Hess}{Hess}
+\let\ord\relax
+\DeclareMathOperator{\ord}{ord}
 
 %
 % OTHER COMMANDS
 %
 % Additional categories
+\renewcommand{\S}{\mathbb{S}}
 \newcommand{\CHaus}{\mathbf{CHaus}}
 \newcommand{\ED}{\mathbf{ED}}
 \newcommand{\HH}{HH}
@@ -5923,6 +5928,174 @@ for all $l\leqslant d$.
 
 If $R=F$ is a field, then Poincare duality takes the form
 \[ H^{l}(X,F)\cong H^{d-l}(X,F)\dual. \]
+
+\section{[WS] Derived cats 5 (Nicola) - The reconstruction theorem of Bondal and Orlov - 08.01.2020}
+
+\textbf{References:}
+\begin{enumerate}
+    \item D. Huybrechts, \textit{Fourier-Mukai transforms in algebraic geometry}.
+    \item Notes by Johan.
+    \item nCatLab.
+\end{enumerate}
+
+\begin{nota}
+    \begin{enumerate}
+	\item $X$ and $Y$ will be smooth projective varieties, let's say over $\C$, although we will usually write $k$.
+	    The proof works over any field, with some minor simplifications in the algebraically closed case.
+	\item $\Db(X)$ is the bounded derived category of coherent sheaves on $X$.
+	\item $n=\dim(X)$.
+	\item $\w_{X}$ is the canonical line bundle.
+	\item We will usually talk about closed points omitting the word closed.
+    \end{enumerate}
+\end{nota}
+
+\textbf{Recall from last talk:}
+\begin{enumerate}
+    \item $H^{i}(X,\F)\cong \Hom_{\Db(X)}(\O_{X},\F[i])$ and the cup product can be expressed as composition.
+    \item $\Hom(\F,\G[<0])=0$.
+    \item $\Db(X)$ has a Serre functor and Serre functors commute with $k$-linear equivalences.
+\end{enumerate}
+
+\textbf{Goal:}
+Let $F\colon \Db(X)\xrightarrow{\sim}\Db(Y)$ be an exact $k$-linear equivalence (from now on denoted $\Db(X)\cong \Db(Y)$) and assume either $\w_{X}$ or $\w_{X}^{-1}$ is ample.
+Then $X\cong Y$.
+
+We will focus here on the $\w_{X}$ ample case.
+
+\subsection{Warm up}
+
+\begin{prop}
+    If $\Db(X)\overset{F}{\cong} \Db(Y)$, then $\dim{X}=\dim{Y}$ and $\ord(\w_{Y})=\ord(\w_{X})$.
+    \begin{proof}
+	For a closed point $x\in X$, let $\kappa(x)$ be the skyscraper sheaf with value the residue field $\kappa(x)$ at $x$.
+	Note that $\kappa(x)\cong \kappa(x)\ot \w_{X}\cong \S_{X}(\kappa(x))[-n]$.
+	Since $F$ is a $k$-linear equivalence, it commutes with Serre functors, so
+	\[ F(\kappa(x))\cong F(\S_{X}(\kappa(x)[-n])\cong \S_{Y}(F(\kappa(x)))[-n]=F(\kappa(x))\ot \w_{Y}[\dim(Y)-n]. \]
+	The LHS is non-zero and bounded, so there is a maximal (minimal) $i$ such that $0\neq H^{i}(F(\kappa(x)))=H^{i+\dim(Y)-n}(F(\kappa(x)))\ot \w_{Y}$.
+	This implies that $\dim(Y)=n$ as well.
+
+	If $\w_{X}^{k}=\O_{X}$, then $\S_{X}^{k}[-kn]\cong \id$, so $\S_{Y}^{k}[-kn]\cong F\circ \id \circ F^{-1}\cong \id$.
+	Hence $\w_{Y}^{k}=\O_{Y}$.
+    \end{proof}
+\end{prop}
+
+\subsection{Idea of the proof}
+
+$\w_{X}$ is ample if and only $X\cong \Proj(\op_{d\geqslant 0}H^{0}(X,\w_{X}^{d}))$ (see tag 01Q3 in the Stacks Project).
+Let $B_{X}$ denote this canonical ring from now on.
+
+\begin{enumerate}
+    \item Prove $B_{X}\cong B_{Y}$.
+    \item $\w_{Y}$ is ample.
+    \item Then $X\cong \Proj(B_{X})\cong \Proj(B_{Y})\cong Y$.
+\end{enumerate}
+
+\textbf{Problem:} we don't have a clear access to some key geometric objects related to $Y$, such as
+\begin{enumerate}
+    \item points,
+    \item line bundles,
+    \item topology of $Y$.
+\end{enumerate}
+
+The plan is then to try to recover these objects from $\Db(Y)$.
+
+\begin{defn}
+    Let $\D$ be a $k$-linear triangulated category with a Serre functor $\S_{D}$.
+    An object $P\in \D$ is called \textit{point-like} of codimension $d$ if:
+    \begin{enumerate}
+	\item $\S(P)=P[d]$.
+	\item $\Hom(P,P[i])=0$ for all $i<0$.
+	\item $\kappa(P):=\Hom(P,P)$ is a field.
+    \end{enumerate}
+\end{defn}
+
+\begin{prop}
+    $\{ \kappa(x)[m] \mid x\in X, m\in \Z\}\mono \{ \text{ point-like objects } \}$ and equality holds if $\w_{X}$ is ample.
+\end{prop}
+
+\begin{defn}
+    $\D$ as before.
+    An object $L\in \D$ is called \textit{invertible} if for all $P\in \D$ point-like objects there is an integer $n(L,P)\in \Z$ such that
+    \[ \Hom(L,P[i])\cong \begin{cases}
+	\kappa(P) & \text{ if } i=n(L,P) \\
+	0 & \text{ otherwise.}
+    \end{cases}
+    \]
+\end{defn}
+
+\begin{prop}
+    $\{ \text{ invertible objects }\} \mono \{\L[m]\mid \L\in \Pic(X), m\in \Z\}$, and equality holds if $\w_{X}$ is ample.
+\end{prop}
+
+\begin{rem}
+    These definitions are intrinsic, so such objects need to be preserved by $F$.
+\end{rem}
+
+\subsection{Proof of the theorem}
+
+There are 6 steps:
+\begin{enumerate}
+    \item We may assme that $F(\O_{X})=\O_{Y}$.
+	Indeed, since $\O_{X}$ is invertible, so is $F(\O_{X})$, which is therefore of the form $\M[m]$ for $\M\in \Pic(X)$.
+	By shifting and tensoring with its dual we may assume $F(\O_{X})=\O_{Y}$.
+    \item $F(\w_{X}^{k})=\w_{X}^{k}$.
+	Indeed, since $\dim{Y}=n$ as well, we have
+	\[ F(\w_{X}^{k})=F(\S_{X}^{k}(\O_{X})[-kn])\cong \S_{Y}^{k}(F(\O_{X}))[-kn]=\w_{Y}^{k}. \]
+    \item $B_{X}\cong B_{Y}$.
+	On one hand we have
+	\[ H^{0}(X,\w_{X}^{k})=\Hom(\O_{X},\w_{X}^{k})\cong \Hom(F(\O_{X}),F(\w_{X}^{k}))=H^{0}(Y,\w_{Y}^{k}). \]
+	So both canonical rings agree as groups.
+	Now we need to show that the multiplications agree.
+	For this we express multiplication of global sections as composition:
+	\[ s_{1}s_{2}=\S_{X}^{k}(s_{2})[-kn]\circ s_{1}. \]
+	The functor $F$ commutes with shifts, Serre functors and preserves composition, hence product of global sections is preserved as well.
+    \item It remains to show that $\w_{Y}$ is ample to conclude as sketched before.
+	In this step we show that
+	\[ \{ \text{ point-like objects }\}\cong \{ \kappa(y)[m]\mid y\in Y,m\in \Z\} \]
+	form a spanning class, see below.
+    \item We have a bijection $\phi\colon X\to Y$.
+	Skyscraper sheaves are flasque, hence have no higher cohomology, so we have
+	\[ 0\neq H^{0}(X,\kappa(x))=\Hom(\O_{X},\kappa(x))=\Hom(F(\O_{X}),F(\kappa(x)))=H^{m}(X,\kappa(y)) \]
+	and the RHS is non-zero iff $m=0$.
+	Thus the bijection.
+    \item To show that $\w_{Y}$ is ample, we use that $\L$ is ample iff $U_{\alpha}=X\setminus Z(\alpha)$ is a basis for the topology as $\alpha$ runs through $\alpha\in H^{0}(\O_{X},\L^{k})$.
+	Note that
+	\[ U_{\alpha}=\{x\in X\mid \O_{X}\xrightarrow{\alpha}\L^{k}\to \kappa(x) \text{ is non-zero for all }k\in \N  \}. \]
+	We have $F(\kappa(x))=\kappa(\phi(x))$ and if $\alpha$ yields a non-zero morphism $\O_{X}\xrightarrow{\alpha} \L\to \kappa(x)$, then applying $F$ to this morphism we should get a non-zero morphism
+	\[ \O_{Y}\xrightarrow{F(\alpha)}F(\L)\to \kappa(\phi(x)), \]
+	which implies that $F(\L)=\M[m]$ with $m=0$, i.e. $F(\L)$ is an honest line bundle.
+	Hence $\phi(U_{\alpha})=V_{F(\alpha)}$.
+	This shows that $\phi$ is a homeomorphism, taking thus bases to bases, hence $\w_{Y}$ is ample by the previous criterion.
+\end{enumerate}
+
+\subsection{Step $4$ in the proof}
+
+\begin{defn}
+    With $\D$ as above, a set $\Omega\sub \D$ is called a \textit{spanning class} if for all $B\in \D$ we have
+    \begin{enumerate}
+	\item $(\Hom(A,B[i])=0 $ for all $A\in \Omega$ and all $i\in \Z ) \Rightarrow B=0$.
+	\item Similarly in the other entry of the hom functor.
+    \end{enumerate}
+\end{defn}
+
+\begin{rem}
+    Since we have Serre functors, checking one of the two conditions is enough.
+\end{rem}
+
+\begin{prop}
+    $Y$ smooth projective variety implies that the shifts of skyscraper sheaves form a spanning class of $\Db(Y)$.
+    \begin{proof}
+	Assume $\F\grd\in \Db(Y)$ is not $0$ and let $m\in \Z$ be a maximal integer such that $H^{m}(\F\grd)=:\H^{m}\neq 0$.
+	Take $x\in X$ in the support of $\H^{m}$.
+	Then there exists a surjection $\H^{m}\epi \kappa(x)$.
+	Replacing $\F\grd$ by a nice truncation and composing with a shift of this morphism we get the non-zero morphism that we wanted.
+    \end{proof}
+\end{prop}
+
+For all $y\in Y$ there exists some $x_{y}\in X$ and some $m_{y}\in \Z$ such that $F(\kappa(x_{y})[m_{y}])$.
+Assume $\exists P\in \Db(Y)$ point-like but $\not\cong\kappa(y)[m]$ for any $y$ or $m$.
+Then $\exists x_{P}$ and $m_{P}$ such that $F(\kappa(x_{P})[m_{P}])=P$ but $x_{P}\neq x_{y}$.
+Now conclude using that $\Hom(\kappa(x_{1}),\kappa(x_{2})[m])=0$ for all $x_{1}\neq x_{2}$ and all $m\in \Z$.
 
 \bibliographystyle{alpha}
 \bibliography{$HOME/git/templates/refs}
