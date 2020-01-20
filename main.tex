@@ -87,6 +87,7 @@
 %
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Sing}{Sing}
 \DeclareMathOperator{\Fun}{Fun}
 \DeclareMathOperator{\Cond}{Cond}
 \DeclareMathOperator{\Ob}{Ob}
@@ -98,6 +99,8 @@
 \DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\codim}{codim}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\ho}{ho}
 \DeclareMathOperator{\ext}{\E xt}
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\Hilb}{Hilb}
@@ -124,6 +127,7 @@
 %
 % Additional categories
 \renewcommand{\S}{\mathbb{S}}
+\newcommand{\QCat}{\mathbf{QCat}}
 \newcommand{\CHaus}{\mathbf{CHaus}}
 \newcommand{\ED}{\mathbf{ED}}
 \newcommand{\HH}{HH}
@@ -131,6 +135,7 @@
 \newcommand{\Solid}{\mathbf{Solid}}
 % Uncategorized
 \newcommand{\CP}{\mathbb{CP}}
+\newcommand{\sSet}{\mathbf{sSet}}
 \renewcommand{\H}{\mathcal{H}}
 \newcommand{\cbbD}{\bar{\mathbb{D}}}
 \newcommand{\1}{\mathbbm{1}}
@@ -6395,7 +6400,7 @@ Take $\w\in D_{0}$ and suppose $\# \calP^{-1}(\w)>n$.
 Use the ergodicity condition [picture].
 This yields a contradiction with Hausdorfness (which can be assumed).
 Hence $\calP\colon \M_{0}\to D_{0}$ is a finite topological cover.
-This implies that $\calP\colon \scrN_{0}=\scrN\cap \M_{0}\xrightarrow{\sim} D_{0}$.
+This implies that $\calP\colon \sN_{0}=\sN\cap \M_{0}\xrightarrow{\sim} D_{0}$.
 
 \section{[LT] Lecture 21 - 14.01.20}
 
@@ -6424,6 +6429,213 @@ This implies that $\calP\colon \scrN_{0}=\scrN\cap \M_{0}\xrightarrow{\sim} D_{0
     \end{center}
 \end{nota}
 
+\section{[CM] Introduction to infinity categories (Brad) - 20.01.20}
+
+\subsection{Motivation}
+
+Last time we introduced discrete Huber pairs $(A,A^{+})$.
+From this we defined adic spaces $(X,\O_{X},\O_{X}^{+})$, which is a ringed space equipped with a family of valuations locally isomorphic to $\operatorname{Spa}(A,A^{+})$.
+
+\textbf{Goal:}
+give $\D((A,A^{+})_{\blacksquare})$ to $\D((\O_{X},\O_{X}^{+})_{\blacksquare})$ for general discrete adic space $X$.
+
+\textbf{Problem:}
+Cannot glue naively, so we need $\infty$-categories.
+
+\subsection{Enrichment}
+
+\textbf{Idea:}
+$\infty$-categories should have sets of objects and for all $x,y\in \Ob(\bfC)$ a "space" $\Map_{\bfC}(x,y)$ of morphisms.
+
+\begin{defn}[Topological categories]
+    For all $x,y\in \Ob(\bfC)$, $\Map_{\bfC}(x,y)\in \Top$.
+    For all $x\in \Ob(\bfC)$ we specify $\id_{X}\in \Map_{\bfC}(x,x)$.
+    For all $x,y,z\in \Map_{\bfC}(y,z)\times \Map_{\bfC}(x,y)\to \Map_{\bfC}(x,z)$ continuous, associative and unital composition.
+\end{defn}
+
+\begin{exa}
+    $\Top$ is a $\Top$-categories.
+\end{exa}
+
+Now "invert" equivalences.
+Let $F\colon C\to D$ be a topological functor.
+We say that $F$ is a Dwyer-Kan equivalence if for all $x,y\in \bfC$, $F_{x,y}\colon \Map_{\bfC}(x,y)\to \Map_{\D}(Fx,Fy)$ is a homotopy equivalence ("faithfulness") and for all $z\in \D$ there is some $x\in \bfC$ such that $Fx\simeq z$, where this last symbol means isomorphic in the homotopy category, in which the morphisms are th $\pi_{0}$ of the previous map spaces.
+
+\begin{center}
+    \begin{tikzcd}
+	\ho(\Top)=\Top/\simeq\arrow{d}{\sim} & \|K\| & X\arrow{d}{\text{sing. chains}} \\
+	\ho(\sSet)=\sSet/\simeq & K\arrow{u}{\text{geom. real.}} & \Sing(X)
+    \end{tikzcd}
+\end{center}
+
+We can replace $\Top$-category with $\sSet$-category.
+
+\subsection{Nerves}
+
+Let $\bfC$ be an ordinary category.
+Its \textit{nerve} $\bfN(\bfC)$ is the simplicial set defined by
+\[ \forall n\geqslant 0, \quad \bfN(\bfC)_{n}:=\Fun([n],C) \]
+where $[n]=\{0\to \cdots \to n\}$ is the standard $n$-simplex category.
+Face and degeneracy maps are given by inserting identity maps and composing adjacent maps.
+This gives a fully faithful functor $\bfN\colon \Cat\hookrightarrow \sSet$.
+
+\begin{exa}
+    $\varphi\in \bfN(\bfC)_{2}$ corresponding to $\varphi \colon [2]\to C$.
+    \begin{center}
+	\begin{tikzcd}
+	    & \varphi(1)\arrow{dr} & \\
+	    \varphi(0)\arrow{ur}\arrow{rr} & & \varphi(2)
+	\end{tikzcd}
+    \end{center}
+    If $\bfC$ is a $1$-category, then there is a unique way to "fill-in" the previous triangle, i.e. there is a unique extension
+    \begin{center}
+	\begin{tikzcd}
+	    \Lambda_{1}^{2}=\Delta^{2}\setminus \{0\to 2\} \arrow[hook]{d} \arrow{r} & C \\
+	    \Delta^{2}\arrow[dashed]{ur} &
+	\end{tikzcd}
+    \end{center}
+    In an $\infty$-category there will be many ways to do it.
+    They will all be homotopic, but still different.
+\end{exa}
+
+To generalize to $\infty$-categories, we replace $[n]$ by simplicial categories, which we will dente $\mathfrak{C}(\Delta^{n})$.
+$\Ob(\mathfrak{C}(\Delta^{n})=\Ob(\Delta^{n})=\{0,\ldots,n\}$.
+For all $0\leqslant i,j\leqslant n$, consider the category
+\[ P_{i,j}=\begin{cases}
+    \text{Objects are subsets of }[i,j]\text{ containing }\{i,j\} \\
+    \text{Morphisms are inclusions of subsets.}
+\end{cases}
+\]
+Then $\Map_{\mathfrak{C}(\Delta^{n})}(i,j)=\bfN(P_{i,j})$.
+
+\begin{exa}
+    When $n=1$, $\Ob(\mathfrak{C}(\Delta^{1}))=\{0,1\}$.
+    $P_{0,0}=*$, $P_{0,1}=\{[0,1]\}=*$, and $\Map_{\mathfrak{C}(\Delta^{1})}(0,1)=*$.
+    Hence $\mathfrak{C}(\Delta^{1})=\Delta^{1}$.
+\end{exa}
+
+\begin{exa}
+    When $n=2$, for the endomorphism spaces we get again singletons.
+    Same for adjacent vertices, so the new data is $P_{0,2}=\{ \{0,2\}\sub \{0,1,2\}\}$.
+    $\bfN(P_{0,2})$ has a single nondegenerate $1$-simplex $\alpha$.
+    Hence $\mathfrak{C}(\Delta^{2})$ specifies
+    \begin{center}
+	\begin{tikzcd}
+	     & 1\arrow{dr} & \\
+	     0 \arrow{ur} \arrow{rr} & & 2
+	\end{tikzcd}
+    \end{center}
+    with $\alpha$ filling in the previous triangle.
+\end{exa}
+
+\begin{exa}
+    For $n=3$ we get $4$ zero-simplices, $6$ one-simplices, $4$ two-simplices and $1$ three-simplex.
+\end{exa}
+
+While $\Delta^{n}$ encodes strict composition, these $\mathfrak{C}(\Delta^{n})$ are encoding composition up to coherent homotopy.
+
+Let $\bfC$ be a $\sSet$-category.
+Then $F\in \Fun_{\sSet}(\mathfrak{C}(\Delta^{n}),\bfC)$ encodes a "homotopy coherent diagram"
+\[ F\colon \Delta^{n}\to \bfC \]
+For all $0\leqslant i\leqslant n$, we have $F(i)\in \bfC$ an object, and for all $0\leqslant i\leqslant j\leqslant n$ we have $F(i)\to F(j)$, and for all $0\leqslant i \leqslant j\leqslant k\leqslant n$ we get
+$F(i)\to F(k)$, $F(i)\to F(j)\to F(k)$ and a homotopy between those.
+
+\begin{thm}[Cordier-Porter, 1986]
+    If $\bfC$ is a simplicial category such that for all $x,y\in \bfC$ the simplicial set $\Map_{\bfC}(x,y)$ is a Kan complex, then the simplicial set $\bfN_{\Delta}(\bfC)$ given by $\bfN_{\Delta}(\bfC)_{n}=\Fun_{\sSet}(\mathfrak{C}(\Delta^{n}),\bfC)$ satisfies the following inner-horn filler condition
+    \begin{center}
+	\begin{tikzcd}
+	    \Lambda_{k}^{n}\arrow{r}\arrow[hook]{d} & \bfN_{\Delta}(\bfC)  \\
+	    \Delta^{n}\arrow[dashed]{ur}{\exists} &
+	\end{tikzcd}
+    \end{center}
+    for all $0<k<n$.
+    For all $0\leqslant k\leqslant n$, $\Lambda_{k}^{n}$ is the simplicial set obtained from $\Delta^{n}$ by deleting the interior and the face opposite to the $k$-th vertex.
+\end{thm}
+
+A Kan complex is a simplicial set satisfying this condition for $0\leqslant k\leqslant n$.
+
+\begin{defn}[Quasi-category]
+    A \textit{quasi-category} (or simply $\infty$-category if we follow Lurie's convention) is a simplicial set $\bfC$ satisfying the innter horn condition.
+\end{defn}
+
+Composition in quasi-categories is encoded weakly:
+\begin{center}
+    \begin{tikzcd}
+	\Lambda_{1}^{2}\arrow[hook]{d}\arrow{r} & \bfC \\
+	\Delta^{2}\arrow[dashed]{ur} &
+    \end{tikzcd}
+\end{center}
+
+If we have a quasi-category $\bfC$ and two maps $\varphi,\psi\colon \Delta^{2}\to \bfC$ restricting to a same map $\iota$ on $\Delta^{2}_{1}$, then they differ by a homotopy, and two such homotopies differ by a higher homotopy, and so on.
+So $g\circ f$ is not unique, but it is a point on a contractible space of possibilities.
+
+$\Map(\Delta^{n},\bfC)\xrightarrow{\iota^{*}} \Map(\Lambda_{k}^{n},\bfC)$.
+The inclusion of the horn is a cofibration.
+If $\bfC$ is a quasi-category, then $\iota^{*}$ is a weak homotopy equivalence.
+Different choices of composition correspond to points in the homotopy fiber of this map, which is weakly contractible, hence contractible in our setting.
+
+\subsection{Working with quasi-categories}
+
+\begin{defn}[Mapping spaces]
+    $\bfC$ a quasi-category, $x,y\in \bfC_{0}\overset{def}{=}\Ob(\bfC)$.
+    $\Map_{\bfC}(x,y)$ is given as the following pullback $\sSet$:
+    \begin{center}
+	\begin{tikzcd}
+	    \Map_{\bfC}(x,y)\arrow{d}\arrow{r} & \bfC_{1} \arrow{d}{(s,t)} \arrow[equal]{r} & \operatorname{hom}(\Delta^{1},\bfC)\arrow{d}{\text{restrict along }\partial \Delta^{1}\hookrightarrow \Delta^{1}} \\
+	    *\arrow{r}{(x,y)} & \bfC_{0}\times \bfC_{0}\arrow[equal]{r} & \operatorname{hom}(\partial \Delta^{1},\bfC) 
+	\end{tikzcd}
+    \end{center}
+\end{defn}
+
+\begin{fact}
+    $\Map_{\bfC}(x,y)$ is a Kan complex.
+\end{fact}
+
+\begin{defn}[Functor categories]
+    $K\in \sSet$, $\bfC$ a q-cat.
+    $\Fun(K,C)=\Map_{\sSet}(K,C)\in \sSet$, where
+    \[ \Map_{\sSet}(K,C)_{n}=\operatorname{hom}_{\sSet}(K\times \Delta^{n},\bfC) \]
+\end{defn}
+
+\begin{rem}
+    $\Fun(K,\bfC)_{1}$ are just natural transformations if $K,\bfC$ are $1$-categories.
+    In fact, if $K,\bfC$ are $1$-categories, then $\bfN(\Fun(K,\bfC))\cong \Fun(\bfN(K),\bfN(\bfC))$.
+\end{rem}
+
+\begin{defn}[Localization]
+    $\bfC$ a q-cat., $S\subseteq \operatorname{Mor}(\bfC)=\bfC_{1}=\operatorname{hom}_{\sSet}(\Delta^{1},\bfC)$.
+    A \textit{localization} of $\bfC$ with respect to $S$ is a functor $\lambda\colon \bfC\to \bfC[S^{-1}]$ (i.e. a zero-simplex in $\Fun(\bfC,\bfC[S^{-1}])$) such that $\bfC[S^{-1}]$ is a q-cat, and for all q-cat $\D$ we have
+    \[ \Fun(\bfC[S^{-1}],\D)\xrightarrow{\lambda^{*}} \Fun(\bfC,\D) \]
+    is fully faithful and its essential image is $F\colon \bfC\to \D \mid F(S)\sub \operatorname{eq}(\D)\}$.
+\end{defn}
+
+\begin{thm}[Lurie]
+    Localizations exist and are unique up to contractible choice (modulo set-theoretical non-sense).
+\end{thm}
+
+\begin{exa}
+    \begin{center}
+	\begin{tikzcd}
+	    \bfN(\Cat)\arrow{r}\arrow{dr}{\bfN} & \bfN(\Cat)[eq^{-1}]\arrow[dashed,hook]{d}{fully faithful} \\
+	    & \QCat=\infty\text{-cat of q-cats}
+	\end{tikzcd}
+    \end{center}
+\end{exa}
+
+\subsection{Limits}
+
+\begin{defn}[Final objects]
+    $\bfC$ a quasi-category.
+    We say that $*\in \Ob(\bfC)$ is \textit{final} if $\forall x\in \Ob(\bfC)$, $\Map_{\bfC}(x,*)$ is contractible.
+\end{defn}
+
+For all $1$-category $K$ (indexing category) we can form $K^{\triangleright}=K\cup \{\infty\}=K$ with a new freely adjoint final object.
+If $F\colon K\to \bfC$ is a functor from $K$ to the q-cat $\bfC$, then $\lim_{k\in K}F(k)$, if it exists, is $\tilde{F}(\infty)$, where $\tilde{F}$ is the final object in $X=\Fun_{F}(K^{\triangleright},\bfC)=\{F'\colon K^{\triangleright}\to \bfC \mid F'|_{K}\simeq F\}\sub\Fun(K^{\triangleright},\bfC)\to \Fun(K,\bfC)$.
+
+\subsection{Adjunctions}
+Use triangle equations to define adjunctions.
+Instead of equality, we ask for coherent homotopy between the identities and the corresponding compositions.
+Such an adjunction induces natural equivalences of bifunctors as usual.
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
