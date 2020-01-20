@@ -27,6 +27,8 @@
 
 \usepackage{tikz-cd}
 % To draw commutative diagrams.
+\usetikzlibrary{decorations.markings}
+% For open and closed immersions.
 
 \usepackage{graphicx}
 % An extension of the graphics package, with optional arguments for the \includegraphics command.
@@ -59,6 +61,25 @@
 \usepackage[noabbrev]{cleveref}
 % Enhances cross-referencing features, e.g. to reference to a theorem and automatically include the word theorem.
 % No abbreviature option to write figure instead of fig. etc.
+
+% Open and closed immersion arrows.
+\makeatletter
+\tikzcdset{
+open/.code={\tikzcdset{hook, circled};},
+closed/.code={\tikzcdset{hook, slashed};},
+circled/.code={\tikzcdset{markwith={\draw (0,0) circle (.375ex);}};},
+slashed/.code={\tikzcdset{markwith={\draw[-] (-.4ex,-.4ex) -- (.4ex,.4ex);}};},
+markwith/.code={
+\pgfutil@ifundefined{tikz@library@decorations.markings@loaded}%
+{\pgfutil@packageerror{tikz-cd}{You need to say %
+\string\usetikzlibrary{decorations.markings} to use arrow with markings}{}}{}%
+\pgfkeysalso{/tikz/postaction={/tikz/decorate,
+/tikz/decoration={
+markings,
+mark = at position 0.5 with
+{#1}}}}},
+}
+\makeatother
 
 % Custom colors
 \definecolor{darkgreen}{RGB}{0,75,0}
