@@ -6395,7 +6395,35 @@ Take $\w\in D_{0}$ and suppose $\# \calP^{-1}(\w)>n$.
 Use the ergodicity condition [picture].
 This yields a contradiction with Hausdorfness (which can be assumed).
 Hence $\calP\colon \M_{0}\to D_{0}$ is a finite topological cover.
-This implies that $\calP\colon \calN_{0}=\calN\cap \M_{0}\xrightarrow{\sim} D_{0}$.
+This implies that $\calP\colon \scrN_{0}=\scrN\cap \M_{0}\xrightarrow{\sim} D_{0}$.
+
+\section{[LT] Lecture 21 - 14.01.20}
+
+\begin{nota}
+    $X\sub \P^{N}$ projective variety, $n=\dim{X}$.
+    $L=\P^{1}\sub (\P^{N})\dual$ Lefschetz pencil, $A$ its axis,
+    \begin{center}
+	\begin{tikzcd}
+	    & \tilde{X}\arrow{dl}{p}\arrow{dr}{f} & \\
+	    X && \P^{1} ,
+	\end{tikzcd}
+    \end{center}
+    $0,\infty\in\P^{1}$ regular values of $f$, $0\neq \infty$, and $\forall t\in \P^{1}$, $p\colon \tilde{X}_{t}=f^{-1}(t)\xrightarrow{\sim} X_{t}=X\cap H_{t}$.
+    \begin{center}
+	\begin{tikzcd}
+	    p^{-1}(\tau)\arrow{d} \arrow[hook]{r} & \tilde{X} \arrow{d}{p} & \tilde{X}\setminus p^{-1}(\tau) \arrow{d}{\sim}\arrow[hook]{l} \\
+	    Z_{0}:= X\cap A\arrow[hook]{r} & X & X\setminus Z \arrow[hook]{l}
+	\end{tikzcd}
+    \end{center}
+    \begin{center}
+	\begin{tikzcd}
+	    Z\arrow[hook]{r}{h_{0}} & X_{0}\arrow[hook]{r}{i_{0}} & X \\
+	    & & X\setminus Z\arrow[hook]{u} \\
+	    & & X\setminus X_{0}\arrow[hook]{u}
+	\end{tikzcd}
+    \end{center}
+\end{nota}
+
 
 \bibliographystyle{alpha}
 \bibliography{refs}
