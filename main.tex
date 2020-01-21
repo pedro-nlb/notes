@@ -6637,6 +6637,215 @@ Use triangle equations to define adjunctions.
 Instead of equality, we ask for coherent homotopy between the identities and the corresponding compositions.
 Such an adjunction induces natural equivalences of bifunctors as usual.
 
+\section{[LT] Lecture ... - 21.01.20}
+
+\subsection{Blow-up formula}
+If $\tilde{X}$ is the blow-up of $X$ along $Z\sub X$, then $H^{k}(\tilde{X})\cong H^{k}(X)\op H^{k-2}(Z)$.
+
+The \textit{degree} of a map $f\colon M\to N$ between oriented, connected, compact manifolds of the same dimension $n\in \N$ is defined as the integer corresponding to $\Z=H_{n}(M)\xrightarrow{f_{*}} H_{n}(N)=\Z$.
+
+\begin{lm}
+    $\deg(p\colon \tilde{X}\to X)=1$.
+    \begin{proof}
+	$p$ is an isomorphism over $U=X\setminus Z$.
+	For all $x\in U$ we have a pullback square
+	\begin{center}
+	    \begin{tikzcd}
+		p^{-1}\{x\}\arrow{d}{q}\arrow[hook]{r}{\tilde{i}_{x}} & \tilde{X}\arrow{d}{p} \\
+		\{ x\}\arrow[hook]{r}{i_{x}} & X
+	    \end{tikzcd}
+	\end{center}
+	By base change we have $i_{x}^{*}p_{*}=q_{*}\tilde{i}_{x}^{*}$.
+	Hence
+	\begin{align*}
+	    i^{*}p_{*}([\tilde{X}]^{*}) & =q_{*}\tilde{i}_{x}^{*}([\tilde{X}]^{*}) \\
+	     & q_{*}([p^{-1}\{x\}]^{*}) \\
+	     & [\{x\}]^{*} \text{ $q$ iso, preserves the orientation}
+	\end{align*}
+	Therefore $i_{x}^{*}(\deg(p)[X]^{*})=\deg(p)i_{x}^{*}([X]^{*})=\deg(p)[\{x\}]^{*}=[\{x\}]^{*}$, and so $\deg(p)=1$.
+    \end{proof}
+\end{lm}
+
+\begin{proof}[Proof of (3)]
+    $p^{*}\colon H^{k}(X)\to H^{k}(\tilde{X})$ is injective.
+    Indeed, $p_{*}\circ p^{*}=\deg(p)$.
+    So if $p^{*}(\alpha)=0$, then $\alpha=p_{*}p^{*}(\alpha)=0$.
+    By the projective bundle formula proven last time, $p^{*}\colon H^{k}(X,X\setminus Z)\to H^{k}(\tilde{X},\tilde{X}\setminus E)$ is injective.
+    Indeed,
+    \begin{center}
+	\begin{tikzcd}
+	    H^{k}(X,X\setminus Z)\arrow{d}{Thom. iso.}\arrow{r} & H^{k}(\tilde{X},\tilde{X}\setminus E)\arrow{d}{\sim} \\
+	    H^{k-4}(Z)\arrow[hook]{r}\arrow{dr} & H^{k-2}(E)\cong H^{k-2}(Z)\arrow{d}{\sim} \\
+	    & H^{k-2}(Z)\op H^{k-4}(Z)
+	\end{tikzcd}
+    \end{center}
+    Consider now the diagram
+    \begin{center}
+	\begin{tikzcd}
+	    H^{k}(X,X\setminus Z)\arrow[hook]{d} \arrow{r} & H^{k}(X)\arrow[hook]{d}\arrow{r} & H^{k}(U)\arrow{d}{\sim} \arrow{r} & H^{k+1}(X,X\setminus Z)\arrow[hook]{d} \\
+	    H^{k}(\tilde{X},\tilde{X}\setminus E) \arrow{r} & H^{k}(\tilde{X}) \arrow{r} & H^{k}(\tilde{U}) \arrow{r} & H^{k+1}(\tilde{X},\tilde{X}\setminus E)
+	\end{tikzcd}
+    \end{center}
+    $H^{k}(X)\op H^{k-2}(E)\cong H^{k}(X)\op H^{k}(\tilde{X},\tilde{X}\setminus E)\to H^{k}(\tilde{X})$ is surjective with kernel
+    \[ \im(H^{k-4}(Z)\xrightarrow{(i_{*},-q^{*})} H^{k}(X)\op H^{k-2}(E)), \]
+    where $q\colon E\to Z$ is the projection [diagram chase].
+\end{proof}
+
+\subsection{Extraordinary cup-product}
+
+Let $i\colon Z\to X$ be a closed subvariety of codimension $r$, both $Z$ and $X$ non-singular.
+We will define an operation
+\[ H^{k}(X,X\setminus Z)\times H^{k}(Z)\xrightarrow{\cup} H^{k+l}(X,X\setminus Z) \]
+satisfies
+\begin{enumerate}
+    \item For all $\alpha\in H^{k}(X)$ and for all $\beta\in H^{l}(X,X\setminus Z)$ and for all $\gamma\in H^{n}(Z)$ we have
+	\[ \alpha\cup (\beta \cup \gamma)=(\alpha \cup \beta)\cup \gamma. \]
+    \item If $r\colon H^{k}(X,X\setminus Z)\to H^{k}(X)$, then for all $\alpha\in H^{k}(X,X\setminus Z)$ and for all $\beta \in H^{l}(X,X\setminus Z)$ we have
+	\[ r(\alpha)\cup \beta=\alpha\cup i^{*}(r(\beta)). \]
+    \item For all $\alpha\in H^{k}(X)$ and for all $\beta\in H^{l}(X,X\setminus Z)$ we have 
+	\[ \alpha\cup \beta=(-1)^{kl}\beta\cup i^{*}(\alpha) \]
+\end{enumerate}
+For more details, see Iversen's Cohomology of sheaves, page 128.
+
+Recall the Thom isomorphism $H^{k-2r}(Z)\xrightarrow{\sim}H^{k}(N_{Z/X},N_{Z/X}\setminus Z)\cong H^{k}(X,X\setminus Z)$, already used previously today in one of the commutative diagrams.
+We can express this composition as $\alpha\mapsto \tau_{Z}\cup \alpha$, and we call $\tau_{Z}\in H^{2k}(X,X\setminus Z)$ the \textit{Thom class} of $Z\sub X$.
+We have
+\begin{center}
+    \begin{tikzcd}
+	& H^{k}(X,X\setminus Z)\arrow{dr}}{r} & \\
+	H^{k-2r}(Z)\arrow{ur}{\tau_{Z}\cup} \arrow{rr}{i_{*}} & & H^{k}(X)
+    \end{tikzcd}
+\end{center}
+i.e. for all $\alpha$ we have $i_{*}(\alpha)=r(\tau_{Z}\cup \alpha)$.
+
+\subsection{Projection formula}
+
+\begin{prop}
+    For all $\alpha\in H^{k}(Z)$ and all $\beta\in H^{l}(X)$ we have
+    \[ i_{*}(\alpha\cup i^{*}(\beta))=i_{*}(\alpha)\cup \beta \in H^{k+2+l}(X). \]
+    \begin{proof}
+	Using property $(3)$ above we have
+	\[ i_{*}(\alpha\cup i^{*}(\beta))=r(\tau_{Z}(\alpha\\cup i^{*}(\beta)))=(-1)^{(k+2r)l}r(\beta\cup \tau_{Z}\cup \alpha), \]
+	which is equal to
+	\[ (-1)^{k+2r)l}\beta \cup r(\tau_{Z}\cup \alpha)=r(\tau_{Z}\cup \alpha)\cup \beta=i_{*}(\alpha)\cup \beta. \]
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    For all $\alpha\in H^{k}(X)$ we have
+    \[ i_{*}i^{*}(\alpha)=r(\tau_{Z})\cup \alpha .\] 
+    \begin{proof}
+	\begin{align*}
+	    i_{*}i^{*}(\alpha) & =i_{*}i^{*}(1_{X}\cup \alpha) \\
+	     & = i_{*}(i^{*}(1_{X})\cup i^{*}(\alpha)) \\
+	     & = i_{*}(1_{Z}\cup i^{*}(\alpha)) \\
+	     & = i_{*}(1_{Z})\cup \alpha \\
+	     & = r(\tau_{Z})\cup \alpha
+	\end{align*}
+    \end{proof}
+\end{cor}
+
+\begin{cor}
+    If $i\colon Z\hookrightarrow X$ is the inclusion of a nonsingular hyperplane section, then for all $\alpha \in H^{k}(X)$ we have $i_{*}i^{*}(\alpha)=[Z]^{*}\cup \alpha$.
+\end{cor}
+
+The idea of the proof is to show that $r(\tau_{Z})=[Z]^{*}$ in this special case and apply the previous corollary.
+
+\begin{defn}
+    The \textit{Euler class} is defined as
+    \[ e_{Z}:= i^{*}r(\tau_{Z})\in H^{2r}(Z). \]
+\end{defn}
+
+\begin{prop}
+    For all $\alpha\in H^{k}(Z)$ we have $i^{*}i_{*}(\alpha)=e_{Z}\cup \alpha$.
+    \begin{proof}
+	$\tau_{Z}\cup $ is an isomorphism.
+	On the one hand we have
+	\begin{align*}
+	    \tau_{Z}\cup i^{*}i_{*}(\alpha) & = \tau_{Z}\cup i^{*}(r(\tau_{Z}\cup \alpha)) \\
+	     & \overset{(2)}{=} r(\tau_{Z})\cup (\tau_{Z}\cup \alpha)
+	\end{align*}
+	On the other hand,
+	\begin{align*}
+	    \tau_{Z}\cup (e_{Z}\cup \alpha) & = \tau_{Z}\cup (i^{*}r(\tau_{Z})\cup \alpha) \\
+	    & \overset{(1)}{=} (\tau_{Z}\cup i^{*}r(\tau_{Z}))\cup \alpha \\
+	    & \overset{(2)}{=} (r(\tau_{Z})\cup \tau_{Z})\cup \alpha
+	\end{align*}
+	Finally apply $(1)$ again.
+    \end{proof}
+\end{prop}
+
+\begin{cor}
+    If $i\colon Z\hookrightarrow X$ is the inclusion of a nonsingular hyperplane section, then for all $\alpha \in H^{k}(Z)$ we have $i^{*}i_{*}(\alpha)=i^{*}([Z]^{*})\cup \alpha $.
+\end{cor}
+
+The idea of the proof is as before: show that $e_{Z}=i^{*}r(\tau_{Z})=i^{*}([Z]^{*})$ in this special case.
+
+Combining the last two corollaries we get $(7)$ from the proof of the LHT.
+
+\subsection{Review of the proof of LHT}
+
+\begin{thm}
+    Choose a Lefschetz pencil and restrict along the zero hyperplane section $i_{0}^{*}\colon H^{k}(X)\to H^{k}(X_{0})$.
+    This restriction is
+    \begin{itemize}
+	\item an isomorphism for $k<n-1$, and
+	\item injective for $k=n-1$.
+    \end{itemize}
+    \begin{proof}
+	\begin{enumerate}
+	    \item $\tilde{i}_{0}^{*}\colon H^{k}(\tilde{X})\to H^{k}(\tilde{X}_{0})$ is surjective for $k<n-1$.
+		Consider the diagram
+		\begin{center}
+		    \begin{tikzcd}
+			& H^{k}(\tilde{X}\setminus X_{\infty}) \arrow{dr}{b} & \\
+			H^{k}(\tilde{X})\arrow{ur}{a} \arrow[dashed]{rr}{\tilde{i}_{0}^{*}} & & H^{k}(\tilde{X}_{0})
+		    \end{tikzcd}
+		\end{center}
+		in which both $a$ and $b$ are surjective in the desired range.
+		Hence the bottom arrow is surjective in the desired range as well.
+	    \item $i_{0}^{*}\colon H^{k}(X)\to H^{k}(X_{0})$ is surjective for $k<n-1$.
+		Consider the diagram
+		\begin{center}
+		    \begin{tikzcd}
+			H^{k}(\tilde{X})\arrow{r}{\sim}\arrow{d} & H^{k}(X)\op H^{k-2}(Z)\arrow{d} \\
+			H^{k}(X_{0}) & H^{k-2}(Z)\arrow{l}{h_{0,*}} 
+		    \end{tikzcd}
+		\end{center}
+		in which the vertical arrows are surjective in the desired range.
+		Hence the bottom arrow is surjective in the desired range as well.
+		The claim is that $\im(h_{0,*})\sub \im(i_{0,*})$.
+
+		By induction hypothesis, $h_{0}^{*}\colon H^{m}(X_{0})\to H^{n}(Z)$ is surjective for $m<n-2$.
+		Hence $\im(h_{0}^{*})=H^{k-2}(Z)$ for $k<n-1$.
+		Hence $\im(h_{0,*})=\im(h_{0,*}\circ h_{0}^{*})$ which by $(7)$ is equal to $\im(i_{0}^{*}\circ i_{0,*})\sub \im(i_{0}^{*})$.
+	    \item $i_{0}^{*}$ is injective for $k\leqslant n-1$.
+		Let $\alpha\in H^{k}(X)$ such that $i_{0}^{*}(\alpha)=0$.
+		\begin{center}
+		    \begin{tikzcd}
+			& H^{k}(X)\arrow{rr}{i_{0}^{*}}\arrow{d} & & H^{k}(X_{0})\arrow{d} \\
+			H^{k-2}(X_{\infty})\arrow{r}{\tilde{i}_{\infty,*}} & H^{k}(\tilde{X})\arrow{r}{\tilde{j}_{\infty}^{*}} & H^{k}(\tilde{X}\setminus X_{\infty}) \arrow[hook]{r}{(4)} H^{k}(\tilde{X}_{0})
+		    \end{tikzcd}
+		\end{center}
+		Hence $\tilde{j}_{\infty}^{*}p^{*}(\alpha)=0$.
+
+		By $(2)$, there exists some $\beta \in H^{k-2}$ such that $p^{*}(\alpha)=\tilde{i}_{\infty,*}\beta $.
+		By $(7)$, $\alpha=p_{*}p^{*}(\alpha)=p_{*}\tilde{i}_{\infty,*}\beta=i_{\infty,*}\beta$.
+		Hence $p^{*}i_{\infty,*}\beta=p^{*}\alpha = \tilde{i}_{\infty,*}\beta$.
+		By $(3)$, we get a diagram
+		\begin{center}
+		    \begin{tikzcd}
+			H^{k}(\tilde{X})\arrow{ddr}\arrow{r}{\sim} & H^{k}(X)\op H^{k-2}(Z)\arrow[equal]{d} \\
+			& \im(p^{*})\op H^{k-2}(Z)\arrow{d} \\
+			& H^{k-2}(Z)
+		    \end{tikzcd}
+		\end{center}
+
+	\end{enumerate}
+    \end{proof}
+\end{thm}
+	
+
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
 
