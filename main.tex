@@ -6416,18 +6416,173 @@ This implies that $\calP\colon \sN_{0}=\sN\cap \M_{0}\xrightarrow{\sim} D_{0}$.
     $0,\infty\in\P^{1}$ regular values of $f$, $0\neq \infty$, and $\forall t\in \P^{1}$, $p\colon \tilde{X}_{t}=f^{-1}(t)\xrightarrow{\sim} X_{t}=X\cap H_{t}$.
     \begin{center}
 	\begin{tikzcd}
-	    p^{-1}(\tau)\arrow{d} \arrow[hook]{r} & \tilde{X} \arrow{d}{p} & \tilde{X}\setminus p^{-1}(\tau) \arrow{d}{\sim}\arrow[hook]{l} \\
-	    Z_{0}:= X\cap A\arrow[hook]{r} & X & X\setminus Z \arrow[hook]{l}
+	    p^{-1}(\tau)\arrow{d} \arrow[closed]{r} & \tilde{X} \arrow{d}{p} & \tilde{X}\setminus p^{-1}(\tau) \arrow{d}{\sim}\arrow[open]{l} \\
+	    Z_{0}:= X\cap A\arrow[closed]{r} & X & X\setminus Z \arrow[open]{l}
 	\end{tikzcd}
     \end{center}
     \begin{center}
 	\begin{tikzcd}
-	    Z\arrow[hook]{r}{h_{0}} & X_{0}\arrow[hook]{r}{i_{0}} & X \\
-	    & & X\setminus Z\arrow[hook]{u} \\
-	    & & X\setminus X_{0}\arrow[hook]{u}
+	    Z\arrow[closed]{r}{h_{0}} & X_{0}\arrow[closed]{r}{i_{0}} & X \\
+	    & & X\setminus Z\arrow[open]{u} \\
+	    & & X\setminus X_{0}\arrow[open]{u}
 	\end{tikzcd}
     \end{center}
 \end{nota}
+
+\subsection{Lefschetz hyperplane theorem (LHT)}
+
+The restriction map $i_{0}^{*}\colon H^{k}(X)\to H^{k}(X_{0})$ along the zero hyperplane section of our Lefschetz pencil is
+\begin{itemize}
+    \item an isomorphism for $k<n-1$, and
+    \item injective for $k=n-1$.
+\end{itemize}
+
+Ingredients of LHT:
+\begin{enumerate}[label=(\roman*)]
+    \item Induction hypothesis: LHT is satisfied for each non-singular projective variety $Y\sub \P^{N}$ of dimension $\leqslant n-1$.
+    \item Thom isomorphism: $H^{k}(\tilde{X},\tilde{X}\setminus X_{\infty})\cong H^{k}(X_{\infty})$.
+    \item Gysin LES: $\cdots \to H^{k}(\tilde{X})\to H^{k}(\tilde{X}\setminus X_{\infty})\to H^{k-1}(X_{\infty})\to H^{k+1}(\tilde{X})\to \cdots $.
+    \item Blow-up formula: $H^{k+1}(\tilde{X})\cong H^{k+1}(X)\op H^{k-1}(Z)$.
+    \item $\tilde{i}_{0}^{*}\colon H^{k}(\tilde{X}\setminus \tilde{X}_{\infty})\to H^{k}(\tilde{X}_{0})$ is an isomorphism for $k<n-1$ and injective for $k=n-1$.
+    \item $\tilde{i}_{\infty,*}\colon H^{k-1}(X_{\infty})\to H^{k+1}(\tilde{X}\setminus \tilde{X})$ is injective for $k\leqslant m-1$.
+    \item $\tilde{j}_{\infty}^{*}\colon H^{k}(\tilde{X})\to H(\tilde{X}\setminus \tilde{X}_{\infty})$ is surjective for $k\leqslant n-1$.
+    \item $h_{0,*}\circ h_{0}^{*}=[X_{0}]\cup (-)=i_{0}^{*}\circ i_{0,*}$.
+\end{enumerate}
+
+\begin{exa}
+    $H^{*}(\P^{n})$.
+    For $n=0$ we have just a point, so
+    \[ H^{k}(\P^{0})=\begin{cases}
+	\Z & \text{ if } k=0, \\
+	0 & \text{ otherwise}.
+    \end{cases}
+    \]
+    For higher $n$ we proceed by induction.
+    We have $\P^{n}\sub \P^{n+1}$ sitting as a linear subspace, and $\P^{n+1}\setminus \P^{n}\cong \C^{n+1}$ is contractible.
+    Using (iii) we get a LES
+    \[ \cdots \to H^{k}(\C^{n+1})\to H^{k-1}(\P^{n})\to H^{k+1}(\P^{n+1})\to H^{k+1}(\C^{n+1}) \to \cdots \]
+    from which we deduce that
+    \[ H^{k}(\P^{n})=\begin{cases}
+	\Z &\text{ if }0\leqslant k\leqslant 2n \text{ and } 2\mid k, \\
+	0 & \text{ otherwise}.
+    \end{cases}
+    \]
+    By Poincaré duality, the same is true for the homology groups.
+\end{exa}
+
+Ingredient (i) is okay, and ingredients (ii), (iii), (iv) and (viii) will be treated the next time.
+Ingredient (v) is the dual of the statement in homology from the last time.
+
+\begin{proof}[Proof of (vi)]
+    By (iv) we have a diagram
+    \begin{center}
+	\begin{tikzcd}
+	    H^{k-1}(X_{\infty})\arrow{dr}{h_{\infty}^{*}}\arrow{r}{i_{\infty}^{*}} & H^{k+1}(\tilde{X})\cong H^{k+1}(X)\op H^{k-1}(Z) \arrow{d} \\
+	     & H^{k-1}(Z)
+	\end{tikzcd}
+    \end{center}
+    Here $Z\sub X_{\infty}$ is a nonsingular hyperplane section, and $\dim(X_{\infty})=n-1$.
+    By (i), $h_{\infty}^{*}$ is injective in degrees $k-1\leqslant n-2$.
+\end{proof}
+
+\begin{proof}[Proof of (vii)]
+    Consider the LES
+    \[ \cdots \to H^{k}(\tilde{X})\xrightarrow{a} H^{k}(X\setminus X_{\infty})\xrightarrow{b} H^{k-1}(X_{\infty})\xrightarrow{c}H^{k+1}(\tilde{X})\to \cdots \]
+    By (v), $c$ is injective for $k\leqslant n-1$.
+    By exactness of the sequence, $\im(b)=\ker(c)=0$.
+    Hence $\im(a)=\ker(b)=H^{k}(\tilde{X}\setminus X_{\infty})$.
+    Therefore $a$ is surjective.
+\end{proof}
+
+\begin{proof}[Proof of LHT]
+    We split the proof into several steps:
+    \begin{enumerate}
+	\item $\tilde{i}_{0}^{*}\colon H^{k}(\tilde{X})\to H^{k}(\tilde{X}_{0})$ is surjective for $k<n-1$.
+	    For this consider the commutative diagram
+	    \begin{center}
+		\begin{tikzcd}
+		    & H^{k}(\tilde{X}\setminus \tilde{X}_{\infty})\arrow{dr}{b} & \\
+		    H^{k}(\tilde{X})\arrow{ur}{a}\arrow{rr}{i_{0}^{*}} & & H^{k}(\tilde{X}_{0})
+		\end{tikzcd}
+	    \end{center}
+	    By (vii), $a$ is surjective in the desired range.
+	    By (v), $b$ is surjective in the desired range.
+	    Hence $i_{0}^{*}$ is surjective in the desired range.
+	\item $i_{0}^{*}\colon H^{k}(X)\to H^{k}(X_{0})$ is surjective for $k<n-1$.
+	    For this consider the diagram
+	    \begin{center}
+		\begin{tikzcd}
+		    H^{k}(\tilde{X})\arrow[twoheadrightarrow]{d}{(1)}\arrow{r}{\sim} & H^{k}(X)\op H^{k-2}(Z) \arrow[twoheadrightarrow]{d} \\
+		    H^(\tilde{X}_{0})=H^{k}(X_{0}) & H^{k-2}(Z)\arrow{l}{h_{0,*}}
+		\end{tikzcd}
+	    \end{center}
+	    which will commtue by the proof of (iv).
+	    Hence it suffices to show that $H^{k}(X_{0})\overset{(1)}{=}\im(h_{0,*})\sub \im(i_{0}^{*})$.
+	    By (i) we have that $h_{0}^{*}\colon H^{m}(X_{0})\to H^{m}(Z)$ is surjective for $m<n-2$.
+	    Hence $\im(h_{0}^{*})=H^{k-2}(Z)$ for $k<n-1$.
+	    Hence $\im(h_{0,*}\colon H^{k-2}(Z)\to H^{k}(X_{0}))$ is the same as $\im(h_{0,*}\circ h_{0}^{*}\colon H^{k}(X_{0})\to H^{k}(X_{0}))$ which is the same as $\im(i_{0}^{*}\circ i_{0}^{*})$.
+	\item $i_{0}^{*}\colon H^{k}(X)\to H^{k}(X_{0})$ is injective for $k<n-1$.
+	    Let $k<n-1$ and let $\alpha\in H^{k}(X)$ be such that $i_{0}^{*}(\alpha)=0\in H^{k}(X_{0})$.
+	    We will show that $\alpha=0$.
+	    Consider the commutative diagram
+	    \begin{center}
+		\begin{tikzcd}
+		    H^{k}(X)\arrow{d}{p^{*}}\arrow{r}{i_{0}^{*}} & H^{k}(X_{0})\arrow{dr} & \\
+		    H^{k}(\tilde{X})\arrow{r}{\tilde{j}_{\infty}^{*}} & H^{k}(\tilde{X}\setminus X_{\infty})\arrow{r}{\tilde{i}_{0}^{*}} & H^{k}(\tilde{X}_{0}) \\
+		    H^{k-2}(X_{\infty})\arrow{u}{\tilde{i}_{\infty,*}} & &
+		\end{tikzcd}
+	    \end{center}
+	    The map $\tilde{i}_{0}^{*}$ is injective by (v).
+	    Hence $\tilde{j}_{\infty}^{*}p^{*}\alpha=0$.
+	    By (iii), there exists some $\beta \in H^{k-2}(X_{\infty})$ such that $p^{*}\alpha=\tilde{i}_{\infty,*}\beta$.
+	    (viii) will then imply that $\alpha\overset{\text{next time}}{=}p_{*}p^{*}\alpha=p_{*}\tilde{i}_{\infty,*}\beta\in H^{k}(X)$, hence $p^{*}i_{\infty,*}\beta =p^{*}\alpha =i_{\infty,*}\beta$ by choice of $\beta$.
+	    By (iv) we have $i_{\infty}^{*}\beta \in H^{k}(\tilde{X})\cong H^{k}(X)\op H^{k-2}(Z)=\im(p^{*})\op H^{k-2}(Z)$, which maps to $h_{\infty}^{*}\beta$ in $H^{k-2}(Z)$, where $h_{\infty}^{*}\colon H^{k-2}(X_{\infty})\to H^{k-2}(Z)$.
+	    Since $p^{*}i_{\infty,*}\beta = i_{\infty,*}\beta$, we have $h_{\infty}^{*}\beta=0$.
+	    But then by (i) $\beta=0$, therefore $\alpha=0$ as well.
+    \end{enumerate}
+\end{proof}
+
+\begin{rem}
+    Last time we said (although not in the exact same words) that $H_{n}(\tilde{X}\setminus X_{\infty},X_{0})$ was generated by the classes of cones over vanishing cycles.
+\end{rem}
+
+\begin{prop}
+    $H_{n}(X,X_{0})$ is generated by the images in $X$ under $p\colon \tilde{X}\to X$ of cones over vanishing cycles.
+    \begin{proof}
+	Exercise!
+	Use ingredients from LHT to show that $p_{*}\colon H_{n}(\tilde{X}\setminus X_{\infty},X_{0})\to H_{n}(X,X_{0})$ is surjective.
+    \end{proof}
+\end{prop}
+
+\subsection{Cohomology of non-singular hypersurface in projective space}
+
+Let $X\sub \P^{n}$ be a non-singular hypersurface cut out by $f$ an irreducible homogeneous polynomial of degree $d$.
+Consider the Veronese embedding.
+For $V$ a $\C$-vector space, it is given by
+\begin{align*}
+    \nu_{d} \colon \P(V) & \to \P(\operatorname{Sym}^{d}(V)) \\
+    [v] & \mapsto [v^{d}]
+\end{align*}
+
+\textbf{Fact:}
+$\nu_{d}$ is a homeomorphism onto its image (a closed immersion in fact).
+
+\begin{exa}
+    $\nu_{2}\colon \P^{2}\to \P^{5}$ is given in coordinates by
+    \[ [x:y:z]\mapsto [x^{2}:y^{2}:z^{2}:xy:xz:yz]. \]
+\end{exa}
+
+\textbf{Fact:}
+$\nu_{d}(X)=\nu_{d}(\P^{n})\cap H$ for some hyperplane $H$ in $\P^{{{n+1}\choose{d}}-1}$.
+So computing $H^{*}(\P^{n},X)$ is equivalent ot computing $H^{*}(\nu_{d}(\P^{n}),\nu_{d}(\P^{n})\cap H)$.
+By the LHT,
+\[ H^{k}(X)=\begin{cases}
+    \Z & \text{ if } k\leqslant n-2 \text{ and } 2\mid k, \\
+    \Z & \text{ if } k\geqslant n \text{ and } 2\mid n-k, \\
+    ? & \text{ if } k=n-1, \text{ and} \\
+    0 & \text{ otherwise.}
+\end{cases}
+\]
 
 \section{[CM] Introduction to infinity categories (Brad) - 20.01.20}
 
@@ -6712,7 +6867,7 @@ We can express this composition as $\alpha\mapsto \tau_{Z}\cup \alpha$, and we c
 We have
 \begin{center}
     \begin{tikzcd}
-	& H^{k}(X,X\setminus Z)\arrow{dr}}{r} & \\
+	& H^{k}(X,X\setminus Z)\arrow{dr}{r} & \\
 	H^{k-2r}(Z)\arrow{ur}{\tau_{Z}\cup} \arrow{rr}{i_{*}} & & H^{k}(X)
     \end{tikzcd}
 \end{center}
@@ -6824,7 +6979,7 @@ Combining the last two corollaries we get $(7)$ from the proof of the LHT.
 		\begin{center}
 		    \begin{tikzcd}
 			& H^{k}(X)\arrow{rr}{i_{0}^{*}}\arrow{d} & & H^{k}(X_{0})\arrow{d} \\
-			H^{k-2}(X_{\infty})\arrow{r}{\tilde{i}_{\infty,*}} & H^{k}(\tilde{X})\arrow{r}{\tilde{j}_{\infty}^{*}} & H^{k}(\tilde{X}\setminus X_{\infty}) \arrow[hook]{r}{(4)} H^{k}(\tilde{X}_{0})
+			H^{k-2}(X_{\infty})\arrow{r}{\tilde{i}_{\infty,*}} & H^{k}(\tilde{X})\arrow{r}{\tilde{j}_{\infty}^{*}} & H^{k}(\tilde{X}\setminus X_{\infty}) \arrow[hook]{r}{(4)} & H^{k}(\tilde{X}_{0})
 		    \end{tikzcd}
 		\end{center}
 		Hence $\tilde{j}_{\infty}^{*}p^{*}(\alpha)=0$.
