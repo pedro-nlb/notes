@@ -7039,7 +7039,148 @@ Combining the last two corollaries we get $(7)$ from the proof of the LHT.
 	\end{enumerate}
     \end{proof}
 \end{thm}
-	
+
+\section{[WS] Rationality 2 (Tanuj) - Lueroth's Problem - 22.01.20}
+
+Let $k=\bar{k}$.
+
+A map ($\dashrightarrow$) is a rational map, as opposed to an honest morphism ($\to$).
+
+\begin{prop}
+    If $f\colon X\dashrightarrow Y$ with $X$ and $Y$ being smooth and projective, then $\operatorname{codim}(X\setminus V) \geqslant 2$, where $V$ is a maximal open set on which the map is defined.
+\end{prop}
+
+\begin{rem}
+    For a smooth curve, $f\colon C\dashrightarrow X$ can always be extended to a morphism.
+\end{rem}
+
+Let $f\colon X\dashrightarrow Y$.
+We say that $f$ is \textit{dominant} if $\im(f)$ is dense in $Y$.
+We say that $X$ is \textit{rational} if it is birational to $\P^{N}$ for some $N$.
+We say that $X$ is \textit{unirational} if $\exists \P^{n}\dashrightarrow X$ generically finite dominant map for some $N$, or equivalent, there exists a dominant map $\exists \P^{N'}\dashrightarrow X$.
+
+\textbf{Lueroth's problem:}
+if $X$ is unirational, is $X$ rational as well?
+
+For curves, the answer is yes in all characteristics.
+For surfaces, the answer is yes in characteristic zero but no in positive characteristics.
+
+\begin{q}[Philosophical]
+    Is being rational all that great?
+\end{q}
+
+The goal of the seminar is to provide a counterexample for Lueroth's problem in dimension $3$.
+
+\textbf{Setting:}
+$X$ and $Y$ smooth projective varieties over $k=\bar{k}$ of characteristic zero.
+$S$ a surface.
+
+\textit{Fabian's HW}: if $Y$ is unirational, then $H^{0}(Y, \Omega^{p})=0$ and $H^{0}(Y,(\Omega^{p})^{\ot n})=0$.
+
+\begin{prop}
+    $f\colon X\dashrightarrow Y$ dominant and generically finite, then $H^{0}(Y,\Omega_{Y}^{p})\sub H^{0}(X,\Omega_{X}^{p})$.
+    \begin{proof}
+	Let $V$ be a maximal open such that $f\colon V\to Y$ is a morphism.
+	We can pullback forms:
+	\[ f^{*}\colon H^{0}(Y,\Omega_{Y}^{p})\to H^{0}(V,\Omega_{V}^{p}). \]
+	This $f^{*}$ is injective, and since the complement of $V$ is of codimension at least $2$, we get $H^{0}(V,\Omega_{V}^{p})\cong H^{0}(X,\Omega_{X}^{p})$ by Hartog's extension theorem.
+    \end{proof}
+\end{prop}
+
+\begin{cor}[Fabian's Homework]
+    $X=\P^{N}$, and $H^{0}(\P^{N},\Omega_{\P^{N}}^{p})=0$.
+    Hence $H^{0}(Y,\Omega_{Y}^{p})=0$.
+    \begin{proof}
+	To see that on $\P^{N}$ there are no global sections, use the Euler sequence.
+    \end{proof}
+\end{cor}
+
+\begin{cor}
+    Suppose $f$ s birational instead.
+    Then $H^{0}(X,\Omega_{X}^{p})\cong H^{0}(Y,\Omega_{Y}^{p})$.
+    Hence $h^{p,0}$ are birational invariants.
+\end{cor}
+
+\begin{cor}[Lueroth's problem for curves]
+    $f\colon \P^{1}\dashrightarrow C$ is a morphism because we are in the case of curves.
+    Thus we can pullback forms and $H^{0}(C,\w_{C})=0$.
+    Hence $C=\P^{1}$.
+\end{cor}
+
+\subsection{Surfaces}
+
+[Picture: Hodge diamond for a surface, Hodge and Serre symmetries]
+The outer part of the Hodge diamond is a birational invariant.
+Example: Hodge diamond of $\P^{2}$.
+For surfaces, $h^{1,0}=:q$ is an important birational invariant, called the \textit{irregularity} of the surface.
+The guy in the middle is not a birational invariant, since it goes up with blow-ups.
+
+We want a criterium for rationality of surfaces.
+For sure we need $q(S)=0$.
+We can hope that if $q(S)=0$ and $h^{2,0}(S)=0$, then $S$ is rational.
+Enriques gave a counterexample (Enriques' surfaces).
+But Castelnuovo realized that if $\dim(H^{0}(S,\w_{S}^{\ot 2}))=0$ and $q(S)=0$, then $S$ is rational.
+
+\begin{thm}[Castelnuovo's rationality criterion]
+    $S$ surface, $q(S)=2$, $P_{2}(S):=H^{0}(S,\w_{S}^{\ot 2})=0$, then $S$ is rational.
+\end{thm}
+
+For a proof, see Vakil's notes on algebraic surfaces.
+
+\begin{fact}[Resolution of indeterminacy]
+    Whenever we have a rational map $S\dashrightarrow X$ between a surface and a variety $X$, we can resolve the indeterminacies by blowing up $S$ at the points on which the map is not defined.
+    Hence we obtain a morphism $\tilde{S}\to X$.
+\end{fact}
+
+In our setting unirat
+\begin{center}
+    \begin{tikzcd}
+	\P^{2}\arrow[dashed]{rr} & & S \\
+	& \tilde{\P^{2}}\arrow{ul}\arrow{ur} & 
+    \end{tikzcd}
+\end{center}
+
+\begin{prop}[Lueroth's problem for surfaces]
+    Stated above.
+    \begin{proof}
+	We are given $\P^{2}\dashrightarrow S$ and we want to show that $S$ is rational.
+	By resolving the indeterminacy we get a morphism $\tilde{\P^{2}}\to S$.
+	The claim is that $f$ is surjective.
+	Indeed, it is dominant and proper, hence surjective.
+
+	Suppose $S$ is not rational.
+	Then $q(S)>0$ or $P_{2}(S)>0$ by Castelnuovo's rationality criterion.
+	By pulling back differentials we would get $q(\tilde{\P^{2}})>0$ or $P_{2}(\tilde{\P^{2}})>0$, but this is a contradiction, because these are birational invariants and $\tilde{\P^{2}}$ is rational.
+    \end{proof}
+\end{prop}
+
+In positive characteristic we have the following counterexample:
+\begin{exa}[Shioda]
+    Let $k$ be a field of characteristic $p>2$.
+    Let $X$ be the hypersurface $S=\{ x_{1}^{p+1}-x_{2}^{p+1}= x_{3}^{p+1}-x_{4}^{p+1} \} \sub \P^{3}(k)$.
+    By adjunction, $\w_{S}=\O_{\P^{3}}(p+1-4)|_{S}$ has degree non-negative, so it has sections.
+    But we get a unirational map by some field theory.
+\end{exa}
+
+\subsection{[Philosophical] Is rationality all that good?}
+
+We will talk about \textit{families}, by which we will mean surjective smooth maps $\X\to \Delta$ where $\Delta$ is the unit disk in $\C$.
+Let \textbf{P} be a property.
+
+\begin{defn}
+    We will call \textbf{P} an \textit{open} (resp. \textit{closed}) property if the set $\{g\in \Delta \mid \X_{g}\}$ is open (resp. closed) in $\Delta$ for every such family.
+\end{defn}
+
+We may also replace $\Delta$ by any other base.
+
+\begin{q}
+    Is rationality an open or closed condition in families?
+\end{q}
+
+No, neither of the two!
+This was answered by a recent work of Hasset, Piratka and Tschinkel in 2018.
+
+Instead, if we look at \textit{rationally connected} varieties, this turns out to be an open and closed condition.
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
