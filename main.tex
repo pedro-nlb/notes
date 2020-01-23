@@ -6624,6 +6624,203 @@ Parametrization by $\P^{n}(k)$ yields an explicit solution to the equations.
     Then its \textit{homogeneous coordinate ring}...
 \end{defn}
 
+\section{[LT] Lecture 22 - 16.01.20}
+
+\subsection{Eilenberg-Steenrod theorem and axioms}
+
+\begin{defn}
+    A \textit{generalized cohomology theory} on pairs of finite cell complexes is a sequence of functors $(h^{n})_{n\geqslant 0}$ satisfying
+    \begin{enumerate}[label=(\alph*)]
+	\item Homotopy invariance.
+	\item Exactess, meaning that for all pairs $(X,A)$ we get a long exact sequence
+	    \[ \cdots \to h^{n}(X)\to h^{n}(A)\to h^{n+1}(X,A)\to \cdots \]
+	\item Excision, meaning that for all pairs $(X,A)$ and all subsets $B\sub A$ such that $\overline{B}\sub A^{\circ}$ we have an isomorphism
+	    \[ h^{n}(X,A)\cong h^{n}(X\setminus B,A\setminus B). \]
+	\item Additivity, meaning that if $X=\coprod_{\alpha} X_{\alpha}$, then
+	    \[ h^{n}(X)\cong \op_{\alpha}h^{n}(X_{\alpha}). \]
+    \end{enumerate}
+\end{defn}
+
+\begin{thm}[Eilenberg-Steenrod]
+    If $(\varphi_{n}\colon h^{n}\to k^{n})_{n\geqslant 0}$ is a natural transformation of generalized cohomology theories such that for all pairs $(X,A)$ the diagram
+    \begin{center}
+	\begin{tikzcd}
+	    h^{n}(A)\arrow{d}{\varphi_{n}}\arrow{r} & h^{n+1}(X,A)\arrow{d}{\varphi_{n+1}} \\
+	    k^{n}(A)\arrow{r} & k^{n+1}(X,A)
+	\end{tikzcd}
+    \end{center}
+    commutes and for all $n\in \N$ there are isomorphisms $\varphi_{n}\colon h^{n}(*,\varnothing)\xrightarrow{\sim} k^{n}(*,\varnothing)$, then $\varphi_{n}$ is a natural isomorphism for all $n\geqslant 0$.
+    \begin{proof}
+	See \cite[Theorem 3.19]{hat01}.
+    \end{proof}
+\end{thm}
+
+\subsection{Kuenneth formula}
+
+\begin{defn}
+    Let $X$ and $Y$ be topological spaces.
+    The \textit{external cup product} is given by
+    \begin{align*}
+	H^{*}(X,R)\times H^{*}(Y,R) & \longrightarrow H^{*}(X\times Y,R) \\
+	(\alpha,\beta) & \longmapsto \alpha\tms \beta:= p_{X}^{*}(\alpha)\cup p_{Y}^{*}(\beta)
+    \end{align*}
+\end{defn}
+
+\begin{exe}
+    The external cup product is bilinear and therefore factors through the tensor product over $R$.
+\end{exe}
+
+\begin{rem}
+    Let $\Delta\colon X\to X\tms X$ be the diagonal embedding.
+    Then we have a commutative diagram
+    \begin{center}
+	\begin{tikzcd}
+	    H^{*}(X,R)\ot_{R} H^{*}(X,R)\arrow{dr}{\cup}\arrow{r}{\times} & H^{*}(X\times X,R) \arrow{d}{\Delta^{*}} \\
+	    & H^{*}(X,R)
+	\end{tikzcd}
+    \end{center}
+\end{rem}
+
+\begin{thm}[Kuenneth]
+    Let $X$ and $Y$ be finite cell complexes.
+    If $H^{*}(Y,R)$ is free of finite rank over $R$, then the external cup product induces an isomorphism
+    \[ H^{*}(X,R)\ot_{R}H^{*}(Y,R)=\bigoplus_{p+q=n}H^{p}(X,R)\ot_{R} H^{q}(Y,R)\xrightarrow{\sim} H^{*}(X\times Y,R). \]
+    \begin{proof}
+	Fix $Y$ such that $H^{*}(Y,R)$ is free.
+	We have two families of functors of pairs $h^{n}(X,A):=\op_{p+q=n} H^{p}(X,A;R)\ot_{R}H^{q}(Y;R)$ and $k^{n}(X,A):=H^{n}(X\times Y,A\times Y;R)$.
+	Now
+	\begin{enumerate}
+	    \item The external cup product defines natural transformations
+		\[ \varphi_{n}\colon h^{n}\to k^{n} \]
+		for all $n\in \N$.
+	    \item One can check that $\varphi$ is compatible with the cohomology maps as required by Eilenberg-Steenrod's theorem.
+	    \item Both functors agree on points $(*,\varnothing)$.
+	    \item They are both cohomology theories.
+	\end{enumerate}
+	For the details, see \cite[Theorem 3.16]{hat01}.
+    \end{proof}
+\end{thm}
+
+\begin{exa}
+    In our Lefschetz set up, we have
+    \begin{center}
+	\begin{tikzcd}
+	    E=p^{-1}(Z)\arrow{d}\arrow{r} & \tilde{X}\arrow{d}{p} \\
+	    X\cap A=Z \arrow{r} & X
+	\end{tikzcd}
+    \end{center}
+    with isomorphisms $p^{-1}(Z)\cong Z\times L\cong Z\times \P^{1}$ over $Z$.
+    Hence $H^{*}(E)\cong H^{*}(Z\times \P^{1})\cong H^{*}(Z)\ot H^{*}(\P^{1})$.
+    Since $H^{*}(\P^{1})$ is free of finite rank, this is in turn isomorphic to $H^{*}(Z)\ot (H^{0}(\P^{1})\op H^{2}(\P^{1}))\cong H^{*}(Z)\op H^{*-2}(Z)$.
+\end{exa}
+
+\subsection{Leray-Hirsch theorem}
+
+\begin{thm}[Leray-Hirsch]
+    Let $p\colon E\to B$ be a locally trivial fibration trivialized by a finite open cover of $B$.
+    Assume that $B$ is connected and that $f^{-1}(b)=:F$ and $B$ are finite cell complexes.
+    Let $\alpha_{1},\ldots,\alpha_{r}\in H^{*}(E,R)$ be such that for all $b\in B$ we obtain a basis $\alpha_{1}|_{F},\ldots,\alpha_{r}|_{F}$ of $H^{*}(F,R)$.
+    Then there is an isomorphism
+    \begin{align*}
+	H^{*}(B,R)\ot_{R} H^{*}(F,R) & \xrightarrow{\sim} H^{*}(E,R) \\
+	\sum_{k}(\beta\ot \alpha_{k}|_{F}) & \mapsto \sum_{k}p^{*}(\beta)\cup \alpha_{k}
+    \end{align*}
+    \begin{proof}[Idea of proof]
+	Locally we apply the Kuenneth formula.
+	To globalize, use an induction argument with Mayer-Vietoris, see \cite[Section 4.D]{hat01}.
+    \end{proof}
+\end{thm}
+
+\begin{cor}[Projective bundle formula]
+    Let $p\colon E\to X$ be a vector bundle of rank $r+1$ and let $\pi\colon \P(E)\to X$ be the associated projective bundle of rank $r$.
+    Then $H^{*}(X)[t]/t^{r+1} \xrightarrow{\sim} H^{*}(\P(E))$ for $|t|=2$.
+\end{cor}
+
+\subsection{Thom isomorphism for oriented vector bundles}
+
+\begin{defn}
+    A real vector bundle is \textit{oriented} if it is equipped with an orientation on each fibre $E_{x}=p^{-1}(x)$ such that each trivialization preserves orientations fibrewise, where $\{x\}\times \R^{r}\xrightarrow{\sim}\R^{r}$ carries the standard orientation.
+\end{defn}
+
+\begin{thm}[Thom isomorphism]
+    Let $p\colon E\to X$ be an oriented real vector bundle of rank $r>0$ on a finite cell complex $X$.
+    Then
+    \begin{enumerate}
+	\item There is a class $\eta_{E}\in H^{r}(E,E\setminus X;\Z)$ which restricts to the orientation class in $H^{r}(E_{x},E_{x}\setminus \{0\};\Z)$ for each $x\in X$.
+	\item For all $0\leqslant k<r$ we have $H^{k}(E,E\setminus X;\Z)=0$.
+	\item For all $k\geqslant r$ we have an isomorphism
+	    \begin{align*}
+		H^{k-r}(X,\Z) & \xrightarrow{\sim} H^{k}(E,E\setminus X;\Z) \\
+		\alpha & \mapsto p^{*}(\alpha)\cup \eta_{E}
+	    \end{align*}
+    \end{enumerate}
+    \begin{proof}[Idea of the proof]
+	As in the proof of the Leray-Hirsch theorem, we reduce to the case in which $p\colon E\to X$ is trivial by induction on the number of opens in a trivialization and Mayer-Vietoris.
+	Assume hence that $E\cong_{X} X\times \R^{r}$ is trivial.
+	Since $\R^{r}$ is contractible, $E$ deformation retracts onto $X\times B^{r}$ and $E\setminus (X\times \{ 0\})$ deformation retracts onto $X\times S^{r-1}$.
+	The long exact sequence
+	\[ \cdots \to H^{k}(E)\to H^{k}(E\setminus X)\to H^{k+1}(E,E\setminus X)\to \cdots \]
+	is isomorphic to
+	\begin{center}
+	    \begin{tikzcd}
+		H^{k}(X\tms B^{r})\arrow{d}{\sim}\arrow{r} & H^{k}(X\times S^{r-1})\arrow{r}\arrow{d}{\sim} & H^{k+1}(X\times B^{r},X\times S^{r-1})\arrow{d}{\sim} \\
+		H^{k}(X) \arrow{r} & \op_{p+q=k}H^{p}(X)\ot H^{q}(S^{r-1})\arrow{d}{\sim}\arrow{r} & \op_{p+q=k+1}H^{p}(X)\ot H^{q}(D^{r},S^{r-1})\arrow{d}{\sim} \\
+		& H^{k}(X)\op H^{k-r+1}(X) & H^{k-r+1}(X)
+	    \end{tikzcd}
+	\end{center}
+    \end{proof}
+\end{thm}
+
+\begin{defn}
+    We call $\eta_{E}$ in $(1)$ the \textit{Thom class} of $p\colon E\to X$, and the isomorphism in $(3)$ the \textit{Thom isomorphism} of $p\colon E\to X$.
+\end{defn}
+
+\subsection{Tubular neighbourhood theorem}
+
+\begin{thm}[Tubular neighbourhood]
+    Let $i\colon Z\mono X$ be a closed embedding of smooth manifolds.
+    There exists an oppen neighbourhood $U$ of $Z$ in $X$, a retract $U\to Z$ and a homeomorphism $h\colon U\to N_{Z/X}$ onto the normal bundle of $Z$ in $X$ such that the following diagram commutes:
+    \begin{center}
+	\begin{tikzcd}
+	    Z\arrow[bend left=45, equal]{rr}\arrow[hook]{r}\arrow[equal]{d} & U\arrow{d}{h}\arrow{r}{r} & Z\arrow[equal]{d} \\
+	    Z\arrow{r}{\sigma_{0}}\arrow[equal, bend right=45]{rr} & N_{Z/X}\arrow{r}{\pi} & Z
+	\end{tikzcd}
+    \end{center}
+    Here $\sigma_{0}$ denotes the zero section and $\pi$ the projection.
+\end{thm}
+
+\begin{rem}
+    The normal bundle $N_{Z/X}$ is intuitively the subbundle of $T_{X}$ spanned by the vectors orthogonal to $Z$.
+\end{rem}
+
+\subsection{Application to Thom isomorphism for non-singular varities}
+
+Let $Z\sub X$ be a closed smooth subvariety of the smooth variety $X$, and let $r>0$ be its codimension.
+Then $N_{Z/X}$ is locally free of rank $r$ over $Z$.
+We have
+\begin{align*}
+    H^{k-2r}(Z) & \cong H^{k}(N_{Z/X},N_{Z/X}\setminus Z) & \quad \text{Thom iso. for bundles} \\
+    & \cong H^{k}(U,U\setminus Z) & \quad \text{Tubular nbhd } Z\sub U\sub X \\
+    & \cong H^{k}(X,X\setminus Z) & \quad \text{Excision}
+\end{align*}
+We call the composite $H^{k-2r}(Z)\to H^{k}(X,X\setminus Z)$ the \textit{Thom isomorphism} for $(X,Z)$.
+
+\subsection{Gysin sequence}
+
+Another application of the Thom isomorphism theorem is the Gysin long exact sequence.
+One can check that
+\begin{center}
+    \begin{tikzcd}
+	& H^{k-2r}(X,X\setminus Z)\arrow{dr} & \\
+	H^{k}(Z)\arrow{ur}\arrow{rr}{i_{*}} & & H^{k+2r}(X)
+    \end{tikzcd}
+\end{center}
+commutes.
+
+Hence we have a long exact sequence
+\[\cdots \to H^{k-2r}(Z)\to H^{k}(X)\to H^{k}(X\setminus Z)\to H^{k+1-2r}(Z)\to \cdots \]
+called the \textit{Gysin sequence}.
+
 \section{[CM] Introduction to infinity categories (Brad) - 20.01.20}
 
 \subsection{Motivation}
@@ -6832,7 +7029,7 @@ Use triangle equations to define adjunctions.
 Instead of equality, we ask for coherent homotopy between the identities and the corresponding compositions.
 Such an adjunction induces natural equivalences of bifunctors as usual.
 
-\section{[LT] Lecture ... - 21.01.20}
+\section{[LT] Lecture 23 - 21.01.20}
 
 \subsection{Blow-up formula}
 If $\tilde{X}$ is the blow-up of $X$ along $Z\sub X$, then $H^{k}(\tilde{X})\cong H^{k}(X)\op H^{k-2}(Z)$.
@@ -7181,6 +7378,10 @@ No, neither of the two!
 This was answered by a recent work of Hasset, Piratka and Tschinkel in 2018.
 
 Instead, if we look at \textit{rationally connected} varieties, this turns out to be an open and closed condition.
+
+\section{[LT] Lecture 24 - Artin Vanishing - 23.01.20}
+
+See \cite{voi03}.
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
