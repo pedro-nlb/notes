@@ -7485,6 +7485,94 @@ Instead, if we look at \textit{rationally connected} varieties, this turns out t
 
 See \cite{voi03}.
 
+\section{[FS] Dual complex of Log Calabi--Yau pairs on Mori Fibre Spaces - 24.01.20}
+
+The idea is to encode the intersection of divisors on a CW complex.
+
+\begin{defn}
+    Let $(X^{n+1},\Delta=\sum_{i=1}^{m+1})$ snc (dlt, qdlt).
+    The \textit{dual complex} of $\Delta$, denoted $D(\Delta)$, is a regular cell complex defined as follows:
+    \begin{enumerate}
+	\item $0$-cells are in bijection with the irreducible components $\Delta_{i}$.
+	\item $k$-cells are in bijection with irreducible components of intersections $\Delta_{i_{0}}\cap \cdots \cap \Delta_{i_{k}}$.
+    \end{enumerate}
+\end{defn}
+
+\subsection{Algebraic version of the Poincare conjecture}
+
+\begin{conj}[Kollar-Xu]
+    Let $(X,\Delta)$ dlt log Calabi--Yau, i.e. $K_{X}+\Delta\sim_{\Q} 0$.
+    Then the dual complex $D(\Delta)$ is a sphere or a finite quotient of a sphere.
+\end{conj}
+
+\begin{exa}[Toric varieties]
+    Let $X$ be a toric variety, i.e. a variety with an action of an algebraic group and a dense orbit, together with some fan $\Sigma$ from which it is obtained.
+    Let $\Delta$ be a toric divisor, i.e. the complement of the big torus.
+    For example, $\P^{2}\supseteq \C^{\times}\times \C^{\times}$, whose complement are the three axes, hence the dual complex is an $S^{1}$.
+    This is a classical example of log CY pairs.
+    $\operatorname{Cone}(D(\Sigma))\cong |\Sigma |\cong \R^{n}$.
+\end{exa}
+
+So in this case we are in fact building the variety from the dual complex.
+
+\begin{exa}
+    Let $(X,\Delta)$ and $(X_{2},\Delta_{2})$ be a log Calabi--Yau.
+    For curves, the only example is $\P^{1}$ with two points.
+    Then $D(X_{1}\times X_{2},\pi_{1}^{*}\Delta_{1}+\pi_{2}^{*}\Delta_{2})=D(\Delta_{1})*D(\Delta_{2})$, where $*$ denotes the join of topological spaces.
+    This is an important reality check, because is we had e.g.~a product there, then we would have a counterexample to the conjecture above.
+\end{exa}
+
+\begin{thm}[Kollar-Xu]
+    The conjecture holds if $\dim{X}\leqslant 4$ or $(\dim{X}=5$ and $(X,\Delta)$ SNC).
+\end{thm}
+
+\begin{conj}
+    If $(X,\Delta)$ is snc, then
+    \[ \operatorname{Tors}(H^{*}(D(\Delta),\Z))=0. \]
+\end{conj}
+
+\subsection{Motivation}
+Let $(Y,E)\to X$ be a (minimal dlt modification) log resolution of some (log canonical) isolated singularity.
+Then [Stepomov...] the (homeo) homotopy type of $D(E)$ is an invariant of the singularity.
+$K_{Y}+E\sim_{\Q,f} 0 $.
+
+\subsection{Mirror symmetry}
+Let $\pi\colon \X\to B$ be a family of CY varieties over a small disk.
+Assume $\pi$ is a minimal degeneration, so $K_{\X}\sim_{\Q} 0$.
+The general member will be smooth and CY, but over zero we may have some singular objecct, lets say $F:=\pi^{-1}(0)=\sum F_{i}$ dlt (modulo reducing the scheme structure).
+Then [Nicaise-Xu] the Berekavich analytification of $\X_{\eta}^{an}$ retracts onto essential skeleton $\simeq D(F)$ and it is the the basis of a non-archimedian SYL fibration.
+
+\subsection{What is the relation with the conjecture}
+Let $v_{0}\in D(\Delta)$.
+$\operatorname{Link}(v_{0},D(\Delta))=\overline{\operatorname{Star}(v_{0})}\setminus \operatorname{Star}(v_{0})$, where $\operatorname{Star}$ is the union of the cell adjacent to $v_{0}$, which is equal to $D(\Delta_{0},\sum_{j\neq 0}\Delta_{j}|_{\Delta_{0}})$.
+
+If $D(\sum_{j\neq i}E_{j}|_{E_{i}})$ is a sphere, then $D(E)$ is a manifold.
+
+The tricky part is to determine whether it is a manifold or not.
+A way to tackle this problem is:
+
+\subsection{Connectivity theorems}
+\begin{thm}[Kollar]
+    Let $(X,\Delta)$ be a dlt log CY.
+    If $D(\Delta)$ is not connected, then $D(\Delta)\simeq S^{0}$.
+    \begin{proof}
+	Let $(X,\Delta)\dashrightarrow (Y,\Delta_{Y})\xrightarrow{\pi} Z$.
+	Here the dashed arrow is the result of $K_{X}$-MMP, $\pi$ is a Mori fibre space and $(Y,\Delta_{Y})$ is log CY.
+	Then use the assumption:
+	\begin{enumerate}
+	    \item Support of $\Delta_{Y}$ is not connected, so $\exists \Delta_{0}\sub \Delta_{Y}$ dominant.
+	    \item $\Delta_{0}|_{F_{gen}},\Delta_{1}|_{F_{gen}}$ ample and they need to intersect, unless we are on a curve.
+		So we are on $\P^{1}$ with two points (if it was an elliptic curve, the assumptions would not hold).
+	\end{enumerate}
+    \end{proof}
+\end{thm}
+
+\begin{thm}[-]
+    Let $(X,\Delta)\to Z$ be dlt log CY Mori fibre space with $\rho(Y)\leqslant 2$ or $\dim(Z)\leqslant 2$.
+    Then $D(\Delta)\simeq $ sphere, standard simplex or $\R P^{2} *S^{*}$.
+\end{thm}
+
+
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
 
