@@ -1,4 +1,4 @@
-\documentclass[A4paper, british]{amsart}
+\documentclass[A4paper, british, reqno]{amsart}
 
 %
 % LOCAL FONT DEFINITIONS -- need to come first
@@ -523,7 +523,7 @@ Long exact sequence in \v{C}ech cohomology induced by a short exact sequence of 
 \subsection{A bit of Hodge theory}
 
 Decomposition of the tangent space at a point of a complex manifold, its tensor algebras, $\partial $ and $\bar{\partial }$ operators, Dolbeault cohomology groups, harmonic and Hodge decomposition.
-See \cite{gh78} or \cite{voi07}.
+See \cite{gh78} or \cite{voi07a}.
 
 \section{[LT] Lecture 2 - 24.10.19}
 
@@ -4268,7 +4268,7 @@ Its intersection with $X_{\leqslant -\varepsilon}$ is
     With notation as above, $X_{\leqslant \varepsilon}$ deformation retracts to $X_{\leqslant -\varepsilon }\cup B^{r}(\varepsilon)$.
     \begin{proof}
 	We need to define a deformation from $X_{\leqslant \varepsilon}$ to the subset (which is clear from the picture).
-	Voisin [Voi07, Prop.1.12] and Milnor [Mil63, p.15-19] write this down.
+	Voisin [Voi07a, Prop.1.12] and Milnor [Mil63, p.15-19] write this down.
 	We use a third method, inspired by the differential geometric approach to Morse theory.
 	Let $G\colon \R^{n}\to \R^{n}$ be the negative gradient field
 	\[ G(x_{1},\ldots,x_{n})=-(\partial_{1} f,\partial_{2} f,\ldots, \partial_{n} f)=(2x_{1},\ldots,2x_{r},-2x_{r+1},\ldots,-2x_{n}) \]
@@ -6753,7 +6753,7 @@ The goal of this seminar is to provide a counterexample in dimension $3$.
     \end{center}
     commutes and for all $n\in \N$ there are isomorphisms $\varphi_{n}\colon h^{n}(*,\varnothing)\xrightarrow{\sim} k^{n}(*,\varnothing)$, then $\varphi_{n}$ is a natural isomorphism for all $n\geqslant 0$.
     \begin{proof}
-	See \cite[Theorem 3.19]{hat01}.
+	See \cite[Theorem 3.19]{hat02}.
     \end{proof}
 \end{thm}
 
@@ -6799,7 +6799,7 @@ The goal of this seminar is to provide a counterexample in dimension $3$.
 	    \item Both functors agree on points $(*,\varnothing)$.
 	    \item They are both cohomology theories.
 	\end{enumerate}
-	For the details, see \cite[Theorem 3.16]{hat01}.
+	For the details, see \cite[Theorem 3.16]{hat02}.
     \end{proof}
 \end{thm}
 
@@ -6829,7 +6829,7 @@ The goal of this seminar is to provide a counterexample in dimension $3$.
     \end{align*}
     \begin{proof}[Idea of proof]
 	Locally we apply the Kuenneth formula.
-	To globalize, use an induction argument with Mayer-Vietoris, see \cite[Section 4.D]{hat01}.
+	To globalize, use an induction argument with Mayer-Vietoris, see \cite[Section 4.D]{hat02}.
     \end{proof}
 \end{thm}
 
@@ -7483,9 +7483,9 @@ Instead, if we look at \textit{rationally connected} varieties, this turns out t
 
 \section{[LT] Lecture 24 - Artin Vanishing - 23.01.20}
 
-See \cite{voi03}.
+See \cite{voi07a} and \cite{voi07b}.
 
-\section{[FS] Dual complex of Log Calabi--Yau pairs on Mori Fibre Spaces - 24.01.20}
+\section{[FS] Mirko Mauri - Dual complex of Log Calabi--Yau pairs on Mori Fibre Spaces - 24.01.20}
 
 The idea is to encode the intersection of divisors on a CW complex.
 
@@ -7513,7 +7513,7 @@ The idea is to encode the intersection of divisors on a CW complex.
     $\operatorname{Cone}(D(\Sigma))\cong |\Sigma |\cong \R^{n}$.
 \end{exa}
 
-So in this case we are in fact building the variety from the dual complex.
+In this case we are in fact building the variety from the dual complex.
 
 \begin{exa}
     Let $(X,\Delta)$ and $(X_{2},\Delta_{2})$ be a log Calabi--Yau.
@@ -7523,7 +7523,7 @@ So in this case we are in fact building the variety from the dual complex.
 \end{exa}
 
 \begin{thm}[Kollar-Xu]
-    The conjecture holds if $\dim{X}\leqslant 4$ or $(\dim{X}=5$ and $(X,\Delta)$ SNC).
+    The conjecture holds if $\dim{X}\leqslant 4$ or $(\dim{X}=5$ and $(X,\Delta)$ snc).
 \end{thm}
 
 \begin{conj}
@@ -7572,6 +7572,7 @@ A way to tackle this problem is:
     Then $D(\Delta)\simeq $ sphere, standard simplex or $\R P^{2} *S^{*}$.
 \end{thm}
 
+See \cite{mau18} for the details.
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}

@@ -6,6 +6,11 @@ P.~Griffiths and J.~Harris.
 \newblock Wiley Classics Library. John Wiley \& Sons, Inc., New York, 1994.
 \newblock Reprint of the 1978 original.
 
+\bibitem[Hat02]{hat02}
+A.~Hatcher.
+\newblock {\em Algebraic topology}.
+\newblock Cambridge University Press, Cambridge, 2002.
+
 \bibitem[Huy06]{huy06}
 D.~Huybrechts.
 \newblock {\em Fourier-{M}ukai transforms in algebraic geometry}.
@@ -14,9 +19,27 @@ D.~Huybrechts.
 \newblock
   \href{https://doi.org/10.1093/acprof:oso/9780199296866.001.0001}{DOI:10.1093/acprof:oso/9780199296866.001.0001}.
 
+\bibitem[Mau18]{mau18}
+Mirko Mauri.
+\newblock The dual complex of log calabi-yau pairs on mori fibre spaces, 2018.
+
 \bibitem[{Sta}19]{sta19}
 The {Stacks project authors}.
 \newblock The stacks project.
 \newblock \url{https://stacks.math.columbia.edu}, 2019.
+
+\bibitem[Voi07a]{voi07a}
+C.~Voisin.
+\newblock {\em Hodge theory and complex algebraic geometry. {I}}, volume~76 of
+  {\em Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, english edition, 2007.
+\newblock Translated from the French by Leila Schneps.
+
+\bibitem[Voi07b]{voi07b}
+C.~Voisin.
+\newblock {\em Hodge theory and complex algebraic geometry. {II}}, volume~77 of
+  {\em Cambridge Studies in Advanced Mathematics}.
+\newblock Cambridge University Press, Cambridge, english edition, 2007.
+\newblock Translated from the French by Leila Schneps.
 
 \end{thebibliography}
