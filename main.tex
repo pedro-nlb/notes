@@ -121,6 +121,7 @@
 \DeclareMathOperator{\Hess}{Hess}
 \let\ord\relax
 \DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Spa}{Spa}
 
 %
 % OTHER COMMANDS
@@ -7573,6 +7574,210 @@ A way to tackle this problem is:
 \end{thm}
 
 See \cite{mau18} for the details.
+
+\section{[CM] Globalization II (Brad) - 27.01.20}
+
+Discrete Huber pairs = affine scheme analogue.
+
+\subsection{Recallections}
+
+Discrete Huber pairs $(A,A^{+})$ consist of a discrete ring $A$ and an integrally closed subring $A^{+}$.
+We defined a functor
+\[ \{\text{ discrete Huber pairs }\}\to \{ \text{ analytic rings }\} \]
+sending $(A,A^{+})$ to the colimit
+\[ \operatorname{colim}_{(B,B^{+})\to (A,A^{+}),B,B^{+} f.g./\Z}(B,B^{+})\usolid \]
+$X=\Spa(A,A^{+})=\{ v\colon A\to \Gamma\cup\{0\}\mid v \text{ valuation}, v(A^{+})\leqslant 1\}/\sim$.
+Rational opens $U=U(\frac{g_{1},\ldots,g_{n}}{f}):=\{x\in X\mid \forall k |g_{k}(x)|\leqslant |f(x)|\neq 0 \}$ form the base for the topology on $\Spa(A,A^{+})$.
+$\O_{\Spa(A,A^{+})}(U)=A[\frac{1}{f}]$ for $U$ as above.
+
+\subsection{Goal}
+\begin{thm}[Theorem 9.8]
+    $\Spa(A,A^{+})\mapsto D((A,A^{+})\usolid)$ is a sheaf of $\infty$-categories.
+\end{thm}
+
+\begin{exa}
+    \begin{center}
+	\begin{tikzcd}
+	    U\cap V\arrow{r}\arrow{d} & V\arrow{d} \\
+	    U\arrow{r} & X
+	\end{tikzcd}
+    \end{center}
+    with $U,V\sub X=\Spa(A,A^{+})$ rational, then
+    \begin{center}
+	\begin{tikzcd}
+	    D((A,A^{+})\usolid)\arrow{d}\arrow{r} & D((\O_{X}(U),\O_{X}^{+}(U))\usolid)\arrow{d} \\
+	    D((\O_{X}(V),\O_{X}^{+}(V))\usolid)\arrow{r} & D((\O_{X}(U\cap V),\O_{X}^{+}(U\cap V))\usolid)
+	\end{tikzcd}
+    \end{center}
+    is cartesian.
+\end{exa}
+
+\begin{cor}
+    There is an essentially unique way to extend the functor of Theorem 9.8 to discrete adic spaces
+    \[ X\mapsto D((\O_{X},\O_{X}^{+})\usolid)=\lim_{\Spa(A,A^{+})\to X} D((A,A^{+})\usolid) \]
+\end{cor}
+
+\begin{rem}
+    If we are willing to accept infinity-categorical sheaf-theoretic nonsense, then it suffices to check the sheaf condition on open ocvers of $\Spa(A,A^{+})$ by rational opens.
+\end{rem}
+
+\subsection{Ingredients in the proof}
+
+The theorem follows from the following ingredients:
+\begin{enumerate}
+    \item $\forall$ ratioanl open $j\colon U=\Spec(B,B^{+})\mono \Spa(A,A^{+})=X$ we have an adjunction
+	\[ j^{*}=(-)\ot_{(A,A^{+})\usolid}(B,B^{+})\usolid \colon D((A,A^{+})\usolid)\leftrightarrow D((B,B^{+})\usolid)\colon j_{*} \]
+	where $j_{*}$ is fully faithful.
+    \item If $X=\cup_{1\leqslant k\leqslant n} U_{k}$ rational open cover, $M\in D((A,A^{+})\usolid)$ such that $M|_{U_{k}}=0$ for each $k$, then $M=0$.
+\end{enumerate}
+
+\begin{nota}
+    $(A,A^{+})$ discrete Huber pair.
+    $X=\Spa(A.A^{+})$.
+\end{nota}
+
+\begin{prop}[Proposition 10.1]
+    Let $U\sub X$ be a rational open.
+    \begin{enumerate}
+	\item The functor $j_{*}\colon D((\O_{X}(U),\O_{X}^{+}(U))\usolid)\to D((A,A^{+})\usolid)$ is fully faithful.
+	\item $\exists j^{*}=(-)\ot_{(A,a^{+})\usolid}(O_{X}(U),\O_{X}^{+}(U))\usolid \dashv j_{*}$ adjunction.
+    \end{enumerate}
+    \begin{proof}
+	Let $U$ as above.
+	\begin{enumerate}
+	    \item Consider the diagram
+		\begin{center}
+		    \begin{tikzcd}
+			D((\O_{X}(U),\O_{X}^{+}(U))\usolid)\arrow[hook]{r}{7.5} \arrow{dd}{j_{*}} & D(\Cond(\O_{X}(U)))\arrow[equal]{d} \\
+			& D(\Cond(A[\frac{1}{f}]))\arrow[hook]{d}{5.9} \\
+			D((A,A^{+})\usolid)\arrow[hook]{r}{7.5} & D(\Cond(A))
+		    \end{tikzcd}
+		\end{center}
+	    \item Follows from 7.7.
+	\end{enumerate}
+    \end{proof}
+\end{prop}
+
+\begin{defn}
+    A \textit{left-adjointable square} is an essentially commutative square of $\infty$-categories
+    \begin{center}
+	\begin{tikzcd}
+	    C\arrow{r}{f_{*}}\arrow{d}{p_{*}} & D\arrow{d}{q_{*}}\arrow{dl}{\alpha \text{ htpy }} \\
+	    C'\arrow{r}{g_{*}} & D'
+	\end{tikzcd}
+    \end{center}
+    such that $\exists $ adjunctions $f^{*}\dashv f_{*}$, $g^{*}\dashv g_{*}$ and the composite
+    \[ g^{*}g_{*}\xrightarrow{\eta} g^{*}q_{*}f_{*}f^{*}\xrightarrow{\alpha, \sim}g^{*}g_{*}p^{*}f^{*}\xrightarrow{\varepsilon} p_{*}f^{*} \]
+    is a natural isomorphism.
+\end{defn}
+
+\begin{prop}[Proposition 10.2]
+    Consider the cartesian square
+    \begin{center}
+	\begin{tikzcd}
+	    V\arrow[open]{r}\arrow{d} & Y=\Spa(B,B^{+})\arrow{d} \\
+	    U\arrow[open]{r}{\text{ratl open}} & X
+	\end{tikzcd}
+    \end{center}
+    Then we have a left-adjointable and cartesian square
+    \begin{center}
+	\begin{tikzcd}
+	    D((\O_{X}(V),\O_{X}^{+}(V))\usolid)\arrow[hook]{r}\arrow{d} & D((B,B^{+})\usolid))\arrow{d} \\
+	    D((\O_{X}(U),\O_{X}^{+}(U))\usolid) \arrow[hook]{r} & D((A,A^{+})\usolid)
+	\end{tikzcd}
+    \end{center}
+    \begin{proof}
+	Let $U\sub X$ be a rational open as above.
+	$U=\{x\in X\mid |f(x)|\neq 0\}\cap \bigcap_{k}\{x\in X\mid |\frac{g_{k}}{f}(x)|\leqslant 1\}$.
+	This is in turn equal to $U(\frac{f}{f})\cap \bigcap_{k}U(\frac{g_{k}/f}{1})$.
+	By induction on $n$, we may assume that $U$ is either $U(\frac{f}{f})$ or $U(\frac{q}{f})$.
+	
+	In the first case $U=U(\frac{f}{f})$, note that $O_{X}^{+}(U)$ is the integral closure of $A^{+}$ in $A[\frac{1}{f}]$.
+	Since integral closures and localizations commute, this is just $A^{+}[\frac{1}{f}]$.
+    Hence $(\O_{X}(U),\O_{X}^{+}(U)))\usolid=(A[\frac{1}{f}],A^{+}[\frac{1}{f}])\usolid$ is just $(A,A^{+})\usolid \ot_{A}A[\frac{1}{f}]$.
+
+	$D((\O_{X}(U),\O_{X}^{+}(U))\usolid )\sub D((A,A^{+})\usolid)$ is the full subcategory spanned by $M$ such that $M\xrightarrow{f\cdot }M$ quasi-iso and $M\ot_{(A,A^{+})\usolid}^{L}(\O_{X}(U),\O_{X}^{+}(U))\usolid \cong M[\frac{1}{f}]$.
+	This is compatible with base change along $(A,A^{+})\to (B,B^{+})$.
+
+	For $U=U(\frac{g}{f})=\{x\in X\mid |g(x)|\leqslant 1\}$, see Scholze's notes.
+    \end{proof}
+\end{prop}
+
+To complete the proof of 9.8, we need to be able to refine rational open covers to a standard form:
+
+\begin{lm}[Lemma 10.4]
+    For any rational open cover $X=\cup_{k}U_{k}$ we can find $s_{1},\ldots, s_{N}\in A$ such that
+    \begin{enumerate}
+	\item $(s_{1},\ldots,s_{N})=A$ is the unit ideal.
+	\item $\forall l\exists k $ s.t. $U(\frac{s_{1},\ldots,s_{N}}{s_{l}})\sub U_{k}$.
+    \end{enumerate}
+    \begin{proof}
+	Claim: $\forall x\in X$ closed and $\forall x\in U\sub X$ open nbhd, $\exists f,g_{1},\ldots,g_{n}\in A$ generating the unit ideal such that $U(\frac{g_{1},\ldots,g_{n}}{f})\sub U$.
+	[The fact that $X$ is a spectral space would imply this for all other points.]
+
+	Proof of the claim: rational opens are a base.
+	WLOG, $U=U(\frac{g_{1},\ldots,g_{n}}{f})$ for some $f,g_{1},\ldots,g_{n}\in A$.
+	Let $\Gamma=\Gamma_{x}=$ value gp at $x$ and let $\Gamma'$ be the subgroup of $\Gamma$ generated by $|f(x)|$ such that $f\in A$ and $|f(x)|>1$.
+	This gives us a valuation $x'\colon A\to \Gamma'\cup \{0\}$ sending $f\mapsto |f(x)| $ if $|f(x)|\in \Gamma'$ or $0$ otherwise.
+	$x'$ is a specialization of $x$, i.e. $x'\in \overline{\{x \}}$.
+	But $x$ was a closed point, so $x'=x$ and $\Gamma'=\Gamma$.
+	If $x\in U(\frac{g_{1},\ldots,g_{n}}{f})$, then $|f(x)|\neq 0$.
+	This implies that $\exists h\in A$ such that $|h(x)|>1$ and $|fh(x)|\geqslant 1$.
+	We fid that $x\in U(\frac{g_{1}h,\ldots,g_{n}h}{fh})\sub U(\frac{g_{1},\ldots,g_{n}}{f})$, and $(g_{1}h,\ldots,g_{n}h,1)=A$ vacuously.
+	This proves the claim.
+
+	Now for all $k$ let $U_{k}=U(\frac{g_{1k},\ldots,g_{mk},f_{k}}{f_{k}})$ with $(g_{1k},\ldots,g_{mk},f_{k})=A$.
+	[Apply previous claim and refine $\cup_{k}U_{k}$.]
+
+	Let $T=\{h_{1}\cdots h_{n}\mid \forall k,, h_{k}\in \{g_{1k},\ldots,g_{mk},f_{k}\}\}$ and $S\sub T$ be the subset of all $h_{1}\cdots h_{n}\in T$ such that $h_{k}=f_{k}$ for some $k$, and write $S=:\{s_{1},\ldots,s_{N}\}$.
+	Claim: for all $k$ there exists $l$ such that $U(\frac{s_{1},\ldots,s_{N}}{s_{k}})\overset{(*)}{=}U(\frac{T}{s_{k}})\overset{(**)}{\sub} U(\frac{g_{1l},\ldots,g_{nl}}{f_{l}})$.
+
+	For $(*)$, $S\sub T\Rightarrow U(\frac{T}{s_{k}})\sub U(\frac{S}{s_{k}})$.
+	Convrsely, for all $x\in X$ there is some $k$ such that $x\in U_{k}$, hence $|f_{k}(x)|\neq 0$.
+	For all $t=h_{1}\cdots h_{n}\in T$, $s:=\frac{tf_{k}}{h_{k}}$, which implies that $|t(x)|\leqslant |s(x)|$.
+
+	For $(**)$, $s_{k}=h_{1}\cdots h_{l}\cdots h_{n}$ for some $h_{\alpha},l$.
+	Hence for all $x\in X$ we have
+	\[ |s_{k}(x)|\neq 0 \Rightarrow |f_{l}(x)|\neq 0. \]
+    \end{proof}
+\end{lm}
+
+\begin{nota}
+    For all $U=\Spa(B,B^{+})\mono X$ rational open, we have an adjunction
+    \[ L_{U}\colon C:= D((A,A^{+})\usolid)\leftrightarrow D((B,B^{+})\usolid)=:C_{U}\colon i_{U} \]
+    and $i_{U}$ is fully faithful.
+\end{nota}
+
+\begin{lm}[Lemma 10.3]
+    For all $U,V\sub X$ rational opens, we have
+    \begin{enumerate}
+	\item $C_{U\cap V}=C_{U}\cap C_{V}\sub C$.
+	\item $L_{U\cap V}\cong L_{U}\circ L_{V}\cong L_{V}\circ L_{U}$.
+	\item If $X=\cup_{k} U_{k}$ rational open cover, and $M\in C$ such that $\forall k$ we hace $M|_{U_{K}}=0$, then $M=0$.
+    \end{enumerate}
+    \begin{proof}
+	\begin{enumerate}
+	     \item Let $W=U\cap V$ for $U$ a rational open.
+		We have an essentially commutative square
+		\begin{center}
+		    \begin{tikzcd}
+			C_{W}\arrow{d}\arrow{r} & C_{U}\arrow{d} \\
+			C_{V}\arrow{r} & C
+		    \end{tikzcd}
+		\end{center}
+		which is cartesian by 10.2.
+		So we get a cartesian square
+		\begin{center}
+		    \begin{tikzcd}
+			C_{U}\cap C_{V}\arrow[hook]{r}\arrow[hook]{d} & C_{U}\arrow[hook]{d} \\
+			C_{V}\arrow[hook]{r} & C
+		    \end{tikzcd}
+		\end{center}
+	    \item (2) follows from 10.2.
+	    \item For (3) see Scholze's notes.
+	\end{enumerate}
+    \end{proof}
+\end{lm}
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
