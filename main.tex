@@ -7896,10 +7896,10 @@ Hence
 \[ c(\sT_{X})=\frac{(1+t_{X})^{n+2}}{(1+dt_{X})}\overset{Taylor}{=}(1+t_{X})^{n+2}\sum_{k}(-dt_{X})^{k} \]
 
 Binomial formula tells us that 
-\[ c_{n}(\sT_{X})=\sum_{k=0}^{n}(-1)^{k}{n+2}\choose{n-k}d^{k}t_{X}^{n} \]
+\[ c_{n}(\sT_{X})=\sum_{k=0}^{n}(-1)^{k}{{n+2}\choose{n-k}}d^{k}t_{X}^{n} \]
 $t_{X}^{n}\cap [X]$ is the number of points in $H_{1}\cap \cdots \cap H_{n}\cap X$ for hyperplanes $H_{1},\ldots,H_{n}$ in general position, which by Bezout is $d$.
 Hence
-\[ \chi(X)+\sum_{k=0}^{n}(-1)^{k}{n+2}\choose{n-k}d^{k+1} \]
+\[ \chi(X)+\sum_{k=0}^{n}(-1)^{k}{{n+2}\choose{n-k}}d^{k+1} \]
 
 \begin{cor}
     The Hodge diamond of $X_{3,3}$ is
@@ -8006,7 +8006,7 @@ $F^{p}H^{k}(X):=\op_{q\geqslant p}H^{q,k-q}(X)$.
     \begin{center}
 	\begin{tikzcd}
 	    H_{1}(X,\Z)\arrow{r}\arrow[bend left=45]{rr}{\alpha} & H_{1}(X,\C)\cong H^{1}(X,\C)\dual \arrow{r} & H^{1,0}(X)\dual \\
-	    \gamma \arrow{rr} & & [\omega \mapsto \int_{\gamma}\omega]
+	    \gamma \arrow[maps to]{rr} & & (\omega \mapsto \int_{\gamma}\omega)
 	\end{tikzcd}
     \end{center}
     Choose a basis $\gamma_{1},\ldots,\gamma_{2g}$ of $H_{1}(X,\Z)$, $\w_{1},\ldots,\w_{g}$ of $H^{1,0}(X)$, $l_{1},\ldots,l_{g}$ dual basis for $H^{1,0}(X)\dual$.
