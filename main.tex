@@ -7779,6 +7779,255 @@ To complete the proof of 9.8, we need to be able to refine rational open covers 
     \end{proof}
 \end{lm}
 
+\section{[WS] The geometry of nonsingular cubic threefolds over $\C$ (Brad) - 29.01.20}
+
+Let $d,n\in\N_{>0}$ and $X_{d,n}$ be a nonsingular hypersurface of degree $d$ in $\P^{n+1}$.
+For brevity, $X=X_{d,n}$, $P=\P^{n+1}$.
+
+\textbf{Motivation:}
+Recall from last week the Luertoh problem: unirational $\Rightarrow $ rational?
+If $\dim(X)\leqslant 2$, the answer is affirmative (in characteristic $0$).
+Necessary conditions for rationality:
+\[ h^{p,0}=\begin{cases}
+    1 & \text{ if }p=0 \\
+    0 & \text{ else }
+\end{cases}\]
+
+\begin{exa}
+    $X$ not unirational for $d>n-2$ with $n>3$:
+    $\w_{X}\cong \O_{X}(d-n-2)$, so $d-n-2>0$ implies that $\Gamma(\w_{X})\neq 0$ and therefore $h^{n,0}\neq 0$.
+\end{exa}
+
+\textbf{Goals:}
+\begin{enumerate}
+    \item Computing $H^{k}(X_{d,n})$.
+    \item Looking for evidence for/against (uni)rationality.
+    \item $X_{3,3}$ is unirational.
+\end{enumerate}
+
+\subsection{Cohomology on degree $k\neq n$}
+
+\begin{rem}
+    The pair $(P,X)$ is homeomorphic to a pair of the form $(Q,Q\cap H)$ with $H,Q\subseteq \P^{N}$, $H$ a hyperplane.
+    Indeed, we have a Veronese embedding of degree $d$
+    \begin{align*}
+	\P(V) &\mono \P(\operatorname{Sym}^{d}(V)) \\
+	[v] & \mapsto [v^{d}]
+    \end{align*}
+\end{rem}
+
+\begin{thm}[Lefschetz]
+    Let $Y\subseteq \P^{N}$ be a nonsingular $n$-dimensional projective variety and $i\colon Z:=Y\cap H\mono Y$ hyperplane section with $Z$ nonsingular, then:
+    \begin{enumerate}
+	\item $i^{*}\colon H^{k}(Y)\to H^{k}(Z)$ is an isomorphism for $k<n$,
+	\item $i_{*}\colon H_{k}(Z)\to H_{k}(Y)$ is an isomorphism for $k<n$.
+    \end{enumerate}
+\end{thm}
+
+\begin{cor}
+    \begin{enumerate}
+	\item We have 
+	    \[ \b_{k}=\begin{cases}
+		1 & \text{ for } 0\leqslant k \leqslant 2n, k\text{ even },k\neq n, \\
+		? & \text{ for } k=n, \\
+		0 & \text{ else}.
+	\end{cases}.
+	    \]
+	\item $h^{p,q}(X)=h^{p,q}(\P^{n+1})$ for $p+q<n$.
+    \end{enumerate}
+    \begin{proof}
+	\begin{enumerate}
+	    \item Combine the remark with the theorem and Poincare duality, with the fact that $H^{*}(P)\cong \Z[t]/t^{n+2}$.
+	    \item $i^{*}$ is compatible with Hodge decomposition
+		\[ H^{k}(X)\cong \op_{p+q=k}H^{p,q}(X) \]
+	\end{enumerate}
+    \end{proof}
+\end{cor}
+
+\begin{cor}
+    $X_{3,2}$ cubic surface is rational.
+    \begin{proof}
+	$h^{1,0}=\frac{1}{2}b_{1}=0$.
+	$\w_{X}=\O_{X}(-1)$ has no global sections different from zero.
+	By Castelnuovo's criterion, $X_{3,2}$ is rational.
+    \end{proof}
+\end{cor}
+
+\subsection{Chern classes}
+
+$1^{st}$ Chern classes of line bundles:
+\[ 0\to \Z\xrightarrow{2\pi i}\O_{X}\xrightarrow{\operatorname{exp}} \O_{X}^{\times} \to 0 \]
+\[ \rightsquigarrow c_{1}\colon \Pic(X)\cong H^{1}(X,\O_{X}^{\times})\to H^{2}(X,\Z) \]
+Higher Chern classes: generalize to invariants of (complex) vector bundles
+\[ c_{k}\colon \Vec(X)/\simeq \to H^{2k}(X,\Z) \]
+characterized by the following axioms:
+\begin{enumerate}
+    \item For all $E\in \Vec(X)$, $c_{0}(E)=1\in H^{0}(X,\Z)\cong \Z$.
+    \item For all $f\colon X\to Y$ and for all $E\in \Vec(Y)$ and for all $k$ we have
+	\[ c_{k}(f^{*}E)=f^{*}c_{k}(E) \]
+    \item (Whitney sum) for all $0\to E'\to E\to E''\to 0$ exact we have
+	\[ c(E)=c(E')\cup c(E''),\]
+	where $c(F)=\sum_{k}c_{k}(F)$ is the \textit{total Chern class}.
+    \item $c(\O_{\P^{n}}(1))=1+t$ where $t\in H^{2}(\P^{n})$ is the Poincare dual of $[\P^{n-1}]\in H_{2n-2}(\P^{n})$.
+\end{enumerate}
+
+\begin{thm}[Gauss-Bonnet-Chern]
+    Let $X$ be a connected complex compact $n$-manifold.
+    $\chi(X)=c_{n}(\sT_{X})\cap [X]\in H_{0}(X,\Z)\cong \Z$, where $\chi(X)=\sum_{k}(-1)^{k}b_{k}(X)$.
+\end{thm}
+
+\textbf{Upshot:}
+We can recover $b_{n}(X_{d,n})$ from $c_{n}(\sT_{X})$.
+
+\subsection{$H^{n}(X_{d,n})$}
+
+Using the Euler sequence
+\[ 0\to \O_{P}\to \O_{P}(1)^{\op n+2}\to \sT_{P}\to 0\]
+we get that $c(\O_{P}(1)^{\op n+2})=c(\O_{P})c(\sT_{P})$, hence $c(\O_{P}(1))^{n+2}=c(\sT_{P})$, hence
+\[ (1+t)^{n+2}=c(\sT_{P}) \]
+
+$X_{d,n}=V(f)$, $f\in \Gamma(P,\O_{P}(d)) \rightsquigarrow f\colon \O_{P}(-d)\xrightarrow{\sim} \I_{X}$.
+Normal bundle $i^{-1}(\I_{X}/\I_{X}^{2})\dual=i^{-1}((\O_{P}/\I_{X})\ot \I_{X})\dual=i^{*}\O_{P}(-d)\dual$.
+$\sN_{X/P}=\O_{X}(d)$.
+\[ 0\to \sT_{X}\to i^{*}\sT_{P}\to \sN_{X/P}\to 0\]
+Hence $i^{*}c(\sT_{P})=c(\sT_{X})c(\sN_{X/P})=c(\sT_{X})c(\O_{X}(d))$
+$=c(\sT_{X})(1+c_{1}(\O_{X}(1)^{\ot d}))=c(\sT_{X})(1+dt_{X})$, where $t_{X}=i^{*}t$.
+Hence
+\[ c(\sT_{X})=\frac{(1+t_{X})^{n+2}}{(1+dt_{X})}\overset{Taylor}{=}(1+t_{X})^{n+2}\sum_{k}(-dt_{X})^{k} \]
+
+Binomial formula tells us that 
+\[ c_{n}(\sT_{X})=\sum_{k=0}^{n}(-1)^{k}{n+2}\choose{n-k}d^{k}t_{X}^{n} \]
+$t_{X}^{n}\cap [X]$ is the number of points in $H_{1}\cap \cdots \cap H_{n}\cap X$ for hyperplanes $H_{1},\ldots,H_{n}$ in general position, which by Bezout is $d$.
+Hence
+\[ \chi(X)+\sum_{k=0}^{n}(-1)^{k}{n+2}\choose{n-k}d^{k+1} \]
+
+\begin{cor}
+    The Hodge diamond of $X_{3,3}$ is
+    \begin{center}
+	\begin{tikzcd}
+	    & & & 1 & & & \\
+	    & & 0 & & 0 & & \\
+	    & 0 & & 1 & & 0 & \\
+	    0 & & 5 & & 5 & & 0 \\
+	\end{tikzcd}
+    \end{center}
+\end{cor}
+
+\subsection{Unirationality of $X_{3,3}$}
+
+\begin{nota}
+    Henceforth, $X=X_{3,3}$, $P=\P^{4}$.
+\end{nota}
+
+\begin{defn}
+    A \textit{line} in $\P^{4}$ is a linear subspace of dimension $1$, i.e., an intersection of $3$ hyperplanes in $\P^{4}$.
+\end{defn}
+
+\begin{fact}
+    There exists a line $L_{0}\sub X$.
+    In fact, the set $F(X)$ of lines in $X$ is an algebraic variety, called the \textit{Fano variety} of lines.
+    It is a nonsingular surface.
+\end{fact}
+
+The fact follows from the Cayley-Salman theorem that $X_{3,2}$ contains $27$ lines.
+
+\begin{cor}
+    $X_{3,3}$ is unirational.
+    \begin{proof}
+	The fact implies that $\exists L_{0}\sub X$.
+	We'll construct a generically $2$-to-$1$ dominant rational map
+	\[ \varphi\colon \P(\sT_{X}|_{L_{0}})\dashrightarrow X \]
+	This is sufficient.
+	$\sT_{X}|_{L_{0}}$ is trivial over a dense open $U\sub L_{0}\cong \P^{1}$, hence $\P(\sT_{X}|_{L_{0}})$ is birational to $\P^{n-1}\times \P^{1}$ which is rational.
+	\begin{enumerate}[label=Step \arabic*)]
+	    \item Construct $\varphi$.
+		For all $x\in L_{0}$ and all $0\neq v\in T_{x}X$ there exists a unique line $L_{x,v}$ through $x$ such that $T_{x}L_{x,v}\sub T_{x}X$ is spanned by $v$.
+		Each point of $\P(\sT_{X}|_{L_{0}})$ is represented by $L_{x,v}$ for some $x,v$.
+		For generic $x,v$ we have $L_{x,v}\not\subseteq X$.
+		$L_{x,v}\not\subseteq X$ implies by Bezout that there exists a unique $y\in X$ such that $X\cap L_{x,v}=2x+y$.
+		Now $\varphi colon \P(\sT_{X}|_{L_{0}})\dashrightarrow X$ maps $[v]\mapsto y$, where $y$ is defined as above and $\varphi $ is defined away from the locus where $L_{x,v}\sub X$.
+	    \item For all $x\in \operatorname{dom}(\varphi)$, the cardiniality of $\varphi^{-1}(\varphi(x))$ is at most $2$.
+		Let $y=\varphi(x)$, let $\overline{yL_{0}}$ be the plane spanned by $y$ and $L_{0}$.
+		$C_{y}:=X\cap \overline{yL_{0}}\sub \P^{2}$ is a curve of degree $3$ (unless $\overline{yL_{0}}\sub X$, which generically does not happen, so we do not need to worry about it).
+		$L_{0}\sub C_{y}$ implies that $C_{y}$ is singular, because nonsingular cubic curves do not contain lines.
+		Hence our intersection $X\cap \overline{yL_{0}}=L_{0}\cup Q$ for some quadric $Q$.
+
+		[Picture]
+
+		The number of points in $\varphi^{-1}(y)$ is the number of points $x'\in L_{0}$ such that $L_{x',y}$ tangent to $X$ at $x'$, which is at most $2$.
+	    \item $\dim(\P(\sT_{X}|_{L_{0}}))=\dim(X)=3$, and $\varphi$ is generically $2$ to $1$.
+		By dimension theory, $\varphi$ is dominant.
+	\end{enumerate}
+    \end{proof}
+\end{cor}
+
+\subsection{Intermediate Jacboians}
+
+\begin{rem}
+    We need additional invariants to show that $X_{3,3}$ is irrational.
+\end{rem}
+
+\begin{thm}[Hodge]
+    We have a decomposition $H^{k}(X,\C)\cong \op_{p+q=k}H^{p,q}(X)$ and $H^{p+q}(X)=\overline{H^{q,p}(X)}$ in $H^{k}(X,\R)\ot_{\R}\C\cong H^{k}(X,\C)$.
+\end{thm}
+
+\textbf{Hodge filtration:}
+$F^{p}H^{k}(X):=\op_{q\geqslant p}H^{q,k-q}(X)$.
+\[ 0=F^{k+1}H^{k}\sub F^{k}H^{k}\sub \cdots \sub F^{0}H^{k}=H^{k} \]
+\[ H^{k}=F^{p}H^{k}\op \overline{F^{k-p+1}H^{k}} \]
+
+\begin{prop}
+    $H^{2k-1}(X,\Z)/\text{tors}$ is a lattice in $H^{2k-1}(X,\C)/F^{k}H^{2k-1}$.
+    \begin{proof}
+	Consider the diagram
+	\begin{center}
+	    \begin{tikzcd}
+		H^{2k-1}(X,\Z)\arrow[hook]{r}\arrow[hook]{rrd} & H^{2k-1}(X,\R)\arrow{dr}{\R\text{linear iso }(*)}\arrow[hook]{r} & H^{2k-1}(X,\C)\arrow[twoheadrightarrow]{d} \\
+		& & H^{2k-1}(X,\C)/F^{k}H^{2k-1}
+	    \end{tikzcd}
+	\end{center}
+	$(*)$: $\alpha\ot 1\in H^{2k-1}(X,\R)\ot_{\R}\C$ is fixed by conjugation and $H^{2k-1}=F^{k}\op \overline{F^{k}}$.
+	Hence $\alpha\ot 1=\beta +\overline{\beta}$ for some $\beta \in F^{k}$.
+    \end{proof}
+\end{prop}
+
+\begin{defn}
+    The $k^{th}$ \textit{intermediate Jacobian}
+    \[ J^{k}(X):=\frac{H^{2k-1}(X,\C)}{F^{k}+H^{2k-1}(X,\Z)} \]
+    is a quotient of a $\C$-vector space by a lattice, hence a complex torus.
+\end{defn}
+
+\begin{exa}[Jacobians of curves]
+    Let $X$ be a nonsingular projective curve of genus $g=h^{1,0}(X)$.
+    Then 
+    \[ J(X)=J^{1}(X)=\frac{H^{1}(X)}{F^{1}+H^{1}(X,\Z)}=\frac{H^{1}(X)}{H^{1,0}(X)+H^{1}(X,\Z)}\cong \]
+    \[\cong \frac{H^{0,1}(X)}{H^{1}(X,\Z)}\cong \C^{g}/\Lambda. \]
+    Goal: describe the lattice $\Lambda$ explicitly.
+    \begin{center}
+	\begin{tikzcd}
+	    H_{1}(X,\Z)\arrow{r}\arrow[bend left=45]{rr}{\alpha} & H_{1}(X,\C)\cong H^{1}(X,\C)\dual \arrow{r} & H^{1,0}(X)\dual \\
+	    \gamma \arrow{rr} & & [\omega \mapsto \int_{\gamma}\omega]
+	\end{tikzcd}
+    \end{center}
+    Choose a basis $\gamma_{1},\ldots,\gamma_{2g}$ of $H_{1}(X,\Z)$, $\w_{1},\ldots,\w_{g}$ of $H^{1,0}(X)$, $l_{1},\ldots,l_{g}$ dual basis for $H^{1,0}(X)\dual$.
+    \[ \alpha(\gamma_{k})=\sum_{j}^{g}(\int_{\gamma_{k}}\w_{j})l_{j} \]
+    and
+    \[ p:= (\int_{\gamma_{k}}\w_{j})_{jk} \]
+    is the \textit{period matrix} with respect to these bases.
+    Then
+    \[ \Lambda=\alpha(H_{1}(X,\Z))=P\Z^{2g} \]
+    and 
+    \[ J(X)\cong \C^{g}/P\Z^{2g}. \]
+\end{exa}
+
+\begin{rem}
+    \begin{enumerate}
+	\item $J(X)$ underlies a principally polarized abelian variety.
+	\item Torelli: $J(X)$ determines $X$ up to isomorphism.
+	\item Next time: if $X$ is nonsingular $3$-fold, then $X$ is rational implies that $J^{2}(X)$ product of Jacobians of curves.
+    \end{enumerate}
+\end{rem}
+
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
 
