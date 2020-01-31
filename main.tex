@@ -122,6 +122,8 @@
 \let\ord\relax
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\Spa}{Spa}
+\DeclareMathOperator{\trdeg}{tr.deg}
+\DeclareMathOperator{\Gal}{Gal}
 
 %
 % OTHER COMMANDS
@@ -159,6 +161,7 @@
 \newcommand{\solid}{^{\blacksquare}}
 \newcommand{\dsolid}{^{L\blacksquare}}
 \newcommand{\usolid}{_{\blacksquare}}
+\newcommand{\normal}{\triangleleft}
 
 %
 % AUTHOR INFO
@@ -8027,6 +8030,106 @@ $F^{p}H^{k}(X):=\op_{q\geqslant p}H^{q,k-q}(X)$.
 	\item Next time: if $X$ is nonsingular $3$-fold, then $X$ is rational implies that $J^{2}(X)$ product of Jacobians of curves.
     \end{enumerate}
 \end{rem}
+
+\section{[FS] Amador - Automorphism group of fields with operators - 31.01.20}
+
+\begin{q}
+    What can we say about the lattice of normal subgroups of $\Aut(\C)$?
+\end{q}
+
+E.g. we have $\Aut(\C/\bar{\Q})\normal \Aut(\C)$.
+The quotient is $\Gal(\Q)$, i.e. very hard to understand.
+We will focus on the LHS, i.e. on $\Aut(\C/\bar{\Q})$.
+
+\begin{thm}[Lascar '93]
+    If the continuum hypothesis holds, then for every $f\in \Aut(\C/\bar{\Q})\setminus \{\id\}$, every element $g\in \Aut(\C/\bar{\Q})$ is a product of $4$ conjugates of $f$ and $f^{-1}$.
+    In particular, $\Aut(\C/\bar{\Q})$ is simple.
+\end{thm}
+
+What is so special about CH?
+Under CH, we can write
+\[ \C=\cup_{\alpha < \aleph_{1}} k_{\alpha} \]
+where $k_{\alpha}$ is countable and algebraically closed (e.g. $\bar{\Q}$) and $\trdeg(k_{\alpha+1}/k_{\alpha})$ is infinite.
+Since $\aleph_{1}$ is the continuum by hypothesis, the result of the union must be $\C$.
+
+What is so special about countable?
+$k$ countable, then the topological subgroup $\Aut(k)\sub \operatorname{Bij}(k)\cong \operatorname{Bij}(\N)$ is closed, where $\operatorname{Bij}(\N)$ is a Baired space called the \textit{Polish group}.
+It is a separable topological space which admits a complete metric.
+Explicitly, if $f,g\in \operatorname{Bij}(\N)$, then
+\[ d(f,g)=\sum_{n\in \N}\frac{a_{n}}{2^{n}}, \]
+where $a_{n}=1$ if $f(n)\neq g(n)$ and $0$ otherwise.
+
+In $'97$, Lascar provided a different proof with no topology and not under CH.
+There are two steps in this proof:
+\begin{enumerate}[label=Step \arabic*)]
+    \item Which automorphisms are bounded?
+	$f\in \Aut(\C)$ is bounded if there is an algebraically closed subfield $k$ of small (finite, countable) transcendence degree such that for all $a\in \C$, $f(a)$ is algebraic over $k(a)$.
+	Are there non-trivial bounded automorphisms?
+	E.g. in characteristic $p>0$, Frobenius is bounded.
+	But in characteristic $0$, the only bounded automorphism is the identity.
+    \item $f\in \Aut(\C/\bar{\Q})\setminus \{\id\}$.
+	Given $g\in \Aut(\C/\bar{\Q})$, we need to show that there are $g_{1},g_{2},g_{3},g_{4}\in \Aut(\C/\bar{\Q})$ such that
+	\[ g=f^{g_{1}}\cdot (f^{-1})^{g_{2}}\cdot (f^{-1})^{g_{3}}\cdot f^{g_{4}}. \]
+\end{enumerate}
+
+Lascar's proof needed characteristic zero to ensure that minimal polynomials have a nice enough shape.
+Different proof uses:
+
+\begin{lm}[Ziegler]
+    Let $G$ be an affine algebraic group over $k=\bar{k}$ and elements $g,h\in G(\C)$ such that $g,h, gh$ are pairwise algebraically independent over $k$.
+    Then there is a connected algebraic subgroup $H$ defined over $k$ such that
+    $g,h,gh$ are generic points in cosets of $H$, each coset being defined over $k$.
+\end{lm}
+
+How to use Ziegler's lemma to show that $\C$ has no bounded automorphism different from the identity?
+\begin{proof}[Proof to conclude Step 1]
+    Assume $f$ is bounded over $k$.
+    Take $a,b\in \C$ algebraically independent over $k$.
+    We have
+    \[ (a,f(a))+(b,f(b))=(a+b,f(a+b)) \]
+    in $\bbG_{a}^{2}$.
+    So $(a,f(a))$ is generic in a coset of some $H\leqslant \bbG_{a}^{2}$, everything defined over $k$.
+    Hence $f(a)=\lambda_{a}\cdot a +\xi_{a}$ for $\lambda_{a},\xi_{a}\in k$.
+    Now we do the same for the multiplicative structure:
+    \[ (a,f(a))\cdots (b,f(b))=(a\cdot b,f(a\cdot b)). \]
+    By Ziegler's lemma, $(a,f(a))$ is the generic point over $k$ of a coset of a torus in $\bbG_{m}^{2}$.
+    $f(a)^{m}=a^{n}\cdot \mu_{a}$ implies (since $a$ is transcendental over $k$) that
+    \[\begin{cases}
+	f(a)=\lambda_{a}\cdot a, \\
+	f(b)=\lambda_{b}\cdot b, \\
+	f(a+b)=\lambda_{a+b}(a+b).
+    \end{cases}\]
+    But now
+    \[ \lambda_{a+b}(a+b)=f(a+b)=f(a)+f(b)=\lambda_{a} \cdot a +\lambda_{b} \cdot b ,\]
+    which implies that
+    \[ (\lambda_{(a+b)}-\lambda_{a})\cdot a = (\lambda_{b}-\lambda_{(a+b)})\cdot b.\]
+    Hence $\lambda_{a}=\lambda_{b}=\lambda_{a+b}$ and we conclude that $\lambda_{a}=1$.
+\end{proof}
+
+\begin{proof}[Proof of Step 2]
+    Write
+    \[ \chi(h_{1},h_{2})=h_{1}\cdot f\cdot h_{2}\cdot f^{-1}\cdot h_{2}^{-1}\cdot h_{1}^{-1}, \]
+    which is equal to
+    \[ h_{1}\cdot f\cdot h_{1}^{-1}\cdot h_{1}\cdot h_{2} \cdot f^{-1} \cdot h_{2}^{-1} \cdot h_{1}^{-1} =(f)^{h_{1}}\cdot (f^{-1})^{h_{1}h_{2}}. \]
+    Idea: construct a suitable tower of algebraically closed subfields of $\C$
+    \[ k_{0}\sub k_{1}\sub k_{2}\sub \cdots \sub k_{n}\sub \cdots \sub k_{\omega}\sub k_{\omega+1}\sub \cdots \]
+    $|\C|=2^{\aleph_{0}}$ many times.
+    At every step $\alpha$,
+    \[ g|_{k_{\alpha}}=\chi|_{k_{\alpha}}(h_{1}_{\alpha},h_{2}_{\alpha})\cdot \chi(h_{3}_{\alpha},h_{4}_{\alpha})^{-1}. \]
+    We take $k_{0}=\bar{\Q}$ and for every limit ordinal we take the union.
+    So the problem is how to go from an ordinal to the next one.
+    \begin{center}
+	\begin{tikzcd}
+	    & k_{\alpha}\arrow{dl}{\chi|_{k_{\alpha}}(h_{3}_{\alpha},h_{4}_{\alpha})}\arrow{dr}{\chi|_{k_{\alpha}}(h_{1}_{\alpha},h_{2}_{\alpha})} & \\
+	    k_{\alpha}\arrow{rr}{g|_{k_{\alpha}}} && k_{\alpha}
+	\end{tikzcd}
+    \end{center}
+    Take $a\in k_{\alpha}$ and make $k_{\alpha}$ bigger to get stability under $f$ and $g$.
+    Then extend the rightmost arrow, which again forces as to extend our field.
+    Then extend leftmost to keep commutativity, for which we need to enlarge the field again.
+    Then the rightmost, and so on.
+    We stop at $\omega$, and the resuting field is our $k_{\alpha+1}$.
+\end{proof}
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
