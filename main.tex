@@ -136,6 +136,9 @@
 \newcommand{\HH}{HH}
 \newcommand{\CG}{\mathbf{CG}}
 \newcommand{\Solid}{\mathbf{Solid}}
+\newcommand{\affSch}{\mathbf{Sch}^{\mathrm{aff}}}
+\newcommand{\Adic}{\mathbf{Adic}}
+\newcommand{\Sch}{\mathbf{Sch}}
 % Uncategorized
 \newcommand{\CP}{\mathbb{CP}}
 \newcommand{\sSet}{\mathbf{sSet}}
@@ -8130,6 +8133,236 @@ How to use Ziegler's lemma to show that $\C$ has no bounded automorphism differe
     Then the rightmost, and so on.
     We stop at $\omega$, and the resuting field is our $k_{\alpha+1}$.
 \end{proof}
+
+\section{[CM] Exceptional functors and coherent duality (Brad) - 03.02.20}
+
+\textbf{Last time:}
+Globalized $D((A,A^{+})\usolid)$ to $D((\O_{X},\O_{X}^{*})\usolid)$.
+Implicitly, we globalized
+\[ (-)\ot_{(A,A^{+})\usolid} (B,B^{+})\usolid \dashv \text{forget} \]
+to $f^{*}\dashv f_{*}$.
+
+\textbf{Today:}
+$f\colon X\to Y$ map of schemes.
+\begin{itemize}
+    \item $f_{!}\dashv f^{!}$.
+    \item $f^{!}\O_{Y}\cong \w_{X/Y}[d]$ for $f$ smooth of relative dimension $d$.
+    \item Coherent duality.
+\end{itemize}
+
+\subsection{Exceptional functors}
+
+\begin{center}
+    \begin{tikzcd}
+	\affSch_{/R}\arrow[bend left=45]{rr}\arrow[hook]{r}\arrow{d} & \Sch_{/R}\arrow{d}\arrow[hook]{r}{(_)^{ad/R}} & \Adic_{/R}\arrow{d} \\
+	\affSch \arrow[bend right=45]{rr} \arrow[hook]{r} & \Sch \arrow[hook]{r}\arrow[Rightarrow]{ur}{\varphi} & \Adic \\
+	A \arrow[maps to]{rr} & & \Spa(A,A)
+    \end{tikzcd}
+\end{center}
+For $f\colon X\to Y$ separated finite type, $q\colon X^{ad}\mono X^{ad/Y}$ is an open immersion.
+For $f\colon X\to Y$ proper implies $q\colon X^{ad}\xrightarrow{\sim}X^{ad/Y}$ is an isomorphism.
+\begin{center}
+    \begin{tikzcd}
+	X^{ad}\arrow{d}{f^{ad}}\arrow[open]{r}{j} & X^{ad/Y}\arrow{d}{f^{ad/Y}} \\
+	Y^{ad}\arrow{r}{\sim} & Y^{ad/Y}
+    \end{tikzcd}
+\end{center}
+because $\id_{Y}$ is proper (analogue of Nagata compactification).
+
+\begin{prop}[Proposition 11.2]
+    For all $f\colon X\to Y$ separated finite type map we have an adjunction
+    \[ j_{!}\colon D(X^{ad})\Leftrightarrow D(X^{ad/Y})\colon j^{*} \]
+    where $D(X^{ad}):=D((\O_{X},\O_{X}^{+})\usolid)$.
+    \begin{proof}
+	The idea of the proof is (to use Zariski descent) to reduce to $X$, $Y$ affine, and we may even assume f.t. over $\Z$, in which case we apply the results of Lecture 8.
+    \end{proof}
+\end{prop}
+
+\begin{defn}
+    For all $f\colon X\to Y$ sep. f.t. define
+    \[ f_{!}:=(f^{ad/Y})_{*}\circ j_{!}\colon D(X^{ad})\to D(Y^{ad}) \]
+\end{defn}
+
+\begin{rem}
+    \begin{enumerate}
+	\item For an open immersion of schemes $j\colon U\mono X$ there is no left adjoint $j_{!}\colon D(U)\to D(X)$ in general.
+	    In other words, $j^{*}$ does not preserve limits (in fact, not even products).
+	\item $f$ proper implies that $j\colon X^{ad}\to X^{ad/Y}$ is an isomorphism, so $j_{!}\cong j_{*}\cong f^{ad}_{*}=f_{*}$.
+    \end{enumerate}
+\end{rem}
+
+\begin{prop}
+    For all $f\colon X\to Y$ sep. f.t. there exists a right adjoint $f_{!}\dashv f^{!}$.
+    \begin{proof}
+	We know $j_{!}$ is cocontinuous, as $j_{!}\dashv j^{*}$.
+	$f_{*}^{ad/Y}$ cocontinuous: reduce to $X$, $Y$ affine f.t./$\Z$ and apply results from Lecture 8.
+	Adjoint functor theorem (infinity category version) implies that we are done.
+    \end{proof}
+\end{prop}
+
+\begin{fact}
+    \begin{enumerate}
+	\item For all $X\xrightarrow{f}Y\xrightarrow{g}Z$ composable sep. f.t. maps, we have
+	    \[ (gf)_{!}\cong g_{!}f_{!} \quad \text{ and }\quad f^{!}g^{!}\cong (gf)^{!} \]
+	\item Porjection formula
+	    \[ f_{!}(M\ot_{X^{ad}}f^{*}N)\cong (f_{!}M)\ot_{Y^{ad}}N \]
+	\item Proper base change:
+	    \begin{center}
+		\begin{tikzcd}
+		    Y\arrow{r}{g'}\arrow{d}{f'}& X\arrow{d}{f} \\
+		    T\arrow{r}{g} & S
+		\end{tikzcd}
+	    \end{center}
+	    if the square is cartesian, then we have
+	    \[ g^{*}f_{!}\cong f_{!}'(g')^{*} \quad \text{ and } \quad f^{!}g_{*}\cong g_{*}'(f')^{!} \]
+    \end{enumerate}
+\end{fact}
+
+\subsection{Dualizing complex}
+
+The goal is to show that if $f\colon R\to A$ is a smooth map of relative dimension $d$, then
+\[ f^{!}R\cong \w_{A/R}[d] \]
+
+\begin{prop}[Proposition 11.4]
+    Consider the following diagram in which both squares are pushouts:
+    \begin{center}
+	\begin{tikzcd}
+	    R_{0}\arrow{d}{f_{0}}\arrow{r} & R\arrow{d}{f}\arrow{r}{g} & S\arrow{d}{f'} \\
+	    A_{0}\arrow{r} & A\arrow{r}{g'} & B
+	\end{tikzcd}
+    \end{center}
+    with $f_{0}$ of f.t. and fin. Tor-dim., $R_{0},A_{0}$ Noetherian and $g$ flat.
+    \begin{enumerate}
+	\item The composition
+	    \[f^{!}R\ot f^{*}M\xrightarrow{\eta}f^{!}f_{!}(f^{!}R\ot f^{*}M)\cong f^{!}((f_{!}f^{!}R)\ot M)\xrightarrow{\varepsilon}f^{!}(R\ot M)=f^{!}M\]
+	    is an isomorphism.
+	\item The composition
+	    \[ (g')^{*}f^{!}\xrightarrow{\eta}(g')^{*}f^{!}g_{*}g^{*}\cong (g')^{*}(g')_{*}(f')^{!}g^{*}\xrightarrow{\varepsilon} (f')^{!}g^{*} \]
+	    is an isomorphism.
+    \end{enumerate}
+    \begin{proof}
+	\begin{enumerate}[label=Case \Roman*:]
+	    \item $f$ surjective.
+		This implies that $\Spec(A)\mono \Spec(R)$ is a closed immersion, hence $f,f'$ are proper, hence $f_{!}\cong f_{*}$ and $f'_{!}\cong f'_{*}$, hence
+		\[ f^{!}M\cong R\operatorname{hom}_{R}(A,M)\underset{A \text{ perfect}}{\xrightarrow{\sim}} R\operatorname{hom}_{R}(A,R)\ot^{L}_{A\usolid}M \]
+		and similarly for $f'$.
+		Now compute.
+	    \item $f\colon R\to R[T]=A$ polynomial algebra.
+		Then in lecture 8 we computed $f_{!}M=M\ot^{L}_{(A,R)\usolid}(R((T^{-1}))/R[T])[1]$.
+		\begin{enumerate}
+		    \item 8.13 (iv) in Scholze's notes.
+		    \item Use $(1)$ to reduce to $M=R$.
+			\begin{align*}
+			    (g')^{*}f^{!}R & =R\operatorname{hom}_{R}(R((T^{-1}))/R[T],R)[1]\ot^{L}_{A\usolid} B\usolid \\
+			    & \cong R[T][1]\ot^{L}_{A\usolid}B\usolid \\
+			    & \cong A[1]\ot^{L}_{A\usolid}B\usolid \\
+			    & \cong B[1]
+			\end{align*}
+			\begin{align*}
+			    f'^{!}g^{*}R &\cong f'^{!}S & \quad \text{(g flat)} \\
+			    & \cong R\hom_{S}(S((T^{-1}))/S[T],S)[1] & \\
+			    & \cong S[T][1] & \\
+			    & \cong B[1] &
+			\end{align*}
+		\end{enumerate}
+	\end{enumerate}
+    \end{proof}
+\end{prop}
+
+\begin{prop}[Prop. 11.5]
+    Let $f\colon R\to A$ be a surjective map of rings.
+    Let $I$ be its kernel, which we assume to be generated by a regular sequence $f_{1},\ldots,f_{c}$, so that the corresponding map of schemes $\Spec(A)\mono \Spec(R)$ is a regular closed immersion of codimension $c$.
+    Then $f^{!}R\cong R\operatorname{hom}_{R}(A,R)\cong \det_{A}(I/I^{2})\dual [-c]$.
+    \begin{proof}
+	Koszul complex yields $R\operatorname{hom}_{R}(A,R)\overset{1}{\cong} A[-c] $.
+	\begin{align*}
+	    A &\overset{2}{\xrightarrow{\sim}} \det_{A}(I/I^{2}) \\
+	    1 & \mapsto f_{1}\wedge \cdots \wedge f_{c}
+	\end{align*}
+	$f$ closed immersion implies that $f_{!}\cong f_{*}$, so $f^{!}R\cong R\operatorname{hom}_{R}(A,R)$.
+	\begin{align*}
+	    f^{!}R & \overset{3}{\cong} R\operatorname{hom}_{R}(A,R) \\
+	    & \overset{1}{\cong} A[-c] \\
+	    & \cong A\dual[-c] \\
+	    & \overset{2}{\cong} \det_{A}(I/I^{2})\dual [-c]
+	\end{align*}
+    \end{proof}
+\end{prop}
+
+\begin{thm}[Thm. 11.6]
+    Let $f\colon R\to A$ be a smooth ring map of relative dimension $d$.
+    Then 
+    \[ f^{!}R\cong \det_{A}(\Omega^{!}_{A/R})[d] \]
+    \begin{proof}
+	Let $g\colon A\ot_{R}A\to A$ be the multiplication and $p,q\colon A\to A\ot_{R} A$ sending $a$ to $a\ot 1$ and $1\ot a$ respectively.
+	Note that $g$ is a regular closed immersion of codimension $d$.
+	$gp=\id_{A}=gq$.
+	We have
+	\begin{align*}
+	    f^{!}R & \cong g^{!}p^{!}f^{!}R & \quad \text{(since } gp=\id_{A}\text{)} \\
+	    & \cong g^{!}(p^{*}f^{!}R\ot_{A\ot_{R}A}p^{!}A) & \quad \text{(by } 11.4.(1)\text{)} \\
+	    & g^{!}(p^{*}f^{!}R\ot_{A\ot_{R}A}q^{*}f^{!}R) & \quad \text{(by } 11.4.(2), p!A=p^{!}f^{*}R\text{)} \\
+	    & \cong f^{*}(p^{*}f^{!}R\ot_{A\ot_{R}A}q^{*}f^{!}R)\ot_{A} g'(A\ot_{R}A) & \quad \text{(by } 11.4.(1)\text{)} \\
+	    & f^{!}R\ot_{A\ot_{R}A}f^{!}R\ot_{A}g^{!}(A\ot_{R}A) & \quad \text{(}g^{*} \text{ monoidal)}
+	\end{align*}
+	Factor $f$ as $R\xrightarrow{a}R[T_{1},\ldots,T_{n}]\overset{b}{\epi}A$.
+	$f^{!}R\cong b^{!}a^{!}R$.
+	Lecture 8: $a^{!}R$ is $\ot$-invertible.
+	11.5 implies that $b^{!}a^{!} $ is $\ot$-inverstibel as well.
+	Hence
+	\[ f^{!}R\cong f^{!}R\ot f^{!}R\ot g'(A\ot_{R}A)\]
+	Must show $f^{!}R\cong (g^{!}(A\ot_{R}A))\dual $.
+	11.5 implies $g^{!}(A\ot_{R}A)\cong \det_{A}(I/T^{2})\dual[-d]$ with $I$ the kernel of the multiplication.
+	Then
+	\[ I/I^{2}\cong \Omega^{1}_{A/R} \]
+    \end{proof}
+\end{thm}
+
+\subsection{Coherent duality}
+
+\begin{rem}
+    $f_{*}$ preserve discrete objects.
+    (for $X$, $Y$ smooth.)
+    \begin{center}
+	\begin{tikzcd}
+	    D(X)\arrow{r}{f_{*}}\arrow{d}{\sim} & D(Y)\arrow{d}{\sim} \\
+	    \operatorname{Ind}(\mathbf{Perf}(X))\arrow[hook]{d} & \operatorname{Ind}(\mathbf{Perf}(Y))\arrow[hook]{d} \\
+	    D(X^{ad})\arrow{r}{f_{*}}& D(Y^{ad})
+	\end{tikzcd}
+    \end{center}
+\end{rem}
+
+\begin{rem}
+    $f_{!}$ preserves compact objects (follows from lecture 8).
+\end{rem}
+
+\begin{rem}
+    $M\in D(X^{ad})$ perfect iff discrete and compact, so if $f$ is proper, then $f_{!}\cong f_{*}$ preserves perfect objects.
+    By adjunction, $f$ proper implies that $f^{!}$ agrees with classical construction.
+\end{rem}
+
+\subsection{Grothendieck's formulation of coherent duality}
+
+\begin{center}
+    \begin{tikzcd}
+	X\arrow{rr}{f\text{ proper}}\arrow{dr}{\pi_{X}} & & Y\arrow{dl}{\pi_{Y}} \\
+	& \Spec(R) &
+    \end{tikzcd}
+\end{center}
+with $\pi_{X},\pi_{Y}$ smooth.
+Then $f_{*}\dashv R\operatorname{hom}(f^{*}R\hom(-,\w_{Y/R}[d_{Y}]),w_{X/R}[d_{X}])$, where $f_{*}\colon D^{b}_{c}(X)\to D^{b}_{c}(Y)$.
+
+\[ [M,R\operatorname{hom}(f^{*}R\operatorname{hom}(N,\w_{Y}[d_{Y}]),\w_{X}[d_{X}])]\cong \]
+\[ \cong [M,R\operatorname{hom}(f^{*}R\operatorname{hom}(N,\pi_{Y}^{!}R),\pi_{X}^{!}R)] \quad (\text{11.6}) \]
+\[ \cong [M\ot f^{*}R\operatorname{hom}(N,\pi_{Y}^{!}R),\pi_{X}^{!}R] \quad (\ot \dashv \operatorname{hom} ) \]
+\[ \cong [M\ot f^{*}R\operatorname{hom}(N,\pi_{Y}^{!}R),f^{!}\pi_{Y}^{!}R] \quad (\pi_{X}=\pi_{Y}f ) \]
+\[\cong [f_{!}(M\ot f^{*}R\operatorname{hom}(N,\pi_{Y}^{!}R)),\pi_{Y}^{!}R] \quad (f_{!}\dashv f^{!}) \]
+\[ \cong [(f_{!}M)\ot R\operatorname{hom}(N,\pi_{Y}^{!}R),\pi_{Y}^{!}R] \quad \text{ projection formula} \]
+\[ \cong [f_{!}M,R\operatorname{hom}(R\operatorname{hom}(N,\pi_{Y}^{!}R),\pi_{Y}^{!}R)] \quad \ot \dashv \operatorname{hom} \]
+\[ \cong [f_{!}M,N] \quad N \text{ } \ot \text{-dualizable, }\pi_{Y}^{!}R \text{ } \ot \text{-dualizable.} \]
+\[ [f_{*}M,N] \quad f_{!}\cong f_{*} \]
+
+
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
