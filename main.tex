@@ -8362,6 +8362,223 @@ Then $f_{*}\dashv R\operatorname{hom}(f^{*}R\hom(-,\w_{Y/R}[d_{Y}]),w_{X/R}[d_{X
 \[ \cong [f_{!}M,N] \quad N \text{ } \ot \text{-dualizable, }\pi_{Y}^{!}R \text{ } \ot \text{-dualizable.} \]
 \[ [f_{*}M,N] \quad f_{!}\cong f_{*} \]
 
+\section{[WS] Jacobians 4 (Vincent) - A primer on Abelian Varieties - 05.02.20}
+
+References: C.~Birkenhake, H.~Lange--Complex Abelian Varieties.
+D.~Mumford--Prym varieties.
+
+\subsection{Abelian varieties}
+
+\begin{defn}
+    Let $g\geqslant 1$.
+    Let $X=\C^{g}/\Lambda$, where $\Lambda \sub \C^{g}(=V)$ is a full lattice.
+    Then $X$ is called a \textit{torus}.
+\end{defn}
+
+\begin{q}
+    When is $X$ projective?
+\end{q}
+
+This is the case iff $X$ admits a holomorphic ample line bundle, iff $X$ admits a holomorphic positive definite line bundle.
+
+$\Pic(X)\cong H^{1}(X,\O_{X}^{\tms})$ which fits into the LES coming from the exponential sequence.
+\begin{center}
+    \begin{tikzcd}
+	\Pic(X)\arrow{r}{\partial}\arrow{dr}{c_{1}} & H^{2}(X,\Z)\cong \Lambda^{2} H^{1}(X,\Z) \\
+	& \operatorname{NS}(X)=\im(\partial)\arrow[hook]{u}
+    \end{tikzcd}
+\end{center}
+The guy on the top--right corner is isomorphic to $\Hom(H_{1}(X,\Z),\Z)\cong \pi_{1}(X,\Z)\cong \Lambda$, which in turn is isomorphic to $\operatorname{Alt}^{2}(\Lambda,\Z)\sub \operatorname{Alt}^{2}_{\R}(V,\R)$.
+
+\begin{fact}
+    $E\in \operatorname{Alt}^{2}(V,\R)$ is of the form $c_{1}(L)$ for some $L\in \Pic(X)$ iff the following conditions hold:
+    \begin{enumerate}
+	\item $E(\Lambda,\Lambda)\sub \Z$.
+	\item $E(iv,iw)=E(v,w)$ for all $v,w\in V$.
+    \end{enumerate}
+\end{fact}
+
+We have associated to each line bundle an alternating form with the previous propreties, but we are not quite done yet.
+
+\begin{fact}
+    There is a one--to--one correspondence between $E\in \operatorname{Alt}^{2}(V,\R)$ satisgyin $(2)$ and hermitian forms given by
+    \[ E\mapsto H(v,w)=E(iv,w)+iE(v,w) \]
+    and the inverse is given by $H\mapsto \Im(H)$.
+\end{fact}
+
+Hence we have associated an hermitian form $H_{L}\cong c_{1}(L)$ to $L$.
+
+\begin{defn}
+    We say that $L$ is a positive definite line bunddle if $H$ is positive definite.
+\end{defn}
+
+\begin{thm}
+    $L$ is ample iff $L$ is positive definite.
+\end{thm}
+
+\begin{defn}
+    A choice of such a positive definite $H_{L}$ coming from some $L\in \Pic(X)$ is called a \textit{polarization}.
+
+    A torus admitting such a polarization is called an \textit{abelian variety}.
+
+    $E_{L}|_{\Lambda}\cong \begin{pmatrix} 0 & D \\ -D & 0 \end{pmatrix}$ in a certain basis of the lattice $A$ where $D=\operatorname{diag}(d_{1},\ldots,d_{g})$, with $d_{i}| d_{i+1}$.
+    The sequence $(d_{1},\ldots,d_{g})$ is called the \textit{type} of $L$.
+    
+    $(X,L)=(X,c_{1}(L))$ is a principal polarization if $L$ is of type $(1,\ldots,1)$.
+    Any divisor $\Theta$ such that $c_{1}(\O_{C}(\Theta))=c_{1}(L)$ is called a \textit{theta divisor}.
+\end{defn}
+
+\begin{exa}
+    Every torus of dimension $g=1$ is an abelian variety.
+    $X=\C/\Lambda$.
+    WLOG $\Lambda=\lbrace 1,2\rbrace$ with $\Im(z)>0$.
+    \begin{align*}
+	H\colon \C\times \C &\to \C \\
+	(v,w) & \mapsto \frac{v\cdot \bar{w}}{\Im(z)}
+    \end{align*}
+    Recall that we have to check integrality on the imaginary part only.
+\end{exa}
+
+\subsection{Jacobians}
+
+$C$ a smooth projective curve of genus $g$.
+We associate to it the torus $J(C)=\frac{H^{0}(\w_{C})\dual}{H_{1}(X,\Z)}$.
+
+Fix a basis $\lambda_{1},\ldots,\lambda_{2g}$ of $H_{1}(C,\Z)$ such that the intersection pairing w.r.t. this basis is of the form
+\[ A=\begin{pmatrix} 0 & -1_{g} \\ 1_{g} & 0 \end{pmatrix}, \]
+hence $\lambda_{i}$ intersects only $\lambda_{i+g}$.
+
+So $H^{0}(\w_{C})\dual $ has alternating form induced from $A^{-1}=\begin{pmatrix} 0 & 1_{g} \\ -1_{g} & 0 \end{pmatrix}$, hence $H$ hermitian.
+
+\begin{prop}
+    $H$ is a positive definite hermitian form coming from some $L$ on $J(C)$.
+    $H$ is of type $(1,\ldots,1)$ (or equivalently $H$ corresponds to a principal polarization).
+\end{prop}
+
+\subsection{Abel--Jacobi theorem}
+
+There is a bijection between $\Pic^{0}(C)$ and $J(C)$ sending $D=\sum_{i}(P_{i}-Q_{i})$ to
+\[ w\mapsto \sum_{\nu}\int_{Q_{\nu}}^{P_{\nu}}w \]
+$\Pic^{d}(C)$ is a $\Pic^{0}(C)$-torsor.
+For any $L_{0}\in\Pic^{d}(C)$ we have
+\begin{align*}
+    \Pic^{d}(C) & \xrightarrow{\alpha_{L_{0}}} \Pic^{0}(C)\cong J(C) \\
+    L &\mapsto L\ot L_{o}^{-d}
+\end{align*}
+
+\subsection{Theta divisors}
+
+$C$ a curve of genus $g\geqslant 4$, $\Theta $ a divisor.
+Then
+\[ \dim{\operatorname{sing}(\Theta)}=
+\begin{cases}
+    g-4 & \text{ if } C \text{ is not hyperelliptic} \\
+    g-3 & \text{ otherwise}
+\end{cases}
+\]
+
+\textbf{Next talk:}
+Intermediate Jacobian of smooth cubic threefold is a \textit{Prym variety}.
+
+If smooth cubic threefold was rational, then intermediate Jacobian would be a product of Jacobians.
+Hence to show that the cubic $3$ fold is not rational we want to compute the singular locus of theta divisors on Prym variety and Jacobians.
+
+\textbf{Recall:}
+$J(C)=\Pic^{0}(C)$ comes equipped with a principal polarization, i.e. a Chern class $c_{1}(L)$.
+
+Any divisor $D$ s.t. $c_{1}(\O_{C}(D))=c_{1}(L)$ is called a \textit{theta divisor}.
+
+\begin{fact}
+    Any two theta divisors are translates of each other.
+\end{fact}
+
+The singular locus of $\Theta $ is the set of points with multiplicity at least 2.
+
+\begin{defn}
+    A curve $C$ of genus $g\geqslant 2$ is called \textit{hyperelliiptic} if there is a finite morphism $f\colon C\to \P^{1}$ of degree $2$.
+    $\iota \colon C\to C$ exchanging the sheets of $f$ is called a \textit{hyperelliptic involution}.
+\end{defn}
+\begin{fact}
+    $f$ is unique if it exists an it is induced from $\O_{C}(P+\iota(P))$ for any $P\in C$.
+\end{fact}
+
+\begin{prop}
+    $C$ is hyperelliptic iff $\varphi_{\w_{C}}\colon C\to \P^{g-1}$ is not an embedding.
+\end{prop}
+
+\begin{prop}
+    We can factor
+    $\varphi_{\w_{C}}\colon C\xrightarrow{f}\P^{1}\overset{\text{Ver}}{\mono} \P^{g-1}$.
+    Then $\varphi_{\w_{C}}(P)=\varphi_{\w_{C}}(Q)\Leftrightarrow f(P)=f(Q)$.
+\end{prop}
+
+\textbf{Recall:}
+$C^{(g-1)}=C^{g-1}/S_{g-1}\xrightarrow{\rho} \Pic^{g-1}(C)\xrightarrow{\ot L_{0}^{-1}} \Pic^{0}(C)\cong J(C)\supseteq \Theta$.
+$L_{0}$ is of degree $g-1$ and the tensor map is an isomorphism.
+
+\begin{thm}[Riemann]
+    For certain $\Theta$ and $L_{0}\in \Pic^{g-1}(C)$:
+    \[ \alpha_{L_{0}}^{*}(\Theta)=\rho(C^{(g-1)})=W_{g-1}=\{ L\in \Pic^{g-1}(C)\mid h^{0}(L)\geqslant 1\} \]
+    $\rightsquigarrow $ calculate dimension of singular locus of $W_{g-1}$.
+\end{thm}
+
+\begin{thm}[Riemann Singularity Theorem]
+    $\operatorname{sing}(W_{g-1})=\{L\in \Pic^{g-1}(C)\mid h^{0}(L)\geqslant 2\}$
+    and $\operatorname{mult}_{L}(\Theta)=h^{0}(L)$.
+\end{thm}
+
+\begin{thm}[Geometric Riemann-Roch]
+    For any divisor we have
+    \[ h^{0}(\O_{C}(D))=\deg(D)-\dim(\operatorname{span}(\varphi_{\w_{D}}(D))) \]
+    where the span is the intersection of all hyperplanes containing $\varphi_{\w_{C}}(D)$.
+\end{thm}
+
+Now we want to prove
+
+\begin{prop}
+    Let $C$ be a curve of genus $g\geqslant 4$.
+    Then for any theta diviso $\Theta$ on $J(C)$ we have
+    \[ \dim{\operatorname{sing}(\Theta)}=
+    \begin{cases}
+	g-4 & \text{ if } C\text{ is not hyperelliptic} \\
+	g-3 & \text{ otherwise}
+    \end{cases}
+    \]
+\end{prop}
+
+\subsection{Prym varieties}
+
+Let $\pi\colon \tilde{C}\to C$ be an etale double cover of degree $2$ between smooth projective curves.
+Consider the involution $\iota\colon \tilde{C}\to \tilde{C}$ exchanging the sheets.
+We have $J(\tilde{C})=\Pic^{0}(\tilde{C})$ and $J(C)=\Pic^{0}(C)$.
+From $J(\tilde{C})$ to $J(C)$ we can go via $\pi_{*}=\operatorname{Nm}$.
+From $J(C)$ to $J(\tilde{C})$ we can go via $\pi^{*}$.
+
+\begin{fact}
+    \begin{enumerate}
+	\item $\iota_{*}\colon J(\tilde{C})\to J(C)$.
+	\item $\operatorname{Nm}\circ \pi^{*}$ is multiplication by $2$.
+	\item $\operatorname{Nm}$ is surjective.
+	\item $\pi^{*}\operatorname{Nm}(D)= D+\iota_{*}(D)$
+	    Hence $\iota_{*}(\pi^{*}(D))=\iota_{*}(\pi^{*}\operatorname{Nm}(D))=\iota_{*}(D'+\iota_{*}(D'))=\pi^{*}(D)$.
+	    Hence $\pi^{*}(J(C))=\im(1-\iota)$ is invariant under $\iota$.
+    \end{enumerate}
+\end{fact}
+
+$\calP=\im(1-\iota)$ is called \textit{Prym variety}.
+Get $J(\tilde{C})\cong J(C)\tms P/H$, where $H$ is some finite group.
+
+\begin{fact}
+    There is a principal polarization on $\calP$.
+    There exists a theta divisor $\Theta$ on $J(C)$ and $\Xi$ on $\calP$ such that
+    \[ \Theta|_{\calP}=2\Xi \]
+\end{fact}
+
+\begin{prop}
+    The singular locus of $\Xi$ can be described as 
+    \[ \{ x\in \calP\mid \operatorname{mult}_{X}(\Theta)\geqslant 4\}\cup \{x\in \calP\mid \operatorname{mult}_{x}(\Theta)=2 \text{ and }T_{x,\calP}\sub TC_{x}\Theta \} \]
+\end{prop}
+
 
 
 \bibliographystyle{alpha}
