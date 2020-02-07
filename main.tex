@@ -98,6 +98,8 @@
 \let\Im\relax
 \DeclareMathOperator{\Im}{Im}
 \DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\CH}{CH}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Map}{Map}
 \DeclareMathOperator{\ho}{ho}
@@ -8578,6 +8580,169 @@ Get $J(\tilde{C})\cong J(C)\tms P/H$, where $H$ is some finite group.
     The singular locus of $\Xi$ can be described as 
     \[ \{ x\in \calP\mid \operatorname{mult}_{X}(\Theta)\geqslant 4\}\cup \{x\in \calP\mid \operatorname{mult}_{x}(\Theta)=2 \text{ and }T_{x,\calP}\sub TC_{x}\Theta \} \]
 \end{prop}
+
+\section{[FS] Stefan Schreieder - 07.02.20}
+
+\subsection{Motivation}
+
+$k=\bar{k}$ alg. closed field, $X$ a variety over $k$, today $X=X_{d}\sub \P_{k}^{n+1}$ hypersurface of degree $d$, i.e. $X_{d}=\{f=0\}$, $f$ irred. hom. of deg $d$.
+Some properties we want to look at are the following:
+
+(R) $X$ is rational if there exists $\P^{n}\overset{\sim}{\dashrightarrow} X$ birational map, which is equivalent to both varieties having isomorphic dense open subsets, which in turn is equivalent to almost all solutions of $f=0$ being parametrized $1:1$ by $t\in\P^{n}$.
+
+(UR) $X$ is unirational if $\exists \P^{n}\overset{(r:1)}{\dashrightarrow} X$ dominant rational map, which is equivalent to almost all solutions $f=0$ are parametrized $r:1$ by $t\in \P^{n}$.
+
+(RC) $X$ is rationally connected if for all general points $x,y\in X$ there exists $\P^{1}\xrightarrow{\varphi} X$ such that $x,y\in \im(\varphi)$.
+
+\begin{fact}
+    (R) $\Rightarrow $ (UR) $\Rightarrow $ (RC).
+\end{fact}
+
+It is known that the left implication cannot be reverted, and it is conjectured that the right one cannot as well.
+
+\begin{exa}
+    \begin{enumerate}
+	\item $\{ x_{0}^{2}+x_{1}^{2}=x_{2}^{2}\}\sub \P^{2}$ is rational because almost all solutions of $x_{0}^{2}+x_{1}^{2}=1$ are parametrized $1:1$ by
+	    \[ x_{0}=\frac{t^{2}-1}{t^{2}+1} \quad \text{and}\quad x_{1}=\frac{2t}{t^{2}+1}. \]
+	    More generally, any $X_{2}\sub \P^{n+1}$ is rational.
+	\item (Moran, Harris-M-Pandharipande, B-R) $X_{d}\sub \P^{n+1}_{\C}$ smooth with $d!\leqslant \log_{2}(n+1)$ is unirational.
+	\item $X_{d}\sub \P_{\C}^{n+1}$ smooth of degree $d\leqslant n+1$ is Fano, so by [KMM, Campana], $X_{d}$ is (RC).
+	    This completes the case of hypersurfaces with respect to (RC), because we also know that for higher degrees the corresponding smooth hypersurfaces are not (RC).
+    \end{enumerate}
+\end{exa}
+
+\begin{conj}
+    $X_{d}\sub \P_{\C}^{n+1}$ very general hypersurface (i.e. $[f]\in \P(H^{0}(\P^{n+1},\O(d)))$ lies outsie some countable union of closed subsets\footnote{Morally we can think of this as the coefficients of $f$ being algebraically independent, although it is not equivalent}).
+    If $n\geqslant 3$ and $d\geqslant 3$, then $X_{d}$ is not (R).
+\end{conj}
+
+\begin{conj}
+    $X_{d}\sub \P^{n+1}_{\C}$ very general with $n\geqslant 3$, $1<<d\leqslant n+1$.
+    Then $X_{d}$ is not (UR).
+\end{conj}
+
+What is known?
+
+\begin{thm}[Kollar '95]
+    Conjecture 1 is true for $d\geqslant 2\lceil \frac{n+3}{3}\rceil$.
+\end{thm}
+
+\begin{thm}[Totaro '15]
+    Conjecture 1 is true for $d\geqslant 2\lceil \frac{n+2}\rceil $.
+\end{thm}
+
+Conjecture 2 is open but Kollar et al prove some bounds on the degree of $\phi\colon \P^{n}\dashrightarrow X_{d}$.
+
+New results:
+
+\begin{thm}[Thm A, Sch. 18,19]
+    $k=\bar{k}$ uncountable.
+    $X_{d}\sub \P_{k}^{n+1}$ very general, $n\geqslant 3$.
+    If $\exists \phi\colon \P^{n}\dashrightarrow X_{d}$ (UR) parametrization (dominant), then $m\mid \deg(\phi)$ for all $m\leqslant d-\log_{2}(n), \frac{1}{m}\in k$.
+\end{thm}
+
+\begin{cor}
+    If $m=2$, characteristic of $k$ different from $2$, $X_{d}\sub \P^{n+1}$ very general is irrational if $d\geqslant \log_{2}(n)+2$.
+    Fr $m=3$ and characteristic 2, $X_{d}\sub \P^{n+1}$ very general is irrational if $d\geqslant \log_{2}(n)+3$.
+\end{cor}
+
+For big numbers this improves the previous bounds a lot.
+
+\subsection{Torsion orders}
+
+$X$ variety over $k$.
+Consider $\CH_{0}(X)$ (free ab. group on closed points modulo rational equivalence).
+
+\begin{exa}
+    If $X$ is smooth over $k=\bar{k}$ is (RC), then $\CH_{0}(X)$ is $\Z$ (iso. given by degree), because any two points in $\P^{1}$ are linearly equivalent.
+\end{exa}
+
+\begin{rem}
+    The example is not true if $k\neq \bar{k}$.
+    In fact, if $X/k=\bar{k}$ is (RC), it is not true that $\deg\colon \CH_{0}(X_{L})\xrightarrow{\sim} \Z$ for all $L\supseteq k$.
+    But $X_{\bar{L}}$ is (RC) and has such an isomorphism.
+    \[ \ker(\CH_{0}(X_{L})\to \CH_{0}(X_{\bar{L}})) \quad \text{ is torsion.}\]
+\end{rem}
+This torsion statement is true in very general situation, it relies only on "push and pull argument".
+
+\begin{defn}
+    The \textit{torsion order of $X$}, denoted $\Tor(X)$, is the smallest integer $e\in \Z_{>}\cup \{\infty\}$ such that
+    \[ \ker(\CH_{0}(X_{L})\xrightarrow{\deg}\Z) \]
+    is killed by $\cdot e$ for all $L/k$.
+\end{defn}
+
+\begin{lm}
+    $\Tor(X)$ is the order of $\delta_{X}-z_{k(X)}\in \CH_{0}(X_{k(X)})$, where $\delta_{X}$ is the point of diagonal and $z\in X(k)$ is base change of $z$.
+    ($X$ smooth and proper).
+\end{lm}
+
+\begin{lm}
+    \begin{enumerate}[label=\alph*)]
+	\item $f\colon X\dashrightarrow Y$ dominant implies that $\Tor(Y)\mid \deg(f)\Tor(X)$.
+	\item If $X\times \P^{m}$ is rational, then $\Tor(X)=1$.
+    \end{enumerate}
+\end{lm}
+
+\begin{cor}
+    If $\phi\colon \P^{n}\dashrightarrow X$, then $\Tor(X)\mid \deg(\phi)$.
+\end{cor}
+
+Hence Theorem A follows from:
+
+\begin{thm}[Theorem B]
+    $X_{d}\sub \P_{k}^{n+1}$ very general over $k=\bar{k}$, $n\geqslant 3$.
+    Then $m\mid \Tor(X_{d})$ if $m\leqslant d-\log_{2}(n)$ and $\frac{1}{m}\in k$.
+\end{thm}
+
+The bound gets close to previous universal bound:
+
+\begin{thm}[Roitman '70s]
+    $X_{d}\sub \P_{k}^{n+1}$ smooth over any field.
+    Then $\Tor(X_{d})\mid d!$.
+\end{thm}
+We should not expect this universal bound to be sharp in all cases (e.g. quadrics without rational points in characteristic $2$), and Thm. B is for $k=\bar{k}$.
+
+\subsection{Unramified cohomology}
+
+$Y$ a variety over $k=\bar{k}$, $\frac{1}{m}\in k$, then
+\[ H^{i}(k(Y),\Z/m):=\varinjlim_{\varnothing \neq U\sub Y}H^{i}(U,\Z/m) \left( = H^{i}(\operatorname{Gal}_{k(Y)},\Z/m)\right) \]
+It is a birational invariant, but it is huge (does not even see the genus).
+So instead:
+
+\begin{defn}[Unramified cohomology]
+    \[ H_{nr}^{i}(Y,\Z/n):=\{\alpha\in H^{i}(k(Y),\Z/m) \mid (*) \} \]
+\end{defn}
+
+$(*)$ For any normal birational model $Y'$ of $Y$, $\alpha$ lifts to a "big" open subset $U'\sub Y'$, where "big" means its complement has codimension at least $2$.
+
+\begin{exa}
+    \begin{enumerate}
+	\item $H^{1}_{n r}(Y, \Z/n)=H^{1}(Y,\Z/n)$.
+	\item $H^{i}_{n r}(Y,\Z/n)=0$ if $\dim{Y}<i$.
+    \end{enumerate}
+\end{exa}
+
+\begin{fact}
+    This is a stable birational invariant and $\ord(\gamma)\mid \Tor(Y)$ for all $\gamma \in H^{i}_{nr}(Y,\Z/m)$.
+\end{fact}
+
+Issue: hard to compute, and often vanishes when computable.
+
+\subsection{Specialization}
+
+Need a stronger version of a previous result by Voisin, CT-Pirutha.
+
+\begin{thm}[Sch. 18]
+    $\X\to C$ flat projective family/ $k=\bar{k}$, $C=$ smooth curve.
+    $X$ a very general fibre (the geometric generic fibre), $Y$ a special fibre.
+    Assume:
+    
+    (O) there exists $\gamma \in H^{i}_{nr}(Y,\Z/m)$ of order $m$.
+
+    (V) there exists a resolution (alteration) $\tau\colon Y'\to Y$ such that for all $E\sub \tau^{-1}(Y^{sing})$ we have
+    \[ \gamma|_{E}=0\in H^{1}(k(E),\Z/n) \]
+    Then $m\mid \Tor(X)$.
+\end{thm}
 
 
 
