@@ -1,4 +1,4 @@
-\documentclass[A4paper, british, reqno]{amsart}
+\documentclass[draft, A4paper, british, reqno]{amsart}
 
 %
 % LOCAL FONT DEFINITIONS -- need to come first
@@ -8744,7 +8744,172 @@ Need a stronger version of a previous result by Voisin, CT-Pirutha.
     Then $m\mid \Tor(X)$.
 \end{thm}
 
+\section{[WS] Rationality 5 (Johan) - Counterexamples to the Lueroth problem - 12.02.20}
 
+\textit{Reminder:}
+$X$ smooth projective variety is rational iff there exists $\P^{n}\dashrightarrow X$ birational, and unirational if there exists $\P^{n}\dashrightarrow X$ dominant.
+We showed that all cubic threefolds are unirational.
+
+The Lueroth problem was then: is every unirational variety rational?
+
+\textit{Today:}
+In dimension $3$, the answer is no.
+The specific plan is:
+\begin{enumerate}[label=\roman*)]
+    \item Review ppav and intermediate Jacobians.
+    \item If $X$ is a rational threefold, then $J(X)$ is a product of Jacobians of curves.
+    \item Show for an explicit cubic threefold $X$ that the Jacobian is not of that form.
+    \item Try the general case.
+\end{enumerate}
+
+\subsection{Polarised abelian varieties and (intermediate) Jacobians}
+
+Let $(A_{1},D_{1})$ and $(A_{2},D_{2})$ be two polarised abelian varieties.
+Then there is a natural polarisation on the product $(A_{1}\times A_{2},p_{1}^{*}D_{1}+p_{2}^{*}D_{2})=(A_{1}\times A_{2},(D_{1}\times A_{2})+(A_{1}\times D_{2}))$.
+
+\begin{defn}
+    $(A,D)$ is called \textit{indecomposable} if it is nontrivial and it cannot be written as a product of two nontrivial polarised abelian varieties.
+\end{defn}
+
+Let $D$ be any divisor on an abelian variety $A$.
+Write $D_{a}$ for $D+a$, the translate of $D$ by some element $a\in A$.
+We get a map
+\begin{align*}
+    \varphi_{D}\colon A &\longrightarrow \hat{A} \\
+    a &\longmapsto \O(D_{a}-D)
+\end{align*}
+
+\begin{rem}
+    If $D$ is a principal polarisation, then $\varphi_{D}$ is an isomorphism.
+\end{rem}
+
+\begin{thm}
+    \begin{enumerate}[label=\roman*)]
+	\item A nontrivial principally polarised abelian variety $(A,D)$ is indecomposable iff $D$ is irreducible and reduced.
+	\item Every ppav $(A,D)$ has a unique decomposition as product $(A_{1},D_{1})\times \cdots \times (A_{n},D_{n})$.
+    \end{enumerate}
+    \begin{proof}[Sketch of proof]
+	If $(A,D)=(A_{1},D_{1})\times \cdots \times (A_{n},D_{n})$, then $D=D^{(1)}+\cdots +D^{(n)}$, with $D^{(i)}=A_{1}\times \cdots \times D_{i}\times \cdots \times A_{n}$.
+	We can recover $A_{i}=\varphi_{D}^{-1}(\varphi_{D^{(i)}})$.
+	Let $(A,D)$ be any ppav.
+	Write $D=D^{(1)}+\cdots +D^{(n)}$ as a sum of irreducible components.
+	Put $A_{i}=\varphi_{D}^{-1}(\varphi_{D^{(i)}}(A))$ and $D_{i}=D^{(i)}|_{A_{i}}$.
+	One can show that $(A,D)=(A_{1},D_{1})\times \cdots \times (A_{n},D_{n})$.
+    \end{proof}
+\end{thm}
+
+\begin{cor}
+    The Jacobian of a curve $J(C)$ is indecomposable.
+    \begin{proof}
+	Last week we saw that $\Theta_{J(C)}$ is the image of
+	\begin{align*}
+	    C^{(g-1)} &\longrightarrow J(C) \\
+	    D &\longmapsto D-(g-1)[x]
+	\end{align*}
+	for some fixed $x\in C$.
+    \end{proof}
+\end{cor}
+
+\begin{defn}
+    Let $X$ be a smooth projective $n$-dimensional variety and $k\in \N$.
+    We defined
+    \[ J^{k}(X)=\frac{H^{2k-1}(X,\C)}{F^{k}H^{2k-1}(X,\C)+H^{2k-1}(X,\Z)}=\frac{F^{n-k+1}H^{2n-2k+1}(X,\C)\dual}{H_{2n-2k+1}(X,\Z)}, \]
+    where $F^{q}H^{i}(X,\C)=\op_{p\geqslant q}H^{p,i-p}(X)=\op_{p\geqslant q}H^{i-p}(X,\Omega^{p})$.
+\end{defn}
+
+\subsection{Rational threefolds}
+
+\begin{prop}[Blow-up formula]
+    Let $X$ be a smooth projective variety, $Y\sub X$ closed and smooth subvariety of codimension $c$.
+    Let $\tilde{X}$ be the blow-up of $X$ along $Y$.
+    Then there are natural isomorphisms
+    \[ H^{p}(\tilde{X},\Z)\cong H^{p}(X,\Z)\bigoplus \left(\op_{k=1}^{c-1}H^{p-2k}(Y,\Z)\right) \]
+\end{prop}
+
+Blowing up a point (resp. a genus $g$ curve) on a threefold yields:
+\begin{center}
+    \begin{tikzcd}
+	&[-25pt] &[-25pt] &[-25pt] 1 &[-25pt] &[-25pt] &[-25pt] &[-25pt] &[-25pt] &[-25pt] &[-25pt] &[-25pt] 1 &[-25pt] &[-25pt] &[-25pt]\\
+	& & h^{0,1} & & h^{1,0} & & & & & & h^{0,1} & & h^{1,0} & & \\
+	& h^{0,2} & & h^{1,1} & & h^{2,0} & & \rightsquigarrow & & h^{2,0} & & h^{1,1} +1 & & h^{0,2} & \\
+	h^{0,3} & & h^{1,2} & & h^{2,1} & & h^{3,0} & & h^{0,3} & & h^{1,2}(+g) & & h^{2,1}(+g) & & h^{3,0} \\
+    \end{tikzcd}
+\end{center}
+
+\begin{thm}
+    Let $Y$ be a rational threefold.
+    Then $J(Y)=J^{2}(Y)$ is isomorphic to a product of Jacobians of curves.
+    \begin{proof}
+	There exists $f\colon \P^{3}\dashrightarrow Y$ birational.
+	\begin{center}
+	    \begin{tikzcd}
+		& \tilde{Z}\arrow[bend right=20]{ddl}\arrow{d}\arrow[bend left=20]{ddr} & \\
+		& Z=\bar{\Gamma}_{f}\arrow{dl}\arrow{dr} & \\
+		\P^{3} & & Y
+	    \end{tikzcd}
+	\end{center}
+	By weak factorization, we have a chain
+	\begin{center}
+	    \begin{tikzcd}
+		& Z_{1}'\arrow{dr}\arrow{dl} & & Z_{3}'\arrow{dl} & \cdots & Z_{n}'\arrow{dr} & \\
+		\P^{3} & & Z_{2}' & & \cdots & & Y
+	    \end{tikzcd}
+	\end{center}
+	Then we are done modulo the lemma below.
+    \end{proof}
+\end{thm}
+
+\begin{lm}
+    Let $f\colon Z'\to Z$ be a blowup map between smooth projective threefolds in a smooth point or curve.
+    Then $J(Z')$ is a product of Jacobians of curves iff $J(Z)$ is.
+    \begin{proof}
+	If we blowup a point, then $H^{3}(Z',\Z)\cong H^{3}(Z,\Z)$.
+	If we blowup a smooth curve $C$ of genus $g$, then 
+	\[ H^{3}(Z',\Z)\cong H^{3}(Z,\Z)\op H^{1}(C,\Z). \]
+    \end{proof}
+\end{lm}
+
+\begin{exa}
+    The \textit{Klein cubic threefold} $X$ is given by
+    \[ \sum_{i\in \Z/5\Z} x_{i}^{2}x_{i+1}. \]
+    Let $\zeta$ be a primitive $11$-th root of unity in $\C$.
+    We get automorphisms
+    \[ \delta \colon (x_{0},\ldots,x_{4})\longmapsto (x_{0},\zeta x_{1},\zeta^{-1}x_{2},\zeta^{3} x_{3},\zeta^{6} x_{4}) \]
+    and
+    \[ \sigma \colon (x_{0},\ldots,x_{4})\longmapsto (x_{1},x_{2},x_{3}x_{4},x_{0}) \]
+    which satisfy
+    \[ \delta^{11}=1=\sigma^{5} \quad \text{ and }\quad \sigma \delta \sigma^{-1}=\delta^{-2}. \]
+    $\delta$ has $5$ fixed points corresponding to the $5$ standard basis vectors and $\sigma $ has $4$ fixed points
+    \[ (1:\alpha:\alpha^{2}:\alpha^{3}:\alpha^{4}) \]
+    for $\alpha\in \C$, $\alpha\neq 1$, $\alpha^{5}=1$.
+    Note that $h^{2i}(X,\Q)$ is $1$.
+    These automorphisms have odd order, so $\delta^{*}$ and $\sigma^{*}$ must act trivially on $H^{2i}(X,\Q)$, and in odd cohomology, we only have something on $H^{3}$.
+    We compute the trace of these isomorphisms acting on $H^{3}$:
+    \[ \operatorname{tr}(\delta^{*}|_{H^{3}})=4-5=-1 \quad \text{ and }\quad \operatorname{tr}(\sigma^{*}|_{H^{3}})=4-4=0. \]
+    These trace computations show that $\delta^{*}$ cannot act as the identity.
+
+    Suppose now that $X$ is rational.
+    Then $J(X)$ is a product of Jacobians of curves
+    \[ J(X)=J(C_{1})\times \cdots \times J(C_{n}) \]
+    with $n\leqslant 5$, because $J(X)$ is $10$-dimensional.
+    $\delta^{*}$ permutes these factors.
+    But the order of $\delta$ is $11$ and we have at most $5$ curves, hence $\delta^{*}$ stabilizes each factor.
+    But $\delta^{*}$ acts non-trivially, so it must act non-trivially on some $J(C_{i})$.
+    So we have
+    \[ \delta^{*}|_{J(C_{i})}\colon H^{1}(C_{i},\Q)\to H^{1}(C_{i},\Q) \]
+    with $\Q[<\delta^{*} >]=\Q\times \Q(\zeta)$.
+    Hence $H^{1}(C_{i},\Q)$ is at least $10$-dimensional.
+    This argument shows that we can only have one curve.
+
+    Write $n=1$ and $C=C_{1}$, which is a curve of genus $5$ because its $H^{1}$ is $10$-dimensional.
+    For curves of genus at least $2$, the Torelli theorem gives us a short exact sequence
+    \[ 1\to \Aut(C)\to \Aut(J(C),\Theta)\to \begin{cases} \Z/2\Z &\text{ if }C \text{ hyperelliptic} \\ 1 &\text{ otherwise} \end{cases} \]
+	Hence $\delta$ and $\sigma$ act on $C$.
+	We can use the Lefschetz fixed point formula to compute the fixed points: $\delta$ has $3$ fixed points on $C$ and $\sigma$ has $2$ fixed points on $C$.
+	Since $\sigma$ normalizes $<\delta >$, $\sigma$ must map $\operatorname{Fix}(\delta)$ to itself.
+	But $\sigma$ has order $5$, so it must fix all these $3$ fixed points.
+	This gives the desired contradiction, showing that $X$ is not rational.
+\end{exa}
 
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
