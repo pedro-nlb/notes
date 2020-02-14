@@ -8911,6 +8911,128 @@ Blowing up a point (resp. a genus $g$ curve) on a threefold yields:
 	This gives the desired contradiction, showing that $X$ is not rational.
 \end{exa}
 
+\section{[FS] Fabrizio Barroeiro - On the Zilber-Pink conjecture for complex abelian varieties - 14.02.20}
+
+Joint work with G. Dill.
+Varieties are irreducible.
+$K$ is an algebraically closed field of characteristic zero.
+$A/K$ will denote an abelian variety, $G/K$ a commutative algebraic group.
+
+Abelinan varieties are very nice because they are always isogenous to products of powers of simple factors $A_{i}$ (abelian varieties without proper abelian subvarieties), so we have a factorization as in the integers.
+
+\begin{exa}
+    Let $E^{n}(K)\ni (P_{1},\ldots,P_{n})$, where $E$ is an elliptic curve,
+    \[ \sum_{j=1}^{n}a_{ij}P_{i}=0 \]
+    for $a_{ij}\in \End(E)$ yields a subgroup.
+    The irreducible components of algebraic subgroups are of the form $\sum a_{ij}P_{i}=T$, for $T\in E_{tor}(K)$.
+    For instance, $2P_{1}+2P_{2}=0$ has irreducible components $P_{1}+P_{2}=T$.
+\end{exa}
+
+\begin{defn}
+    An irreducible component of an algebraic subgroup is called a \textit{special subvariety}.
+    These are precisely translates of abelian subvarieties by torsion points.
+\end{defn}
+
+\begin{defn}
+    A \textit{weakly special} subvariety is a translate of an abelian subvariety.
+\end{defn}
+
+\begin{q}[Lang '60]
+    Take a curve $C\sub \C^{2}$ irreducible and containing infinitely many points $(\zeta_{1},\zeta_{2})$ with $\zeta_{i}$ roots of $1$.
+    What can we say about this curve?
+\end{q}
+
+For example, $x^{a}y^{b}=\zeta$ for $\zeta$ a root of $1$ is such a curve.
+Ihara--Serre--Tate proved that these are the only examples.
+Notice how these curves are precisely special subvarieties of $\Gm^{2}=(\C^{\times})$.
+
+\begin{thm}[Raynaud (him, not her) '83, previously conjectured by Manin-Mumford]
+    A subvariety $V$ of an abelian variety $A$ contains at most finitely many maximal special subvarieties.
+\end{thm}
+
+\begin{nota}
+    $V\sub A$, $<V>$ denotes the smallest special subvariety containing $V$, and $<V>_{ws}$ the smallest weakly special subvarieties containing $V$
+\end{nota}
+
+\begin{thm}
+    Let $C\sub G$ irreducible curve over $K$ (to be specified later) and $\operatorname{HP}(C)$ some hypothesis on the curve (to be specified later).
+    Let $\dim{G}=g$.
+    Then 
+    \[ \Sigma=\{ P\in C(K) \mid \dim(<P>)\leqslant g-2\} \]
+    is finite.
+\end{thm}
+
+Let's now specify the hypotheses.
+\begin{center}
+    \begin{tabular}{|c|c|c|c}
+	$G$ & $K$ & $\operatorname{HP}(C)$ & \\
+	$\Gm^{n}$ & $\bar{\Q}$ & $<C>_{ws}=G$ & (Bombieri-Masser-Zannier '99) \\
+	$\Gm^{n}$ & $\C$ & $<C>_{ws}=G$ & (BMZ '03) \\
+	$\Gm^{n}$ & $\bar{\Q}$ & $<C>=G$ & (Maurim '08) \\
+	$\Gm^{n}$ & $\C$ & $<C>=G$ & (BMZ '08) \\
+	Some $A$ & $\bar{\Q}$ & $<C>=G$ & (VRRGC) \\
+	$A$ & $\bar{\Q}$ & $<C>=G$ & (Habegger-Pila '16) \\
+	$A$ & $\C$ & $<C>=G$ & (B-Dill '19) \\
+	Semiab. & $\bar{\Q}$ & $<C>=G$ & (B-Kuehne-Schmidt)
+    \end{tabular}
+\end{center}
+
+\begin{defn}
+    Let $W\sub A$.
+    The \textit{defect} of $W$ is defined as
+    \[ \delta(W)=\dim(<W>)-\dim(W) \]
+\end{defn}
+
+In the theorem, $\delta(C)=g-1$, $P\in \Sigma \Leftrightarrow \delta(P)\leqslant g-2< \delta(C)$.
+
+\begin{defn}
+    Let $W\sub V\sub A$.
+    We say that $W$ is \textit{optimal} for $V$ in $A$ if for all $U$ we have $W\subsetneq U\subseteq V$, $\delta(W)<\delta(V)$.
+\end{defn}
+
+Then the theorem says that there is at most finitely many optimal points.
+
+\begin{conj}[Zilber-Pink]
+    Fix $m,d\in \Z_{\geqslant 0}$.
+    The statmement $\operatorname{ZP}(A,K,m,d)$ is: any $V\sub A$ with $\dim{V}\leqslant m$ contains at most finitely many optimal subvarieties of defect at most $d$.
+\end{conj}
+
+\begin{defn}
+    We call $T\sub A$ the $K/\bar{\Q}$-trace of $A$ if $T$ is the largest abelian variety subvariety of $A$ that can be defined over $\bar{\Q}$.
+\end{defn}
+
+\begin{thm}[B.-Dill '19]
+    $\operatorname{ZP}(T,\bar{\Q},m,d)\Rightarrow \operatorname{ZP}(A,K,m,d)$.
+\end{thm}
+
+HP'16 proved $\operatorname{ZP}(T,\bar{\Q},1,d)$ and $\operatorname{ZP}(T,\bar{\Q},n,1)$.
+Combined, these yield $\operatorname{ZP}(T,\bar{\Q},m,d)$ if $\dim(T)\leqslant 4$.
+Hence:
+
+\begin{cor}
+    $\operatorname{ZP}(A,K,m,d)$ holds if $m$ or $d$ are at most $1$ or $\dim{T}\leqslant 4$.
+\end{cor}
+
+\begin{exa}
+    Take $A=E^{g}$ with transcendental $j$-invariant, which means that $E$ cannot be defined over $\bar{\Q}$.
+    Hence the trace is trivial, so the conjecture holds in full generality for these kind of varieties.
+\end{exa}
+
+\begin{proof}[Sketch of proof]
+    Can assume $K$ has finite transcendence degree over $\bar{\Q}$ and that $A$ is principally polarised.
+    $A_{g,l}$ appropriate moduli space of ppav of dimension $g$.
+    $\calA_{g,l}$ uniersal family over $A_{g,l}$.
+
+    There exists $S\sub A_{g,l}$, $S/\bar{\Q}$ and an embedding $\bar{\Q}(S)\mono K$ such that $A\sim A'_{K}$ (isogeny) for $A'$ the generic fibre of $\calA_{g,l}\times_{A_{g,l}} S$.
+    Take $K'=\overline{\Q(S)}$.
+    Reductions:
+    \begin{enumerate}
+	\item $\operatorname{ZP}(A'_{K'},K',m,d)\Rightarrow \operatorname{ZP}(A,K,md)$.
+	\item If $\dim{S}>0$ (if we have a genuiune family), then
+	    \[ (\forall B \text{ proper quotient of }A',,\operatorname{ZP}(B,K',m,d))\Rightarrow \operatorname{ZP}(A',K',m,d) \]
+    \end{enumerate}
+\end{proof}
+
 \bibliographystyle{alpha}
 \bibliography{bibliography/refs}
 
